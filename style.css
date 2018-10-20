@@ -1,0 +1,32 @@
+h1 {
+    background-color: rgba(45.82, 79.92, 143.51,0.3)
+}
+p {
+    width: 66.6%;
+    font-family: monospace;
+    font-size: 1.1em;
+}
+
+h4 {
+    background-color: rgba(45.82, 79.92, 143.51,0.2)
+    
+}
+
+table, th, tr, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 33.3%;
+}
+
+th, td {
+    padding: 2px;
+    text-align: center;
+}
+
+td {
+    font-family: monospace;
+    font-size: 1.1em;
+}
+li {
+    padding: 2px;
+}

@@ -7,20 +7,22 @@ p {
     font-size: 1.1em;
 }
 
-h4 {
+h2 {
     background-color: rgba(45.82, 79.92, 143.51,0.2)
-    
+}    
+h3 {
+    background-color: rgba(45.82, 79.92, 143.51,0.1)
 }
 
-table, th, tr, td {
+table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
     width: 33.3%;
 }
-
 th, td {
     padding: 2px;
     text-align: center;
+    width: 25%;
 }
 
 td {
@@ -28,5 +30,22 @@ td {
     font-size: 1.1em;
 }
 li {
+    font-family: monospace;
+    font-size: 1.1em;
     padding: 2px;
+    width: 75%
+}
+code {
+    font-family: monospace;
+    border: 1px;
+    border-radius: 3px;
+    padding: 1px;
+    background-color: #E8E8E8;
+    -webkit-user-select: all;  /* Chrome all / Safari all */
+    -moz-user-select: all;     /* Firefox all */
+    -ms-user-select: all;      /* IE 10+ */
+    user-select: all;          /* Likely future */ 
+}
+footer {
+    padding: 10px;
 }

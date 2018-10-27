@@ -1,31 +1,36 @@
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <title>The Factorio Benchmark Website</title>
 
 <h1>The Factorio Benchmark Website</h1>
+
 <nav>
-<a href=index.html>Home</a> | 
-<a href=test-index.html>Test Index</a> | 
-<a href=general-information.html>General Information</a>
+<ul>
+<li><a class="home" href=/index.html>Home</a></li>
+<li><a class="test-index" href=/test-index.html>Test Index</a></li>
+<li><a class="general-information" href=/general-information.html>General Information</a></li>
+</ul>
 </nav>
 
 <h2>
 General Testing Guidelines
 </h2>
 
+<h3>Simple rules to follow</h3>
 <ul>
 <p>
-In the majority of cases, the inbuilt benchmarking utility should be used. It can be accessed using the --benchmark command on the Factorio executable.
+In the majority of cases, the inbuilt benchmarking utility should be used. It can be accessed using the <code>--benchmark</code> command on the Factorio executable.
 </p>
 <p>
 Multiple tests should be conducted for the same map, to minimize the run to run variance.
 </p>
 <p>
 Where applicable running system fans locked to 100% speed may be beneficial. This can reduce the chance of thermal throttling having a different magnitude of effect between maps/runs.
-</ul>
 </p>
+</ul>
+
 
 
 
@@ -38,8 +43,3 @@ Pitfalls and Mitigations
 <p>
 There are a number of measures and potential pitfalls possible when benchmarking any ingame tests. I will outline potential pitfalls and mitigations that can be taken to avoid those pitfalls. When applicable supporting evidence will be included, often in the form of linking to past tests.
 </p>
-
-
-
-
-

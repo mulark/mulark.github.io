@@ -1,24 +1,31 @@
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <title>The Factorio Benchmark Website</title>
 
 <h1>The Factorio Benchmark Website</h1>
+
 <nav>
-<a href=index.html>Home</a> | 
-<a href=test-index.html>Test Index</a> | 
-<a href=general-information.html>General Information</a>
+<ul>
+<li><a class="home" href=/index.html>Home</a></li>
+<li><a class="test-index" href=/test-index.html>Test Index</a></li>
+<li><a class="general-information" href=/general-information.html>General Information</a></li>
+</ul>
 </nav>
+
+<body class="general-information">
 
 
 <h2>
 General Information
 </h2>
 
-<h5>
+<h3>
 System Specifications:
-</h5>
+</h3>
+
+<p>Note: unless otherwise noted, System 1 is used to conduct testing (with 780ti)</p>
 
 <table>
 <tr>
@@ -26,55 +33,52 @@ System Specifications:
 <th> System 1 </th>
 <th> System 2 </th>
 </tr>
-
-
 <tr>
 <td>Processor Model</td>
 <td> i5-4670K </td>
 <td> FX-8320 </td>
 </tr>
-
 <tr>
 <td>CPU Frequency</td>
 <td> 4400MHz </td>
 <td> 4500MHz </td>
 </tr>
-
 <tr>
 <td>vCore (voltage)</td>
 <td>tbd</td>
 <td>tbd</td>
 </tr>
-
 <tr>
 <td>Memory (RAM)</td>
 <td colspan="2" align="center"> 8GB DDR3 1866MT/s</td>
 </tr>
-
 <tr>
 <td>Memory timings (XMP)</td>
 <td colspan="2" align="center">10-11-10-28 1T</td>
 </tr>
-
 <tr>
 <td>GPU</td>
 <td colspan="2" align="center">nVidia GTX 780ti or AMD Radeon HD 7870 GHz</td>
 </tr>
-
 <tr>
 <td>Motherboard</td>
 <td> MSI Z87i-ac mITX</td>
 <td> Gigabyte GA-970A-UD3 ATX</td>
 </tr>
-
 <tr>
 <td>BIOS version</td>
 <td> 1.9</td>
 <td> TBD</td>
 </tr>
-
 <tr>
 <td>Operating System</td>
-<td>antergos rolling release</td>
+<td>Antergos Linux rolling release</td>
 <td>TBD</td>
 </tr>
+</table>
+
+<h3>
+Common Terms
+</h3>
+<p>UPS: updates per second. The game runs calculations (updates) every second. The normal amount is 60 updates a second. </p>
+<p>di: direct insertion. Refers to the design concept where ingredients are directly passed from one crafting machine to another. As opposed to putting onto a train/bot/belt.</p>

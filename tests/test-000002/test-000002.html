@@ -1,0 +1,49 @@
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>The Factorio Benchmark Website</title>
+
+<h1>The Factorio Benchmark Website</h1>
+
+<nav>
+<ul>
+<li><a class="home" href=/index.html>Home</a></li>
+<li><a class="test-index" href=/test-index.html>Test Index</a></li>
+<li><a class="general-information" href=/general-information.html>General Information</a></li>
+</ul>
+</nav>
+
+<body class="test-index">
+
+<h2>test-000002 : Does performance of designs scale linearly to the amount of entities?</h2>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p> Performance does not scale linearly to the number of entities. The greater number of entities you have, the more each one costs. </p>
+
+<h3 id="The-Question"> The Question </h3>
+<p> The simple question being asked is if the performance scaling of designs is linear. That is to say, if we had 1000 rows of furnaces, would performance be equal to  1/1000th the cost of 1 row of furnaces? Does the performance characteristics change if we use bots only? or belts only? or trains?</p>
+<p> My prediction is that the cost per paste starts high at 1 paste, then decreases for a little while, after which it gradually rises as we approach infinite pastes.  It is also my prediction that in the gradual climb period of the graph, that belt based designs have a steeper curve, which could result in bots beating belts at many pastes, even if they won at a few pastes.</p>
+
+
+<h3 id="The-Test"> The Test </h3>
+<p> For our test we will need to create separate but identical production cells, and copy them as many times as needed. We may want to consider testing the map with none of these production cells and then subtract out the overhead. We should test belts and bot exclusive designs separately, as well as a mixed test. It's possible that the cost per paste scales differently between the two classes of design.</p>
+<p> First we will create two basic blueprints, one with bots, one with belts. Both blueprints consist of 18 furnaces that approximately produce 2 blue belts of material each. One is supplied by bots, the other belts. From here we will create a lot of maps with varying number of pastes of each. For this test I settled on 1, 2, 3, 4, 5, 10, 20, 50, 100, 200, 300, 400, and 500 pastes of each. We can benchmark each map and then divide by the number of pastes in each map to get the effective score per paste.</p>
+<p>In terms of absolute production, the bot paste produces slightly more than 4,900 plates per second, while the belt one can at most produce 4,800 plates per second (in practice it will be slightly less). However, we are not comparing the relative performance of bots vs belts, we are comparing how different types of designs scale. </p>
+
+
+<h3 id="The-Data"> The Data </h3>
+<p> Sometimes a graph shows it best: </p>
+<img src=images/ms_per_tick_per_paste.png></img>
+<p> As we can see, there is a pretty clear non-linear relationship for scaling to the number of pastes.<sup><a href=#[1]>[1]</a></sup> </p>
+<p> The bot design loses in the first couple of pastes, but then pulls ahead when we reach the hundreds of pastes.</p>
+
+<h3 id="Closing"> Closing </h3>
+<p> With this data, we can see that we need to scale up designs signifigantly to ensure that the performance characteristics are catalogued correctly. Scaling designs to achieve 60UPS should be most representative of what a megabase is capable of. Though this method would be more favorable towards smaller and more granular designs. ex: A design that does 10K science per minute at 80 UPS would in effect beat a design that did 1K science per minute with 11 copies of it at 66 UPS. The likely better solution is to scale at least 1 of the designs to 60 UPS, and then scale the other deigns to that same amount of production.  </p>
+<p> Also of interest is that the cost per paste appeared to start increasing linearly after 200 pastes on the bot design. The belt increase was tapering off as well, thus at excessive scale well below 60 UPS performance could reverse again.
+<p> Full raw data available for download: <a href="raw/v2 scaling.ods">here</a></p>
+
+<footer>
+<p id="[1]"> [1] It would be interesting to see the memory used at each of these paste levels, it might be possibly correlated. </p>
+</footer>

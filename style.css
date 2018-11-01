@@ -75,6 +75,9 @@ sup a {
     color: blue;
     font-style: oblique;
 }
+img {
+    width: 66.6%;
+}
 
 footer {
     padding: 10px;

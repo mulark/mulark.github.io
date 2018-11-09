@@ -42,7 +42,7 @@ p {
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
-    width: 33.3%;
+    width: 66.6%;
 }
 th, td {
     padding: 2px;

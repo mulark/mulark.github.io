@@ -16,27 +16,33 @@
 
 <body class="test-index">
 
-<h2>test-template : Testing template</h2>
+<h2>Is it better to use offshore pumps where they are needed directly in, or use as few as possible and pipe water to the destination?</h2>
 
 
 <h3 id="The-TLDR"> The TLDR </h3>
-<p> A short summary of the data collected in the test that answers the question posed by the test </p>
+<p> It is better to use offshore pumps at every opportunity pointing straight into the machine.</p>
 
 <h3 id="The-Question"> The Question </h3>
-<p> A more detailed explanation of the question. Methodology and speculation about how to test the question. Potentially related
-questions that are not the specific topic of this test. Possible answers to the question, staged for testing.<sup><a href=#[1]>[1]</a></sup> </p>
+<p> For many entities in the game, water is required. By using landfill, we can engineer a factory where it's possible to point a offshore pump directly into one of these inputs. This saves us several pipes, typically 3 or 4 per crafting machine.</p>
+<p> However, these offshore pumps could possibly have a greater total UPS cost than the saved pipes.</p>
 
 <h3 id="The-Test"> The Test </h3>
-<p> Important information about the test. What attributes does the test have? How is the test being conducted?<sup><a href="#[2]">[2]</a></sup> </p>
+<p> For this test I have created a plastic only design that converts raw material into plastic. Plastic is then dumped straight into an infinity chest.</p>
+<p> One of the Plastic setups has 20 offshore pumps directly pointing into the required fluid inputs. The other has as few offshores as required, 2 in this case. The refineries have their own water pipe network, and the cracking has the other water pipe network </p>
+<p> The offshore reduced paste has: 312 pipes and 2 offshore pumps. The offshore direct paste has: 232 pipes and 20 offshore pumps. This means that each offshore saves roughly 4 pipes each. With better design, this number could be reduced, possibly to as low as in the range of 3-4 (3 would be difficult for recipes that take two fluid ingredients). However, I don't think that results will change signifigantly compared to that case. </p>
+<p> Next we will need to scale up the number of these pastes until we reach roughly 60 UPS. Putting 200 pastes of each yielded approximately 90 UPS in game, which I believe is close enough to accurately determine which design method is better. </p>
 
 <h3 id="The-Data"> The Data </h3>
-<p> Data collected from the test. Graphs, screenshots, and supporting evidence </p>
-<p> Included in this template folder is a folder for raw data. Data that is too big, clunkly, or ugly can be dumped here. There is also an images folder to store images needed for this test. Consider using the <a href="http://optipng.sourceforge.net/">optipng</a> utility to keep the size down a bit.</p>
+<img src="images/Offshores_graphic.png"></img>
+<p> In a test where each map was benchmarked for 100000 ticks, and benchmarked for that duration 3 times, the design using the maximum number of offshore pumps achieved ~109 UPS, where as the design that used as few offshore pumps as required acieved ~98 UPS. </p>
+<p> This means that using offshore pumps directly in to fluid inputs should beat piping water. It is not possible to test every design, but there is a good degree of certainty that no design that pipes water beats one that directly inputs it. </p>
+<p> The full raw csv data is available at <a href="raw-data/">here.</a> </p>
 
 
 <h3 id="Closing"> Closing </h3>
-<p> Closing notes about this test and other tests which may test a similar attribute or property </p>
+<p> In the future, all fluid designs should input water directly to the appropriate spot.</p>
+<p> It's possible, although unlikely, for a different design to have a different result. If you have a different or novel design that you believe could contradict this result, please create an issue on the github.</p>
+
 <footer>
-<p id="[1]"> [1] Important notes that could be further investigated/ inline links to notes that have been investigated. </p>
-<p id="[2]"> [2] A second one for sample purposes. Similar to: <a href=/tests/test-000001/test-000001.html> test-000001.html </a></p>
+
 </footer>

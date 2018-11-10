@@ -1,0 +1,13 @@
+map_name,run_index,startup_time,end_time,avg_ms,min_ms,max_ms,ticks,execution_time,effective_UPS,factorio_version,executable_type
+plastic offshore test maximal.200.zip,1,2.936,913.064,9.087,8.955,11.399,100000,908740.631,110.0000,0.16.51,LinuxHeadless
+plastic offshore test maximal.zip,1,2.102,6.963,0.036,0.027,0.483,100000,3648.800,27406.2000,0.16.51,LinuxHeadless
+plastic offshore test minimal.200.zip,1,2.372,1008.541,10.048,9.958,11.937,100000,1004778.612,99.5000,0.16.51,LinuxHeadless
+plastic offshore test minimal.zip,1,2.087,7.362,0.041,0.031,0.503,100000,4059.942,24630.8000,0.16.51,LinuxHeadless
+plastic offshore test maximal.200.zip,2,2.336,913.401,9.097,8.976,10.860,100000,909676.654,109.9000,0.16.51,LinuxHeadless
+plastic offshore test maximal.zip,2,2.082,6.930,0.036,0.026,0.487,100000,3634.005,27517.8000,0.16.51,LinuxHeadless
+plastic offshore test minimal.200.zip,2,2.367,1029.610,10.258,10.152,11.933,100000,1025833.939,97.4000,0.16.51,LinuxHeadless
+plastic offshore test minimal.zip,2,2.085,7.388,0.041,0.031,0.520,100000,4086.505,24470.7000,0.16.51,LinuxHeadless
+plastic offshore test maximal.200.zip,3,2.337,932.326,9.286,9.153,10.965,100000,928608.079,107.6000,0.16.51,LinuxHeadless
+plastic offshore test maximal.zip,3,2.082,6.925,0.036,0.026,0.490,100000,3625.192,27584.7000,0.16.51,LinuxHeadless
+plastic offshore test minimal.200.zip,3,2.353,1027.564,10.238,10.152,11.941,100000,1023815.748,97.6000,0.16.51,LinuxHeadless
+plastic offshore test minimal.zip,3,2.092,7.394,0.041,0.031,0.505,100000,4081.064,24503.4000,0.16.51,LinuxHeadless

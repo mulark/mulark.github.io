@@ -16,27 +16,51 @@
 
 <body class="test-index">
 
-<h2>test-000005 : WIP</h2>
+<h2>test-000005 : What is the performance improvement for priming inserter?</h2>
 
 
 <h3 id="The-TLDR"> The TLDR </h3>
-<p> A short summary of the data collected in the test that answers the question posed by the test </p>
+<p> By using chest handoffs, and priming those inserters, a performance uplift of 20% can be achieved. Not priming those inserters degrades performace, but due to the natural priming factor, chest handoffs are still superior. </p>
 
 <h3 id="The-Question"> The Question </h3>
-<p> A more detailed explanation of the question. Methodology and speculation about how to test the question. Potentially related
-questions that are not the specific topic of this test. Possible answers to the question, staged for testing.<sup><a href=#[1]>[1]</a></sup> </p>
+<p>
+    Inserters that pull off belts can be problematic for performance. By viewing the wakeup list (accessible through the debug menu F4), we can see that their wakeup list is tied to the belt in front of them. That means regardless of whatever we're inserting into, we become beholden to the belt. Unfortunately for us, whenever the entity tied to the wakeup list (belt in this case) changes, it wakes up those on the wakeup list. Items moving on the belt is one such change. In most designs, the belt is constantly or nearly constantly moving. Thus, inserters whose wakeup list is tied to the belt tend to be active 100% of the time.
+</p>
+<p>
+    However, there are a few ways to work around that behavior. One of those ways is by priming the inserter. Chests and chest-like entities can hold a finite number of items. For instance, a chest limited to 1 slot available holding iron-ore can hold at most 50 of those ores. Inserters only try to insert if their target is not full. Ergo, any number of ore from 0-49 can be in the chest and inseters will try to put items in. Inserters will also always try to carry their full stack size bonus.
+</p>
+<p>
+    So, when an inserter grabs 12 items to put in to a chest, if there are only 4 free item slots available, it will insert those 4 and then hold the remaining 8 over the chest, waiting for room in the chest. Viewing the wakeup list shows the inserter tied to the chest, and during this time the inserter is not active. This inserter is primed.
+</p>
 
 <h3 id="The-Test"> The Test </h3>
-<p> Important information about the test. What attributes does the test have? How is the test being conducted?<sup><a href="#[2]">[2]</a></sup> </p>
-
+<p>
+    For this test we will be using the maps from test-000004. That design features several inserters that pull from belts and put into chests. As an added bonus, I initially ran those maps while each of the maps were not primed. Since the results were close, I decided to prime all the inserters to be sure that the natural priming rate factor did not play a role. Now, we have good comparison data set that can be used here.
+</p>
+<p>
+    For the context of this test, the natural priming rate is the rate that an inserter by happenstance becomes primed. For testing purposes I use a custom Lua script that copies the entities in one area to N additional areas. Due to limitations of the Factorio Lua API, not everything can be copied exactly as the original. Inserters cannot have the contents of their hand copied. Therefore, when an inserter is copied, if it was primed previously, there is no guarentee the clone will be. Thus the natural priming rate is likely less than would be encountered in the real world. Still, testing this gives us a ballpark figure. The scripts are available here: <a href="https://github.com/mulark/Factorio-benchmarking-tools"> https://github.com/mulark/Factorio-benchmarking-tools </a>
+</p>
+<p>
+    The other scenario we should test is the case in which we do not use a chest to improve our wakeup lists. For this we will save 1 inserter and 1 chest every time we pull off a belt, at the cost of making the inserter we still need much less effcient. To make this happen I had to slightly move a few belts, but that shouldn't matter as the belts are the same total length.
+</p>
 <h3 id="The-Data"> The Data </h3>
-<p> Data collected from the test. Graphs, screenshots, and supporting evidence </p>
-<p> Included in this template folder is a folder for raw data. Data that is too big, clunky, or ugly can be dumped here. There is also an images folder to store images needed for this test. Consider using the <a href="http://optipng.sourceforge.net/">optipng</a> utility to keep the size down a bit.</p>
+
+<img src=images/Performance_data.png></img>
+<p>
+    For this data set, No Priming consists of roughly 3,000 inserters that are not primed. The total number of inserters that could be primed is roughly 18,000. The primed data set contains under 100 inserters that are not primed for each map. Finally, no handoff is where all inserters that pull from belts go directly in to a furnace or assembling machine.
+</p>
+<p>
+    Here we can see that just adding chest handoffs and limiting to 1 stack improves performance by 15%. For the last 6-7%, we need to ensure that all inserters become primed.
+</p>
+<p>
+    Maps can be downloaded from <a href="https://drive.google.com/open?id=1DLGcTaO7Ol4PVcLdhY_fYxr-0kV7Lhzi"> here.</a>
+</p>
 
 
 <h3 id="Closing"> Closing </h3>
-<p> Closing notes about this test and other tests which may test a similar attribute or property </p>
+<p>
+    In summary, using chest handoffs is beneficial even if you do not manually correct for inserter priming. To achieve the maximum performance, priming must be employed.
+</p>
 <footer>
-<p id="[1]"> [1] Important notes that could be further investigated/ inline links to notes that have been investigated. </p>
-<p id="[2]"> [2] A second one for sample purposes. Similar to: <a href=/tests/test-000001/test-000001.html> test-000001.html </a></p>
+<p id="[1]"> [1] See <a href=/tests/test-000004/test-000004.html> test-000004</a> for additional details about the maps presented here and information about slot limits. </p>
 </footer>

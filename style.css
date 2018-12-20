@@ -16,7 +16,7 @@ nav li a {
     color: white;
     text-decoration: none;
 }
-.home a.home, .test-index a.test-index, .general-information a.general-information {
+.home a.home, .test-index a.test-index, .general-information a.general-information, .my-mods a.my-mods {
     background-color: rgb(32, 46, 68, 1);
 }
 h1 {

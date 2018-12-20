@@ -1,0 +1,105 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000006 : Does solar have a negative UPS impact due to the additional RAM consumption?</h2>
+
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p> Having solar does consume a good chunk of RAM. This does not impact performance in any appreciable way. </p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    There are 3 possible options that can be used to generate power, the electric-energy-interface, solar panels and accumulators, and nuclear power. For part 1 of this test we will look at the relative performance between the electric-energy-interface and the solar based design. If neccessary part 2 of this test will explore the relative magnitude effect in practice between differing designs. That is, the effect caused by using more or less beacon sharing, while factoring in the power generation cost.
+</p>
+<p>
+    The reason there could be a theoretical cost to solar is not due to the expected CPU time, but rather due to the memory cost of the increase map size and entity number. Solar panels and accumulators at the same charge effectively function as one CPU calculation, O(1). To have those entities and map chunks loaded should cost a decent chunk of memory though.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    First we should gauge what an approprate amount of panels to test should be. The most UPS effcient base I know of is /u/schaev's base.
+    <a href="https://www.reddit.com/r/factorio/comments/98qruz/10k_spm_ups_optimized_train_megabase/"> https://www.reddit.com/r/factorio/comments/98qruz/10k_spm_ups_optimized_train_megabase/ </a>
+</p>
+<p>
+    We need to do some cleaning on the save to ensure our readings are correct. Simply resaving in full vanilla gets rid of the auto-research dependency. We also shift over the research to worker-robot-speed so we don't end up with any test running out of research.
+<code>
+<pre>/c
+for key, ent in pairs(game.player.surface.find_entities_filtered({name={"radar"}})) do
+    ent.destroy()
+end</pre>
+</code>
+<p>
+    Running this command immediately after loading into the save will remove all radars. This ensures we don't have any new chunks being generated. This will be our inital reading. At this point, we have roughly 1.7M solar panels and 1.4M accumulators. By exiting to the main menu and loading in to this save again, we measure the memory consumption at 3.26GB. Doing this multiple times shows the variance to be less than 10MB.
+</p>
+<p>
+    For the save without solar panels, we need to eliminate them. This command removes all the solar panels and accumulators. It also adds a electric-energy-interface at a valid location, and does it in the same tick so there is no production interruption.
+<code>
+<pre>/c
+for key, ent in pairs(game.player.surface.find_entities_filtered({name={"solar-panel", "accumulator"}})) do
+    ent.destroy()
+end
+game.player.surface.create_entity({name = "electric-energy-interface", force = "player", position = {2876, -1446}})</pre>
+</code>
+</p>
+<p>
+    After this, we once again save and exit to the main menu to do our RAM consumption measurement. Upon loading in this solar removed save, we measure 1.89GB of RAM used. The variance is in the same small window as our map with solar. Incredibly, this means that in terms of RAM consumed, solar takes more than all other entities in the map.
+</p>
+<p>
+    By using commands to read the exact number of entities, we find that there are 1,754,171 solar panels, 1,490,303 accumulators, and 578,210 entities that are player owned but not solar or accumulator. By extrapolating the RAM numbers, we see that solar and accumulator are per entity cheaper than the average.
+</p>
+<p>
+    With all that out of the way we can focus on our test. For our test we will take an arbitrary design, and clone it an arbitrary number of times. One of these designs will use the electric energy interface. The other will then clone a solar power blueprint, to match the required demand. This design is scaled to roughly 60GW of power consumed, which is approximately the power level present in /u/schaev's base.
+</p>
+
+
+<h3 id="The-Data"> The Data </h3>
+<img style=width:50% src="images/test-000006_data.svg"></img>
+<p>
+    As shown by the data, loading all those additional solar panels does cause a big hit to the time it takes for the map to load (and the time autosaves take, etc.), but while the map is running, there is no signifigant difference between having a bunch of solar or using a electric energy interface.
+</p>
+<p>
+    Raw run data available in .ods format in the raw-data folder as usual.
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    It was initally unknown whether the difference between power generation methods was of great enough magnitude to warrant further testing. It is now known that the difference is so small that further exploration of this topic with regards to better beacon sharing is not worthwhile. This does not mean that testing beacon sharing is not worthwhile! Just that the additional solar required with less sharing won't make any difference. There are still potential factors related to the beacons that could yield performance differing results.
+</p>
+<p>
+    A further possibility to test is what happens to the performance when you exceed the size of your RAM. In a hypothetical case, you have 4GB of RAM. Normal entities in your base consume 3GB, and 2GB worth of solar panels also exist. Depending on what gets swapped to disk, it's possible that performace could degrade signifigantly in this case. I suspect that the OS is smart enough to swap the least used parts of memory, thus the section containing the solar would swap.
+</p>
+<footer>
+
+<div style="font-size:.9em"> Written by mulark on December 19, 2018 </div>
+</footer>

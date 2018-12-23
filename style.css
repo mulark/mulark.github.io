@@ -66,6 +66,7 @@ code {
     border-radius: 3px;
     padding: 1px;
     background-color: #E8E8E8;
+    font-size: 1.05em;
     -webkit-user-select: all;  /* Chrome all / Safari all */
     -moz-user-select: all;     /* Firefox all */
     -ms-user-select: all;      /* IE 10+ */

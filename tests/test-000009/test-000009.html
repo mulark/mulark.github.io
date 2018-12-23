@@ -1,0 +1,97 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000009 : Does having more beacon sharing impact performance in any meaningful way?</h2>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Yes, by sharing beacons more effectively, performance can be improved.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Beacon sharing is essentially getting more bang for your buck on beacon coverage. Overlapping the rows of beacons reduces the number of beacons required to achieve a target coverage. Building more compactly generally increases the coverage per beacon.
+    In our example the top image requires 72 beacons to fully cover the 10 furnaces, while the bottom requires 88.
+    <img src="images/shared beacons.png"></img>
+    <img src="images/less shared beacons.png"></img>
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    For this test we will set up a line of furnaces that take half a belt of ore and dump it straight into an infinity chest. Then, we will tile until we have 10000 furnaces. By increasing the space between tilings, we can either choose to overlap the horizontal beacons or not. This ensures that every entity except the beacons are exactly the same. There is a small possiblity that chunk alignment and update order issues could play a role in the performance of the designs, but that is not likely.
+</p>
+<p>
+    After we have tiled our desired 10000 furnaces, we will prime the inserters that are pulling off of belts to ensure both designs have the same inserter primed rate. Since each furnace line only consumes 0.48 of a blue belt (we are supplying 0.5), it is not likely that any inserters become unprimed. <a href="https://github.com/mulark/Factorio-benchmarking-tools/blob/master/inserter_primer.lua"> inserter_primer.lua</a> was used to prime the inserters.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    For a given 10,000 furnaces, at minimum sharing we require 120,000 beacons. Our two test cases use 56,064 and 88,000 beacons resectively. A hypothetical square achieves the maximum sharing, with a theoretical cost of 50,601 beacons.
+</p>
+<p>
+    The following command can be used to easily count the number of entities in a map, which is how those numbers were obtained. This command verifies we also didn't accidently include any additional non-beacon entities.
+<pre><code>
+    /c
+    local surface= game.player.surface
+    game.write_file("item_amounts.csv", "Entity_name,Entity_amount\n", true)
+    for _, prototype in pairs (game.entity_prototypes) do
+        local count = 0
+        for _, ent in pairs (surface.find_entities_filtered({name = prototype.name, force = "player"})) do
+            count = count + 1
+        end
+        if (count > 0) then
+            game.write_file("item_amounts.csv", prototype.name .. "," .. count .. "\n", true)
+        end
+    end
+</code></pre>
+</p>
+<p>
+    <img style="width:100%" src="images/Beacon_sharing_graphic.svg"></img>
+    Based on this data we can see there is a clear performance advantage to increased beacon sharing. There is roughly a 10% victory for increased sharing.
+</p>
+<p>
+    My speculation on what could have caused the performance disparity is as follows. First, to consume power the game must look at do calculations on more entities. Second, it's possible that the game applies beacon effect radius more effciently when it's considering fewer entities. Third, and in my opinion least likely, is that entities in beacon effect radius cause checks if that effect can be applied even if that type of entity is not able to have effects. This could easily be tested by spacing out the rows even further so the beacon effect radius doesn't hit any other beacons.
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    The findings of this test indicate that testing designs is going to get more difficult in the future. We will have to consider a minimum tileable unit after which we can copy that entire unit. For example if we had a design that did 10k green science a minute, copying 10 1K science a minutes would not show exactly the same performance architecture.
+</p>
+<p>
+    This finding is unlike our finding for solar panels, where it seems there is still some cost to the additional beacons.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on December 23, 2018 </div>
+</footer>

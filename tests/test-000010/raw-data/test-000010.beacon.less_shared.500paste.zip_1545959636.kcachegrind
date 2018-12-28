@@ -1,0 +1,10620 @@
+# callgrind format
+version: 1
+creator: callgrind-3.14.0
+pid: 6980
+cmd:  ./factorio --benchmark test-000010.beacon.less_shared.500paste.zip --benchmark-ticks 100
+part: 1
+
+
+desc: I1 cache: 
+desc: D1 cache: 
+desc: LL cache: 
+
+desc: Timerange: Basic block 0 - 2992554689
+desc: Trigger: Program termination
+
+positions: line
+events: Ir
+summary: 2837114272
+
+
+ob=(1) /usr/lib/ld-2.28.so
+fl=(1) ???
+fn=(152) check_match
+0 29
+cfn=(38) strcmp
+calls=353 0 
+0 65
+0 27
+cfn=(38)
+calls=405 0 
+0 36
+0 2
+
+fn=(74) _dl_name_match_p
+0 16
+cfn=(38)
+calls=1835 0 
+0 93
+0 24
+cfn=(38)
+calls=1856 0 
+0 88
+0 16
+
+fn=(0) 0x0000000000002000
+cob=(9) /home/ryan/Desktop/factorio_fresh/bin/x64/factorio
+cfi=(9) ???
+cfn=(378) 0x0000000000426ac6
+calls=1 0 
+0 2837114272
+
+fn=(38)
+0 282
+
+fn=(150) do_lookup_x
+0 133
+cfn=(74)
+calls=1666 0 
+0 237
+0 104
+cfn=(152)
+calls=428 0 
+0 159
+0 25
+
+fn=(388) _dl_fixup
+0 53
+cfn=(148) _dl_lookup_symbol_x
+calls=123 0 
+0 924
+0 32
+
+fn=(148)
+0 230
+cfn=(150)
+calls=430 0 
+0 658
+0 36
+
+fn=(386) _dl_runtime_resolve_xsave
+
+fn=(387) _dl_runtime_resolve_xsave'2
+0 26
+cfn=(388)
+calls=120 0 
+0 1009
+0 15
+
+ob=(9)
+fl=(1048) /tmp/factorio-build-ZMjCBB/src/Material/Product.cpp
+fn=(34348) ItemProduct::collectMaterial(Map&, RandomGenerator&, Material&) const
+65 383050
++2 459660
++2 153220
++2 383050
++1 459660
+cfi=(1126) /tmp/factorio-build-ZMjCBB/src/Item/ItemStack.cpp
+cfn=(34188) ItemStack::ItemStack(Map&, PostTransferNotifiable*, ID<ItemPrototype, unsigned short>, unsigned int, float) [clone .constprop.48699]
+calls=76610 -12 
+* 3524060
++1 229830
+cfi=(1126)
+cfn=(33802) ItemStack::swapWith(ItemStack&)
+calls=76610 657 
+* 2681350
+fi=(1126)
+653 229830
+fe=(1048)
+75 229830
+
+fl=(1370) /tmp/factorio-build-ZMjCBB/src/Entity/ContainerEntity.hpp
+fn=(34254) ContainerEntity::getWakeUpListForOutput()
+41 375636
+
+fn=(34336) ContainerEntity::getWakeUpListForInput()
+40 11220
+
+fn=(34258) ContainerEntity::getMaxInventoryIndex() const
+37 375636
+
+fn=(34310) non-virtual thunk to ContainerEntity::postTransferHook(NotificationData const&)
+31 31772
+cfi=(1148) /tmp/factorio-build-ZMjCBB/src/Entity/ContainerEntity.cpp
+cfn=(34294) ContainerEntity::postTransferHook(NotificationData const&)
+calls=15886 +81 
+* 5595677
+
+fn=(34216) ContainerEntity::getOutputInventoryIndex() const
+33 198348
+
+fn=(34218) ContainerEntity::getInventory(unsigned char)
+36 1434960
+
+fl=(1376) /tmp/factorio-build-ZMjCBB/src/Controller/GodController.hpp
+fn=(34488) non-virtual thunk to GodController::getPlayer()
+54 200
+
+fn=(34518) GodController::getSurface()
+182 6932
+
+fl=(1155) /tmp/factorio-build-ZMjCBB/src/Entity/Furnace.cpp
+fn=(34150) Furnace::transfer(ItemStack&, TransferType)
+73 47511
+fi=(610) /tmp/factorio-build-ZMjCBB/src/ID/ID.hpp
+-48 5279
+fi=(613) /tmp/factorio-build-ZMjCBB/src/ID/PrototypeList.hpp
++56 5279
+fe=(1155)
+-7 42232
+311 5279
++5 10558
+-5 10558
+77 10558
+cfn=(34152) Furnace::getRecipeFor(ID<ItemPrototype, unsigned short>, ID<FluidPrototype, unsigned short>) const
+calls=5279 +97 
+* 506784
+* 10558
++1 31674
++17 36953
+-14 26395
+cfi=(1125) /tmp/factorio-build-ZMjCBB/src/Item/Inventory.cpp
+cfn=(34158) Inventory::transfer(ItemStack&, unsigned int, InventoryOwnerSpecification*, bool) [clone .constprop.48724]
+calls=5279 -5 
+* 3489419
++1 21116
+
+fn=(34152)
+174 42232
++1 5279
+-1 5279
++1 21116
++16 36953
+-7 5279
+cfn=(34154) Furnace::getRecipeFor(ID<ItemPrototype, unsigned short>) const
+calls=5279 +10 
+* 390646
+
+fn=(34064) Furnace::useRecipeOnSource()
+243 6000000
++1 2000000
++4 5000000
+fi=(1265) /tmp/factorio-build-ZMjCBB/src/Force/ForceManager.hpp
+42 4000000
+fi=(674) /tmp/factorio-build-ZMjCBB/src/Util/Container/SmallVector.hpp
+394 1000000
++2 1000000
+-2 1000000
+fi=(434) /usr/include/c++/7/bits/unique_ptr.h
+147 1000000
+fi=(48) /usr/include/c++/7/bits/stl_vector.h
+798 1000000
+fi=(1153) /tmp/factorio-build-ZMjCBB/src/Entity/CraftingMachine.cpp
+634 1000000
+fi=(48)
+798 1000000
+fi=(1044) /tmp/factorio-build-ZMjCBB/src/CustomPrototypes.cpp
+96 1000000
+fi=(48)
+798 7000000
+fi=(1153)
+555 5064115
+fi=(1265)
+41 25646
+fi=(1153)
+634 38469
+fi=(674)
+386 12823
++2 12823
+-2 12823
+fi=(1153)
+639 64115
+cfi=(1371) /tmp/factorio-build-ZMjCBB/src/Material/ProductionHelper.cpp
+cfn=(34342) ProductionHelper::giveProducts(Inventory&, FluidBoxManager*, Recipe const&, ForceData&, Map&, bool)
+calls=12823 234 
+* 13806882
++1 38469
++1 12823
+-15 25646
+-1 64115
++1 12823
+-1 25646
++1 12823
+-62 5000000
++10 3744852
++14 2808639
+cfn=(34072) CraftingMachine::extractEnergyAndPollute()
+calls=936213 +95 
+* 150730293
++1 936213
+-1 936213
++1 1872426
+700 1000000
++1 1000000
+-1 2000000
+fi=(530) /tmp/factorio-build-ZMjCBB/src/Util/FixedPointNumber.hpp
+46 5000000
+fi=(1153)
+605 2000000
++5 191361
+cfn=(34340) CraftingMachine::giveProducts(Recipe const&)
+calls=63787 +23 
+* 69113630
++1 127574
++3 63787
+fi=(449) /tmp/factorio-build-ZMjCBB/src/Util/Math.hpp
+54 63787
+fi=(1153)
+614 382722
+fi=(449)
+54 127574
+fi=(1153)
+614 63787
++1 63787
+-1 63787
+-38 255148
+cfi=(1155)
+cfn=(34360) Furnace::canTakeIngredients(Recipe const&)
+calls=63787 251 
+* 5804617
+fi=(610)
+27 63787
+fi=(1153)
+580 191361
++3 127574
++5 191361
+cfn=(34072)
+calls=63787 +95 
+* 10269707
++1 63787
+-1 63787
++1 127574
+fi=(1265)
+41 127574
+fe=(1155)
+284 191361
+fi=(674)
+386 63787
++2 63787
+-2 63787
+fe=(1155)
+284 318935
+cfi=(1371)
+cfn=(34368) ProductionHelper::takeIngredients(Inventory&, FluidBoxManager*, Recipe const&, ForceData&, bool)
+calls=63787 174 
+* 64271206
+fi=(1153)
+599 191361
++1 63787
+-1 446509
+fe=(1155)
+
+fn=(34220) Furnace::canInsert(CanInsertData) const
+108 1190088
+fi=(613)
+-27 198348
+fe=(1155)
++29 694218
++1 99174
++9 297522
++3 198348
+fi=(610)
+23 99174
+fi=(1153)
+224 198348
+fi=(1265)
+42 396696
+fi=(674)
+394 99174
++2 99174
+-2 99174
+fi=(434)
+147 99174
+fi=(1581) /tmp/factorio-build-ZMjCBB/src/CustomPrototypeList.hpp
+26 99174
+fi=(48)
+798 99174
+fi=(1044)
+96 99174
+fi=(48)
+798 198348
+fe=(1155)
+137 396696
++6 198348
+-28 198348
++39 793392
+-6 396696
+306 99174
+-2 99174
++2 198348
+cfi=(1371)
+cfn=(34230) ProductionHelper::canGiveProducts(Inventory const&, FluidBoxManager const*, Recipe const&)
+calls=99174 +42 
+* 7717748
+148 396696
+fi=(1125)
+496 198348
++1 297522
+-1 495870
++2 396696
+cfi=(1126)
+cfn=(34240) ItemStack::getItemCount(ID<ItemPrototype, unsigned short>) const
+calls=99174 331 
+* 2578524
+* 99174
+-1 198348
+fi=(434)
+147 198348
+fe=(1155)
++6 198348
+cfi=(1049) /tmp/factorio-build-ZMjCBB/src/Recipe/Ingredient.hpp
+cfn=(34242) ItemIngredient::getCount() const
+calls=99174 -89 
+* 198348
+* 99174
+fi=(1046) /tmp/factorio-build-ZMjCBB/src/Recipe/Recipe.cpp
+603 595044
+cfn=(34246) Recipe::getOverloadMultiplier(CraftingMachine const&) const [clone .part.5191]
+calls=99174 +5 
+* 4859526
+fe=(1155)
+153 99174
+-1 297522
+fi=(1126)
+387 396696
+fe=(1155)
+125 99174
++1 198348
+
+fn=(34360)
+251 446509
++1 191361
+cfi=(1203) /tmp/factorio-build-ZMjCBB/src/Energy/EnergySource.hpp
+cfn=(34362) EnergySource::hasEnergyPotentially() const
+calls=63787 88 
+* 829231
+* 127574
++6 63787
++2 255148
+cfi=(1371)
+cfn=(34364) ProductionHelper::canTakeIngredients(Inventory const&, FluidBoxManager const*, Recipe const&)
+calls=63787 130 
+* 3253137
++4 63787
+-4 63787
++4 63787
++16 446509
+
+fn=(34058) Furnace::isFluidBoxManagerActive() const
+292 2000000
++1 6000000
+fi=(1265)
+42 8000000
+fi=(674)
+394 2000000
++2 2000000
+-2 2000000
+fi=(434)
+147 8000000
+fe=(1155)
+296 4000000
++1 12000000
+-1 6000000
++3 2000000
++1 2000000
+
+fn=(34154)
+194 42232
+fi=(1265)
+42 21116
+fi=(674)
+394 5279
++2 5279
+-2 5279
+fi=(434)
+147 26395
+fe=(1155)
++49 21116
++1 5279
+fi=(48)
+816 26395
+fe=(1155)
+197 36953
++2 31674
+fi=(48)
+671 21116
+fe=(1155)
+198 21116
+fi=(434)
+-51 10558
+fe=(1155)
++53 21116
+cfi=(1049)
+cfn=(27214) ItemIngredient::getItemID() const
+calls=10558 61 
+* 21116
+-1 21116
++4 47511
+
+fl=(47) /usr/include/c++/7/bits/vector.tcc
+fn=(34554) std::vector<float, std::allocator<float> >::_M_default_append(unsigned long)
+557 400
+-3 1800
++6 800
+-1 400
+fi=(50) /usr/include/c++/7/bits/stl_algobase.h
+754 990
+cob=(2) /usr/lib/libc-2.28.so
+cfi=(2) ???
+cfn=(694) __memset_avx2_unaligned_erms
+calls=198 0 
+* 19404
+* 198
+fe=(47)
+562 396
++38 1586
+fi=(48)
++71 2
+1499 4
+671 6
+1499 16
++4 4
+172 6
+fi=(19) /usr/include/c++/7/ext/new_allocator.h
+-61 4
+cfi=(9)
+cfn=(444) operator new(unsigned long)
+calls=2 0 
+* 34185
+* 12
+fi=(50)
+367 4
+fe=(47)
+595 2
++1 2
++1 2
++3 16
+fi=(50)
+369 2
+754 12
+cob=(2)
+cfi=(2)
+cfn=(694)
+calls=2 0 
+* 196
+* 2
+fi=(48)
+179 4
+fe=(47)
+
+fn=(32294) void std::vector<Wakeable*, std::allocator<Wakeable*> >::_M_realloc_insert<Wakeable* const&>(__gnu_cxx::__normal_iterator<Wakeable**, std::vector<Wakeable*, std::allocator<Wakeable*> > >, Wakeable* const&)
+394 87080
+fi=(48)
+671 52248
+fi=(50)
+224 17416
+fi=(19)
+111 26124
+cfi=(9)
+cfn=(444)
+calls=31502 0 
+* 1012653
+* 69664
+fi=(50)
+367 26124
+-1 8708
+fe=(47)
++63 8708
+fi=(50)
+-63 8708
++1 17416
++2 8708
+fi=(48)
+179 17416
+fe=(47)
+451 8708
++1 8708
++1 8708
++1 69664
+fi=(48)
+1502 26124
+fe=(47)
+
+fl=(389) /tmp/factorio-build-ZMjCBB/src/Main.cpp
+fn=(6566) main
+cfi=(250) /tmp/factorio-build-ZMjCBB/src/MainLoop.cpp
+cfn=(7240) MainLoop::benchmark(Filesystem::Path const&, Filesystem::Path const&, std::string const&, unsigned int)
+calls=1 1089 
+1079 2837114272
+
+fl=(9)
+fn=(604) operator delete(void*)
+0 67
+cob=(2)
+cfi=(2)
+cfn=(610) free
+calls=4391447 0 
+0 5532
+0 67
+
+fn=(922) std::_Rb_tree_decrement(std::_Rb_tree_node_base*)
+0 44
+cfn=(924) std::local_Rb_tree_decrement(std::_Rb_tree_node_base*)
+calls=234078 0 
+0 727
+
+fn=(9570) clearvalues(global_State*, GCObject*, GCObject*)
+0 132
+
+fn=(9574) sweeplist(lua_State*, GCObject**, GCObject**, unsigned long) [clone .constprop.5]
+0 1672
+cfn=(9576) sweeplist(lua_State*, GCObject**, GCObject**, unsigned long) [clone .constprop.6]
+calls=30 0 
+0 396
+0 22
+cfn=(9578) luaE_freeCI(lua_State*)
+calls=30 0 
+0 859
+0 55
+cfn=(9580) luaD_shrinkstack(lua_State*)
+calls=30 0 
+0 618
+0 33
+
+fn=(9576)
+0 1040040
+cfn=(9650) lua_unlinkgcobject(GCObject**, GCObject*)
+calls=76191 0 
+0 138
+0 84
+cfn=(9522) luaM_realloc_(lua_State*, void*, unsigned long, unsigned long)
+calls=9366 0 
+0 838
+0 6
+
+fn=(10226) luaF_freeproto(lua_State*, Proto*)
+0 60
+cfn=(9522)
+calls=514 0 
+0 864
+0 36
+cfn=(9522)
+calls=514 0 
+0 875
+0 36
+cfn=(9522)
+calls=514 0 
+0 870
+0 36
+cfn=(9522)
+calls=514 0 
+0 846
+0 36
+cfn=(9522)
+calls=514 0 
+0 646
+0 36
+cfn=(9522)
+calls=514 0 
+0 813
+0 48
+cfn=(9522)
+calls=514 0 
+0 1032
+
+fn=(9854) luaH_free(lua_State*, Table*)
+0 1104
+cfn=(9522)
+calls=23139 0 
+0 11103
+0 396
+cfn=(9522)
+calls=64266 0 
+0 9931
+0 528
+cfn=(9522)
+calls=64266 0 
+0 9830
+
+fn=(516) std::_Rb_tree_insert_and_rebalance(bool, std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, std::_Rb_tree_node_base&)
+0 2097
+
+fn=(924)
+0 727
+
+fn=(9646) luaT_gettm(Table*, TMS, TString*)
+0 7
+cfn=(9648) luaH_getstr(Table*, TString*)
+calls=3170 0 
+0 21
+0 13
+
+fn=(33718) lua_gc
+0 2400
+cfn=(9584) luaE_setdebt(global_State*, long)
+calls=100 0 
+0 500
+0 200
+cfn=(9562) luaC_forcestep(lua_State*)
+calls=100 0 
+0 2572952
+0 400
+
+fn=(9512) l_alloc(void*, void*, unsigned long, unsigned long)
+0 848
+cob=(2)
+cfi=(2)
+cfn=(5730) realloc
+calls=181217 0 
+0 213
+0 1
+0 562
+cob=(2)
+cfi=(2)
+cfn=(610)
+calls=183839 0 
+0 30885
+0 281
+0 843
+
+fn=(9522)
+0 4794
+cfn=(9512)
+calls=357518 0 
+0 33633
+0 3946
+
+fn=(9564) singlestep(lua_State*)
+0 243424
+cfn=(9576)
+calls=49856 0 
+0 1040710
+0 138050
+cfn=(9566) reallymarkobject(global_State*, GCObject*)
+calls=31 0 
+0 231
+0 73551
+cfn=(9568) propagatemark(global_State*)
+calls=30072 0 
+0 946273
+0 27705
+cfn=(9650)
+calls=8426 0 
+0 1953
+0 279
+cfn=(9852) freeobj(lua_State*, GCObject*)
+calls=8426 0 
+0 43024
+0 1567
+cfn=(9568)
+calls=29 0 
+0 2421
+0 124
+cfn=(9568)
+calls=20131 0 
+0 17837
+0 333
+cfn=(9570)
+calls=29 0 
+0 33
+0 44
+cfn=(9570)
+calls=29 0 
+0 33
+0 715
+cfn=(9572) clearkeys(global_State*, GCObject*, GCObject*) [clone .constprop.7]
+calls=29 0 
+0 33
+0 33
+cfn=(9572)
+calls=29 0 
+0 33
+0 44
+cfn=(9570)
+calls=29 0 
+0 33
+0 44
+cfn=(9570)
+calls=29 0 
+0 33
+0 231
+cfn=(9574)
+calls=29 0 
+0 528
+0 143
+cfn=(9574)
+calls=29 0 
+0 528
+0 154
+cfn=(9574)
+calls=30 0 
+0 2599
+0 165
+cfn=(9522)
+calls=30 0 
+0 572
+0 77
+cfn=(9566)
+calls=31 0 
+0 231
+0 33
+cfn=(9566)
+calls=22 0 
+0 231
+0 1529
+
+fn=(9568)
+0 99907
+cfn=(9566)
+calls=11596 0 
+0 3402
+0 86142
+cfn=(9566)
+calls=5543 0 
+0 58464
+0 31153
+cfn=(9566)
+calls=237 0 
+0 2376
+0 5866
+cfn=(9566)
+calls=576 0 
+0 6258
+0 43281
+cfn=(9566)
+calls=2423 0 
+0 31392
+0 32748
+cfn=(9566)
+calls=426 0 
+0 7743
+0 242217
+cfn=(9566)
+calls=48912 0 
+0 67610
+0 3008
+cfn=(9646)
+calls=573 0 
+0 41
+0 15561
+cfn=(9566)
+calls=1001 0 
+0 11445
+0 659
+cfn=(9566)
+calls=148 0 
+0 1368
+0 834
+cfn=(9566)
+calls=1197 0 
+0 1491
+0 15307
+cfn=(9566)
+calls=19169 0 
+0 182788
+0 15447
+cfn=(9566)
+calls=573 0 
+0 21
+0 2
+
+fn=(378)
+cob=(1)
+cfi=(1)
+cfn=(386)
+calls=1 0 
+0 2837114272
+
+fn=(9566)
+0 373224
+cfn=(9567) reallymarkobject(global_State*, GCObject*)'2
+calls=177 0 
+0 1671
+0 156
+
+fn=(9567)
+0 1671
+
+fn=(1250) operator delete[](void*)
+0 1
+cfn=(604)
+calls=186638 0 
+0 14
+
+fn=(5462) std::_Rb_tree_increment(std::_Rb_tree_node_base*)
+0 5304
+
+fn=(9572)
+0 66
+
+fn=(9582) luaD_reallocstack(lua_State*, int)
+0 26
+cfn=(9522)
+calls=20 0 
+0 248
+0 47
+
+fn=(9584)
+0 1000
+
+fn=(9650)
+0 2091
+
+fn=(10224) luaF_freeupval(lua_State*, UpVal*)
+0 12
+cfn=(9522)
+calls=1278 0 
+0 298
+
+fn=(10448) std::_Rb_tree_rebalance_for_erase(std::_Rb_tree_node_base*, std::_Rb_tree_node_base&)
+0 7098
+
+fn=(9648)
+0 21
+
+fn=(1230) operator new[](unsigned long)
+0 1
+cfn=(444)
+calls=186059 0 
+0 57
+
+fn=(444)
+0 61439
+cob=(2)
+cfi=(2)
+cfn=(450) malloc
+calls=4389903 0 
+0 945465
+0 8777
+0 35108
+
+fn=(7278) std::chrono::_V2::system_clock::now()
+0 13600
+cob=(2)
+cfi=(2)
+cfn=(7286) clock_gettime
+calls=3627 0 
+0 81600
+0 3400
+0 13600
+
+fn=(9562)
+0 15174
+cfn=(9564)
+calls=31290 0 
+0 2545581
+0 10243
+cfn=(9584)
+calls=2710 0 
+0 445
+0 33
+cfn=(9584)
+calls=28 0 
+0 55
+0 1421
+
+fn=(9578)
+0 65
+cfn=(9522)
+calls=10 0 
+0 149
+0 20
+cfn=(9522)
+calls=24 0 
+0 596
+0 29
+
+fn=(9580)
+0 297
+cfn=(9582)
+calls=10 0 
+0 321
+
+fn=(9852)
+0 574
+cfn=(9522)
+calls=688 0 
+0 629
+0 2
+cfn=(10224)
+calls=1050 0 
+0 310
+0 54
+cfn=(9522)
+calls=11 0 
+0 1341
+0 66
+cfn=(9854)
+calls=5898 0 
+0 32892
+0 24
+cfn=(9522)
+calls=613 0 
+0 892
+0 6
+cfn=(10226)
+calls=166 0 
+0 6234
+
+fl=(1156) /tmp/factorio-build-ZMjCBB/src/Entity/CraftingMachine.hpp
+fn=(34024) CraftingMachine::getOutputInventoryIndex() const
+52 76896
+
+fn=(34044) non-virtual thunk to CraftingMachine::postTransferHook(NotificationData const&)
+68 368248
+cfi=(1153)
+cfn=(34046) CraftingMachine::postTransferHook(NotificationData const&)
+calls=184124 265 
+* 43651222
+
+fn=(34266) CraftingMachine::getWakeUpListForInput()
+48 187818
+
+fn=(34054) non-virtual thunk to CraftingMachine::update()
+80 2000000
+cfi=(1153)
+cfn=(34056) CraftingMachine::update()
+calls=1000000 430 
+* 484481270
+
+fl=(449)
+fn=(33746) Math::hash(unsigned int)
+72 81
++1 108
++1 108
++1 108
++1 27
++1 108
++2 27
+
+fl=(946) /tmp/factorio-build-ZMjCBB/src/Achievement/AchievementStats.cpp
+fn=(32168) AchievementStats::allowed(Map const&, bool, bool) [clone .constprop.48757]
+183 603
++3 603
+fi=(202) /tmp/factorio-build-ZMjCBB/src/GlobalContext.cpp
+1574 603
+fe=(946)
+187 201
+fi=(202)
+1574 402
+fe=(946)
+212 402
+-23 402
++2 201
+-4 201
++4 402
++2 402
+fi=(1356) /tmp/factorio-build-ZMjCBB/src/Game.cpp
+454 300
+fe=(946)
+202 603
+-15 201
++25 1105
+cfi=(1356)
+cfn=(34540) Game::getLocalPlayer() [clone .part.4345]
+calls=100 447 
+* 500
+-16 200
+
+fl=(1124) /tmp/factorio-build-ZMjCBB/src/DropTarget.cpp
+fn=(33898) DropTarget::update(EntityWithOwner&, MapPosition const&, bool)
+31 3405684
++1 1702842
+-1 8514210
++1 1702842
+cfn=(33900) DropTarget::checkDropTargetProximity(EntityWithOwner&, MapPosition const&, bool)
+calls=1702842 +24 
+* 80655424
++1 3405684
++6 8514210
+
+fn=(33998) DropTarget::targetCollidesWithPosition(EntityWithOwner const&, MapPosition const&, bool) const [clone .part.5086]
+82 437823
+fi=(530)
+-17 437823
+fi=(1119) /tmp/factorio-build-ZMjCBB/src/Entity/Entity.hpp
+523 437823
+fe=(1124)
+85 875646
+fi=(530)
+-20 437823
+fi=(1119)
+523 437823
+fi=(1103) /tmp/factorio-build-ZMjCBB/src/Util/TilePosition.cpp
+61 437823
+fi=(530)
++4 437823
+fe=(1124)
++20 437823
+fi=(530)
+-20 437823
+fi=(1103)
+-4 437823
+fe=(1124)
++24 437823
+cfi=(620) /tmp/factorio-build-ZMjCBB/src/Util/BoundingBox.cpp
+cfn=(34000) BoundingBox::tileBox(TilePosition const&, float)
+calls=437823 +88 
+* 28020672
+* 1313469
+cfi=(644) /tmp/factorio-build-ZMjCBB/src/Util/RealOrientation.hpp
+cfn=(30322) BoundingBox::collide(BoundingBox const&) const
+calls=437823 -63 
+* 10945575
++2 875646
+
+fn=(33900)
+56 1702842
++1 3405684
+-1 13622736
++3 1702842
+-3 1702842
++3 3405684
+cfi=(1119)
+cfn=(33902) Entity::isRollingStock() const
+calls=1702842 428 
+* 3405684
+* 5108526
++14 3405684
+-1 3405684
++1 835916
+cfn=(33998)
+calls=176884 +9 
+* 18926588
+* 353768
+fi=(1116) /tmp/factorio-build-ZMjCBB/src/Entity/Entity.cpp
+1912 1550210
+fi=(1200) /tmp/factorio-build-ZMjCBB/src/Entity/EntityWithOwner.hpp
+41 3100420
+fe=(1124)
++43 3100420
+-4 1702842
+-22 1702842
++22 8514210
+
+fn=(33996) DropTarget::onAlarm(EntityWithOwner&, MapPosition const&)
+42 1304695
++1 1304695
++2 521878
+cfi=(1119)
+cfn=(33902)
+calls=260939 428 
+* 521878
+-1 782817
++1 521878
++8 782817
+cfn=(33998)
+calls=260939 +29 
+* 27920473
+-7 521878
++7 260939
+-1 260939
++1 782817
+
+fl=(1125)
+fn=(34164) Inventory::transferToNonEmptySlots(ItemStack&, unsigned int, InventoryOwnerSpecification*)
+198 1064160
++1 236480
+-1 118240
++1 354720
++4 354720
+cfi=(1373) /tmp/factorio-build-ZMjCBB/src/Item/InventoryWithBar.hpp
+cfn=(34328) InventoryWithBar::getBar() const
+calls=49085 20 
+* 98170
+cfi=(48)
+cfn=(34162) Inventory::getBar() const
+calls=69155 671 
+* 414930
+* 118240
++1 354720
+cfi=(1373)
+cfn=(34330) InventoryWithBar::getStackLimit() const
+calls=49085 19 
+* 98170
+cfi=(1364) /tmp/factorio-build-ZMjCBB/src/Item/Inventory.hpp
+cfn=(34166) Inventory::getStackLimit() const
+calls=69155 93 
+* 138310
++1 118240
+-1 118240
++1 236480
+-4 354720
++12 1064160
+fi=(48)
+798 354720
+fe=(1125)
+206 236480
++2 160595
+cfi=(1126)
+cfn=(33980) ItemStack::transferToItemStackOnly(ItemStack&, unsigned int, unsigned int)
+calls=32119 1006 
+* 14129757
+* 32119
++1 74930
+-4 365868
+
+fn=(34042) Inventory::postTransferHook(NotificationData const&)
+792 404666
++2 1213998
++1 809332
+cfi=(1370)
+cfn=(34310)
+calls=15886 31 
+* 5627449
+cfi=(1372) /tmp/factorio-build-ZMjCBB/src/Entity/Vehicle.cpp
+cfn=(34292) non-virtual thunk to InfinityContainer::postTransferHook(NotificationData const&)
+calls=76927 535 
+* 23231948
+cfi=(1130) /tmp/factorio-build-ZMjCBB/src/Entity/MiningDrill.hpp
+cfn=(34126) non-virtual thunk to MiningDrill::postTransferHook(NotificationData const&)
+calls=127729 101 
+* 3478920
+cfi=(1156)
+cfn=(34044)
+calls=184124 68 
+* 44019470
+
+fn=(34158)
+76 108728
++9 54364
+-9 108728
++9 54364
+-9 163092
++9 54364
+-9 108728
++9 108728
+cfn=(34160) Inventory::transferToPrioritySlots(ItemStack&, unsigned int, InventoryOwnerSpecification*, bool)
+calls=54364 +68 
+* 3161952
++1 54364
+-1 54364
++1 163092
++12 380548
+-10 380548
+cfn=(34164)
+calls=54364 198 
+* 13191429
+* 54364
++1 196348
++2 306670
+cfn=(34312) Inventory::transferToEmptySlots(ItemStack&, unsigned int, InventoryOwnerSpecification*)
+calls=43810 235 
+* 27505158
+* 43810
++1 175240
++2 98312
++1 37422
+cfn=(34332) Inventory::transferToSubItemsOnly(ItemStack&, unsigned int, InventoryOwnerSpecification*)
+calls=5346 272 
+* 326106
+* 10692
+
+fn=(34160)
+153 827680
++1 591200
++5 236480
++12 1064160
+-10 709440
+cfi=(1373)
+cfn=(34328)
+calls=49085 20 
+* 98170
+cfi=(48)
+cfn=(34162)
+calls=69155 671 
+* 414930
+* 118240
++1 709440
+-6 236480
+fi=(48)
+798 236480
+fe=(1125)
+163 236480
++2 128476
+cfi=(1126)
+cfn=(33978) ItemStack::transferToPrioritySlots(ItemStack&, unsigned int)
+calls=32119 959 
+* 642380
+* 32119
++1 160595
+-4 591200
+
+fn=(34312)
+235 823203
++1 182934
+-1 91467
++1 274401
++4 274401
+cfi=(1373)
+cfn=(34328)
+calls=43810 20 
+* 87620
+cfi=(48)
+cfn=(34162)
+calls=47657 671 
+* 285942
+* 91467
++1 274401
+cfi=(1373)
+cfn=(34330)
+calls=43810 19 
+* 87620
+cfi=(1364)
+cfn=(34166)
+calls=47657 93 
+* 95314
++1 91467
+-1 91467
++1 182934
+-4 274401
++12 823203
+fi=(48)
+798 274401
+fe=(1125)
+243 182934
++2 430605
+cfi=(1126)
+cfn=(33980)
+calls=86121 1006 
+* 31741315
+* 86121
++1 172242
+-4 21384
+
+fn=(34332)
+272 58806
++1 32076
++4 5346
+-2 10692
+fi=(1364)
+130 5346
+fi=(48)
+798 21384
+fe=(1125)
+278 32076
+fi=(1144) /tmp/factorio-build-ZMjCBB/src/Item/ItemStack.hpp
+75 10692
+fe=(1125)
+281 21384
+-4 21384
+cfi=(1373)
+cfn=(34328)
+calls=5346 20 
+* 10692
+* 16038
+cfi=(1373)
+cfn=(34328)
+calls=5346 20 
+* 10692
+* 21384
++8 48114
+
+fn=(34194) Inventory::transfer(ItemStack&, unsigned int, InventoryOwnerSpecification*, bool)
+80 702636
++1 191628
++4 447132
+cfn=(34160)
+calls=63876 +68 
+* 3871998
++1 63876
+-1 63876
++1 191628
++12 574884
+-10 447132
+cfn=(34164)
+calls=63876 198 
+* 7405740
+* 63876
++1 223066
++2 333599
+cfn=(34312)
+calls=47657 235 
+* 9436086
+* 47657
++1 190628
++2 95314
+
+fl=(1153)
+fn=(34172) CraftingMachine::alarm()
+327 15837
+
+fn=(34028) CraftingMachine::getInventory(unsigned char)
+147 76896
++3 76896
+
+fn=(34046)
+265 368248
++4 184124
+-4 184124
++4 184124
+-4 368248
++1 184124
++3 368248
++9 368248
++3 552372
++12 345174
++24 715380
+-22 230116
++2 229830
+fi=(1127) /tmp/factorio-build-ZMjCBB/src/WakeUpList.cpp
+109 153220
+fe=(1153)
+283 138132
++3 10558
++1 5279
++30 15837
+-30 10558
+cfn=(34172)
+calls=5279 +40 
+* 15837
++3 127574
+fi=(1127)
+109 183236
++1 166986
+cfi=(1152) /tmp/factorio-build-ZMjCBB/src/Entity/Inserter.hpp
+cfn=(34050) non-virtual thunk to Inserter::alarm()
+calls=55662 * 
+* 23767674
+* 55662
+-1 166986
+fe=(1153)
+300 38448
++3 115344
+fi=(1127)
+109 109817
++1 98763
+cfi=(1152)
+cfn=(34050)
+calls=32921 * 
+* 14057267
+* 32921
+-1 98763
+fe=(1153)
+
+fn=(34056)
+430 6000000
++6 2000000
+cfi=(1155)
+cfn=(34058)
+calls=1000000 292 
+* 28000000
+* 2000000
++4 3000000
+cfi=(1155)
+cfn=(34064)
+calls=1000000 243 
+* 381481270
+* 10000000
++40 3000000
+cfi=(1155)
+cfn=(34058)
+calls=1000000 292 
+* 28000000
+* 2000000
++11 1000000
++13 3000000
++1 1000000
+fi=(1119)
+-93 6000000
+fe=(1153)
++99 6000000
+-11 2000000
+
+fn=(34340)
+633 63787
+fi=(1265)
+41 63787
+fe=(1153)
+633 127574
++1 63787
+-1 191361
+fi=(674)
+386 63787
++2 63787
+-2 63787
+fe=(1153)
+639 127574
+-5 63787
++5 63787
+cfi=(1371)
+cfn=(34342)
+calls=63787 234 
+* 67837890
++1 127574
++1 63787
++2 127574
+
+fn=(34072)
+683 5000000
++2 24000000
+fi=(1365) /tmp/factorio-build-ZMjCBB/src/Effect.hpp
+39 3000000
+fi=(610)
+-16 1000000
+fe=(1153)
+695 1000000
+fi=(1365)
+39 4000000
+fe=(1153)
+671 6000000
++24 1000000
+fi=(613)
+81 1000000
+fi=(269) /tmp/factorio-build-ZMjCBB/src/Recipe/RecipePrototype.cpp
++76 2000000
+400 6000000
+fi=(1363) /tmp/factorio-build-ZMjCBB/src/Energy/ElectricEnergySource.hpp
+77 3000000
+fi=(449)
+-26 5000000
+fi=(1345) /tmp/factorio-build-ZMjCBB/src/Energy/EnergyStorage.hpp
+-20 1000000
+fi=(1346) /tmp/factorio-build-ZMjCBB/src/Energy/ElectricEnergySource.cpp
+286 1000000
+fi=(1345)
+31 3000000
+fi=(1346)
+286 5000000
+fe=(1153)
+672 1000000
+fi=(1365)
+39 1000000
+fe=(1153)
+672 7000000
+fi=(1365)
+39 6000000
+fe=(1153)
+673 8000000
++2 4000000
+-1 1000000
+fi=(1365)
+39 1000000
+fe=(1153)
+674 2000000
++3 8000000
+fi=(1365)
+39 6000000
+fi=(449)
++15 6000000
+fe=(1153)
+678 9000000
++13 4000000
+fi=(1346)
+287 12000000
+cfi=(1089) /tmp/factorio-build-ZMjCBB/src/Surface/Chunk.cpp
+cfn=(34082) Chunk::pollute(double)
+calls=1000000 719 
+* 12000000
+* 1000000
+fe=(1153)
+
+fl=(1247) /tmp/factorio-build-ZMjCBB/src/PlayerMonitor.cpp
+fn=(34510) PlayerMonitor::update()
+143 100
+fi=(994) /tmp/factorio-build-ZMjCBB/libraries/Agui/include/Agui/GenericTargetable.hpp
+10 100
+fe=(1247)
+143 200
+fi=(994)
+-95 100
+-38 100
++40 100
+-2 200
+fe=(1247)
+167 100
+fi=(994)
+55 100
+-1 100
++1 100
++1 100
+fe=(1247)
+167 1500
+fi=(994)
+17 400
++1 200
++1 200
+fe=(1247)
+162 300
+
+fl=(1346)
+fn=(34134) ElectricEnergySource::extractEnergyAndPollute(double, Chunk&, double, bool)
+282 319384
+fi=(1363)
+77 159692
+fe=(1346)
+282 159692
+fi=(1363)
+77 159692
+fi=(449)
+-26 479076
+fi=(1345)
+-20 159692
+fe=(1346)
+286 159692
+fi=(1345)
+31 479076
+fe=(1346)
+286 1117844
++1 1916304
+cfi=(1089)
+cfn=(34082)
+calls=159692 719 
+* 1916304
++2 479076
+
+fl=(1119)
+fn=(33902)
+428 3927562
+
+fn=(34278) Entity::onDeactivate()
+142 177625
+
+fn=(34798) Entity::isResourceEntity() const
+429 1856
+
+fn=(34262) Entity::isExternalInventory(unsigned char) const
+216 187818
+
+fn=(33924) Entity::isFull() const
+180 1824430
+
+fn=(34308) Entity::getWakeable()
+136 153854
+
+fn=(31388) Entity::isTransportBeltConnectable() const
+419 1998018
+
+fn=(34022) Entity::isItemEntity() const
+423 275244
+
+fl=(1367) /tmp/factorio-build-ZMjCBB/src/Force/ForceSet.cpp
+fn=(34642) ForceSet::Iterator::Iterator(unsigned long) [clone .part.4337]
+40 1400
+-31 200
++1 200
+
+fl=(1073) /tmp/factorio-build-ZMjCBB/src/FlowStatistics.cpp
+fn=(34442) FlowStatistics<ID<FluidPrototype, unsigned short>, double>::Precision::ElementUsageStatistics::onNextTick()
+444 374
++2 748
+-2 218
+fi=(400) /tmp/factorio-build-ZMjCBB/src/Util/Container/CompactDeque.hpp
+134 872
++24 872
+fe=(1073)
+448 1308
++8 872
+cfi=(1074) /tmp/factorio-build-ZMjCBB/src/Util/Container/CircularBuffer.hpp
+cfn=(34434) float& CircularBuffer<float>::emplace_back<int>(int&&)
+calls=218 58 
+* 10028
++1 218
++1 436
+-8 1090
+-3 156
++11 156
+
+fn=(34446) FlowStatistics<ID<EntityPrototype, unsigned short>, unsigned long>::onNextTick(unsigned int)
+383 4200
++3 2400
+cfn=(34448) FlowStatistics<ID<EntityPrototype, unsigned short>, unsigned long>::Precision::onNextTick(unsigned int)
+calls=600 +37 
+* 466238
+* 12000
+cfn=(34448)
+calls=3000 +37 
+* 261406
+-1 7200
++2 2400
+
+fn=(34202) FlowStatistics<ID<ItemPrototype, unsigned short>, unsigned long>::Precision::ElementUsageStatistics::onFlow(float)
+348 6128190
++2 2451276
+fi=(400)
+134 3676914
++24 3676914
+-24 1225638
++24 1225638
+-24 1225638
+fe=(1073)
+352 8579466
++1 3676914
+
+fn=(34450) FlowStatistics<ID<EntityPrototype, unsigned short>, unsigned long>::Precision::ElementUsageStatistics::onNextTick()
+444 16658
++2 33316
+-2 4469
+fi=(400)
+134 17876
++24 17876
+fe=(1073)
+448 26814
++8 17876
+cfi=(1074)
+cfn=(34434)
+calls=4469 58 
+* 205574
++1 4469
++1 8938
+-8 22345
+-3 12189
++11 12189
+
+fn=(34200) FlowStatistics<ID<ItemPrototype, unsigned short>, unsigned long>::Precision::onFlow(ID<ItemPrototype, unsigned short>, float)
+310 3676914
++2 1225638
+-2 2451276
++2 3676914
++7 765444
++7 4902552
+-12 842916
+fi=(48)
+798 2528748
+fe=(1073)
+315 1685832
+cfn=(34202)
+calls=842916 +33 
+* 21915816
+fi=(214) /tmp/factorio-build-ZMjCBB/src/Util/Container/IntrusiveList.hpp
+91 4214580
+fe=(1073)
+322 382722
+-1 382722
+fi=(48)
+798 1148166
+fe=(1073)
+322 1530888
+cfn=(34202)
+calls=382722 +26 
+* 9950772
+fi=(214)
+91 1913610
+fe=(1073)
+
+fn=(34426) FlowStatistics<ID<ItemPrototype, unsigned short>, unsigned long>::onNextTick(unsigned int)
+383 2100
++3 1200
+cfn=(34428) FlowStatistics<ID<ItemPrototype, unsigned short>, unsigned long>::Precision::onNextTick(unsigned int)
+calls=300 +37 
+* 407664
+* 6000
+cfn=(34428)
+calls=1500 +37 
+* 130755
+-1 3600
++2 1200
+
+fn=(34438) FlowStatistics<ID<FluidPrototype, unsigned short>, double>::onNextTick(unsigned int)
+383 2100
++3 1200
+cfn=(34440) FlowStatistics<ID<FluidPrototype, unsigned short>, double>::Precision::onNextTick(unsigned int)
+calls=300 +37 
+* 26252
+* 6000
+cfn=(34440)
+calls=1500 +37 
+* 13783
+-1 3600
++2 1200
+
+fn=(34626) FlowStatistics<ID<EntityPrototype, unsigned short>, double>::onNextTick(unsigned int)
+383 700
++3 400
+cfn=(34628) FlowStatistics<ID<EntityPrototype, unsigned short>, double>::Precision::onNextTick(unsigned int)
+calls=100 +37 
+* 60354
+* 2000
+cfn=(34628)
+calls=500 +37 
+* 42097
+-1 1200
++2 400
+
+fn=(34196) FlowStatistics<ID<ItemPrototype, unsigned short>, unsigned long>::onFlow(ID<ItemPrototype, unsigned short>, float)
+282 1021365
++2 204273
+-2 408546
++2 204273
+fi=(726) /usr/include/c++/7/array
+135 3064095
+fe=(1073)
+287 1021365
+cfn=(34200)
+calls=204273 +23 
+* 10532585
+* 5106825
+cfn=(34200)
+calls=1021365 +23 
+* 52662925
+-1 2451276
++2 817092
++2 127574
+fi=(1080) /tmp/factorio-build-ZMjCBB/src/Util/Container/FlatMap.hpp
+71 421458
+cfn=(34210) FlatMap<ID<ItemPrototype, unsigned short>, unsigned long, true>::private_subscript(ID<ItemPrototype, unsigned short> const&)
+calls=140486 215 
+* 21942932
+fe=(1073)
+289 421458
++2 408546
++1 1225638
+-1 63787
+fi=(1080)
+71 127574
+cfn=(34210)
+calls=63787 215 
+* 3954794
+fe=(1073)
+291 382722
+
+fn=(34430) FlowStatistics<ID<ItemPrototype, unsigned short>, unsigned long>::Precision::ElementUsageStatistics::onNextTick()
+444 9744
++2 19488
+-2 4578
+fi=(400)
+134 18312
++24 18312
+fe=(1073)
+448 27468
++6 327
++2 1308
+cfi=(1074)
+cfn=(34434)
+calls=327 58 
+* 15270
+* 17004
+cfi=(1074)
+cfn=(34434)
+calls=4251 58 
+* 198510
++1 4578
++1 9156
+-8 21255
+-3 5166
++11 5166
+
+fn=(34630) FlowStatistics<ID<EntityPrototype, unsigned short>, double>::Precision::ElementUsageStatistics::onNextTick()
+444 2582
++2 5164
+-2 545
+fi=(400)
+134 2180
++24 2180
+fe=(1073)
+448 3270
++6 545
++2 2180
+cfi=(1074)
+cfn=(34434)
+calls=545 58 
+* 25070
++1 545
++1 1090
+-11 2037
++11 2037
+
+fn=(34448)
+423 3600
+-2 3600
++2 10800
+-2 5886
++8 26418
+cfn=(34450)
+calls=8806 +15 
+* 237505
+* 23693
+fi=(214)
+91 24324
++21 12162
++1 18243
++1 6081
++1 6081
++1 6081
+fe=(1073)
+421 6081
++4 12162
+-4 2725
++4 8720
++12 7852
+fi=(214)
+-8 7852
+fe=(1073)
++8 7852
+cfn=(34450)
+calls=7852 +7 
+* 163084
+* 15704
+fi=(214)
+-8 6108
+91 24432
++21 12216
++1 18324
++1 6108
++1 6108
++1 6108
+fe=(1073)
+421 6108
++12 12216
+-12 1744
++12 4796
++8 6870
+
+fn=(34614) FlowStatistics<ID<EntityPrototype, unsigned short>, double>::Precision::ElementUsageStatistics::onFlow(float)
+348 15000
++2 6000
+fi=(400)
+134 9000
++24 9000
+-24 3000
++24 3000
+-24 3000
+fe=(1073)
+352 21000
++1 9000
+
+fn=(34428)
+423 1800
+-2 1800
++2 5400
+-2 2943
++8 18432
+cfn=(34430)
+calls=6144 +15 
+* 287743
+* 14835
+fi=(214)
+91 10188
++21 5094
++1 7641
++1 2547
++1 2547
++1 2547
+fe=(1073)
+421 2547
++4 5094
+-4 3597
++4 8829
++12 3600
+fi=(214)
+-8 3600
+fe=(1073)
++8 3600
+cfn=(34430)
+calls=3600 +7 
+* 87899
+* 7200
+fi=(214)
+-8 2619
+91 10476
++21 5238
++1 7857
++1 2619
++1 2619
++1 2619
+fe=(1073)
+421 2619
++12 5238
+-12 981
++12 2616
++8 3435
+
+fn=(34440)
+423 1800
+-2 1800
++2 5400
+-2 2943
++8 243
+cfn=(34442)
+calls=81 +15 
+* 405
+* 243
+fi=(214)
+91 324
++21 162
++1 243
++1 81
++1 81
++1 81
+fe=(1073)
+421 81
++4 1797
++12 293
+fi=(214)
+-8 293
+fe=(1073)
++8 293
+cfn=(34442)
+calls=293 +7 
+* 16943
+* 586
+fi=(214)
+-8 75
+91 300
++21 150
++1 225
++1 75
++1 75
++1 75
+fe=(1073)
+421 75
++12 150
+-12 218
++12 1090
++8 3435
+
+fn=(34608) FlowStatistics<ID<EntityPrototype, unsigned short>, double>::onFlow(ID<EntityPrototype, unsigned short>, float)
+282 2500
++2 500
+-2 1000
++2 500
+fi=(726)
+135 7500
+fe=(1073)
+287 2500
+cfn=(34612) FlowStatistics<ID<EntityPrototype, unsigned short>, double>::Precision::onFlow(ID<EntityPrototype, unsigned short>, float)
+calls=500 +23 
+* 25500
+* 12500
+cfn=(34612)
+calls=2500 +23 
+* 127500
+-1 6000
++2 2000
++2 200
++2 600
+fi=(1080)
+71 1200
+cfn=(34622) FlatMap<ID<EntityPrototype, unsigned short>, double, true>::private_subscript(ID<EntityPrototype, unsigned short> const&)
+calls=400 215 
+* 15000
+fe=(1073)
+289 4000
++3 2400
+-1 100
+fi=(1080)
+71 200
+cfn=(34622)
+calls=100 215 
+* 2700
+fe=(1073)
+291 1400
+
+fn=(34612)
+310 9000
++2 3000
+-2 6000
++2 9000
++7 1200
++7 12000
+-12 2400
+fi=(48)
+798 7200
+fe=(1073)
+315 4800
+cfn=(34614)
+calls=2400 +33 
+* 62400
+fi=(214)
+91 12000
+fe=(1073)
+322 600
+-1 600
+fi=(48)
+798 1800
+fe=(1073)
+322 2400
+cfn=(34614)
+calls=600 +26 
+* 15600
+fi=(214)
+91 3000
+fe=(1073)
+
+fn=(34628)
+423 600
+-2 600
++2 1800
+-2 981
++8 4350
+cfn=(34630)
+calls=1450 +15 
+* 36462
+* 3914
+fi=(214)
+91 4056
++21 2028
++1 3042
++1 1014
++1 1014
++1 1014
+fe=(1073)
+421 1014
++4 2028
+-4 436
++4 1417
++12 1132
+fi=(214)
+-8 1132
+fe=(1073)
++8 1132
+cfn=(34630)
+calls=1132 +7 
+* 12963
+* 2264
+fi=(214)
+-8 1023
+91 4092
++21 2046
++1 3069
++1 1023
++1 1023
++1 1023
+fe=(1073)
+421 1023
++12 2046
+-12 109
++12 436
++8 1145
+
+fl=(1362) /tmp/factorio-build-ZMjCBB/src/Entity/Wakeable.cpp
+fn=(33818) Wakeable::unregisterFromWakeupLists()
+12 1311935
+fi=(726)
+235 262387
+fe=(1362)
+12 787161
++2 2750405
+fi=(48)
+671 583383
+fi=(1127)
+93 583383
++1 194461
+fi=(48)
+798 388922
+fi=(1127)
+94 388922
+fe=(1362)
+-77 388922
+-4 388922
++4 592700
+-4 1185400
++6 1574322
+fi=(79) /usr/include/c++/7/bits/stl_iterator.h
+833 194461
+fi=(47)
+156 388922
++2 583383
+fe=(1362)
+
+fl=(1049)
+fn=(27214)
+61 21116
+
+fn=(34242)
+64 198348
+
+fl=(1364)
+fn=(34166)
+93 233624
+
+fl=(434)
+fn=(33686) Scenario::updateCrcCheck()
+147 100
+fi=(996) /tmp/factorio-build-ZMjCBB/src/Scenario/Scenario.cpp
+888 300
+-1 700
++4 200
++93 200
++17 200
++1 700
+-18 500
+fe=(434)
+
+fl=(952) /tmp/factorio-build-ZMjCBB/src/Util/Targeter.cpp
+fn=(34468) TargeterBase::operator=(Targetable*) [clone .constprop.48913]
+98 300
+-4 100
+
+fn=(34808) TargeterBase::operator=(Targetable*)
+98 348
+-6 232
+fi=(1117) /tmp/factorio-build-ZMjCBB/src/Util/Targetable.cpp
++1 116
+-1 116
++2 116
++1 116
+-2 116
++2 116
++2 116
+fe=(952)
+-3 116
+
+fl=(641) /tmp/factorio-build-ZMjCBB/src/Util/Math.cpp
+fn=(13066) Math::sincos(double, double*)
+44 132783
++12 132783
+-12 132783
++11 132783
+-9 663915
++4 1327830
++5 132783
+-5 265566
++5 1327830
++1 796698
++2 531132
++1 398349
+-4 796698
++1 132783
+-1 265566
++1 796698
++2 265566
++1 398349
++11 398349
+-2 530816
++2 132704
++4 132704
+-4 132704
+-2 316
++6 79
++6 158
++1 237
++1 316
++6 237
++1 237
++1 1027
++1 869
++1 79
+-1 316
++1 711
++1 158
+-19 132704
++6 265408
++1 398112
++1 530816
++6 398112
++1 398112
++1 1725152
++1 1459744
++1 132704
+-1 530816
++1 1194336
++1 265408
++2 265566
+-23 237
+-3 79
++1 79
+-1 237
++5 79
+-4 79
++2 398112
+
+fn=(13084) xatan(double)
+154 365784
++13 182892
+-1 731568
++1 10241952
++1 914460
++2 548676
+
+fn=(13070) satan(double)
+173 365784
++4 548676
++3 548676
++1 914460
+cfn=(13084)
+calls=186664 -27 
+* 12985332
+* 1280244
++3 548676
+
+fl=(1104) /tmp/factorio-build-ZMjCBB/src/Map/MapGenerationManager.cpp
+fn=(33856) MapGenerationManager::updateInternal(Surface&, unsigned int)
+248 1000
+fi=(203) /tmp/factorio-build-ZMjCBB/src/Info/TimeStatistics.hpp
+51 100
++5 100
+cfi=(9)
+cfn=(7278)
+calls=100 -56 
+* 3300
+-5 100
+fe=(1104)
+250 900
+cfi=(1105) /tmp/factorio-build-ZMjCBB/src/Map/MapGenerationHelper.cpp
+cfn=(33860) MapGenerationHelper::applyTaskResult(Surface&, std::deque<MapGenerationRequestInProgress, std::allocator<MapGenerationRequestInProgress> >&, unsigned int, bool)
+calls=100 44 
+* 9600
++1 1100
++1 100
++3 200
+-6 200
+cfi=(204) /tmp/factorio-build-ZMjCBB/src/Info/TimeStatistics.cpp
+cfn=(33706) TimeStatisticsBuffer<UpdateTimeStatistics::Item>::TimeChecker::~TimeChecker()
+calls=100 -66 
+* 11300
++43 800
+
+fl=(357) /tmp/factorio-build-ZMjCBB/src/Surface/Surface.cpp
+fn=(28242) Surface::getChunk(ChunkPosition const&)
+189 1784258
++1 509788
+cfi=(1079) /tmp/factorio-build-ZMjCBB/src/Util/Container/InfiniteVector.hpp
+cfn=(28244) InfiniteVector<InfiniteVector<Chunk*> >::operator[](int)
+calls=535970 22 
+* 7901714
+* 764682
+cfi=(1079)
+cfn=(28246) InfiniteVector<Chunk*>::operator[](int)
+calls=535970 22 
+* 7646820
++1 764682
++3 1784258
+
+fn=(33866) Surface::updateBuildEffectSmokes()
+1415 100
++1 200
+fi=(73) /usr/include/c++/7/bits/stl_deque.h
+1552 100
+fe=(357)
+
+fn=(33834) Surface::update()
+1160 800
++1 400
++2 100
+-2 200
++2 100
+-3 200
++4 900
++1 100
+cfi=(1094) /tmp/factorio-build-ZMjCBB/src/AI/PathFinder.cpp
+cfn=(33838) PathFinder::update()
+calls=100 690 
+* 26300
+* 200
+fi=(48)
+671 100
+fe=(357)
+1163 100
+fi=(48)
+671 200
+fe=(357)
+1163 200
+fi=(48)
+671 200
+fe=(357)
+1163 200
+fi=(48)
+671 400
+fe=(357)
+1163 600
++3 400
+-3 300
++4 1200
++1 300
+cfi=(1097) /tmp/factorio-build-ZMjCBB/src/AI/Commander.cpp
+cfn=(33848) Commander::update()
+calls=300 214 
+* 56390
+* 600
+fi=(48)
+671 300
+fe=(357)
+1166 300
+fi=(48)
+671 600
+fe=(357)
+1166 600
+fi=(48)
+671 100
+fe=(357)
+1166 100
+fi=(48)
+671 200
+fe=(357)
+1166 200
+fi=(1104)
+239 400
+cfn=(33856)
+calls=100 +9 
+* 28800
+fe=(357)
+1170 200
+cfn=(33866)
+calls=100 1415 
+* 400
+fi=(203)
+51 100
++5 100
+cfi=(9)
+cfn=(7278)
+calls=100 -56 
+* 3300
+-5 100
+fe=(357)
+1175 200
+fi=(1582) /tmp/factorio-build-ZMjCBB/src/Surface/Surface.hpp
+326 400
+fi=(726)
+56 100
+fi=(214)
+344 200
+fe=(357)
+1178 400
+fi=(214)
+344 100
+fe=(357)
+1191 200
+fi=(214)
+93 150500
+429 150500
+fe=(357)
+1195 301000
+cfi=(214)
+cfn=(33874) Chunk::shouldBeActive() const
+calls=150500 91 
+* 1354500
+* 301000
++2 602000
++1 301000
+cfi=(1089)
+cfn=(33878) Chunk::updateEntities(unsigned int)
+calls=150500 586 
+* 1854762151
+-7 451500
+-19 200
+cfi=(204)
+cfn=(33706)
+calls=100 183 
+* 11300
++30 100
+fi=(1161) /tmp/factorio-build-ZMjCBB/src/Map/DayTime.cpp
+51 200
+fe=(357)
+1203 400
+cfi=(1087) /tmp/factorio-build-ZMjCBB/src/Surface/Wind.cpp
+cfn=(34388) Wind::update(RandomGenerator&)
+calls=100 36 
+* 29118
++1 700
+
+fl=(1097)
+fn=(33848)
+214 2100
+fi=(214)
+344 300
+fe=(1097)
+214 300
+fi=(203)
+51 300
++5 300
+cfi=(9)
+cfn=(7278)
+calls=300 -56 
+* 9900
+* 300
+-5 300
+fe=(1097)
+216 600
++4 3006
+fi=(48)
+89 12
+fe=(1097)
+223 6
+fi=(48)
+89 6
+fe=(1097)
+223 30
+-49 12
+fi=(48)
+434 6
+179 12
+fe=(1097)
++53 600
++3 200
+cfi=(1098) /tmp/factorio-build-ZMjCBB/src/AI/ExpansionPlanner.cpp
+cfn=(33852) ExpansionPlanner::shouldExpandNow() const
+calls=100 392 
+* 1000
+* 200
+-20 600
+cfi=(204)
+cfn=(33706)
+calls=300 -32 
+* 33900
++27 2400
+
+fl=(1082) /tmp/factorio-build-ZMjCBB/src/Energy/ElectricNetwork.cpp
+fn=(34634) ElectricNetwork::checkAchievements(Map&)
+359 700
++1 400
++3 300
+cfi=(946)
+cfn=(32168)
+calls=100 183 
+* 3100
+* 200
++22 300
+cfi=(946)
+cfn=(32168)
+calls=100 183 
+* 4200
+* 200
++22 800
+
+fn=(34550) ElectricNetwork::update(Map&)
+45 200
+-1 200
++17 100
+-17 600
+fi=(48)
+1514 100
+fe=(1082)
+50 200
+fi=(48)
+671 200
+fe=(1082)
+51 100
++1 100
++2 100
++1 100
++1 100
++1 100
++1 100
+fi=(48)
+671 100
+fe=(1082)
+59 100
++1 100
+fi=(48)
+691 100
+fe=(1082)
+61 100
+fi=(48)
+1514 100
+691 100
+1514 100
+fi=(214)
+344 100
+fe=(1082)
+66 1200
++1 1200
+cfi=(1083) /tmp/factorio-build-ZMjCBB/src/Energy/ElectricSubNetwork.cpp
+cfn=(34562) ElectricSubNetwork::updateInputValues(double&, double&, double&, double&, double&, double&, double&, double&, double&)
+calls=100 1138 
+* 260038300
+fi=(214)
+429 100
+fe=(1082)
+66 400
++32 100
+-19 100
++19 100
+-19 500
++20 200
++1 200
++1 200
++2 200
++1 200
++1 200
+-17 900
+-9 200
++9 100
++1 100
+-10 100
++28 100
+-19 100
++19 300
+-19 100
++19 100
+-19 100
+-9 300
++9 300
+-9 300
++9 500
+-9 300
++31 200
+-22 100
+-9 100
++9 400
+-9 200
++9 800
++27 100
+-27 100
+-9 100
++9 200
+-9 200
++9 400
++33 100
+-2 100
++2 300
++1 400
++5 100
++1 100
+-1 100
++1 100
+-1 400
++2 300
++1 200
++6 500
++11 300
+cfn=(34580) ElectricNetwork::countLampConsumption(std::vector<float, std::allocator<float> >&)
+calls=100 301 
+* 4000
++1 400
+cfn=(34584) ElectricNetwork::solarProduction(double const&, std::vector<float, std::allocator<float> >&)
+calls=100 +65 
+* 5000
++41 800
+332 200
++1 300
+168 400
+fi=(48)
+671 300
+fe=(1082)
+174 600
++2 100
+fi=(48)
+798 100
+fe=(1082)
+176 34300
+fi=(48)
+798 34000
+fe=(1082)
+176 136100
++2 238600
+fi=(48)
+671 34000
+fe=(1082)
+174 68000
+fi=(48)
+671 68000
+fe=(1082)
+174 68000
++7 300
+cfi=(1073)
+cfn=(34626)
+calls=100 383 
+* 107151
++1 300
+cfn=(34634)
+calls=100 359 
+* 10200
++1 800
+-4 400
+-5 100
++5 300
+cfi=(1073)
+cfn=(34608)
+calls=100 282 
+* 45200
+* 100
+fi=(48)
+671 100
+fe=(1082)
+174 300
+fi=(48)
+671 200
+fe=(1082)
+174 200
++3 1600
+cfi=(1073)
+cfn=(34608)
+calls=400 282 
+* 170600
+* 1200
++12 300
++13 300
+-63 300
++1 500
+fi=(48)
+692 200
+cfi=(47)
+cfn=(34554)
+calls=100 557 
+* 46964
+* 200
+fe=(1082)
+63 100
+fi=(48)
+1514 100
+fe=(1082)
+63 200
+fi=(48)
+1514 100
+691 200
++1 200
+cfi=(47)
+cfn=(34554)
+calls=100 557 
+* 13491
+* 100
+fi=(449)
+51 400
+fe=(1082)
++41 300
++1 300
++1 100
+-1 100
++1 400
+-1 300
++1 100
+-1 200
+206 500
+cfi=(1083)
+cfn=(34598) ElectricSubNetwork::useDemand(double, ElectricSubNetwork::EnergySourceMapping&, std::vector<float, std::allocator<float> >&)
+calls=100 396 
+* 429014700
+fi=(214)
+429 100
+fe=(1082)
+205 200
+-43 200
++43 200
+-12 500
+cfi=(1083)
+cfn=(34590) ElectricSubNetwork::useProduction(double, ElectricSubNetwork::EnergySourceMapping&, std::vector<float, std::allocator<float> >&)
+calls=100 351 
+* 6800
+fi=(214)
+429 100
+fe=(1082)
+192 200
++10 600
++3 200
+334 300
+
+fn=(34584)
+213 200
+fi=(214)
+344 100
+fe=(1082)
+213 600
+fi=(214)
+344 100
+fe=(1082)
+214 500
+fi=(48)
+798 100
+fi=(1186) /tmp/factorio-build-ZMjCBB/src/Map/Map.hpp
+208 400
+fi=(1161)
+30 700
+fe=(1082)
+217 100
++1 100
+-1 400
++1 300
+fi=(214)
+429 100
+fe=(1082)
+214 200
++10 800
+fi=(1161)
+35 300
+fe=(1082)
+
+fn=(34580)
+301 200
+fi=(214)
++43 100
+fe=(1082)
+-43 600
++1 600
+fi=(20) /usr/include/c++/7/bits/stl_tree.h
+969 100
+fe=(1082)
+303 200
+fi=(214)
+429 100
+fe=(1082)
+302 300
++5 400
+fi=(20)
+969 100
+fe=(1082)
+308 200
+fi=(214)
+429 100
+fe=(1082)
+307 200
++3 800
+
+fl=(1163) /tmp/factorio-build-ZMjCBB/src/Player.cpp
+fn=(34726) Player::generateFarAwayChunks() [clone .part.46665]
+782 8
++3 8
+cfi=(530)
+cfn=(34516) GodController::getPosition() const
+calls=2 23 
+* 12
+fi=(1078) /tmp/factorio-build-ZMjCBB/src/Util/ChunkPosition.cpp
+34 2
++1 2
+fi=(1380) /tmp/factorio-build-ZMjCBB/src/Map/ChunkCircleIterator.hpp
+-23 4
+fi=(1078)
++22 2
++1 2
+fi=(1380)
+-23 4
+fe=(1163)
+1474 6
+cfi=(1376)
+cfn=(34518)
+calls=2 182 
+* 4
+* 10080
+cfi=(1376)
+cfn=(34518)
+calls=3360 182 
+* 6720
+787 23534
+cfi=(357)
+cfn=(28242)
+calls=3362 189 
+* 279046
++1 6724
++5 8
+fi=(1380)
+19 6724
+cfi=(1320) /tmp/factorio-build-ZMjCBB/src/Map/ChunkCircleIterator.cpp
+cfn=(34732) ChunkCircleIterator::incrementAndCheckDistanceChanged()
+calls=3362 +7 
+* 58174
+fe=(1163)
+785 10088
+
+fn=(34536) Player::checkAchievements()
+1548 800
++2 100
+fi=(1583) /tmp/factorio-build-ZMjCBB/src/Util/Container/StaticVector.hpp
+26 200
+fe=(1163)
+1551 100
+cfn=(32314) Player::isLocal() const
+calls=100 1429 
+* 2000
+* 300
++3 1100
++16 800
++13 800
+fi=(965) /tmp/factorio-build-ZMjCBB/src/Achievement/ProducePerHourAchievement.cpp
+61 6
+fe=(1163)
+1555 4
++1 5
+cfi=(946)
+cfn=(32168)
+calls=1 183 
+* 31
+* 2
+fi=(969) /tmp/factorio-build-ZMjCBB/src/Achievement/ProduceAchievement.cpp
+67 2
+fe=(1163)
+
+fn=(34678) Player::postUpdate()
+713 1600
++1 200
+fi=(1182) /tmp/factorio-build-ZMjCBB/src/Controller/Controller.cpp
+324 800
+fe=(1163)
+715 400
++7 200
+fi=(79)
++58 400
+fi=(946)
+216 400
+fi=(48)
+1514 200
+fe=(1163)
+724 400
+cfn=(32314)
+calls=200 1429 
+* 4000
+* 400
++2 1600
+
+fn=(32314)
+1429 600
++1 900
+fi=(1356)
+454 1200
+fe=(1163)
+1430 600
++1 900
+cfi=(1356)
+cfn=(34540)
+calls=300 447 
+* 1500
+* 300
+
+fn=(34514) Player::generateAndActivateNeighborChunks()
+773 700
++1 200
++2 500
+cfi=(530)
+cfn=(34516)
+calls=100 23 
+* 600
+* 200
++2 400
+cfi=(530)
+cfn=(34516)
+calls=100 23 
+* 600
+1474 100
+fi=(1078)
+39 100
++1 100
+fe=(1163)
+1474 100
+fi=(1078)
+39 100
++1 100
+fe=(1163)
+1474 100
+cfi=(1376)
+cfn=(34518)
+calls=100 182 
+* 200
+fi=(357)
+964 100
+fe=(1163)
+1474 100
+fi=(357)
+964 500
++1 5800
+fi=(214)
+91 22000
+fi=(357)
+965 32400
+fi=(1079)
+59 40500
++2 24300
++2 16200
+fi=(357)
+198 16200
+fi=(1079)
+59 40500
++2 24300
++2 24300
+fi=(357)
+199 16200
++1 8100
+972 32400
++5 8100
+fi=(1112) /tmp/factorio-build-ZMjCBB/src/Surface/Chunk.hpp
+42 8100
+fi=(357)
+977 8100
+fi=(214)
+91 16200
+fi=(357)
+977 8100
+fi=(214)
+91 23700
++97 5200
+-97 10400
+fi=(357)
+964 3600
+fe=(1163)
+780 800
+fi=(214)
+91 15600
++97 5200
+-97 10400
+fi=(1089)
+553 26000
++4 10400
++2 26000
+cfn=(34528) Chunk::shouldBeActive() const [clone .part.8457]
+calls=5200 -9 
+* 150800
+fi=(357)
+978 10400
+fe=(1163)
+
+fn=(34492) Player::stopRepairSound()
+1518 200
+479 200
+fi=(1356)
+-50 400
+fe=(1163)
+
+fn=(34534) Player::requestToChartNeighbourChunks()
+797 500
+-1 20
+fi=(1265)
+41 12
+fi=(674)
+386 4
++2 4
+-2 4
+fi=(48)
+798 4
+fe=(1163)
+1474 4
+fi=(1265)
+41 4
+fe=(1163)
+1474 8
+cfi=(1376)
+cfn=(34518)
+calls=4 182 
+* 8
+798 12
+cfi=(1042) /tmp/factorio-build-ZMjCBB/src/Force/ForceData.cpp
+cfn=(34736) ForceData::getChartSafe(unsigned char)
+calls=4 1111 
+* 152
+* 20
+cfi=(530)
+cfn=(34516)
+calls=4 23 
+* 24
+fi=(1078)
+34 4
++1 4
+-1 4
++1 4
+fi=(1077) /tmp/factorio-build-ZMjCBB/src/Chart/Chart.cpp
+667 4
++1 8
+-1 4
++1 4
++1 4
++1 12
+-1 4
++1 20
+-1 16
++1 36
++1 60
+cfn=(34746) Chart::requestToChartChunk(ChunkPosition const&, Chart::Priority) [clone .constprop.48677]
+calls=20 +9 
+* 5257
+* 240
+cfn=(34746)
+calls=80 +9 
+* 15600
+-2 200
++1 100
+-1 100
++1 120
+-3 20
++1 20
+-1 20
++1 20
+fe=(1163)
+800 120
+
+fl=(73)
+fn=(27796) std::_Deque_base<ChunkPosition, std::allocator<ChunkPosition> >::_M_initialize_map(unsigned long) [clone .constprop.48681]
+681 16
++6 4
+fi=(19)
+111 8
+cfi=(9)
+cfn=(444)
+calls=5 0 
+* 236
+fe=(73)
+697 4
+-8 4
+fi=(19)
+111 4
+fe=(73)
+697 8
+-1 4
+fi=(19)
+111 4
+cfi=(9)
+cfn=(444)
+calls=5 0 
+* 236
+fe=(73)
+258 4
+727 4
+256 4
++1 4
+-1 4
++2 4
+-1 4
++1 4
+712 4
++1 4
++3 16
+
+fl=(910) /tmp/factorio-build-ZMjCBB/src/Item/ItemPrototype.hpp
+fn=(29270) ItemPrototype::needsAdditionalDataInItemStack() const
+87 280972
+
+fn=(34300) ItemPrototype::isItemWithInventory() const
+71 185626
+
+fl=(1200)
+fn=(30104) EntityWithOwner::getForce() const
+19 1824430
+
+fn=(33912) EntityWithOwner::hasForce() const
+17 1824430
+
+fl=(1127)
+fn=(34272) WakeUpList::registerSleeper(Wakeable*)
+67 778468
+fi=(48)
+941 769760
++4 557727
+fe=(1127)
+72 185909
++1 185909
+fi=(726)
+235 185909
+135 185909
+fe=(1127)
+-62 185909
+-1 8708
++1 8708
+fi=(726)
+235 8708
+135 8708
+fe=(1127)
+-62 102625
+-1 375684
++1 187842
++2 194617
++5 583851
+fi=(48)
+948 17416
+cfi=(47)
+cfn=(32294)
+calls=8708 394 
+* 1482885
+* 8708
+fe=(1127)
+
+fl=(1152)
+fn=(33892) non-virtual thunk to Inserter::update()
+59 3100420
+cfi=(1151) /tmp/factorio-build-ZMjCBB/src/Entity/Inserter.cpp
+cfn=(33894) Inserter::update()
+calls=1550210 802 
+* 979044663
+
+fn=(34050)
+110 198274
+cfi=(1151)
+cfn=(33992) Inserter::alarm()
+calls=99137 518 
+* 42028005
+
+fn=(32764) non-virtual thunk to Inserter::getEntity()
+60 991858
+
+fl=(1094)
+fn=(33840) PathFinder::cleanupSuspendedJobs()
+946 100
++1 100
+-1 500
++1 100
+-1 400
++1 600
++18 100
+-18 100
++18 100
+-18 100
++18 300
+-15 200
++15 200
+-15 400
+-3 700
++30 800
+
+fn=(33838)
+690 800
+fi=(203)
+51 100
++5 100
+cfi=(9)
+cfn=(7278)
+calls=100 -56 
+* 3300
+fe=(1094)
+695 100
+fi=(203)
+51 100
+fe=(1094)
+695 100
+cfn=(33840)
+calls=100 946 
+* 4800
++24 100
+-21 200
++21 200
+323 300
+fi=(909) /tmp/factorio-build-ZMjCBB/src/Util/FallbackValue.hpp
+33 100
+fe=(1094)
+323 200
+fi=(909)
+33 100
+fe=(1094)
+323 200
+699 300
++4 300
+cfi=(214)
+cfn=(33842) PathFinder::getClient()
+calls=100 91 
+* 2200
+fi=(24) /usr/include/c++/7/tuple
+322 100
+450 100
+fe=(1094)
+704 200
+-13 200
+cfi=(204)
+cfn=(33706)
+calls=100 183 
+* 11300
++80 800
+
+fl=(1077)
+fn=(34778) ChartRequestsByPriorityMappingIterator::eraseAndIncrease(unsigned long)
+458 800
+fi=(1381) /tmp/factorio-build-ZMjCBB/src/Util/InfiniteBitset.cpp
+55 100
+fe=(1077)
+458 100
+fi=(1381)
+42 200
+cfi=(1079)
+cfn=(34752) InfiniteVector<unsigned long>::operator[](int)
+calls=100 -20 
+* 3000
+-3 200
+fi=(73)
+1784 100
+fi=(1381)
+39 100
++9 200
+fe=(1077)
+461 100
+fi=(73)
+153 100
+fe=(1077)
+461 100
+fi=(73)
+146 400
+1784 100
+146 300
+1784 100
+cfi=(74) /usr/include/c++/7/bits/deque.tcc
+cfn=(34782) std::deque<ChunkPosition, std::allocator<ChunkPosition> >::_M_erase(std::_Deque_iterator<ChunkPosition, ChunkPosition&, ChunkPosition*>)
+calls=100 232 
+* 9792
+fi=(20)
+282 100
+fe=(1077)
+461 200
+fi=(73)
+152 100
+fe=(1077)
+462 100
+-1 200
++1 100
++9 812
+cfi=(9)
+cfn=(5462)
+calls=4 0 
+* 52
+-7 16
++4 8
+fi=(20)
+2473 8
+cfi=(9)
+cfn=(10448)
+calls=4 0 
+* 164
+fi=(73)
+663 4
+fi=(20)
+2473 4
+fi=(73)
+663 8
++2 12
++77 12
+fi=(19)
+125 4
+fi=(73)
+742 4
+fi=(19)
+125 4
+cfi=(9)
+cfn=(604)
+calls=4 0 
+* 336
+fi=(73)
+742 12
+fi=(19)
+125 4
+cfi=(9)
+cfn=(604)
+calls=4 0 
+* 336
+* 8
+cfi=(9)
+cfn=(604)
+calls=4 0 
+* 336
+* 4
+fi=(20)
+2478 4
+fe=(1077)
+465 12
+
+fn=(34754) Chart::requestToChartChunkInternal(ChunkPosition const&, Chart::Priority) [clone .part.36353]
+688 600
+387 100
+688 100
+387 300
+cfi=(1079)
+cfn=(34756) InfiniteRectangle<SubChart*>::getSafe(int, int)
+calls=100 59 
+* 2500
++1 200
+693 100
+390 100
+693 100
++3 400
+fi=(20)
++52 100
+fe=(1077)
+-52 100
+fi=(20)
++52 100
+1871 204
++1 96
++1 96
+-2 192
++1 192
+fi=(18) /usr/include/c++/7/bits/stl_map.h
+511 384
+fi=(24)
+133 4
+fi=(18)
+512 12
+fi=(24)
+133 4
+fi=(18)
+512 4
+cfi=(20)
+cfn=(34762) std::_Rb_tree_iterator<std::pair<unsigned int const, std::deque<ChunkPosition, std::allocator<ChunkPosition> > > > std::_Rb_tree<unsigned int, std::pair<unsigned int const, std::deque<ChunkPosition, std::allocator<ChunkPosition> > >, std::_Select1st<std::pair<unsigned int const, std::deque<ChunkPosition, std::allocator<ChunkPosition> > > >, std::less<unsigned int>, std::allocator<std::pair<unsigned int const, std::deque<ChunkPosition, std::allocator<ChunkPosition> > > > >::_M_emplace_hint_unique<std::piecewise_construct_t const&, std::tuple<unsigned int&&>, std::tuple<> >(std::_Rb_tree_const_iterator<std::pair<unsigned int const, std::deque<ChunkPosition, std::allocator<ChunkPosition> > > >, std::piecewise_construct_t const&, std::tuple<unsigned int&&>&&, std::tuple<>&&) [clone .isra.36352]
+calls=4 2395 
+* 1224
+* 4
+fi=(73)
+1545 4
+-1 4
++1 4
+-1 8
++1 96
+-1 96
++1 96
+-1 292
++5 300
+fe=(1077)
+697 500
+
+fn=(34664) ChartedChunksEventHelper::~ChartedChunksEventHelper()
+494 1100
++2 300
++1 200
+fi=(79)
+780 100
+fe=(1077)
+498 200
+fi=(48)
+179 200
+fe=(1077)
+500 800
+
+fn=(34746)
+680 800
+fi=(1381)
+39 100
+fe=(1077)
+680 100
++10 300
+cfi=(85) /tmp/factorio-build-ZMjCBB/src/Util/Util.cpp
+cfn=(34748) Util::mortonIndex(int, int)
+calls=100 178 
+* 4400
+fi=(1381)
+42 100
+-3 100
++16 100
+-13 100
+-3 100
++3 100
+cfi=(1079)
+cfn=(34752)
+calls=100 -20 
+* 3141
++1 100
++3 200
+fe=(1077)
+690 100
+fi=(1381)
+46 100
+fe=(1077)
+690 500
+cfn=(34754)
+calls=100 -2 
+* 8616
+fi=(1265)
+41 100
+fe=(1077)
+683 300
+fi=(674)
+386 100
++2 100
+-2 100
+fi=(1265)
+41 100
+fe=(1077)
+683 200
++3 800
+
+fn=(34662) Chart::updateGameStateInternal(Surface&, unsigned int)
+514 200
+-2 200
+fi=(20)
+969 100
+fe=(1077)
+512 200
+fi=(20)
+969 100
+fe=(1077)
+512 800
++5 100
+-29 100
+fi=(48)
+89 300
+fe=(1077)
+488 100
++34 100
+-34 100
++34 100
++1 300
+-1 300
++3 204
+-1 4
+fi=(73)
+356 8
+fi=(20)
+-69 4
+fi=(73)
++69 28
++1 16
+fe=(1077)
+526 4
+fi=(20)
+287 4
+cfi=(9)
+cfn=(5462)
+calls=4 0 
+* 52
+fe=(1077)
+525 8
++2 8
+-85 4
++85 8
+-82 4
+-3 12
++3 4
++82 12
+fi=(73)
+153 4
+fe=(1077)
+445 12
+-3 4
++3 8
+fi=(73)
+152 4
+fe=(1077)
+445 16
+556 300
+cfi=(357)
+cfn=(28242)
+calls=100 189 
+* 8300
+* 300
++15 200
+-41 208
++2 200
++1 200
+-1 100
++1 500
+cfi=(85)
+cfn=(34748)
+calls=100 178 
+* 4400
+387 300
+533 100
+387 100
+cfi=(1079)
+cfn=(34756)
+calls=100 59 
+* 2500
++1 200
++2 100
+535 200
+-18 200
+cfn=(34664)
+calls=100 -23 
+* 2900
++57 800
+-16 300
++1 300
+cfn=(34778)
+calls=100 458 
+* 18756
+* 200
+442 480
+fi=(73)
+149 192
+fe=(1077)
+442 96
+fi=(73)
+149 384
+fe=(1077)
+
+fl=(1320)
+fn=(34732)
+26 3362
++3 10086
+-3 3362
++1 3362
+-1 3362
++3 16810
++3 162
+-1 162
++1 408
++3 84
++3 42
++1 84
+-1 42
++2 42
++1 84
+-9 120
++14 120
+-1 120
++2 120
+-1 120
++2 120
+-2 3200
+-1 3200
++2 3200
+-1 3200
++2 3200
+
+fl=(1360) /tmp/factorio-build-ZMjCBB/src/GameAction.cpp
+fn=(33702) GameAction::destroyValue()
+85 400
++8 100
+
+fl=(400)
+fn=(33798) ItemOnTransportLine& CompactDeque<ItemOnTransportLine>::emplace_back<ItemStack&, unsigned int&>(ItemStack&, unsigned int&)
+99 1276405
++2 1021124
++1 9828
+cfn=(29650) CompactDeque<ItemOnTransportLine>::grow(unsigned int)
+calls=1638 332 
+* 3887238
+* 4914
++1 9828
++55 4914
+-55 1638
++55 1638
+-55 6552
+cfi=(1136) /tmp/factorio-build-ZMjCBB/src/Entity/TransportLine.cpp
+cfn=(33800) ItemOnTransportLine::ItemOnTransportLine(ItemStack&, unsigned int)
+calls=1638 1597 
+* 262926
+* 1521858
++55 760929
+-55 253643
++55 253643
+-55 1014572
+cfi=(1136)
+cfn=(33800)
+calls=253643 1597 
+* 20308461
++1 1276405
+
+fn=(34012) CompactDeque<ItemOnTransportLine>::move(unsigned int, unsigned int, unsigned int, bool)
+294 366705
++6 40745
+-6 81490
++6 40745
+158 162980
+300 81490
++2 81490
+158 162980
+302 366705
++2 81490
++1 40745
+fi=(50)
+547 40745
+fe=(400)
+305 81490
+fi=(50)
+547 81490
++1 81490
+fi=(1136)
+1621 81490
++2 40745
++2 81490
+-2 40745
++1 81490
++1 40745
+cfi=(1126)
+cfn=(33802)
+calls=40745 657 
+* 1426075
+fi=(50)
+547 81490
+fe=(400)
+327 325960
+
+fn=(34010) CompactDeque<ItemOnTransportLine>::erase(unsigned int)
+259 81490
++5 162980
++5 40745
+-13 162980
++13 81490
++7 81490
+158 162980
+276 162980
+cfn=(34012)
+calls=40745 +18 
+* 3993010
++1 40745
++2 40745
+-2 40745
+cfn=(33812) CompactDeque<ItemOnTransportLine>::pop_front()
+calls=40745 109 
+* 692665
+
+fn=(29650)
+332 1638
+-2 11466
++2 1638
++10 6552
+cob=(2)
+cfi=(2)
+cfn=(450)
+calls=13638 0 
+* 3083623
+* 1638
+* 1638
++2 9828
+140 1638
+345 1638
+158 6552
+345 1638
+140 1638
+345 1638
+140 1638
+fi=(1136)
+1608 1638
+fi=(530)
+23 1638
+fi=(1136)
+1610 1638
+fi=(530)
+23 1638
+fi=(1136)
+1608 1638
+fi=(1144)
+30 1638
+fi=(610)
+-13 1638
+fi=(1144)
++13 1638
+fi=(1136)
+1608 1638
++2 1638
+cfi=(1126)
+cfn=(33802)
+calls=1638 657 
+* 57330
+fe=(400)
+140 4914
+345 4914
+158 19656
+345 4914
+140 4914
+345 4914
+140 4914
+fi=(1136)
+1608 4914
+fi=(530)
+23 4914
+fi=(1136)
+1610 4914
+fi=(530)
+23 4914
+fi=(1136)
+1608 4914
+fi=(1144)
+30 4914
+fi=(610)
+-13 4914
+fi=(1144)
++13 4914
+fi=(1136)
+1608 4914
++2 4914
+cfi=(1126)
+cfn=(33802)
+calls=4914 657 
+* 171990
+fe=(400)
+140 26208
++18 26208
+fi=(1126)
+653 26208
+fe=(400)
+347 3276
+cob=(2)
+cfi=(2)
+cfn=(610)
+calls=13638 0 
+* 289283
+* 1638
++2 1638
++1 1638
++2 1638
+-1 1638
++1 8190
+-8 21294
+
+fn=(33812)
+109 255153
++3 255153
+-3 255153
++3 255153
+fi=(1126)
+653 1275765
+fe=(400)
+113 1020612
++1 9340
++1 510306
++2 510306
+
+fl=(1140) /tmp/factorio-build-ZMjCBB/src/Entity/TransportLine.hpp
+fn=(34092) TransportLineConnector::getItemsRange() const
+255 133338
++1 66669
+fi=(530)
+23 133338
+fi=(1136)
+907 133338
+-1 66669
+fi=(530)
+23 66669
+fi=(1136)
+907 66669
+fi=(530)
+23 66669
+fi=(1136)
+907 66669
+cfn=(34094) TransportLine::getItemsRange(TransportLine::PositionRange, unsigned int, FixedPointNumberTemplate<int, 8u>&) const [clone .constprop.48142]
+calls=66669 -26 
+* 3216627
+fe=(1140)
+256 133338
+
+fn=(33788) TransportLine::hasSideInsertionPosition() const
+117 943986
++2 943986
+-2 1887972
+fi=(530)
+-46 1887972
+fe=(1140)
++44 1887972
+-2 903830
+fi=(530)
+-59 903830
+fe=(1140)
++62 1807660
++1 1195712
++7 1135248
++54 356284
+cfi=(48)
+cfn=(32416) TransportLine::getDirectInputLine()
+calls=356284 671 
+* 14251360
+* 356284
+-55 356284
+-3 712568
+fi=(530)
+-49 356284
+fe=(1140)
++50 712568
++3 712568
+
+fl=(1352) /tmp/factorio-build-ZMjCBB/src/Script/LuaEventDispatcher.cpp
+fn=(33692) LuaEventDispatcher::dispatch(unsigned int)
+120 200
++2 100
+-2 500
++2 300
+-2 200
++2 100
+fi=(1584) /tmp/factorio-build-ZMjCBB/src/GameAction.hpp
+632 100
+fe=(1352)
+122 100
+cfn=(33694) void LuaEventDispatcher::run<GameAction>(unsigned int, unsigned int, bool (LuaGameScript::*)(GameAction const&), GameAction const&)
+calls=100 461 
+* 4800
+fi=(1360)
+-88 200
+cfn=(33702)
+calls=100 +51 
+* 500
+* 200
+fe=(1352)
++90 200
++29 800
+
+fn=(33694)
+461 400
++5 100
+-5 400
+fi=(48)
+671 500
+fe=(1352)
+466 200
++21 800
+fi=(48)
+798 700
+671 600
+172 200
+fi=(50)
+367 200
++2 100
+fe=(1352)
+471 200
+fi=(48)
+179 200
+-7 200
+fe=(1352)
+
+fl=(1363)
+fn=(34020) ElectricEnergySource::availableEnergy() const
+77 805636
+
+fl=(1089)
+fn=(33878)
+586 1505000
++3 301000
+fi=(1349) /tmp/factorio-build-ZMjCBB/src/Util/CircularUpdateQueue.hpp
+27 300800
+fi=(434)
+147 150400
+fi=(1349)
+27 1203200
+fi=(726)
++29 300800
+fi=(214)
++35 1046008
++2 73920
+fe=(1089)
+595 147840
+cfi=(1123) /tmp/factorio-build-ZMjCBB/src/Entity/UpdatableEntity.cpp
+cfn=(34280) UpdatableEntity::unlink()
+calls=73920 264 
+* 1921920
++1 221760
+cfi=(1142) /tmp/factorio-build-ZMjCBB/src/Entity/Beacon.hpp
+cfn=(34704) non-virtual thunk to Beacon::update()
+calls=73920 19 
+* 16513784
+fi=(214)
+91 234456
+fi=(726)
+-35 12696
+fi=(214)
++35 12696
+fi=(726)
+-35 438504
+fi=(214)
++35 739304
+fi=(1349)
+-53 601600
++2 300800
+-2 150400
++2 300800
+fi=(434)
++38 150500
+fe=(1089)
+601 301000
++21 150500
+-2 150500
++2 301000
+cfn=(33888) Chunk::updateActiveEntities(IntrusiveList<UpdatableEntity, void, false>&)
+calls=150500 -51 
+* 1821885163
+893 301000
+624 596200
++5 590400
+fi=(1366) /tmp/factorio-build-ZMjCBB/src/Force/ForceSet.hpp
+54 150500
+fi=(1367)
+-46 150500
+-2 150500
++2 150500
+-2 150500
++2 150500
+fi=(1366)
++25 150500
+fi=(1367)
+-19 150500
++26 301000
+-22 150500
+fi=(1366)
++15 451500
+fe=(1089)
+645 150500
++1 1204000
+fi=(1366)
+33 301000
+fe=(1089)
+626 8700
+cfn=(33888)
+calls=2900 -55 
+* 37700
++1 8700
+cfn=(33888)
+calls=2900 -56 
+* 37700
+* 2900
+
+fn=(33888)
+571 937800
++4 156300
+-3 156300
++3 306800
+fi=(214)
+429 150500
+93 150500
+fe=(1089)
+579 150500
+fi=(214)
+429 150500
+fe=(1089)
+579 150500
+fi=(214)
+429 2670842
+93 2670842
+fe=(1089)
+579 2670842
+fi=(214)
+429 2670842
+fe=(1089)
+579 2670842
+fi=(1361) /tmp/factorio-build-ZMjCBB/src/Util/Prefetch.hpp
+29 24037578
+fe=(1089)
+581 5341684
+cfi=(1146) /tmp/factorio-build-ZMjCBB/src/Entity/InfinityContainer.cpp
+cfn=(34284) non-virtual thunk to InfinityContainer::update()
+calls=76925 35 
+* 84963835
+cfi=(1130)
+cfn=(34100) non-virtual thunk to MiningDrill::update()
+calls=194107 63 
+* 213929977
+cfi=(1156)
+cfn=(34054)
+calls=849600 80 
+* 413269696
+cfi=(1152)
+cfn=(33892)
+calls=1550210 59 
+* 982145083
+* 301000
+cfi=(1158) /tmp/factorio-build-ZMjCBB/src/Entity/ElectricEnergyInterface.hpp
+cfn=(34380) non-virtual thunk to ElectricEnergyInterface::update()
+calls=100 23 
+* 7000
+cfi=(1156)
+cfn=(34054)
+calls=150400 80 
+* 73211574
+fi=(214)
+434 2821342
+fe=(1089)
+575 5642684
++8 625200
+
+fn=(34082)
+719 1159692
++1 1159692
+-1 1159692
++1 1159692
+fi=(434)
+147 1159692
+fi=(909)
+33 1159692
+fe=(1089)
+721 1159692
+fi=(909)
+33 1159692
+fe=(1089)
+721 2319384
++6 2319384
+
+fn=(34528)
+550 26000
+fi=(1366)
+54 5200
+fe=(1089)
+562 10400
+fi=(1367)
+6 5200
++2 5200
+fe=(1089)
+562 5200
+fi=(1367)
+6 5200
++2 10400
+fi=(1366)
++25 10400
+fi=(48)
+816 5200
+fi=(1367)
+14 5200
++26 10400
+fi=(1366)
+-7 15600
+fe=(1089)
+568 5200
+-1 5200
++1 20800
+
+fn=(34712) Chunk::updateInNTicks(UpdatableEntity&, unsigned int)
+862 517440
++2 295680
+fi=(214)
+91 369600
+fe=(1089)
+866 295680
+fi=(1349)
+27 665280
+fe=(1089)
+868 73920
+fi=(726)
+56 147840
+fi=(214)
+404 73920
++2 73920
+-1 73920
++2 73920
++1 73920
+91 369600
+fe=(1089)
+876 443520
+-9 4232
+fi=(1349)
+20 16928
++2 8464
+fe=(1089)
+
+fl=(1151)
+fn=(33954) Inserter::moveHandTo(Vector, RealOrientation)
+941 7419370
++3 5935496
++1 2967748
+cfn=(33956) bool moveHandToInternal<ElectricEnergySource>(Inserter*, ElectricEnergySource&, Vector, RealOrientation)
+calls=1483874 -40 
+* 293986463
++5 7419370
+
+fn=(34178) Inserter::getForceMaxStackSize() const
+1614 98036
++1 245090
+fi=(48)
+816 98036
+fe=(1151)
+1615 49018
+fi=(48)
+816 98036
+fe=(1151)
+1615 392144
++1 49018
+
+fn=(34146) Inserter::dropHeldItem(bool)
+743 271820
++1 163092
++3 108728
++2 163092
+cfi=(1119)
+cfn=(31388)
+calls=54364 419 
+* 108728
+* 163092
++17 217456
+cfi=(1148)
+cfn=(34326) ContainerEntity::transfer(ItemStack&, TransferType)
+calls=49085 108 
+* 43559351
+cfi=(1155)
+cfn=(34150)
+calls=5279 73 
+* 4260153
++1 114074
++7 10692
+cfi=(1370)
+cfn=(34336)
+calls=5346 40 
+* 10692
+* 10692
++2 16038
+cfi=(1127)
+cfn=(34272)
+calls=5346 67 
+* 666621
+-37 16038
+cfi=(1123)
+cfn=(34276) UpdatableEntity::setActive(bool, bool, bool) [clone .constprop.48770]
+calls=5346 97 
+* 427680
++55 10692
++5 26730
+fi=(529) /tmp/factorio-build-ZMjCBB/src/Util/MapPosition.cpp
+183 54364
+fe=(1151)
+744 163092
+fi=(529)
+183 54364
+fi=(530)
+20 217456
+fi=(529)
+183 54364
+fi=(530)
+20 54364
++51 54364
+fi=(529)
+183 54364
+fi=(530)
+20 54364
++3 54364
+-3 108728
++51 54364
+-48 54364
+fe=(1151)
+744 108728
+cfi=(1124)
+cfn=(33898)
+calls=54364 31 
+* 8752604
+* 108728
++25 49018
++1 98036
+cfn=(34176) Inserter::updateTargetPickupCount()
+calls=49018 1619 
+* 2009738
++29 245090
+
+fn=(33894)
+802 9301260
++10 4650630
+fi=(529)
+183 1550210
+fe=(1151)
+834 4650630
+fi=(529)
+183 1550210
+fi=(530)
+20 4650630
+fi=(529)
+183 1550210
+fi=(530)
+20 1550210
++51 1550210
+fi=(529)
+183 1550210
+fi=(530)
+20 3100420
++3 1550210
+-3 3100420
++51 1550210
+-48 1550210
+fe=(1151)
+834 3100420
+cfi=(1124)
+cfn=(33898)
+calls=1550210 31 
+* 83327144
+* 3100420
++6 3100420
++9 3100420
+fi=(610)
+23 912215
+fe=(1151)
+849 2736645
++5 3648860
++46 7453273
++2 7751050
+-53 525834
++48 3189975
+cfn=(33954)
+calls=637995 +44 
+* 139891069
+* 1275990
++1 163092
+cfn=(34146)
+calls=54364 743 
+* 62730319
+* 966579
+-44 1824430
++1 1824430
++2 2736645
++10 1824430
++14 1824430
++4 1824430
+cfn=(33922) Inserter::getPickupTarget()
+calls=912215 529 
+* 515619128
+* 912215
+fi=(744) /tmp/factorio-build-ZMjCBB/src/Util/MapPosition.hpp
+40 912215
+fi=(530)
++32 912215
+-26 912215
++26 912215
+fi=(744)
+-32 912215
+fe=(1151)
+871 912215
+fi=(644)
+15 912215
+fi=(530)
++31 2736645
+fi=(744)
+-6 912215
+fi=(530)
++6 2736645
+fi=(744)
+-6 912215
+fi=(530)
++6 8209935
+fe=(1151)
+871 912215
+fi=(1119)
+523 912215
+fe=(1151)
+872 1824430
+cfi=(644)
+cfn=(30322)
+calls=912215 22 
+* 22805375
+-1 2736645
++1 1824430
++2 1824430
+cfi=(1200)
+cfn=(33912)
+calls=912215 17 
+* 1824430
+-1 3648860
+fi=(1116)
++61 1824430
+cfi=(1200)
+cfn=(30104)
+calls=912215 19 
+* 1824430
+* 912215
+fi=(674)
+386 912215
+fi=(1265)
+41 912215
+fi=(674)
+386 912215
+fi=(1265)
+41 912215
+fi=(1200)
+-22 1824430
+fi=(1585) /tmp/factorio-build-ZMjCBB/src/Force/ForceID.hpp
++3 912215
+fi=(1042)
+1043 3648860
++3 3648860
+fi=(674)
+388 1824430
+fe=(1151)
+
+fn=(34322) Inserter::BeltItemPickupTarget::getNewIndex(TransportLineConnector const&) const
+1646 37775
+fi=(530)
+23 15110
+fi=(1140)
+256 7555
+fi=(1136)
+907 15110
+-1 7555
+fi=(530)
+23 7555
+fi=(1136)
+907 7555
+fi=(530)
+23 7555
+fi=(1136)
+907 7555
+cfn=(34094)
+calls=7555 -26 
+* 378448
+* 15110
+fe=(1151)
+1649 37775
++1 7555
+fi=(400)
+146 45330
+fe=(1151)
+1649 51815
++1 30615
++3 22270
+-1 2650
++1 7950
+
+fn=(33926) Inserter::BeltItemPickupTarget::checkValidityAndClearIfNotValid(TransportBeltConnectable&) [clone .part.6742]
+1596 185542
++1 185542
+-1 371084
++15 185542
+-17 185542
++4 927710
+cfi=(1138) /tmp/factorio-build-ZMjCBB/src/Entity/UndergroundBelt.cpp
+cfn=(32442) UndergroundBelt::getTransportLine(unsigned char)
+calls=185542 849 
+* 1855420
+* 185542
++1 371084
++1 371084
+fi=(400)
+140 556626
+fe=(1151)
+1599 185542
+fi=(400)
+140 185542
++18 742168
+fe=(1151)
+1600 185542
+-1 371084
++4 15110
+cfn=(34322)
+calls=7555 +43 
+* 712843
++1 15110
++5 4905
++1 4905
++1 365784
+fi=(1136)
+914 177987
+fi=(530)
+23 177987
+fi=(1136)
+914 308261
+fi=(400)
+157 130274
+-11 130274
++11 130274
+fi=(530)
+47 390822
+fi=(1136)
+914 260548
+fi=(1140)
+78 533961
+fe=(1151)
+1602 177987
+fi=(1140)
+78 355974
+fe=(1151)
+1641 2650
+-1 2650
+-33 2650
++35 2650
+-31 5300
+
+fn=(34176)
+1619 294108
++1 147054
++8 98036
++1 98036
+cfn=(34178)
+calls=49018 -15 
+* 1029378
+* 49018
++1 294108
+
+fn=(33956)
+905 10387118
+fi=(540) /tmp/factorio-build-ZMjCBB/src/Util/Vector.cpp
+97 4451622
+fe=(1151)
+905 1483874
+fi=(540)
+97 11870992
+fi=(449)
+-69 2967748
+fe=(1151)
+912 10387118
++1 409812
+fi=(449)
+51 614718
+fe=(1151)
+917 6804652
+fi=(644)
+30 2967748
+-8 2967748
+fe=(1151)
+925 5935496
++11 298335
++1 3764931
++1 7419370
+fi=(1363)
+77 1384429
+fe=(1151)
+927 1384429
+fi=(1363)
+77 1384429
+fe=(1151)
+930 2768858
+-2 6922145
+fi=(449)
+51 6922145
+fe=(1151)
+927 8306574
+cfi=(640) /tmp/factorio-build-ZMjCBB/src/Util/RealOrientation.cpp
+cfn=(33968) RealOrientation::moveToAndReturnMovement(RealOrientation const&, float)
+calls=1384429 141 
+* 46751379
+* 6922145
++4 6922145
+fi=(1363)
+77 2768858
+fi=(449)
+-26 4153287
+fi=(1345)
+-20 5537716
+fi=(1346)
+286 8306574
+fe=(1151)
+933 6922145
+fi=(644)
+44 11075432
+fi=(449)
++46 4153287
+fi=(644)
+-45 5537716
+fi=(449)
++45 4153287
+-39 4954512
+fe=(1151)
+933 12018375
+fi=(449)
+54 2403675
+fe=(1151)
+933 8748060
+fi=(449)
+54 1749612
+-3 3199437
+fe=(1151)
+937 1384429
+-4 2768858
++4 2768858
+-1 1306128
+-17 410495
+fi=(449)
+101 1231485
+fe=(1151)
+919 820990
+fi=(449)
+101 410495
+fe=(1151)
+919 820990
+fi=(1363)
+77 820990
+fi=(449)
+-26 1231485
+fi=(1345)
+-20 1641980
+fi=(1346)
+286 2462970
+fe=(1151)
+920 2052475
++1 3283960
+-6 3836904
+fi=(449)
+51 7205877
+fe=(1151)
+915 5115872
+fi=(449)
+51 1427473
++3 635900
+fi=(1346)
+287 4265916
+fe=(1151)
+
+fn=(33922)
+529 8209935
++1 3648860
+cfi=(1119)
+cfn=(33924)
+calls=912215 180 
+* 1824430
+* 1824430
++11 2736645
++10 1824430
+cfi=(1119)
+cfn=(31388)
+calls=662654 419 
+* 1325308
+cfi=(1137) /tmp/factorio-build-ZMjCBB/src/Entity/TransportBeltConnectable.hpp
+cfn=(30550) TransportBeltConnectable::isTransportBeltConnectable() const
+calls=249561 55 
+* 499122
+* 2736645
+1596 748683
+554 556626
+cfn=(33926)
+calls=185542 1596 
+* 10959502
+* 371084
++27 66669
+fi=(529)
+183 66669
+fe=(1151)
+581 266676
+fi=(529)
+183 66669
+fi=(530)
+20 266676
+fi=(529)
+183 66669
+fi=(530)
+20 66669
++51 66669
+fi=(529)
+183 66669
+fi=(530)
+20 66669
++45 133338
+-45 133338
++51 66669
+-6 133338
+fe=(1151)
+581 66669
+cfi=(1135) /tmp/factorio-build-ZMjCBB/src/Entity/TransportBeltConnectable.cpp
+cfn=(34088) TransportBeltConnectable::getPickupOrderSpecification(TilePosition const&, TransportLineSide) const
+calls=66669 986 
+* 733359
++4 66669
+-4 66669
++4 74928
+-1 16518
+735 7297720
+535 200007
+965 133338
+608 66669
++2 133338
+-2 66669
++2 66669
+cfi=(1138)
+cfn=(32442)
+calls=66669 849 
+* 666690
+-2 333
++2 666
+-2 333
++2 333
+cfi=(1138)
+cfn=(32442)
+calls=333 849 
+* 3996
+* 67002
++1 268674
+-3 1332
++34 999
+-29 333345
+cfi=(1136)
+cfn=(34090) TransportLineConnector::registerInteraction(unsigned int, bool)
+calls=66669 1675 
+* 1200042
++1 133338
+cfi=(1140)
+cfn=(34092)
+calls=66669 255 
+* 4149993
++1 533550
+fi=(400)
+140 200601
++18 200601
+fe=(1151)
+620 66867
+fi=(400)
+158 66867
+-18 133734
+fe=(1151)
+620 66867
+fi=(400)
+140 66867
+fe=(1151)
+618 133734
++2 66867
+fi=(1126)
+1273 510
+fi=(610)
+23 66612
+fe=(1151)
+625 250044
+961 133224
++1 199836
+633 133224
+fi=(1368) /tmp/factorio-build-ZMjCBB/src/Entity/CanInsertData.hpp
+16 133224
+fe=(1151)
+633 66612
+fi=(1368)
+16 66612
+fe=(1151)
+633 133224
+fi=(1368)
+16 133224
+fe=(1151)
+633 133224
+cfi=(1148)
+cfn=(34034) ContainerEntity::canInsert(CanInsertData) const
+calls=66612 136 
+* 4064988
+* 199836
++3 66336
++1 66336
+-1 132672
+fi=(400)
+140 132672
++18 265344
+fe=(1151)
+638 331680
+-23 1593
++2 552
++39 3313270
+cfn=(33954)
+calls=662654 941 
+* 134266327
+* 1987962
++1 412866
+cfi=(1363)
+cfn=(34020)
+calls=137622 77 
+* 550488
+* 137622
+-1 688110
++3 275244
+cfi=(1119)
+cfn=(34022)
+calls=137622 423 
+* 275244
+* 412866
+fi=(1116)
+959 412866
+cfi=(1370)
+cfn=(34216)
+calls=99174 33 
+* 198348
+cfi=(1156)
+cfn=(34024)
+calls=38448 52 
+* 76896
++1 275244
++2 550488
+cfi=(1370)
+cfn=(34218)
+calls=99174 36 
+* 495870
+cfi=(1153)
+cfn=(34028)
+calls=38448 147 
+* 153792
+fe=(1151)
+675 137622
+fi=(1116)
+962 137622
+fe=(1151)
+675 137622
++7 137622
++1 1100976
++15 275244
+-1 275244
++1 19041783
+fi=(1364)
+130 4661178
+fi=(48)
+798 9322356
+fi=(610)
+23 4661178
+fe=(1151)
+701 9322356
+fi=(1364)
+130 137622
+fi=(48)
+798 275244
+fi=(610)
+23 137622
+fe=(1151)
+701 275244
++5 275244
+fi=(610)
+23 137622
+fe=(1151)
+711 275244
+961 275244
++1 412866
+717 412866
+fi=(1368)
+16 137622
+fe=(1151)
+717 137622
+fi=(1368)
+16 137622
+fe=(1151)
+717 137622
+fi=(1368)
+16 137622
+fe=(1151)
+717 275244
+cfi=(1155)
+cfn=(34220)
+calls=99174 108 
+* 26263286
+cfi=(1148)
+cfn=(34034)
+calls=38448 136 
+* 1499472
+* 550488
++4 131139
+cfn=(33972) Inserter::transferToHand(ItemStack&)
+calls=43713 1188 
+* 37569876
+* 131139
+-1 76896
+556 731568
+cfi=(1138)
+cfn=(32442)
+calls=182892 849 
+* 1828920
++1 365784
+-1 182892
+fi=(1136)
+914 182892
+fi=(530)
+23 182892
+fi=(1136)
+914 182892
+fi=(400)
+146 651370
++11 260548
+fi=(1137)
+-82 914460
+fi=(530)
+-52 182892
+fi=(1137)
++52 365784
+cfi=(1138)
+cfn=(33942) UndergroundBelt::getPositionSafe(TransportLineConnector const&, FixedPointNumberTemplate<int, 8u>) const
+calls=182892 798 
+* 13716900
+fi=(530)
+-3 365784
+fi=(540)
+298 182892
+fi=(530)
+33 182892
+fi=(540)
+298 182892
+fi=(530)
+33 365784
++39 365784
+-39 2560488
+fi=(540)
+298 182892
+cfi=(640)
+cfn=(12970) RealOrientation::RealOrientation(Vector const&)
+calls=182892 93 
+* 28714044
+fi=(1152)
+145 182892
+fi=(540)
+298 365784
+fi=(1152)
+145 731568
+cfi=(1151)
+cfn=(33954)
+calls=182892 941 
+* 43536883
+fe=(1151)
+559 429509
+fi=(400)
+140 191175
++18 254900
+-18 191175
+fe=(1151)
+961 127450
++1 127450
+1640 63725
++1 63725
++1 127450
+fi=(400)
+146 260548
+fi=(530)
+-99 260548
+fi=(1136)
+914 392097
+cfi=(1126)
+cfn=(33982) ItemStack::itemEquals(ItemStack const&) const [clone .part.4526]
+calls=255 1275 
+* 3315
+fe=(1151)
+620 765
+-59 63725
++7 127450
+cfn=(33972)
+calls=63725 1188 
+* 32629554
+* 127450
++1 5340
++1 127450
++2 318625
+cfi=(1136)
+cfn=(33808) TransportLine::remove(unsigned int, bool, bool)
+calls=63725 950 
+* 15394181
++1 254900
+fi=(1137)
+39 63725
+fe=(1151)
+573 127450
++97 87426
+-20 1665
+cfn=(33954)
+calls=333 941 
+* 34168
+* 666
++2 1480
+cfn=(34250) Inserter::tryToGetToSleep(bool, bool)
+calls=296 1301 
+* 66821
+* 296
++66 187818
++9 397071
++2 264714
++1 563454
+cfn=(34250)
+calls=93909 1301 
+* 38157292
+* 93909
+
+fn=(33972)
+1188 429752
+fi=(1126)
+387 107438
+fe=(1151)
+1190 107438
+fi=(1126)
+387 322314
+fe=(1151)
+1192 214876
+-1 214876
++1 107438
+cfi=(1126)
+cfn=(33976) ItemStack::transfer(ItemStack&, unsigned int, unsigned int, bool) [clone .constprop.48788]
+calls=107438 927 
+* 67513480
+* 214876
++2 107438
++1 107438
+-1 214876
++1 107438
++5 429752
+
+fn=(33990) non-virtual thunk to Inserter::postTransferHook(NotificationData const&)
+1675 2961454
+cfn=(33992)
+calls=161802 518 
+* 33493014
+* 323604
+
+fn=(33992)
+518 782817
++1 260939
+-1 260939
++1 260939
+cfi=(1362)
+cfn=(33818)
+calls=260939 12 
+* 12471247
+* 260939
++2 1304695
+fi=(529)
+183 260939
+fe=(1151)
+524 521878
+fi=(529)
+183 260939
+fi=(530)
+20 1043756
+fi=(529)
+183 260939
+fi=(530)
+20 260939
++51 260939
+fi=(529)
+183 260939
+fi=(530)
+20 260939
++3 260939
+-3 521878
++51 260939
+-48 260939
+fe=(1151)
+524 521878
+cfi=(1124)
+cfn=(33996)
+calls=260939 42 
+* 35487704
+* 521878
++2 1043756
+-5 198274
+fi=(1123)
+107 198274
+fe=(1151)
+522 99137
+fi=(1123)
+109 198274
+cfi=(1152)
+cfn=(32764)
+calls=99137 -49 
+* 198274
+* 594822
+cfn=(33826) UpdatableEntity::setActive(bool, bool, bool) [clone .part.46138]
+calls=99137 -12 
+* 16060194
+* 99137
+fe=(1151)
+
+fn=(34250)
+1301 94205
+fi=(48)
+89 94205
+fe=(1151)
+1301 847845
++3 94205
+fi=(674)
+137 94205
+fi=(48)
+-48 188410
+fe=(1151)
+1304 94205
++59 94205
+fi=(674)
+706 94205
+fe=(1151)
+1363 94205
++17 376236
+fi=(48)
+671 281739
+fi=(674)
+36 657391
+fi=(48)
+798 469565
+fe=(1151)
+1400 93913
+fi=(1127)
+85 187826
+fi=(674)
+-49 93917
+fi=(48)
+798 469585
+fe=(1151)
+1400 93917
+fi=(1127)
+85 1690474
+-1 1126980
++4 375660
+cfn=(34272)
+calls=187830 -21 
+* 5011336
+fi=(674)
+-52 939738
+fe=(1151)
+1307 188410
++9 188410
+cfi=(1137)
+cfn=(30550)
+calls=296 55 
+* 592
+cfi=(1119)
+cfn=(31388)
+calls=93909 419 
+* 187818
+* 188410
++2 94797
+fi=(674)
+699 188410
+fe=(1151)
+1363 94173
++2 188346
++2 188346
+cfi=(1119)
+cfn=(31388)
+calls=94173 419 
+* 188346
+* 376692
++4 94205
+fi=(48)
+179 188410
+fe=(1151)
+1403 753640
+-89 376524
++36 187818
+cfi=(1370)
+cfn=(34254)
+calls=93909 41 
+* 187818
++1 93909
+-1 93909
++1 93909
++2 469545
+cfi=(1116)
+cfn=(34256) Entity::hasItemsInside() const
+calls=93909 1455 
+* 6291903
+* 187818
+739 281739
+cfi=(1123)
+cfn=(34276)
+calls=93913 97 
+* 7513040
+* 188118
+1381 188410
+cfi=(1137)
+cfn=(30550)
+calls=296 55 
+* 592
+cfi=(1119)
+cfn=(31388)
+calls=93909 419 
+* 187818
+* 376820
+fi=(529)
+183 296
+fe=(1151)
+1384 888
+fi=(529)
+183 296
+fe=(1151)
+1384 296
+fi=(530)
+20 1184
+fi=(529)
+183 296
+fi=(530)
+20 296
++51 296
+fi=(529)
+183 296
+fi=(530)
+20 296
++45 592
+-45 592
++51 296
+-6 592
+fe=(1151)
+1384 592
+cfi=(1135)
+cfn=(34088)
+calls=296 986 
+* 3256
+* 888
++3 1184
+cfi=(1138)
+cfn=(32442)
+calls=296 849 
+* 2960
+* 16
+cfi=(1138)
+cfn=(32442)
+calls=4 849 
+* 48
+* 300
+fi=(214)
+91 1500
+fe=(1151)
+1390 40
+cfi=(674)
+cfn=(34814) SmallVector<WakeUpList*, 3ul>::push_back(WakeUpList*&&)
+calls=8 287 
+* 112
+* 8
+-5 20
+-10 188346
+cfi=(1370)
+cfn=(34336)
+calls=264 40 
+* 528
+cfi=(1156)
+cfn=(34266)
+calls=93909 48 
+* 187818
+* 282519
++1 282519
+cfi=(674)
+cfn=(34268) SmallVector<WakeUpList*, 3ul>::push_back(WakeUpList* const&)
+calls=94173 317 
+* 1318422
+* 94173
++19 187818
+cfi=(1370)
+cfn=(34254)
+calls=93909 41 
+* 187818
+* 281727
++1 281727
+cfi=(674)
+cfn=(34268)
+calls=93909 317 
+* 1314726
+* 93909
+-23 296
+fi=(529)
+183 296
+fe=(1151)
+1321 1480
+fi=(529)
+183 296
+fi=(530)
+20 1184
+fi=(529)
+183 296
+fi=(530)
+20 296
++51 296
+fi=(529)
+183 296
+fi=(530)
+20 296
++45 592
+-45 592
++51 296
+-6 592
+fe=(1151)
+1321 592
+cfi=(1135)
+cfn=(34088)
+calls=296 986 
+* 3256
+* 592
++2 888
++3 1184
+cfi=(1138)
+cfn=(32442)
+calls=296 849 
+* 2960
+* 296
++1 888
+
+fl=(1068) /tmp/factorio-build-ZMjCBB/src/Logistics/ConstructionManager.cpp
+fn=(34420) ConstructionManager::processToDeconstructQueue(std::deque<DeconstructionOrder, std::allocator<DeconstructionOrder> >&)
+509 600
++1 1200
+666 600
+
+fn=(34418) ConstructionManager::sendRobotsToDeconstruct()
+401 600
++1 300
+-1 2100
++1 300
+cfn=(34420)
+calls=300 509 
+* 1200
++1 900
+cfn=(34420)
+calls=300 509 
+* 1200
+229 300
+fi=(1265)
+41 600
+fi=(674)
+386 600
+fi=(48)
+798 1200
+fe=(1068)
+408 600
+fi=(20)
+969 600
+fe=(1068)
+408 300
++1 300
+-1 600
++1 300
++18 2400
+fi=(674)
+-39 600
+fe=(1068)
+
+fl=(1116)
+fn=(34256)
+1455 375636
++1 93909
+-1 187818
++1 187818
+cfi=(1370)
+cfn=(34258)
+calls=93909 37 
+* 187818
+* 469545
+cfi=(1370)
+cfn=(34258)
+calls=93909 37 
+* 187818
+* 187818
+fi=(1119)
+269 187818
+fe=(1116)
+1457 187818
+fi=(1119)
+269 563454
+cfi=(1370)
+cfn=(34218)
+calls=187818 36 
+* 939090
+fe=(1116)
+1457 187818
+fi=(1119)
+269 187818
+fe=(1116)
+1457 187818
++1 375636
+cfi=(1119)
+cfn=(34262)
+calls=93909 216 
+* 187818
+* 375636
+fi=(1125)
+521 187818
++1 187818
+fe=(1116)
+1462 93909
+-2 93909
++2 469545
+
+fn=(34306) Entity::onActivate()
+825 76927
++1 153854
+cfi=(1119)
+cfn=(34308)
+calls=76927 136 
+* 153854
+* 153854
++2 153854
+
+fl=(1149) /tmp/factorio-build-ZMjCBB/src/Item/ItemFrequencyCounter.cpp
+fn=(34296) ItemFrequencyCounter::onTransfer(NotificationData const&)
+9 464065
++3 278439
+fi=(613)
++69 92813
+fe=(1149)
+-60 185626
+fi=(48)
+798 278439
+fe=(1149)
+21 92813
+fi=(613)
++60 92813
+fe=(1149)
+-60 278439
+cfi=(910)
+cfn=(34300)
+calls=92813 +50 
+* 185626
+* 185626
++7 387137
++38 556878
+-16 174912
++48 92813
+-1 92813
++1 239976
+-1 54350
++1 108700
+-66 92813
+-1 92813
++1 92813
++1 92813
+-1 92813
++1 180269
+-6 87456
++30 87456
++1 76926
+
+fl=(1203)
+fn=(34362)
+88 191361
+cfi=(1363)
+cfn=(34020)
+calls=63787 -11 
+* 255148
+* 382722
+
+fl=(1241) /tmp/factorio-build-ZMjCBB/src/ManualRepairer.cpp
+fn=(34484) ManualRepairer::performRepair()
+33 800
++1 200
++31 100
+cfn=(34486) ManualRepairer::stopAndFail()
+calls=100 +14 
+* 2400
+* 100
++11 800
+
+fn=(34486)
+79 100
++1 300
+cfi=(1376)
+cfn=(34488)
+calls=100 -26 
+* 200
+* 200
+fi=(1377) /tmp/factorio-build-ZMjCBB/src/LatencyProxy.cpp
+313 400
++1 100
+cfi=(1163)
+cfn=(34492)
+calls=100 1518 
+* 800
+fe=(1241)
+83 300
+
+fl=(1136)
+fn=(34090)
+1675 266676
++2 66669
+-2 133338
++2 266676
++3 66669
+-1 66669
++1 66669
++1 266676
+
+fn=(29654) TransportLine::advanceFirstGapIndex()
+927 222235
+fi=(400)
+140 266682
+fe=(1136)
+927 9403102
+fi=(530)
+54 1179439
+fe=(1136)
+928 2358878
+-7 6482
++9 37965
+-9 37965
+
+fn=(33792) TransportLine::activateSideInputs()
+1560 2733036
+fi=(1127)
+109 1823472
++1 4344
+cfi=(1123)
+cfn=(33816) non-virtual thunk to MiningDrill::alarm()
+calls=1448 -1 
+* 354760
+* 1448
+-1 1824920
+fi=(674)
+-73 911012
+fi=(48)
+798 911012
+671 2733036
+fi=(674)
+36 2733036
+fi=(48)
+798 2877656
+fe=(1136)
+1562 719414
++1 2158242
+-72 719414
+fi=(674)
+36 1438828
+fe=(1136)
+1565 1822024
+
+fn=(33808)
+950 1530918
++2 510306
++9 1020612
++14 122235
+fi=(400)
+140 162980
++18 162980
+fe=(1136)
+987 40745
+fi=(400)
+140 81490
+fi=(530)
+-93 40745
+fi=(400)
+158 162980
+-18 81490
+fi=(530)
+-93 40745
+fe=(1136)
+988 40745
+fi=(530)
+47 40745
+fe=(1136)
+988 40745
++7 81490
+cfi=(400)
+cfn=(34010)
+calls=40745 259 
+* 5745045
++2 122235
++11 510306
+1491 191175
+1011 127450
+cfn=(33780) TransportLine::activateDirectInputs()
+calls=63725 1548 
+* 2259727
++1 127450
+cfi=(1140)
+cfn=(33788)
+calls=63725 117 
+* 858740
+* 127450
++3 765712
+1491 318625
+cfi=(214)
+cfn=(33784) TransportLine::activateBack() [clone .part.7190]
+calls=63725 91 
+* 411702
+* 63725
+fi=(400)
+131 214408
+fi=(530)
+-84 857632
+fe=(1136)
+964 214408
+cfi=(400)
+cfn=(33812)
+calls=214408 109 
+* 3654276
++1 643224
++2 423550
++1 30764
++2 643224
++2 643224
++41 63725
++2 191175
+-2 63725
+cfn=(33792)
+calls=63725 1560 
+* 1784300
+-23 81490
++1 81490
+-25 5266
+cfn=(29654)
+calls=2633 -39 
+* 711743
+* 2633
+
+fn=(33778) TransportLine::unsquash(FixedPointNumberTemplate<int, 8u>)
+328 2733456
++45 911152
+
+fn=(33800)
+1597 765843
++1 255281
+-1 255281
+fi=(530)
+16 255281
+fe=(1136)
+1598 255281
+fi=(1144)
+30 255281
+fi=(610)
+-13 255281
+fi=(1144)
++13 255281
+fe=(1136)
+1600 510562
++3 32454
+cfi=(1126)
+cfn=(33976)
+calls=16227 927 
+* 3943161
++1 64908
+-3 239054
+cfi=(1126)
+cfn=(33802)
+calls=239054 657 
+* 12272222
++3 956216
+
+fn=(33760) TransportLine::update(unsigned int, unsigned int)
+182 1706116
++4 1706116
+-5 3290440
++7 1974264
++5 658088
+-1 658088
++1 1316176
+fi=(214)
+91 3290440
+fe=(1136)
+221 658088
+-2 658088
++2 1316176
+-18 11542
+cfi=(214)
+cfn=(33774) TransportLine::deactivate()
+calls=5771 91 
+* 103878
++2 7433938
+cfn=(33764) TransportLine::move(unsigned int, TransportLine*, TransportLine*, SplitterMovementResult&, bool) [clone .part.46962]
+calls=658088 +2 
+* 109122104
+-10 1316176
++2 1304634
+cfn=(33780)
+calls=652317 1548 
+* 18445157
++1 1304634
+cfi=(1140)
+cfn=(33788)
+calls=652317 -81 
+* 25227540
+* 1956951
+fi=(1127)
+-89 1304638
++1 12
+cfi=(1152)
+cfn=(34050)
+calls=4 * 
+* 1788
+* 4
+-1 12
+fe=(1136)
++90 1304634
+cfn=(33792)
+calls=652317 1560 
+* 16522194
+* 652317
+-5 1163348
+cfn=(33761) TransportLine::update(unsigned int, unsigned int)'2
+calls=581674 -12 
+* 68487290
+* 581674
+
+fn=(33761)
+182 1319896
++4 1319896
+-5 996145
++7 597687
++5 199229
+-1 199229
++1 398458
+fi=(214)
+91 796625
+fe=(1136)
+221 199229
+-2 199229
++2 398458
+-18 8518
+cfi=(214)
+cfn=(33774)
+calls=4259 91 
+* 76662
++2 2652238
+cfn=(33764)
+calls=199229 +2 
+* 39105309
+-10 398458
++2 389940
+cfn=(33780)
+calls=194970 1548 
+* 6823950
++1 389940
+cfi=(1140)
+cfn=(33788)
+calls=194970 -81 
+* 4764452
+* 584910
+fi=(1127)
+-89 389940
+fe=(1136)
++90 389940
+cfn=(33792)
+calls=194970 1560 
+* 5459160
+* 194970
+-5 156548
+cfn=(33761)
+calls=78274 -12 
+* 29617546
+* 78274
+
+fn=(33770) TransportLine::tryToInsert(ItemStack*, FixedPointNumberTemplate<int, 8u>, FixedPointNumberTemplate<int, 8u>, bool)
+392 3159940
+fi=(530)
+52 451420
+fe=(1136)
+395 902840
+fi=(530)
+54 451420
+fe=(1136)
+395 902840
++3 4062780
++2 98268
+-2 98268
++2 98268
++1 196536
++2 294804
++41 196536
+1507 1786967
+fi=(1127)
+109 510562
+fe=(1136)
+615 255281
+-33 255281
++33 1786967
+fi=(530)
+52 98268
+fe=(1136)
+455 196536
+615 196139
+396 196139
+615 1372973
+400 1059456
++5 706304
+507 1276405
+cfi=(400)
+cfn=(33798)
+calls=255281 99 
+* 31876516
+fi=(530)
+72 510562
+fe=(1136)
+508 510562
+fi=(530)
+53 353152
+fe=(1136)
+414 706304
++4 323448
+fi=(530)
+72 294804
+fe=(1136)
+481 196536
++37 32214
+fi=(400)
+140 64428
+fe=(1136)
+514 32214
+fi=(400)
+140 161070
+fi=(530)
+-69 80535
+fi=(400)
++69 32214
+fi=(530)
+-69 32214
+fe=(1136)
+521 32214
+fi=(400)
+140 64428
+fi=(530)
+-69 161070
+fi=(400)
++69 64428
+fi=(530)
+-69 64428
+fe=(1136)
+521 64428
++3 32214
++4 16107
++46 96642
+430 382856
+fi=(530)
+72 382856
+fi=(449)
+-18 191428
+fi=(530)
++18 382856
+-1 191428
+fi=(449)
+-17 394076
+fe=(1136)
+432 3740
+fi=(400)
+134 14960
++24 14960
+fe=(1136)
+434 7480
++1 3740
+-1 3740
++1 3740
+-3 187688
+fi=(400)
+134 750752
++24 750752
+fe=(1136)
+434 375376
++1 187688
+-1 187688
++1 187688
++68 7480
++1 12904
+-20 82161
+fi=(530)
+71 63853
+fe=(1136)
+487 127706
++2 105918
++2 317754
+cfi=(48)
+cfn=(32416)
+calls=52959 671 
+* 1218057
+* 264795
++4 127706
+fi=(530)
+72 63853
+fi=(400)
++62 255412
+fi=(530)
+-62 191559
+fi=(400)
++62 127706
+fe=(1136)
+497 63853
+fi=(530)
+72 63853
+fi=(400)
++86 255412
+fe=(1136)
+502 127706
++1 63853
+-1 63853
++1 63853
++2 63853
++70 144963
+-57 96642
+fi=(530)
+71 48321
+fe=(1136)
+518 64428
+fi=(214)
+91 1276399
+fe=(1136)
+1512 6
+fi=(214)
+404 3
++2 3
+-1 3
++2 3
++1 3
+fi=(1139) /tmp/factorio-build-ZMjCBB/src/Entity/TransportLineManager.cpp
+86 6
+fe=(1136)
+557 32214
+fi=(530)
+72 32214
+fe=(1136)
+562 32214
++4 32214
++5 48321
+-4 32214
+
+fn=(33780)
+1548 1822024
+fi=(48)
+671 3644048
+fi=(674)
+36 4699680
+fe=(1136)
+1491 4316484
++64 2733036
+-6 719414
++1 2877656
++7 1630426
+cfi=(214)
+cfn=(33784)
+calls=719414 91 
+* 4366652
+* 719414
+
+fn=(34094)
+881 74224
++10 74224
++2 74224
+-2 74224
++2 74224
+-12 222672
+fi=(530)
+52 74224
+fe=(1136)
+893 148448
+-12 57
++20 57
++1 57
+-1 57
++1 171
+-1 74167
++1 74167
+-1 74167
++1 222501
+-9 148448
+fi=(530)
+52 74224
+fe=(1136)
+898 222615
+fi=(400)
+146 497259
+fe=(1136)
+898 379272
++1 505696
+fi=(530)
+47 252848
+fe=(1136)
+898 252848
+
+fn=(33764)
+207 1714634
++19 857317
+-19 4286585
++19 857317
+fi=(530)
+23 857317
+fe=(1136)
+226 857317
++2 6001219
++55 857317
+fi=(530)
+23 857317
+fe=(1136)
+232 5143902
+fi=(530)
+23 255293
+fe=(1136)
+232 7967994
++2 2225220
++10 786112
++3 706304
++51 604884
+fi=(400)
+140 383196
+fi=(530)
+23 191598
+fi=(400)
+158 766392
+-18 383196
+fi=(530)
+-68 383196
+fi=(449)
+-21 191598
+fi=(530)
+-30 191598
+fi=(449)
++30 191598
+fe=(1136)
+303 83628
+cfn=(29654)
+calls=41814 927 
+* 12801005
+* 41814
+fi=(530)
+47 719554
++2 719554
+fe=(1136)
+239 719554
+fi=(530)
+49 719554
+fe=(1136)
+239 719554
+fi=(530)
+49 719554
+-26 719554
+fe=(1136)
+239 719554
+cfn=(33778)
+calls=719554 +89 
+* 2878216
+-11 4364165
++89 7625583
+-89 20060
++89 90270
+fi=(530)
+71 2145412
++1 4482422
+fe=(1136)
+302 574794
+fi=(530)
+49 191598
+fe=(1136)
+302 191598
+fi=(530)
+47 191598
+fe=(1136)
+309 383196
+fi=(530)
+23 191598
+fe=(1136)
+309 383196
+cfn=(33778)
+calls=191598 +19 
+* 766392
+* 191598
+-83 6698920
++53 706304
+fi=(530)
+56 706304
+fe=(1136)
+281 1059456
+fi=(530)
+23 353152
+fe=(1136)
+283 1412608
+fi=(400)
+131 353152
+fi=(530)
+23 353152
+fe=(1136)
+283 1412608
+fi=(530)
+23 353152
+fi=(400)
+131 706304
+fe=(1136)
+283 706304
+cfn=(33770)
+calls=353152 392 
+* 38630764
+* 706304
++5 574284
++2 957140
+cfn=(33808)
+calls=191428 950 
+* 10707369
++1 574284
++18 382856
+
+fl=(1177) /tmp/factorio-build-ZMjCBB/src/Info/AlertCenter.cpp
+fn=(34456) AlertCenter::update()
+346 200
+fi=(20)
+969 100
+fe=(1177)
+346 500
++2 200
+-2 200
+fi=(20)
+969 100
+fe=(1177)
+348 500
++1 400
+fi=(48)
+671 1000
+fe=(1177)
+350 500
+fi=(48)
+798 100
+fe=(1177)
+353 200
++1 100
+fi=(48)
+798 400
+671 400
+fe=(1177)
+353 200
+fi=(48)
+798 700
+fe=(1177)
+353 1400
++1 700
+fi=(48)
+798 2800
+671 2800
+fe=(1177)
+353 1400
+-3 3200
+fi=(20)
+-63 200
+cfi=(9)
+cfn=(5462)
+calls=100 0 
+* 1300
+fe=(1177)
++62 100
+fi=(20)
+-62 100
+fe=(1177)
++62 100
++10 300
+fi=(48)
+1531 300
+fe=(1177)
+360 200
+fi=(48)
+671 300
+fe=(1177)
+360 200
+fi=(20)
+-73 200
+cfi=(9)
+cfn=(5462)
+calls=100 0 
+* 1300
+fe=(1177)
++72 100
+fi=(20)
+-72 100
+fe=(1177)
++72 300
++8 300
+fi=(48)
+671 400
+fe=(1177)
+368 100
++4 100
+-4 300
+748 3200
+fi=(48)
++50 400
+fe=(1177)
+372 800
+fi=(48)
+798 1600
+671 1600
+fe=(1177)
+372 800
+-4 2800
+fi=(20)
+-81 200
+cfi=(9)
+cfn=(5462)
+calls=100 0 
+* 1300
+fe=(1177)
++80 200
++20 200
+cfn=(34462) AlertCenter::processSounds()
+calls=100 646 
+* 1300
++1 800
+
+fn=(34462)
+646 700
+fi=(1163)
+479 200
+fi=(1356)
+-50 400
+fe=(1177)
+
+fl=(1372)
+fn=(34292)
+535 538489
+cfi=(1148)
+cfn=(34294)
+calls=76927 112 
+* 5461811
+* 615416
+cfi=(1150) /tmp/factorio-build-ZMjCBB/src/Entity/InfinityContainerSettings.cpp
+cfn=(34304) InfinityContainerSettings::flagForUpdate()
+calls=76927 266 
+* 16616232
+
+fl=(954) /tmp/factorio-build-ZMjCBB/src/Item/InventoryBuffer.cpp
+fn=(34192) InventoryBuffer::transfer(ItemStack&, unsigned int, InventoryOwnerSpecification*, bool) [clone .constprop.48722]
+63 255504
++1 383256
+cfi=(1125)
+cfn=(34194)
+calls=63876 +16 
+* 24350756
+
+fn=(24134) InventoryBuffer::~InventoryBuffer()
+52 191628
+fi=(79)
+780 127752
+fe=(954)
+54 127752
+fi=(48)
+179 127752
+fe=(954)
+56 255504
+
+fl=(1080)
+fn=(34210)
+215 817092
+fi=(79)
+780 408546
+fe=(1080)
+215 612819
++23 408546
+fi=(610)
+28 408546
+fe=(1080)
+240 3728857
+fi=(610)
+28 2911765
+fe=(1080)
+240 5823530
+-2 2911765
+fi=(79)
+802 2911765
+fe=(1080)
+238 2911765
+-17 204273
++1 1429911
+-4 408546
+
+fn=(34622)
+215 2000
+fi=(79)
+780 1000
+fe=(1080)
+215 1500
++23 1000
+fi=(610)
+28 1000
+fe=(1080)
+240 2200
+fi=(610)
+28 600
+fe=(1080)
+240 1200
+-2 600
+fi=(79)
+802 600
+fe=(1080)
+238 600
+-17 500
++1 3500
++18 400
+-22 1000
+
+fl=(214)
+fn=(33842)
+91 100
++97 300
+-97 700
++97 100
+-97 400
+fi=(24)
++42 200
+fi=(1094)
+943 200
+fe=(214)
+91 200
+
+fn=(33784)
+91 3895815
+fi=(1136)
+1503 783139
+-7 9940
+fe=(214)
+404 9940
+242 9940
+406 9940
+-1 9940
++2 9940
++1 9940
+fi=(1139)
+79 9940
+fi=(1136)
+1500 19880
+fe=(214)
+
+fn=(33874)
+91 150500
++97 150500
+-97 903000
+fi=(1089)
+568 150500
+fe=(214)
+
+fn=(33774)
+91 50150
+fi=(1136)
+1520 10030
++1 20060
+fe=(214)
+112 20060
++1 30090
++1 10030
++1 10030
++1 10030
+fi=(1139)
+-23 10030
+fi=(1136)
+1526 10030
+fe=(214)
+
+fl=(674)
+fn=(34814)
+287 8
+-20 8
+fi=(48)
+671 40
+fe=(674)
+289 24
++2 16
++1 16
+
+fn=(34268)
+317 188082
+-50 188082
+fi=(48)
+671 940410
+fe=(674)
+319 564246
++26 376164
+-23 376164
+
+fl=(1356)
+fn=(33722) Game::update()
+160 900
+fi=(203)
+51 100
++5 100
+cfi=(9)
+cfn=(7278)
+calls=100 -56 
+* 3300
+fe=(1356)
+162 100
+fi=(203)
+51 100
+fe=(1356)
+162 100
+cfi=(1010) /tmp/factorio-build-ZMjCBB/src/Map/Map.cpp
+cfn=(33724) Map::update()
+calls=100 1339 
+* 2834370218
++1 100
+fi=(1367)
+8 200
+-2 100
++2 100
+-2 100
++2 100
+fi=(1366)
++25 100
+fi=(1367)
+-19 100
+fi=(1366)
++19 900
+fi=(674)
+386 200
++2 200
+-2 200
+fi=(1366)
+33 100
+fi=(674)
+386 100
++2 100
+-2 100
+fi=(1265)
+41 300
+fe=(1356)
+166 1000
+fi=(20)
+969 100
+fe=(1356)
+167 300
++1 100
+fi=(203)
+51 100
++5 100
+cfi=(9)
+cfn=(7278)
+calls=100 -56 
+* 3300
+-5 100
+fi=(48)
+798 100
+fi=(1186)
+208 100
+fi=(1077)
+432 100
+fi=(1186)
+208 100
+fi=(1077)
+432 300
+cfn=(34662)
+calls=100 +82 
+* 46348
+-1 200
+cfi=(204)
+cfn=(33706)
+calls=100 183 
+* 11300
+fi=(20)
+287 200
+cfi=(9)
+cfn=(5462)
+calls=100 0 
+* 1300
+fe=(1356)
+167 100
+fi=(20)
+287 100
+fe=(1356)
+167 300
+fi=(1367)
+14 300
++1 100
++2 200
+-3 600
++1 200
++2 400
+fi=(79)
+780 200
+fe=(1356)
+170 300
++1 200
+cfi=(1163)
+cfn=(34678)
+calls=100 713 
+* 5300
+* 200
+cfi=(1163)
+cfn=(34678)
+calls=100 713 
+* 5300
+* 200
+-1 400
+-9 200
+cfi=(204)
+cfn=(33706)
+calls=100 +22 
+* 11300
++11 800
+fi=(1367)
+40 1200
+-22 200
+fi=(1366)
++15 1100
+cfi=(1367)
+cfn=(34642)
+calls=100 +7 
+* 900
+* 500
+fe=(1356)
+
+fn=(34540)
+447 1200
++2 400
++1 400
+
+fl=(530)
+fn=(34516)
+23 206
+fi=(1376)
++16 206
+fe=(530)
+-16 618
+fi=(1376)
++16 206
+fe=(530)
+
+fn=(34120) TransportBelt::getItemInsertionSpecification(MapPosition const&)
+56 132683
+fi=(1134) /tmp/factorio-build-ZMjCBB/src/Entity/TransportBelt.cpp
+450 398049
++1 265366
+fe=(530)
+16 265366
++56 132683
+-56 265366
++56 265366
+fi=(1134)
+460 398049
+fe=(530)
+72 265366
+fi=(1134)
+468 530732
++14 663415
++1 530732
+fe=(530)
+23 265366
+
+fl=(1010)
+fn=(33724)
+1339 800
++1 400
+fi=(48)
+671 200
+fi=(203)
+51 100
++5 100
+cfi=(9)
+cfn=(7278)
+calls=100 -56 
+* 3300
+fi=(434)
++91 100
+fi=(203)
+-96 100
+fi=(48)
+671 100
+fe=(1010)
+1355 327
+fi=(1139)
+51 254
++2 108
+cfn=(33732) TransportLineManager::remergeTransportLineSequence(TransportLine*, bool)
+calls=27 +44 
+* 58632
+-5 354
+fi=(214)
+344 100
+fi=(1139)
+59 200
+fi=(214)
+429 853058
+fi=(1139)
+66 853058
+fi=(214)
+429 853058
+fi=(1139)
+66 853058
+fi=(1361)
+-37 852958
+fi=(1139)
++40 2558874
+cfi=(1136)
+cfn=(33760)
+calls=852958 182 
+* 273433845
+* 300
+cfi=(1136)
+cfn=(33760)
+calls=100 182 
+* 42700
+* 853058
+-8 1706316
++10 100
+fe=(1010)
+1354 200
+cfi=(204)
+cfn=(33706)
+calls=100 183 
+* 11300
++6 700
++1 400
++1 100
+cfi=(357)
+cfn=(33834)
+calls=100 1160 
+* 1858544059
+* 100
+-2 200
++7 300
+cfi=(1039) /tmp/factorio-build-ZMjCBB/src/Rail/TrainManager.cpp
+cfn=(34394) TrainManager::update(bool)
+calls=100 236 
+* 23500
+fi=(79)
+780 200
+fe=(1010)
+1370 100
+fi=(1041) /tmp/factorio-build-ZMjCBB/src/Force/ForceManager.cpp
+105 300
++1 400
+cfi=(1042)
+cfn=(34408) ForceData::update(unsigned int)
+calls=100 700 
+* 987264
+* 800
+cfi=(1042)
+cfn=(34408)
+calls=200 700 
+* 454734
+-1 600
+fi=(79)
+780 200
+fe=(1010)
+1371 700
+fi=(1163)
+382 400
++4 100
+-2 100
++1 100
++1 200
++7 200
+cfi=(1177)
+cfn=(34456)
+calls=100 -47 
+* 39600
++1 300
+cfi=(1183) /tmp/factorio-build-ZMjCBB/src/Controller/GodController.cpp
+cfn=(34466) GodController::update()
+calls=100 165 
+* 27900
++1 300
++2 200
+cfn=(34514)
+calls=100 773 
+* 655100
+784 500
+399 300
+cfn=(34534)
+calls=100 797 
+* 22785
++1 200
+cfn=(34536)
+calls=100 1548 
+* 6250
+fe=(1010)
+1371 200
++5 300
+cfi=(1081) /tmp/factorio-build-ZMjCBB/src/Energy/ElectricNetworkManager.cpp
+cfn=(34542) ElectricNetworkManager::update(Map&)
+calls=100 123 
+* 690198406
+fi=(203)
+51 100
++5 100
+cfi=(9)
+cfn=(7278)
+calls=100 -56 
+* 3300
+fi=(79)
+780 200
+fi=(203)
+51 100
+fe=(1010)
+1383 200
+fi=(79)
+780 200
+fe=(1010)
+1389 400
++2 100
+fi=(48)
+671 300
+fe=(1010)
+1391 200
+-10 200
+cfi=(204)
+cfn=(33706)
+calls=100 183 
+* 11300
++20 900
++3 200
+cfn=(32142) Map::applyStagedChanges()
+calls=100 1564 
+* 1600
++7 200
+fi=(1367)
+8 100
+-2 100
+fe=(1010)
+1411 100
+fi=(1367)
+8 100
+-2 100
+fe=(1010)
+1411 100
++1 100
+fi=(1367)
+8 100
+fi=(1366)
++25 300
+fi=(1367)
++7 100
+fi=(1366)
+-7 1500
+fi=(674)
+386 400
+fe=(1010)
+1415 900
+cfi=(1043) /tmp/factorio-build-ZMjCBB/src/Force/EvolutionFactorData.cpp
+cfn=(34648) EvolutionFactorData::update(Map const&)
+calls=300 56 
+* 34200
+fi=(1367)
+17 600
+fe=(1010)
+1416 800
+fi=(1367)
+40 1000
+-22 200
+fi=(1366)
++15 700
+fi=(674)
+386 100
+fi=(1366)
+33 200
+fi=(674)
+386 200
+fe=(1010)
+1415 600
+fi=(47)
+158 4
+cfi=(1163)
+cfn=(34726)
+calls=2 782 
+* 401152
+* 2
+fe=(1010)
+1825 4
++7 300
+cfi=(1367)
+cfn=(34642)
+calls=100 40 
+* 900
+* 300
+1389 200
+
+fn=(32142)
+1564 800
+fi=(79)
+780 400
+fi=(1477) /tmp/factorio-build-ZMjCBB/src/Entity/EntityList.cpp
+16 400
+fi=(434)
+147 200
+fi=(48)
+1514 200
+fi=(1039)
+265 400
+fe=(1010)
+1567 800
+
+fl=(1123)
+fn=(33816)
+109 8688
+cfi=(1362)
+cfn=(33818)
+calls=1448 -97 
+* 76744
+* 18824
+cfi=(1130)
+cfn=(32632) non-virtual thunk to MiningDrill::getEntity()
+calls=1448 -45 
+* 2896
+* 13032
+cfn=(33826)
+calls=1448 -12 
+* 234576
+
+fn=(33826)
+97 1775685
++15 1420548
++2 177512
++1 177512
+-1 177512
++1 177512
++8 355024
+cfi=(1347) /tmp/factorio-build-ZMjCBB/src/Entity/InfinityContainer.hpp
+cfn=(32770) non-virtual thunk to InfinityContainer::getEntity()
+calls=76927 20 
+* 153854
+cfi=(1152)
+cfn=(32764)
+calls=99137 -63 
+* 198274
+cfi=(1130)
+cfn=(32632)
+calls=1448 -59 
+* 2896
+* 177512
++4 355024
+cfn=(33828) UpdatableEntity::updateLinkInternal()
+calls=177512 -73 
+* 24319144
++1 177512
++16 710048
+-24 355250
++1 177625
+cfi=(1130)
+cfn=(32632)
+calls=1441 -57 
+* 2882
+cfi=(1347)
+cfn=(32770)
+calls=76925 20 
+* 153850
+cfi=(1152)
+cfn=(32764)
+calls=99259 -61 
+* 198518
+* 532875
+cfi=(1119)
+cfn=(34278)
+calls=177625 +21 
+* 177625
++2 532875
+cfi=(1130)
+cfn=(32632)
+calls=1441 -59 
+* 2882
+cfi=(1347)
+cfn=(32770)
+calls=76925 20 
+* 153850
+cfi=(1152)
+cfn=(32764)
+calls=99259 -63 
+* 198518
++13 532875
++1 355250
+cfn=(34280)
+calls=177625 264 
+* 4618250
++1 177625
++6 710500
+-28 76927
+cfi=(1347)
+cfn=(32770)
+calls=76927 -96 
+* 153854
+* 230781
+cfi=(1116)
+cfn=(34306)
+calls=76927 825 
+* 692343
+* 230781
+
+fn=(34276)
+97 254552
+fi=(1586) /tmp/factorio-build-ZMjCBB/src/Entity/UpdatableEntity.hpp
+-62 509104
+fe=(1123)
++70 509104
++2 509104
+-10 1272760
++12 509104
++35 1781864
+cfn=(33826)
+calls=254552 -47 
+* 24326735
+-35 153854
+cfi=(1347)
+cfn=(32770)
+calls=76927 -89 
+* 153854
+* 153854
+
+fn=(34280)
+264 754635
++2 503090
++9 1509270
+fi=(214)
+91 1006180
++21 503090
++1 754635
++1 251545
++1 251545
++1 251545
+fe=(1123)
+280 251545
++1 503090
+
+fn=(33828)
+54 355024
+-1 887560
++3 355024
+cfi=(1347)
+cfn=(32770)
+calls=76927 -36 
+* 153854
+cfi=(1152)
+cfn=(32764)
+calls=99137 +4 
+* 198274
+cfi=(1130)
+cfn=(32632)
+calls=1448 +8 
+* 2896
+* 177512
++1 532536
++24 887560
+fi=(1078)
+-47 177512
+fe=(1123)
++26 355024
+fi=(1078)
+-26 177512
++1 710048
+fe=(1123)
++25 177512
+cfi=(357)
+cfn=(28242)
+calls=177512 189 
+* 14733496
++1 177512
+-1 177512
++1 177512
++7 177512
+-2 177512
++2 355024
++2 532536
++2 355024
+fi=(214)
+404 177512
++2 177512
+-1 177512
++2 177512
++1 177512
+91 177512
+fi=(1112)
+-49 177512
+fi=(214)
++49 710048
+fe=(1123)
+-22 355024
+
+fl=(608) /tmp/factorio-build-ZMjCBB/src/ID/CategorySpecification.cpp
+fn=(34804) CategorySpecification<ID<ResourceCategory, unsigned char> >::contains(ID<ResourceCategory, unsigned char>) const
+42 240
++2 240
++1 240
++1 120
++2 120
+
+fl=(19)
+fn=(34504) non-virtual thunk to GodController::canGivePickingPosition() const
+125 300
+
+fl=(440) /usr/include/c++/7/bits/std_mutex.h
+fn=(34684) std::unique_lock<std::mutex>::unlock()
+317 100
++2 300
++2 300
+fi=(444) /usr/include/x86_64-linux-gnu/c++/7/bits/gthr-default.h
+777 300
++1 100
+cob=(5) /usr/lib/libpthread-2.28.so
+cfi=(5) ???
+cfn=(462) pthread_mutex_unlock
+calls=107 0 
+* 2400
+* 100
+fe=(440)
+324 100
++2 200
+
+fl=(1150)
+fn=(34286) InfinityContainerSettings::update()
+170 153850
++1 76925
+-1 384625
++1 230775
+cfi=(1123)
+cfn=(34276)
+calls=76925 -74 
+* 6154000
+* 230775
++3 461550
+fi=(1125)
+558 538475
++1 230775
+cfi=(1126)
+cfn=(34290) ItemStack::clear()
+calls=76925 301 
+* 14192835
+* 10846425
+cfi=(1126)
+cfn=(34290)
+calls=3615475 301 
+* 43385700
+-1 7384800
+fe=(1150)
+222 538475
+
+fn=(34304)
+266 461562
++1 230781
+cfi=(1123)
+cfn=(34276)
+calls=76927 97 
+* 15923889
+
+fl=(644)
+fn=(30322)
+22 2700076
+fi=(620)
+409 5400152
+fe=(644)
+22 2700076
+fi=(620)
+409 4050114
++3 1350038
+-1 4050114
++2 4050114
++2 4050114
++2 4050114
++52 1350038
+fe=(644)
+
+fl=(648) /tmp/factorio-build-ZMjCBB/src/Material/ProductPrototype.cpp
+fn=(34186) ItemProductPrototype::collect(Map&, MiningCollector&, RandomGenerator&, double, double) const
+81 447132
++1 63876
+-1 63876
++1 255504
++1 255504
++2 63876
++2 127752
++1 511008
+cfi=(1126)
+cfn=(34188)
+calls=63876 -28 
+* 2938296
++1 255504
+cfi=(1369) /tmp/factorio-build-ZMjCBB/src/Mining/MiningCollector.cpp
+cfn=(34190) ResourceMiningCollector::transfer(ItemStack&)
+calls=63876 -49 
+* 64720388
+fi=(1126)
+653 191628
+fe=(648)
+91 191628
+
+fl=(1242) /tmp/factorio-build-ZMjCBB/src/ManualBuilder.cpp
+fn=(34502) ManualBuilder::pickItems(bool, double, double)
+1089 900
++1 100
+-1 400
++1 100
+-1 100
++1 100
+cfi=(19)
+cfn=(34504)
+calls=100 125 
+* 300
+* 200
++48 1100
+
+fl=(1142)
+fn=(34704)
+19 147840
+cfi=(1141) /tmp/factorio-build-ZMjCBB/src/Entity/Beacon.cpp
+cfn=(34706) Beacon::update()
+calls=73920 201 
+* 16365944
+
+fl=(1373)
+fn=(34330)
+19 185790
+
+fn=(34328)
+20 305344
+
+fl=(1351) /tmp/factorio-build-ZMjCBB/src/Script/LuaContext.cpp
+fn=(33712) LuaContext::clearTemporaryStateIncremental()
+158 800
+fi=(203)
+51 100
++5 100
+cfi=(9)
+cfn=(7278)
+calls=100 -56 
+* 3300
+fi=(79)
+780 200
+fi=(203)
+51 100
+fe=(1351)
+160 200
+fi=(434)
+-13 100
+fi=(320) /tmp/factorio-build-ZMjCBB/src/Script/LuaGameScript.cpp
+498 400
+cfi=(9)
+cfn=(33718)
+calls=100 0 
+* 2576452
+fi=(434)
+147 100
+fi=(48)
+1248 100
+1513 100
+fi=(55) /usr/include/c++/7/bits/stl_construct.h
+107 300
+fi=(48)
+1514 100
+fe=(1351)
+160 200
+-1 200
+cfi=(204)
+cfn=(33706)
+calls=100 +24 
+* 11300
++3 800
+
+fl=(620)
+fn=(31660) BoundingBox::collide(MapPosition const&) const
+547 242
+fi=(530)
+56 242
+fi=(744)
++11 242
+fi=(644)
+-45 242
+fe=(620)
+550 484
+fi=(530)
+54 121
+fe=(620)
+549 121
++3 242
+fi=(530)
+54 121
+fe=(620)
+556 484
++7 363
+-5 363
+
+fn=(29216) BoundingBox::getAABB() const
+253 696
+fi=(644)
+22 232
+fe=(620)
+256 464
+fi=(530)
+23 232
+fi=(621) /tmp/factorio-build-ZMjCBB/src/Util/BoundingBox.hpp
+-4 116
+fi=(530)
++4 464
+fi=(621)
+-4 116
+fi=(530)
++4 116
+fe=(620)
+283 580
+
+fn=(34000)
+173 437823
+-2 875646
++2 5253876
+fi=(530)
+20 1751292
+fe=(620)
+173 3940407
+fi=(530)
+20 1313469
+fe=(620)
+172 3940407
+fi=(530)
+20 1313469
+fe=(620)
+172 3502584
+fi=(640)
+11 437823
+fe=(620)
+172 437823
+fi=(530)
+20 4378230
+fe=(620)
+174 437823
+
+fl=(1157) /tmp/factorio-build-ZMjCBB/src/Entity/ElectricEnergyInterface.cpp
+fn=(34382) ElectricEnergyInterface::update()
+78 300
++2 100
+-1 100
++1 700
++3 500
++1 600
++2 500
+fi=(1375) /tmp/factorio-build-ZMjCBB/src/Energy/EnergyStorage.cpp
+-43 400
+fi=(449)
++8 300
+fi=(1375)
+-7 200
++1 100
+-1 100
+fe=(1157)
++43 1400
+fi=(115) /tmp/factorio-build-ZMjCBB/src/Entity/ElectricEnergyInterfacePrototype.cpp
++31 500
+fe=(1157)
+-28 200
++1 300
+-9 300
++1 200
+
+fl=(996)
+fn=(33672) Scenario::update()
+801 500
++2 100
+-2 400
+fi=(444)
+-45 100
+fi=(440)
+206 100
+fi=(444)
+756 200
++1 100
+cob=(5)
+cfi=(5)
+cfn=(33680) pthread_mutex_trylock
+calls=99 0 
+* 3861
+cob=(1)
+cfi=(1)
+cfn=(387)
+calls=1 0 
+* 1089
+* 104
+fi=(440)
+114 100
++92 100
+fe=(996)
+804 100
++3 100
++1 200
+fi=(202)
+1574 500
+fe=(996)
+853 100
+fi=(1009) /tmp/factorio-build-ZMjCBB/src/Scenario/ScenarioExecutionContext.cpp
+181 300
+fe=(996)
+878 200
+cfi=(434)
+cfn=(33686)
+calls=100 147 
+* 2900
++2 100
+fi=(203)
+51 100
++5 100
+cfi=(9)
+cfn=(7278)
+calls=100 -56 
+* 3300
+-5 100
+fi=(1351)
++83 400
+cfi=(1352)
+cfn=(33692)
+calls=100 -14 
+* 8300
+-1 200
+cfi=(204)
+cfn=(33706)
+calls=100 +50 
+* 11300
++3 200
+cfn=(33712)
+calls=100 +22 
+* 2594952
+fe=(996)
+881 200
+cfi=(1010)
+cfn=(32142)
+calls=100 1564 
+* 1600
++1 200
+fi=(440)
+231 200
++1 200
+cfn=(34684)
+calls=100 +85 
+* 3900
+fe=(996)
+884 900
+-40 200
++1 600
++1 200
++2 200
+-1 500
++1 200
+-39 200
+-1 100
++3 100
++3 100
++3 200
++38 200
++28 200
+cfi=(1356)
+cfn=(33722)
+calls=100 160 
+* 2834473766
+* 100
+
+fl=(1130)
+fn=(32632)
+64 14452
+
+fn=(34126)
+101 255458
+cfi=(1122) /tmp/factorio-build-ZMjCBB/src/Entity/MiningDrill.cpp
+cfn=(34128) MiningDrill::postTransferHook(NotificationData const&)
+calls=127729 807 
+* 3223462
+
+fn=(34100)
+63 388214
+cfi=(1122)
+cfn=(34102) MiningDrill::update()
+calls=194107 484 
+* 213541763
+
+fl=(1369)
+fn=(34190)
+40 319380
+-31 383256
++37 63876
+-36 319380
+cfi=(954)
+cfn=(34192)
+calls=63876 +53 
+* 24989516
++34 383256
++1 447132
++1 319380
+-1 63876
+cfi=(1073)
+cfn=(34196)
+calls=63876 282 
+* 37431336
+
+fl=(1074)
+fn=(34434)
+58 98100
++2 29430
+fi=(400)
++41 9810
++2 29430
++54 9810
+-54 29430
++54 9810
+-54 29430
+fe=(1074)
+-40 78480
+fi=(400)
++95 3192
+-45 49050
++2 19620
+-2 9810
++2 19620
+-14 29430
+fe=(1074)
+
+fl=(1087)
+fn=(34388)
+36 100
++1 100
+-1 100
++1 100
+-1 100
++1 500
+fi=(640)
++1 500
+fi=(644)
++14 500
++3 100
+fe=(1087)
+-17 200
+cfi=(398) /tmp/factorio-build-ZMjCBB/src/Util/RandomGenerator.cpp
+cfn=(28766) RandomGenerator::operator()()
+calls=100 +35 
+* 3500
+* 400
++22 400
+cfi=(540)
+cfn=(17858) Vector::Vector(double const&, RealOrientation const&)
+calls=100 -9 
+* 18016
+fi=(1088) /tmp/factorio-build-ZMjCBB/src/Util/Container/CircularArray.hpp
+-38 100
+fe=(1087)
++38 100
+fi=(1088)
+-38 100
++1 100
+fe=(1087)
++37 100
+fi=(1088)
+-37 100
+-1 99
++3 297
+fi=(540)
++93 891
++1 891
+-1 693
++1 693
+fe=(1087)
+-75 297
+fi=(1088)
+-19 3
+fi=(540)
++93 9
++1 9
+-1 7
++1 7
+fe=(1087)
+-75 3
+fi=(1088)
+-20 3
+fe=(1087)
+
+fl=(1246) /tmp/factorio-build-ZMjCBB/src/Item/InventoryHighlights.cpp
+fn=(34474) InventoryHighlights::update()
+65 900
++1 200
++1 200
+fi=(79)
+780 100
+fe=(1246)
+67 400
+-1 200
++1 200
+fi=(79)
+780 100
+fe=(1246)
+67 600
+-1 400
++10 700
+
+fl=(85)
+fn=(34748)
+178 200
++4 1000
++1 200
++5 200
+-5 600
++11 800
++1 200
+-5 200
++2 200
+-2 200
++2 400
+-2 200
++5 200
+-3 200
++3 200
+-6 600
++6 1200
+-4 200
++2 200
+-2 200
++2 400
+-2 200
++4 200
+-2 200
++2 200
++1 200
+
+fl=(1039)
+fn=(34394)
+236 800
+fi=(203)
+51 100
++5 100
+cfi=(9)
+cfn=(7278)
+calls=100 -56 
+* 3300
+fe=(1039)
+238 100
+fi=(203)
+51 100
+fe=(1039)
+238 100
++27 300
+fi=(20)
+973 100
+209 100
+-34 100
++33 100
++1 100
++1 100
+fe=(1039)
++40 100
+fi=(20)
+-39 100
+fe=(1039)
++39 300
+fi=(20)
+1854 300
+209 100
++1 100
+fe=(1039)
++44 100
+fi=(20)
+-46 100
++3 100
+fe=(1039)
++43 300
++6 200
+cfn=(34402) TrainManager::notifyTrainsOfStopChanges()
+calls=100 968 
+* 2000
+* 100
+fi=(20)
+1854 200
+fe=(1039)
+237 200
+cfi=(204)
+cfn=(33706)
+calls=100 -54 
+* 11300
++24 700
+fi=(48)
+671 600
+172 200
+fi=(50)
+367 200
++2 100
+fe=(1039)
+241 200
+fi=(48)
+-62 200
+-7 200
+fe=(1039)
+
+fn=(34402)
+968 900
++2 300
++17 800
+
+fl=(1043)
+fn=(34648)
+56 300
+fi=(434)
++91 300
+fi=(909)
+33 300
+fe=(1043)
++24 300
+fi=(909)
+-24 300
+fe=(1043)
++24 1500
+fi=(909)
+-24 300
+fe=(1043)
++26 300
+fi=(909)
+-26 300
+fe=(1043)
++66 300
+fi=(449)
+-45 300
+fe=(1043)
++45 1200
++1 2100
++1 2100
+-12 900
+fi=(449)
+-35 900
+fe=(1043)
++35 300
+fi=(909)
+-56 300
+fe=(1043)
++70 300
+-1 300
+-40 300
++40 1500
+fi=(909)
+-69 300
+fe=(1043)
++67 300
++1 300
+-1 1200
++1 900
+-12 900
+fi=(449)
+-35 900
+fe=(1043)
++35 300
+fi=(909)
+-56 300
+fe=(1043)
++70 300
+-1 300
+-37 300
++37 1500
+fi=(909)
+-69 300
+fe=(1043)
++67 300
++1 300
+-1 1800
++1 900
+-12 900
+fi=(449)
+-35 900
+fe=(1043)
++48 300
++1 300
+-14 300
++13 1500
+-34 600
+fi=(449)
+-14 3300
+fe=(1043)
+
+fl=(1079)
+fn=(28246)
+22 2294046
++2 1529364
++31 254894
+-1 254894
++1 254894
+-1 254894
++1 1529364
+-18 764682
++15 509788
+
+fn=(29124) Surface::getChunkSafe(ChunkPosition const&) const
+59 299
+fi=(357)
+198 299
+fe=(1079)
+59 1196
++2 897
++2 598
+fi=(357)
+198 598
+fe=(1079)
+59 299
+fi=(357)
+199 299
+fe=(1079)
+59 1196
++2 897
++2 897
+fi=(357)
+199 598
++1 598
+fe=(1079)
+
+fn=(34752)
+22 1800
++2 1200
++31 200
+-1 200
++1 200
+-1 200
++1 1200
+-18 600
++3 1
++1 1
+-1 1
++4 1
++1 1
+-1 1
++1 2
++1 6
+cfi=(9)
+cfn=(1230)
+calls=1 -46 
+* 58
++1 2
+fi=(385) /usr/include/x86_64-linux-gnu/bits/string3.h
++4 1
+fe=(1079)
+-5 1
+fi=(385)
++5 1
+fe=(1079)
+-4 2
+fi=(385)
++4 2
+cob=(2)
+cfi=(2)
+cfn=(488) __memcpy_avx_unaligned_erms
+calls=1 -51 
+* 14
+* 1
+fe=(1079)
+-3 3
++1 6
+cob=(2)
+cfi=(2)
+cfn=(694)
+calls=1 -49 
+* 15
+* 1
++1 1
++1 2
+cfi=(9)
+cfn=(1250)
+calls=1 -51 
+* 15
+* 1
++1 401
+
+fn=(28244)
+22 2294046
++2 1529364
++30 254894
++1 254894
+-1 254894
++1 254894
+-1 254894
++1 1529364
+-18 764682
++15 509788
+
+fn=(34756)
+59 1000
++2 600
++2 400
+fi=(1109) /tmp/factorio-build-ZMjCBB/src/Util/Container/InfiniteRectangle.hpp
++58 600
+fe=(1079)
+-62 1000
++2 600
++2 800
+
+fl=(204)
+fn=(33706)
+183 3400
+fi=(444)
+747 1700
+fe=(204)
+183 3400
+fi=(444)
+747 3400
+fe=(204)
+185 1700
+fi=(440)
+-82 3400
+fi=(444)
+748 3400
+cob=(5)
+cfi=(5)
+cfn=(458) pthread_mutex_lock
+calls=1700 0 
+* 49300
+* 1700
+fi=(440)
+106 3400
+fi=(203)
+-50 1700
+cfi=(9)
+cfn=(7278)
+calls=1700 -56 
+* 56100
+fe=(204)
+186 1700
+fi=(417) /usr/include/c++/7/chrono
+463 1700
+fi=(444)
+778 1700
+fe=(204)
+186 3400
+fi=(417)
+377 1700
+fe=(204)
+187 5100
+fi=(444)
+778 1700
+cob=(5)
+cfi=(5)
+cfn=(462)
+calls=1700 0 
+* 40800
+* 1700
+fe=(204)
+
+fl=(1042)
+fn=(34736)
+1111 16
+fi=(20)
+748 4
+fe=(1042)
+1111 24
+fi=(20)
+1871 12
+748 8
+1872 4
++1 4
+-2 8
++1 8
+fi=(18)
+491 16
+fe=(1042)
+1112 4
++1 8
++5 36
+
+fn=(34408)
+700 2700
+fi=(79)
++80 600
+fe=(1042)
+-79 900
++1 600
+fi=(79)
++78 600
+fi=(1067) /tmp/factorio-build-ZMjCBB/src/Logistics/LogisticManager.cpp
+111 900
+fe=(1042)
+701 600
+fi=(79)
++79 600
+fe=(1042)
+-76 600
+fi=(1068)
+150 600
+cfi=(204)
+cfn=(33706)
+calls=300 +33 
+* 33900
+* 300
+fe=(1042)
+704 900
++1 600
+fi=(203)
+51 300
++5 300
+cfi=(9)
+cfn=(7278)
+calls=300 -56 
+* 9900
+-5 300
+fi=(1068)
+152 1200
++10 600
+cfn=(34418)
+calls=300 401 
+* 15000
+* 300
+fe=(1042)
+707 900
+cfi=(1073)
+cfn=(34426)
+calls=300 383 
+* 552519
++1 900
+cfi=(1073)
+cfn=(34438)
+calls=300 383 
+* 54135
++1 900
+cfi=(1073)
+cfn=(34446)
+calls=300 383 
+* 209979
++1 900
+cfi=(1073)
+cfn=(34446)
+calls=300 383 
+* 545865
+* 600
++2 600
++5 2400
+
+fl=(1148)
+fn=(34326)
+108 147255
+cfi=(1125)
+cfn=(34158)
+calls=49085 -32 
+* 43412096
+
+fn=(34294)
+112 371252
++1 92813
+-1 92813
++1 92813
+cfi=(1149)
+cfn=(34296)
+calls=92813 9 
+* 4738450
++1 234711
+fi=(1127)
+-5 103455
++1 15855
+cfi=(1152)
+cfn=(34050)
+calls=5285 * 
+* 2256695
+* 5285
+-1 10570
+fe=(1148)
++9 278439
+-2 43728
++4 371252
+fi=(1127)
+-10 15795
+cfi=(1152)
+cfn=(34050)
+calls=5265 * 
+* 2142855
+* 48993
+-1 141714
+fe=(1148)
+
+fn=(34034)
+136 210120
+-1 105060
+fi=(1126)
+387 525300
+fi=(1125)
+656 210120
+fe=(1148)
+137 105060
+fi=(1125)
+656 105060
+cfi=(1126)
+cfn=(34038) ItemStack::canInsertToAny(ItemStack const*, unsigned short, ItemStack const&, unsigned int)
+calls=105060 -82 
+* 4303740
+fe=(1148)
+
+fl=(20)
+fn=(34770) std::_Rb_tree<unsigned int, std::pair<unsigned int const, std::deque<ChunkPosition, std::allocator<ChunkPosition> > >, std::_Select1st<std::pair<unsigned int const, std::deque<ChunkPosition, std::allocator<ChunkPosition> > > >, std::less<unsigned int>, std::allocator<std::pair<unsigned int const, std::deque<ChunkPosition, std::allocator<ChunkPosition> > > > >::_M_get_insert_unique_pos(unsigned int const&)
+2028 16
++7 8
++17 16
+748 4
+2045 4
+-1 4
++1 4
+-1 4
+
+fn=(32590) std::_Rb_tree_iterator<std::pair<TransportLine const* const, std::_Rb_tree_const_iterator<TransportLineManager::Request> > > std::_Rb_tree<TransportLine const*, std::pair<TransportLine const* const, std::_Rb_tree_const_iterator<TransportLineManager::Request> >, std::_Select1st<std::pair<TransportLine const* const, std::_Rb_tree_const_iterator<TransportLineManager::Request> > >, std::less<TransportLine const*>, std::allocator<std::pair<TransportLine const* const, std::_Rb_tree_const_iterator<TransportLineManager::Request> > > >::_M_emplace_hint_unique<std::piecewise_construct_t const&, std::tuple<TransportLine const*&&>, std::tuple<> >(std::_Rb_tree_const_iterator<std::pair<TransportLine const* const, std::_Rb_tree_const_iterator<TransportLineManager::Request> > >, std::piecewise_construct_t const&, std::tuple<TransportLine const*&&>&&, std::tuple<>&&) [clone .isra.40360]
+2395 243
+fi=(19)
+111 27
+fe=(20)
+748 27
+2395 27
+fi=(19)
+111 27
+cfi=(9)
+cfn=(444)
+calls=2027 0 
+* 1593
+* 27
+fi=(24)
+1652 27
+fe=(20)
+2138 27
+fi=(29) /usr/include/c++/7/bits/stl_function.h
+891 27
+fi=(24)
+1652 27
+fe=(20)
+342 27
+fi=(24)
+1652 27
+fe=(20)
+2138 27
++8 108
++4 54
+302 54
+cfi=(9)
+cfn=(922)
+calls=103 0 
+* 413
+2152 81
++2 62
+2300 116
++4 32
+cfi=(9)
+cfn=(516)
+calls=34 0 
+* 176
+* 76
+cfi=(9)
+cfn=(516)
+calls=1993 0 
+* 689
++2 27
+2415 243
+2142 57
+2301 76
+
+fn=(34762)
+2395 24
+fi=(19)
+111 4
+fe=(20)
+2395 8
+fi=(19)
+111 4
+cfi=(9)
+cfn=(444)
+calls=4 0 
+* 236
+* 4
+fi=(24)
+1652 4
+fi=(73)
+888 4
+fi=(24)
+1652 4
+fi=(73)
+492 4
++67 8
+149 12
+fi=(24)
+1652 4
+fi=(73)
+149 20
+492 4
+cfn=(27796)
+calls=4 681 
+* 584
+fi=(29)
+891 4
+fe=(20)
+2402 12
+cfn=(34768) std::_Rb_tree<unsigned int, std::pair<unsigned int const, std::deque<ChunkPosition, std::allocator<ChunkPosition> > >, std::_Select1st<std::pair<unsigned int const, std::deque<ChunkPosition, std::allocator<ChunkPosition> > > >, std::less<unsigned int>, std::allocator<std::pair<unsigned int const, std::deque<ChunkPosition, std::allocator<ChunkPosition> > > > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<unsigned int const, std::deque<ChunkPosition, std::allocator<ChunkPosition> > > >, unsigned int const&)
+calls=4 2130 
+* 140
++2 8
+2301 16
++3 8
+cfi=(9)
+cfn=(516)
+calls=4 0 
+* 68
++2 4
+2415 28
+2300 8
+
+fn=(34768)
+2130 4
+748 4
+2130 24
++8 8
++3 8
++40 4
+-37 8
++37 16
+-37 4
+cfn=(34770)
+calls=4 2028 
+* 60
+
+fn=(32582) std::pair<std::_Rb_tree_iterator<TransportLineManager::Request>, bool> std::_Rb_tree<TransportLineManager::Request, TransportLineManager::Request, std::_Identity<TransportLineManager::Request>, std::less<TransportLineManager::Request>, std::allocator<TransportLineManager::Request> >::_M_emplace_unique<TransportLine*&, unsigned int&, bool>(TransportLine*&, unsigned int&, bool&&)
+2348 216
+fi=(19)
+111 27
+fe=(20)
+2348 54
+748 27
+2348 27
+fi=(19)
+111 27
+cfi=(9)
+cfn=(444)
+calls=2027 0 
+* 1593
+* 135
+fe=(20)
+2035 27
+fi=(1343) /tmp/factorio-build-ZMjCBB/src/Entity/TransportLineManager.hpp
+37 81
+fe=(20)
+2035 27
+fi=(1136)
+1227 27
+fe=(20)
+2039 133
+-4 804
+fi=(1343)
+42 1076
+fe=(20)
+2035 27
+fi=(1343)
+42 108
+fi=(1136)
+1228 296
+fe=(20)
+2039 755
+-4 326
++7 81
+fi=(1343)
+42 20
+fi=(1136)
+1228 27
+fe=(20)
+2049 54
+-5 34
+302 34
+cfi=(9)
+cfn=(922)
+calls=1026 0 
+* 358
+* 68
+fi=(1343)
+42 34
+fi=(1136)
+1227 18
+fe=(20)
+2357 54
+-57 81
++4 81
+cfi=(9)
+cfn=(516)
+calls=2027 0 
+* 1164
++2 27
++62 27
+-10 27
++10 27
+-10 27
++10 162
+fi=(1343)
+42 54
+fi=(1136)
+1227 2
+fi=(79)
+780 1
+fi=(1136)
+1227 7
++1 81
+fe=(20)
+
+fl=(48)
+fn=(32416)
+671 818810
+fi=(1136)
+944 409405
+fe=(48)
+671 1228215
+fi=(674)
+267 818810
+fi=(75) /usr/include/c++/7/bits/stl_algo.h
+116 409405
++2 818810
++19 2456430
+fi=(1136)
+946 52986
++1 105972
+fi=(674)
+36 1069257
+fe=(48)
+798 1069257
+fi=(1136)
+947 356419
+fe=(48)
+798 356419
+fi=(1136)
+946 356419
++1 356419
+fi=(674)
+76 356419
+fe=(48)
+798 1425676
+fi=(530)
+56 356419
+fi=(1136)
+946 356419
+fi=(75)
+148 1069257
+-30 1228215
+fe=(48)
+
+fn=(34162)
+671 929835
+fi=(1364)
+167 185967
+fe=(48)
+
+fl=(1133) /tmp/factorio-build-ZMjCBB/src/Entity/ResourceEntity.cpp
+fn=(34374) ResourceEntity::mineMe(MiningCollector&)
+192 18447
++3 3354
++4 3354
+fi=(624) /tmp/factorio-build-ZMjCBB/src/Mining/MinableProperties.cpp
+90 5031
+fi=(434)
++57 3354
+fi=(624)
+-56 11739
+cfi=(648)
+cfn=(34186)
+calls=1677 -10 
+* 1839655
+-1 3354
+fe=(1133)
+223 5031
++1 13416
+-13 3354
++3 1677
++1 1677
+-1 1677
++1 3354
+-21 6708
+
+fl=(250)
+fn=(7240)
+fi=(996)
+cfi=(996)
+cfn=(33672)
+calls=100 801 
+788 2837114272
+fe=(250)
+
+fl=(1105)
+fn=(33860)
+44 200
++3 100
+-3 1000
++3 300
+fi=(444)
+747 200
++1 200
+cob=(5)
+cfi=(5)
+cfn=(458)
+calls=100 0 
+* 2900
+* 100
+fi=(440)
+106 400
+fe=(1105)
+-50 200
++46 100
+-26 200
+fi=(444)
+777 200
++1 200
+cob=(5)
+cfi=(5)
+cfn=(462)
+calls=100 0 
+* 2400
+* 100
+fe=(1105)
+102 800
+
+fl=(1371)
+fn=(34342)
+234 1072540
++4 76610
+cfn=(34230)
+calls=76610 348 
+* 5509916
++1 76610
+-1 76610
++1 76610
++55 689490
+fi=(1186)
+166 76610
+fi=(48)
+671 153220
+fi=(1186)
+166 76610
+fi=(48)
+671 383050
+fe=(1371)
+249 76610
+fi=(1364)
+129 76610
+fe=(1371)
+249 536270
++9 306440
+fi=(48)
+798 229830
+fi=(1126)
+387 229830
+fe=(1371)
+259 459660
+cfi=(1126)
+cfn=(34356) ItemStack::transfer(ItemStack&, unsigned int, unsigned int, bool) [clone .constprop.48790]
+calls=76610 933 
+* 20056336
+fi=(1126)
+653 229830
+fe=(1371)
+249 306440
+fi=(434)
+147 76610
+fi=(610)
+17 76610
+fe=(1371)
+253 76610
+fi=(610)
+17 76610
+fi=(1144)
++13 76610
+fe=(1371)
+253 76610
+fi=(1144)
+30 76610
+fe=(1371)
+253 76610
+fi=(1144)
+30 76610
+fe=(1371)
+253 76610
+fi=(1144)
+30 153220
+fi=(1198) /tmp/factorio-build-ZMjCBB/src/Fluid/Fluid.cpp
+-6 229830
+fe=(1371)
+253 76610
+cfi=(1048)
+cfn=(34348)
+calls=76610 65 
+* 8733540
+fi=(610)
+23 76610
+fi=(1587) /tmp/factorio-build-ZMjCBB/src/Material/Material.hpp
+-15 153220
+fe=(1371)
+257 229830
++1 459660
+cfi=(1073)
+cfn=(34196)
+calls=76610 +24 
+* 38458220
+* 153220
++8 153220
+fi=(48)
+671 383050
+fe=(1371)
+270 153220
++16 306440
+fi=(48)
+671 229830
+fi=(674)
+36 153220
+fe=(1371)
+
+fn=(34230)
+348 351568
+fi=(48)
+671 175784
+fe=(1371)
+348 1230488
+fi=(48)
+671 175784
+fe=(1371)
+348 351568
+fi=(48)
+671 527352
+fe=(1371)
+355 1582056
+fi=(1050) /tmp/factorio-build-ZMjCBB/src/Material/Product.hpp
+51 411696
+fi=(1126)
+387 308772
+fe=(1371)
+-24 617544
+-2 411696
+fi=(1144)
+76 205848
+fe=(1371)
+355 527352
+fi=(48)
+816 351568
+fi=(610)
+23 175784
+fe=(1371)
+358 351568
+fi=(434)
+147 205848
+fe=(1371)
+363 514620
+fi=(1050)
+87 102924
+fe=(1371)
+363 102924
+fi=(1050)
+87 205848
+fe=(1371)
+363 308772
+fi=(1050)
+87 102924
+fe=(1371)
+363 411696
++7 175784
++18 175784
+-18 527352
+fi=(48)
+671 703136
+fe=(1371)
+375 351568
++13 175784
++1 1406272
+
+fn=(34368)
+174 127574
+fi=(48)
+671 63787
+fe=(1371)
+174 510296
+fi=(48)
+671 127574
+fe=(1371)
+174 191361
+fi=(48)
+671 191361
+fe=(1371)
+182 63787
+fi=(1364)
+-53 63787
+fe=(1371)
++53 893018
+fi=(48)
+798 191361
+fi=(1126)
+1288 127574
++1 255148
+cfn=(34004) ItemStack::removeInternal(unsigned int)
+calls=63787 -48 
+* 28359125
++1 574083
+cfi=(1073)
+cfn=(34196)
+calls=63787 282 
+* 30681547
+fe=(1371)
+182 191361
++4 191361
+fi=(48)
+671 255148
+fe=(1371)
+190 127574
++16 510296
+-6 255148
+fi=(48)
+671 191361
+fi=(674)
+36 127574
+fe=(1371)
+
+fn=(34364)
+130 127574
+fi=(48)
+671 382722
+fe=(1371)
+136 63787
+fi=(1364)
+-7 63787
+fe=(1371)
++7 255148
++6 63787
+fi=(434)
++5 63787
+fe=(1371)
+-5 127574
++1 191361
+fi=(1049)
+-80 63787
+fe=(1371)
++80 63787
+fi=(1049)
+-80 191361
+fe=(1371)
++79 574083
+-6 191361
++12 63787
++18 63787
+-18 127574
+fi=(48)
+671 255148
+fe=(1371)
+152 127574
++14 63787
++1 127574
+
+fl=(1098)
+fn=(33852)
+392 200
+fi=(434)
+147 100
+fi=(909)
+33 100
+fe=(1098)
+273 100
+fi=(909)
+33 100
+fe=(1098)
+273 300
++20 100
+
+fl=(1141)
+fn=(34706)
+201 221760
++2 73920
+-2 221760
++2 147840
+fi=(48)
+671 147840
+fe=(1141)
+203 221760
+fi=(48)
+671 73920
+fi=(1128) /tmp/factorio-build-ZMjCBB/src/Graphics/CyclicFramePosition.cpp
+56 73920
+fe=(1141)
+203 369600
+fi=(1128)
+56 369600
++1 221760
+fi=(449)
+-6 221760
+fi=(1128)
++7 369600
++3 221760
++2 221760
++1 73920
+-1 73920
++1 591360
+fe=(1141)
+205 73920
+fi=(1128)
+67 73920
+fe=(1141)
+204 147840
++1 147840
++1 221760
++3 221760
+fi=(1078)
+34 147840
+fe=(1141)
+216 73920
+fi=(1078)
+34 73920
++1 295680
+fe=(1141)
+216 73920
+cfi=(357)
+cfn=(28242)
+calls=73920 -27 
+* 6135360
++1 73920
+-1 73920
++1 221760
+cfi=(1089)
+cfn=(34712)
+calls=73920 862 
+* 3577784
+fi=(1116)
+1912 73920
+fe=(1141)
+218 147840
++1 369600
+-13 221760
+
+fl=(1183)
+fn=(34466)
+165 800
+fi=(1182)
++92 100
+fe=(1183)
+-92 100
+fi=(1182)
++92 100
+fe=(1183)
+672 200
+fi=(926) /tmp/factorio-build-ZMjCBB/src/Util/Targeter.hpp
+87 100
+cfi=(952)
+cfn=(34468)
+calls=100 +11 
+* 400
+fi=(1376)
++91 200
+fi=(1182)
++89 200
++1 100
+cfi=(1246)
+cfn=(34474)
+calls=100 65 
+* 4000
+* 100
+fi=(1187) /tmp/factorio-build-ZMjCBB/src/Entity/EntitySelector.cpp
+68 400
+fi=(1315) /tmp/factorio-build-ZMjCBB/src/Entity/Gate.cpp
+333 200
+fi=(1265)
+41 300
+fi=(674)
+386 100
++2 100
+-2 100
+fi=(48)
+798 100
+671 400
+fe=(1183)
+223 100
+fi=(1182)
++68 200
+fi=(48)
+671 400
+fe=(1183)
+168 200
++7 300
+cfi=(1241)
+cfn=(34484)
+calls=100 33 
+* 4400
+* 200
+fi=(1378) /tmp/factorio-build-ZMjCBB/src/ManualRepairer.hpp
+14 300
+fi=(1588) /tmp/factorio-build-ZMjCBB/src/Input/MiningState.hpp
+-10 100
+fe=(1183)
+182 200
+fi=(1379) /tmp/factorio-build-ZMjCBB/src/ManualMiner.hpp
+27 100
+fe=(1183)
+185 200
++7 300
+fi=(59) /tmp/factorio-build-ZMjCBB/src/Controller/GodControllerProperties.cpp
+34 100
+fe=(1183)
+195 200
+fi=(59)
+34 100
+fe=(1183)
+195 200
++2 200
+-1 200
+-1 400
+cfi=(1242)
+cfn=(34502)
+calls=100 1089 
+* 3300
++4 400
++5 200
++4 100
+fi=(1248) /tmp/factorio-build-ZMjCBB/src/Trigger/Shooter.cpp
+598 200
++7 800
++1 500
+fi=(449)
+54 500
+fe=(1183)
+209 100
+fi=(1248)
+606 100
+fe=(1183)
+209 200
+cfi=(1247)
+cfn=(34510)
+calls=100 -66 
+* 4000
++1 800
+fi=(1315)
+337 200
+fe=(1183)
+
+fl=(1161)
+fn=(34574) DayTime::getDarkness(double) const
+29 100
++1 700
++1 100
++9 200
+
+fl=(74)
+fn=(34782)
+232 700
+fi=(73)
+-80 100
++1 100
+fe=(74)
++79 100
+fi=(73)
+-80 100
++1 100
++17 100
++1 200
+-18 100
++18 100
+-18 200
+-1 100
+356 100
+153 100
+356 200
++1 100
+153 200
+357 100
+-1 300
++1 100
+-1 700
++1 100
+-1 100
++1 100
+fe=(74)
+238 100
+fi=(73)
+356 900
++1 100
+fe=(74)
+238 300
++2 192
+fi=(73)
+1582 96
+-1 192
++1 96
+-1 192
++5 672
+211 192
++4 96
+-4 96
++4 100
+-4 200
+-58 700
+fe=(74)
++98 800
+-5 8
+fi=(73)
+1604 16
++3 28
+211 8
++4 4
+-4 4
++1 500
+fe=(74)
+
+fl=(398)
+fn=(28766)
+73 100
++4 100
++2 100
+-6 300
++1 200
+-1 100
++1 100
++1 100
+-1 100
++1 200
++1 200
+-1 100
++1 100
++1 100
++2 100
+-3 100
++1 100
++1 100
+-1 100
++1 200
++1 100
+-1 100
++1 500
++1 200
+
+fl=(1081)
+fn=(34542)
+123 1000
+fi=(203)
+-72 100
++5 100
+cfi=(9)
+cfn=(7278)
+calls=100 -56 
+* 3300
+* 100
+-5 100
+fe=(1081)
++74 500
+fi=(214)
+344 100
+fi=(1082)
+-48 300
+fi=(20)
+969 100
+fi=(1083)
+316 200
+fi=(214)
+429 100
+fi=(1082)
+296 200
+fi=(214)
+429 100
+fe=(1081)
+125 200
++3 300
+cfi=(1082)
+cfn=(34550)
+calls=100 -83 
+* 690178506
+fi=(214)
+429 100
+fe=(1081)
+127 200
+fi=(79)
+780 300
+fe=(1081)
+130 200
+-6 200
+cfi=(204)
+cfn=(33706)
+calls=100 +59 
+* 11300
++13 800
+
+fl=(1135)
+fn=(33948) TransportBeltConnectable::{lambda(TilePosition, TransportLineSide, FixedPointNumberTemplate<int, 8u>, FixedPointNumberTemplate<int, 8u>)#2}::operator()(TilePosition, TransportLineSide, FixedPointNumberTemplate<int, 8u>, FixedPointNumberTemplate<int, 8u>) const [clone .constprop.47663]
+51 548676
+-3 182892
++3 548676
+fi=(530)
+-35 182892
+fe=(1135)
++35 182892
+fi=(530)
++21 365784
+-1 365784
+fe=(1135)
+-20 731568
+fi=(530)
+-31 731568
++51 365784
+fe=(1135)
+-19 182892
+
+fn=(34118) TransportBeltConnectable::registerItem(MapPosition, ItemStack&, bool)
+777 589608
++1 196536
+-1 98268
++1 294804
+cfi=(530)
+cfn=(34120)
+calls=98268 56 
+* 3242844
++1 196536
+fi=(530)
+23 98268
+fe=(1135)
+781 393072
+fi=(530)
+16 98268
++7 98268
+fe=(1135)
+781 98268
+cfi=(1136)
+cfn=(33770)
+calls=98268 392 
+* 27961929
++1 491340
+-2 196536
+fi=(1136)
+1677 98268
+fe=(1135)
+780 196536
+fi=(1136)
+1677 98268
++2 196536
+fe=(1135)
+
+fn=(34088)
+986 672610
++1 67261
+
+fn=(32384) TransportBeltConnectable::getTransportLine(unsigned char)
+974 872738
++3 337
++3 337
+-4 871390
+
+fn=(33946) TransportBeltConnectable::{lambda(TilePosition, TransportLineSide, FixedPointNumberTemplate<int, 8u>, FixedPointNumberTemplate<int, 8u>)#2}::_FUN(TilePosition, TransportLineSide, FixedPointNumberTemplate<int, 8u>, FixedPointNumberTemplate<int, 8u>)
+48 182892
++4 182892
+cfn=(33948)
+calls=184733 -1 
+* 4389408
+* 365784
+
+fl=(1139)
+fn=(33732)
+97 216
++3 27
+-3 54
+fi=(774) /tmp/factorio-build-ZMjCBB/src/Util/ScopedBoolSetter.hpp
+-88 27
++2 27
+fe=(1139)
++86 27
+fi=(774)
+-88 54
+fe=(1139)
+249 81
+100 54
+270 405
+-2 324
+cfi=(48)
+cfn=(32416)
+calls=162 671 
+* 6021
+* 324
+106 54
+-1 27
+-1 54
+fi=(79)
+780 27
+fe=(1139)
+236 108
+fi=(79)
+780 135
+fe=(1139)
+236 540
+fi=(79)
+780 162
+fe=(1139)
+109 324
++6 324
+-6 1134
++1 1458
++1 972
++7 162
+-9 324
++10 324
+-13 270
++15 459
+cfn=(33734) TransportLineManager::unscheduleFromRemerge(TransportLine*) [clone .part.32291]
+calls=162 234 
+* 24949
+* 486
++2 108
++2 54
+fi=(774)
+15 54
+fe=(1139)
+189 216
+-63 81
+cfn=(33742) TransportLineManager::scheduleForCheckingInteractionDecay(TransportLine*)
+calls=27 +99 
+* 18158
+* 27
+
+fn=(33734)
+234 162
+fi=(20)
+1871 324
+fe=(1139)
+234 648
+fi=(20)
+748 324
+1872 1036
++1 1036
+-2 2072
++1 4502
+-1 1620
+2526 324
+fe=(1139)
+239 324
++4 567
+fi=(20)
+2475 27
+-2 54
+cfi=(9)
+cfn=(10448)
+calls=27 0 
+* 1913
+fi=(19)
+125 54
+cfi=(9)
+cfn=(604)
+calls=27 0 
+* 2322
+fi=(20)
+2478 27
+-5 81
+cfi=(9)
+cfn=(10448)
+calls=27 0 
+* 5021
+fi=(19)
+125 54
+cfi=(9)
+cfn=(604)
+calls=27 0 
+* 2322
+fi=(20)
+2478 27
+fe=(1139)
+243 108
+
+fn=(33742)
+225 54
+fi=(20)
+969 27
+fe=(1139)
+225 108
+fi=(20)
+1871 54
+969 54
+1872 140
++1 140
+-2 280
++1 721
+-1 294
+2526 54
+fe=(1139)
+227 54
++3 189
+cfi=(449)
+cfn=(33746)
+calls=27 72 
+* 567
+* 27
+-1 27
++1 27
+fi=(21) /usr/include/c++/7/bits/stl_set.h
+453 27
+fe=(1139)
+231 27
+-2 27
++1 135
+fi=(21)
+453 27
+fe=(1139)
+229 27
+fi=(21)
+453 54
+fe=(1139)
+229 27
+fi=(21)
+453 27
+cfi=(20)
+cfn=(32582)
+calls=27 2348 
+* 8343
+* 27
+fe=(1139)
+231 27
+fi=(21)
+453 27
+fi=(20)
+969 27
+1871 27
+fe=(1139)
+231 27
+fi=(20)
+1871 27
++1 140
++1 140
+-2 280
++1 721
+-1 294
+fi=(18)
+511 108
+fi=(24)
+133 27
+fi=(18)
+512 54
+fi=(24)
+133 27
+fi=(18)
+512 54
+cfi=(20)
+cfn=(32590)
+calls=27 2395 
+* 4424
+fe=(1139)
+231 27
++1 135
+
+fl=(1210) /tmp/factorio-build-ZMjCBB/src/Entity/HeuristicEntitySearch.cpp
+fn=(32468) ConstHeuristicEntityIteratorT<EntitySearchTypeInfo<Surface, Chunk> >::ConstHeuristicEntityIteratorT(BoundingBox const&, Surface const&)
+151 348
+fi=(1120) /tmp/factorio-build-ZMjCBB/src/Util/AdvancedTilePosition.hpp
+14 116
+fe=(1210)
+158 116
+fi=(1120)
+14 116
++1 464
+-1 232
++1 232
+fe=(1210)
+158 116
+fi=(1120)
+15 232
+fe=(1210)
+158 232
+fi=(1078)
+44 232
++1 116
+-1 116
+fe=(1210)
+158 116
+fi=(1078)
+45 232
+-1 116
++1 116
+fe=(1210)
+158 116
+cfi=(1079)
+cfn=(29124)
+calls=96116 -99 
+* 3364
+-1 116
++1 116
+-1 116
+fi=(1112)
+-82 116
+fi=(726)
+-19 232
+fi=(1112)
++19 232
+fi=(726)
+-19 232
+fe=(1210)
+158 348
++2 116
+-2 116
++2 116
+cfn=(32472) ConstHeuristicEntityIteratorT<EntitySearchTypeInfo<Surface, Chunk> >::moveUntilEntityFound()
+calls=96116 +23 
+* 580
++1 348
++1 232
++1 348
+
+fn=(32472)
+183 2330
++2 2330
+-2 2331
++4 2331
+-4 267
++4 801
++9 696
++2 232
++16 232
+-15 1160
+-1 464
++16 464
+fi=(1113) /tmp/factorio-build-ZMjCBB/src/Util/ChunkPosition.hpp
+40 464
+fe=(1210)
+216 156
+fi=(1078)
+45 156
+fe=(1210)
+216 78
+cfi=(1079)
+cfn=(29124)
+calls=78 59 
+* 2262
++1 78
+-1 78
++1 78
+fi=(1112)
+75 464
+fi=(726)
+-19 928
+fe=(1210)
+203 696
++1 464
+-19 1856
++24 1554
+-20 696
++25 2784
+-25 1392
++25 1392
+fi=(1113)
+40 1392
+fe=(1210)
+216 210
+fi=(1078)
+45 210
+fe=(1210)
+216 105
+cfi=(1079)
+cfn=(29124)
+calls=105 59 
+* 3045
++1 105
+-1 105
++1 105
+fi=(1112)
+75 696
+fi=(726)
+-19 1392
+fi=(1112)
++19 1392
+fi=(726)
+-19 1392
+fe=(1210)
+193 2088
++1 2088
+fi=(1113)
+40 2639
+fe=(1210)
+
+fn=(32476) ConstHeuristicEntityIteratorT<EntitySearchTypeInfo<Surface, Chunk> >::operator*()
+226 2098
++1 1049
+
+fn=(32478) ConstHeuristicEntityIteratorT<EntitySearchTypeInfo<Surface, Chunk> >::operator++()
+238 1049
+-2 2098
++2 1049
++1 1049
+cfn=(32472)
+calls=217218 -56 
+* 45598
++1 3147
++1 1866
++1 2098
+
+fn=(32466) ConstHeuristicEntityIteratorT<EntitySearchTypeInfo<Surface, Chunk> >::ConstHeuristicEntityIteratorT(Surface const&, BoundingBox const&)
+146 464
++1 116
+-1 116
++1 232
+cfi=(620)
+cfn=(29216)
+calls=96116 253 
+* 3016
+* 464
+cfn=(32468)
+calls=96116 +4 
+* 10092
++1 464
+
+fl=(1138)
+fn=(32442)
+849 2180160
++5 436032
+cfi=(1135)
+cfn=(32384)
+calls=816710 974 
+* 1744802
+
+fn=(33942)
+798 2743380
++1 2194704
++9 365784
+fi=(530)
+21 182892
+fe=(1138)
+808 731568
+fi=(1103)
+61 365784
+fi=(530)
+-40 182892
+fi=(1103)
++40 182892
+fe=(1138)
+812 731568
+cfi=(1135)
+cfn=(33946)
+calls=184733 48 
+* 5120976
++1 914460
+
+fl=(1158)
+fn=(34380)
+23 200
+cfi=(1157)
+cfn=(34382)
+calls=100 +55 
+* 6800
+
+fl=(1126)
+fn=(33978)
+959 1859152
+fi=(1144)
+75 464788
+fe=(1126)
+961 232394
++19 2091546
+
+fn=(33988) ItemStack::addInternal(unsigned int, float) [clone .part.7913]
+416 150196
+-29 150196
++29 300392
+-29 300392
++32 150196
++2 150196
+-3 450588
+fi=(1144)
+76 300392
+fe=(1126)
+419 600784
++9 300392
+-6 750980
++4 300392
+
+fn=(34006) ItemStack::clearInternal()
+317 485463
++2 323642
+fi=(1144)
+75 98034
+fi=(610)
+-51 112804
+fe=(1126)
+324 112804
+fi=(610)
+24 112804
+fe=(1126)
+324 112804
+877 161821
+325 161821
++1 161821
+877 161821
+328 323642
+fi=(610)
+24 147051
+fe=(1126)
+
+fn=(34240)
+331 595044
++2 99174
+-2 99174
+fi=(610)
+23 99174
+fe=(1126)
+332 198348
++4 198348
++1 198348
+fi=(1144)
+75 198348
+fe=(1126)
+345 892566
+
+fn=(34356)
+933 76610
+-6 612880
++6 229830
+387 229830
+938 306440
++6 306440
+cfn=(33978)
+calls=76610 +15 
+* 1532200
++1 76610
+-1 76610
++1 229830
++3 383050
+cfn=(33980)
+calls=76610 +58 
+* 15229906
+* 76610
++1 153220
++6 536270
+
+fn=(33976)
+927 989320
++6 300994
+387 370995
+944 494660
+cfn=(33978)
+calls=123665 +15 
+* 2473300
++1 123665
+-1 123665
++1 370995
++3 618325
+cfn=(33980)
+calls=123665 +58 
+* 64311088
+* 123665
++1 290314
++6 865655
+
+fn=(34038)
+574 105060
+-1 210120
++1 105060
+-1 525300
++1 315180
+-1 105060
++2 210948
+fi=(610)
+23 105060
+fe=(1126)
+577 210120
+1273 333060
+cfn=(33982)
+calls=66612 +2 
+* 865956
+580 133224
++3 133500
+fi=(1144)
+75 552
+fe=(1126)
+593 104784
+-15 104784
++15 733764
+-1 276
++1 1932
+
+fn=(34004)
+1241 1283898
++3 641949
++3 213983
+-3 213983
++3 304608
++2 181250
++3 641949
++1 202358
+fi=(1589) /tmp/factorio-build-ZMjCBB/src/PostTransferNotifiable.hpp
+25 101179
+fe=(1126)
+1253 101179
+fi=(1589)
+25 101179
+fe=(1126)
+1253 101179
+fi=(1589)
+25 101179
+fe=(1126)
+1253 202358
+cfi=(1125)
+cfn=(34042)
+calls=85279 792 
+* 29518386
+cfi=(1151)
+cfn=(33990)
+calls=15900 1675 
+* 3619854
++1 1069915
+-6 123358
+cfn=(34006)
+calls=123358 317 
+* 1860924
+* 123358
+
+fn=(33802)
+657 3718960
++10 3718960
+fi=(25) /usr/include/c++/7/bits/move.h
+150 215945
++1 647835
+fe=(1126)
+681 431890
+fi=(25)
+151 863780
+-1 215945
+fe=(1126)
+681 215945
+fi=(25)
+151 215945
+-1 215945
++1 431890
+-1 431890
++1 431890
+-1 431890
+fe=(1126)
+695 215945
+fi=(25)
+151 215945
+-1 215945
+fe=(1126)
+695 863780
++2 249076
++4 498152
+fi=(1589)
+25 124538
+fe=(1126)
+701 124538
+fi=(1589)
+25 124538
+fe=(1126)
+701 124538
+fi=(1589)
+25 124538
+fe=(1126)
+701 124538
+cfi=(1151)
+cfn=(33990)
+calls=38464 1675 
+* 8769792
+cfi=(1125)
+cfn=(34042)
+calls=86074 +91 
+* 17686699
+fi=(25)
+199 215945
+fe=(1126)
+713 215945
+fi=(25)
+199 1295670
+fe=(1126)
+713 215945
++11 168319
+fi=(1589)
+25 168319
+fe=(1126)
+724 504957
+fi=(1589)
+25 673276
+fe=(1126)
+724 168319
+cfi=(1125)
+cfn=(34042)
+calls=124584 +68 
+* 14373655
+cfi=(1151)
+cfn=(33990)
+calls=43735 1675 
+* 9927845
++5 431890
++29 1727560
+fi=(25)
+199 946005
++1 315335
+-1 946005
++1 315335
+-1 315335
+-1 315335
++2 315335
+-1 315335
++1 315335
+fe=(1126)
+758 2522680
+-42 479516
+
+fn=(33980)
+1006 2229605
++2 1911090
+387 955545
+1013 1037580
+fi=(610)
+23 200275
+fe=(1126)
+1017 400550
+fi=(610)
+23 118240
+fe=(1126)
+1017 236480
++3 716260
++7 64476
++3 64476
+cfn=(33984) ItemStack::addInternal(unsigned int, ItemStack&)
+calls=21492 441 
+* 1353996
+* 386112
+cfn=(33984)
+calls=128704 441 
+* 11712064
+* 300392
++2 150196
+-2 150196
++2 150196
++2 852495
++1 267938
+fi=(1589)
+25 401907
+fe=(1126)
+1035 133969
+fi=(1589)
+25 133969
+fe=(1126)
+1035 133969
+cfi=(1125)
+cfn=(34042)
+calls=70266 792 
+* 5129661
+cfi=(1151)
+cfn=(33990)
+calls=63703 1675 
+* 14460581
++2 535876
+cfn=(34004)
+calls=133969 1241 
+* 11261692
++6 937783
+-14 257408
++14 1291822
+1273 643520
+cfn=(33982)
+calls=128704 +2 
+* 1673152
+1029 257408
++1 643520
++7 48681
+cfn=(34004)
+calls=16227 1241 
+* 1087209
++2 48681
+-16 504957
+cfn=(33802)
+calls=168319 657 
+* 62231501
++1 336638
+
+fn=(33982)
+1275 1945650
++1 324275
+-1 648550
++2 648550
++2 324275
++1 324275
+
+fn=(33984)
+441 1051372
+fi=(610)
+23 300392
+fe=(1126)
+442 300392
++2 21492
+-57 85968
++59 64476
+-25 21492
+-2 128952
+cfn=(33988)
+calls=21492 -3 
+* 558792
++30 21492
++11 21492
+-11 42984
++11 21492
+-11 21492
++11 64476
+1273 257408
+460 643520
+fi=(1144)
+76 42984
+fe=(1126)
+446 257408
+cfn=(33982)
+calls=128704 1275 
+* 1673152
++6 257408
++2 386112
+-67 386112
++67 257408
++3 386112
+fi=(1144)
+76 257408
+fe=(1126)
+421 128704
+-2 257408
++40 643520
+-4 514816
+cfn=(33988)
+calls=128704 -39 
+* 3346304
+* 386112
+fi=(1144)
+76 257408
+fe=(1126)
+
+fn=(34188)
+60 702430
++5 140486
+-5 140486
++5 140486
++6 140486
+fi=(613)
++10 140486
+fe=(1126)
+-10 421458
+fi=(613)
++10 140486
+fe=(1126)
+-10 140486
+fi=(613)
++10 140486
+fe=(1126)
+-13 280972
+cfi=(910)
+cfn=(29270)
+calls=140486 +19 
+* 280972
+* 1404860
++3 140486
+fi=(613)
++10 280972
+fe=(1126)
+-10 140486
++2 702430
++1 702430
+-6 280972
+
+fn=(34290)
+301 14769600
+fi=(610)
+23 3692400
+fe=(1126)
+302 7384800
++10 18308148
+-6 38463
++2 38463
+cfn=(34006)
+calls=38463 +9 
+* 615408
++2 115389
++1 76926
+fi=(1589)
+25 38463
+fe=(1126)
+311 38463
+fi=(1589)
+25 38463
+fe=(1126)
+311 38463
+fi=(1589)
+25 38463
+fe=(1126)
+311 76926
+cfi=(1125)
+cfn=(34042)
+calls=38463 792 
+* 12077382
++1 192315
+
+fl=(540)
+fn=(17858)
+51 300
+fi=(644)
+-29 100
+fe=(540)
++29 100
+fi=(644)
+-29 100
+fe=(540)
++32 1500
+cfi=(641)
+cfn=(13066)
+calls=103 -10 
+* 13916
++1 900
++1 900
++1 200
+
+fn=(13638) Vector::rotate(double)
+184 398049
++2 398049
+cfi=(641)
+cfn=(13066)
+calls=133019 44 
+* 18044888
++1 265366
++1 132683
++1 132683
+-1 132683
++1 663415
++1 132683
+-1 398049
++1 132683
+-1 265366
++1 132683
+-1 265366
++1 132683
+-1 132683
++1 265366
+-1 132683
++1 132683
++1 265366
++1 265366
++1 265366
+
+fl=(1083)
+fn=(34566) ElectricSubNetwork::getAvailableProduction(ElectricSubNetwork::EnergySourceMapping const&) const
+1069 800
++1 200
++1 400
++20 200
++1 600
+
+fn=(34568) ElectricSubNetwork::getDemand(ElectricSubNetwork::EnergySourceMapping&)
+1095 400
+fi=(79)
+780 400
+fe=(1083)
+1096 200
++1 800
++2 200
++1 200
++1 100
+-1 100
++1 100
+-4 600
++2 600
++1 600
++1 300
+-1 300
++1 700
++2 2000
++2 2000
+fi=(449)
+54 800
+fe=(1083)
+1105 64998000
+fi=(449)
+54 25999200
+fe=(1083)
+1106 39000000
++1 13000000
+-4 13000000
++4 91000000
+-4 13000000
+fi=(79)
+780 800
+fe=(1083)
+1109 1200
+-12 800
++29 200
++1 600
+
+fn=(34562)
+1138 1100
+fi=(79)
+780 200
+fe=(1083)
+1138 400
++1 300
+fi=(79)
+780 200
+fe=(1083)
+1141 500
++2 1000
++1 300
+-3 100
++3 600
+-3 100
+fi=(79)
+780 200
+fe=(1083)
+1147 200
+fi=(79)
+802 100
+fe=(1083)
+1139 300
+fi=(20)
+969 100
+fe=(1083)
+1155 200
++14 300
+fi=(20)
+969 100
+fe=(1083)
+1169 100
+cfn=(34566)
+calls=100 1069 
+* 1100
+* 200
++1 200
+-1 700
++1 100
+cfn=(34566)
+calls=100 1069 
+* 1100
+* 200
++2 200
+-2 700
++2 100
+cfn=(34568)
+calls=100 -77 
+* 1100
+* 200
++1 200
+-1 700
++1 100
+cfn=(34568)
+calls=100 -78 
+* 260010100
+* 200
++2 100
+-2 100
++2 100
+-2 600
++2 200
+fi=(20)
+969 100
+fe=(1083)
+1177 200
++4 300
++1 500
+cfn=(34572) ElectricSubNetwork::updateTerciaryInputValues(double&, double&)
+calls=100 +21 
+* 8200
+* 200
++2 200
++12 100
+fi=(48)
+798 100
+fe=(1083)
+1196 100
+fi=(1186)
+208 200
+fe=(1083)
+1196 300
+cfi=(1161)
+cfn=(34574)
+calls=100 29 
+* 1100
+* 400
++1 500
+fi=(20)
+969 100
+fe=(1083)
+1198 200
++2 800
+
+fn=(34572)
+1203 700
+fi=(79)
+780 200
+fe=(1083)
+1204 800
++4 200
+-2 200
++1 200
++1 100
+-1 100
++1 200
++38 100
+-42 200
++64 800
+-58 300
++15 1100
++2 200
+fi=(449)
+51 100
+fe=(1083)
+1227 100
+fi=(449)
+51 100
+fe=(1083)
+1227 700
++1 500
+-3 100
++3 900
+-3 100
++5 200
+
+fn=(34590)
+351 100
+fi=(79)
+780 200
+fe=(1083)
+351 100
++2 400
++2 500
++2 300
+fi=(610)
+23 100
+fe=(1083)
+390 200
+fi=(48)
+798 200
+fe=(1083)
+391 800
+-38 200
++40 200
+-19 500
+-18 200
++20 200
+fi=(449)
+51 200
+fe=(1083)
+377 200
++2 100
+-2 200
++1 500
++1 100
+-5 100
++5 700
+-5 100
+fi=(79)
+780 200
+fe=(1083)
+381 200
+
+fn=(34598)
+396 100
+fi=(79)
+780 200
+fe=(1083)
+396 100
++2 500
++2 500
++2 200
+-2 1500
++2 1000
++2 2000
+-3 800
++5 800
++1 3600
++1 1200
+fi=(449)
+51 1200
+fe=(1083)
+406 25999200
++1 116996400
++1 38998800
+fi=(449)
+51 51998800
+fe=(1083)
+409 52000000
+-1 13000000
++1 13000000
+-5 13000000
++5 91000000
+-5 13000000
+fi=(79)
+780 800
+fe=(1083)
+411 800
+fi=(610)
+23 400
+fe=(1083)
+440 800
+fi=(48)
+798 800
+fe=(1083)
+441 3200
+-43 800
++45 200
+
+fl=(640)
+fn=(12970)
+93 182892
++3 1646028
+fi=(641)
+205 548676
++1 548676
+-16 548676
++2 548676
+fe=(640)
+-96 1828920
+fi=(644)
+-44 548676
++2 1463136
++1 1646028
+fe=(640)
++43 365784
+fi=(641)
++97 731568
+cfn=(13070)
+calls=186709 -22 
+* 17191848
+* 914460
+fe=(640)
+
+fn=(33968)
+141 2768858
++1 8306574
+fi=(644)
+-87 632229
+fe=(640)
+183 632229
+-30 4153287
++2 4497480
++8 2589482
+fi=(449)
+51 1839072
+fe=(640)
+-13 1093941
+fi=(644)
++14 1093941
+fe=(640)
+-14 15837
+fi=(644)
++14 755689
++2 196424
++1 49106
+-1 196424
++1 441954
+fe=(640)
+170 3809094
++8 2179863
+fi=(449)
+51 1557045
+fe=(640)
++13 622818
+fi=(644)
+-12 1557045
++2 196100
++1 49025
+-1 196100
++1 392200
+fi=(449)
+-4 1682232
+fe=(640)
+158 1898270
+fi=(449)
+51 1408420
+fe=(640)
+173 1940640
+
+fl=(1137)
+fn=(30550)
+55 765672
+
+fl=(1347)
+fn=(32770)
+20 923116
+
+fl=(1046)
+fn=(34246)
+608 99174
+fi=(1153)
+261 99174
+fe=(1046)
+608 297522
+fi=(1153)
+261 99174
+fi=(1365)
+39 99174
+fi=(1153)
+261 99174
+fi=(1365)
+39 595044
+fi=(1153)
+261 892566
+fe=(1046)
+608 1983480
+fi=(449)
+54 198348
+-3 396696
+fe=(1046)
+
+fl=(1146)
+fn=(34284)
+35 153850
+cfi=(1150)
+cfn=(34286)
+calls=76925 170 
+* 84809985
+
+fl=(1122)
+fn=(34316) MiningDrill::tryToGetToSleep()
+1022 68830
+-2 172075
++5 103245
++3 68830
++18 172075
+-18 103245
++3 68830
+cfi=(1137)
+cfn=(30550)
+calls=34415 55 
+* 68830
+* 68830
++13 34415
+-10 172075
+cfn=(34106) MiningDrill::getDropTargetPosition() const
+calls=34415 602 
+* 8121940
+* 137660
+cfi=(530)
+cfn=(34120)
+calls=34415 56 
+* 1135695
+* 68830
+fi=(214)
+91 169193
+fe=(1122)
+1035 65948
+cfi=(1140)
+cfn=(33788)
+calls=32974 117 
+* 461636
+* 65948
++2 4323
+cfi=(1127)
+cfn=(34272)
+calls=1441 67 
+* 346003
++1 4323
+cfi=(1123)
+cfn=(34276)
+calls=1441 97 
+* 115280
+* 1441
+
+fn=(34104) MiningDrill::clearStorageBuffer()
+309 196536
++4 98268
+-4 196536
++9 98268
+-9 393072
++4 196536
+cfn=(34106)
+calls=98268 602 
+* 23191248
++4 491340
+cfi=(1124)
+cfn=(33898)
+calls=98268 31 
+* 15821148
+fi=(79)
+780 196536
+fe=(1122)
+319 98268
++1 196536
++10 393072
+-10 196536
++1 294804
++2 196536
++3 294804
+cfi=(1137)
+cfn=(30550)
+calls=98268 55 
+* 196536
+* 294804
+fi=(530)
+23 98268
+fe=(1122)
+329 294804
+fi=(530)
+23 294804
+fe=(1122)
+329 98268
+cfi=(1135)
+cfn=(34118)
+calls=98268 777 
+* 34644153
+* 98268
++12 98268
++2 884412
+
+fn=(34102)
+484 776428
+1055 582321
++2 582321
+489 388214
++3 191678
++7 159692
+-4 319384
++38 638768
+-43 196536
+cfn=(34104)
+calls=98268 309 
+* 79552629
++2 196536
++3 196536
++6 103245
++32 34415
+-29 34415
++29 68830
+-29 34415
+cfn=(34316)
+calls=34415 1022 
+* 11799500
++4 319384
+cfn=(34132) MiningDrill::updateMiningTarget()
+calls=159692 363 
+* 1117844
+* 319384
++23 479076
+-29 159692
+fi=(1365)
+39 159692
+fe=(1122)
+516 159692
+fi=(1365)
+39 159692
+fe=(1122)
+514 159692
+fi=(1365)
+39 159692
+fe=(1122)
+516 159692
+-3 319384
+fi=(1365)
+39 1117844
+fe=(1122)
+513 1437228
+fi=(1365)
+39 319384
+fe=(1122)
+516 159692
+fi=(1365)
+39 638768
+fe=(1122)
+516 479076
+-2 479076
++2 479076
+cfi=(1346)
+cfn=(34134)
+calls=159692 282 
+* 7505524
++2 159692
+-2 159692
++2 638768
++2 159692
+fi=(1365)
+39 159692
+fe=(1122)
+522 159692
+-2 319384
+fi=(1365)
+39 319384
+fi=(659) /tmp/factorio-build-ZMjCBB/src/Graphics/Animation4Way.cpp
+-21 798460
+fi=(1365)
++21 638768
+fe=(1122)
+521 1437228
++1 958152
+fi=(1128)
+73 479076
+fi=(449)
+-22 479076
+fi=(1128)
++22 159692
+fi=(48)
+671 159692
+fi=(1128)
+73 159692
+fi=(48)
+671 159692
+fi=(1128)
+73 319384
+fi=(48)
+671 159692
+fi=(1374) /tmp/factorio-build-ZMjCBB/src/Graphics/CyclicFramePosition.hpp
+50 159692
+fi=(1128)
++23 159692
+fi=(1374)
+-23 159692
+fi=(1128)
++23 159692
+fi=(1374)
+-23 159692
+fi=(1128)
++23 159692
+fi=(1374)
+-23 479076
++2 744
+fe=(1122)
+523 2976
+fi=(1365)
+39 744
+fe=(1122)
+523 5208
++1 3720
+fi=(1365)
+39 4464
+fe=(1122)
+525 5952
+fi=(449)
+54 2232
+fe=(1122)
+523 635792
+fi=(1365)
+39 158948
+fe=(1122)
+523 1112636
++1 794740
+fi=(1365)
+39 953688
+fe=(1122)
+525 1271584
+fi=(449)
+54 476844
+fe=(1122)
+525 638768
++1 159692
+-1 479076
++1 159692
+-1 1277536
++1 1117844
++2 319384
+cfn=(34140) MiningDrill::performMining()
+calls=159692 -93 
+* 82233532
+* 159692
+
+fn=(34140)
+435 1277536
++5 159692
+-4 159692
++4 1124552
+fi=(1590) /tmp/factorio-build-ZMjCBB/src/Mining/MiningCollector.hpp
+39 8385
+fe=(1122)
+446 5031
++2 1677
+-2 1677
++2 1677
++4 3354
+fi=(1117)
+106 464
++25 232
++12 348
+cfi=(1122)
+cfn=(34794) MiningDrill::updateMiningTarget() [clone .part.46145]
+calls=116 362 
+* 110525
+fe=(1122)
+455 232
+-12 3354
+cfi=(954)
+cfn=(24134)
+calls=1677 52 
+* 21801
+-3 13416
++2 1677
+fi=(1265)
+41 3354
+fi=(1591) /tmp/factorio-build-ZMjCBB/src/Item/InventoryBuffer.hpp
+-14 1677
+fi=(48)
++62 8385
+fi=(674)
+386 1677
++2 1677
+fe=(1122)
++54 5031
+fi=(674)
+-56 1677
+fi=(1265)
+41 1677
+fi=(1116)
+851 3354
+fi=(1590)
+16 1677
++23 1677
+-23 3354
+fi=(1116)
+851 1677
+fi=(1590)
+39 1677
+-23 1677
+fi=(1116)
+851 3354
+cfi=(1133)
+cfn=(34374)
+calls=1677 192 
+* 1925182
+* 3354
+fi=(1117)
+128 159924
+fe=(1122)
+460 2733280
+fi=(1590)
+39 310995
+fe=(1122)
+466 62199
++1 62199
+-1 62199
++1 124398
+-1 124398
+fi=(1591)
+27 124398
+fi=(48)
++62 186597
+fi=(1591)
+-62 62199
+fi=(1265)
++14 186597
+fi=(674)
+386 62199
++2 62199
+-2 62199
+fi=(1265)
+41 62199
+fi=(1590)
+-25 62199
++23 62199
+-23 124398
++23 62199
+-23 62199
+fe=(1122)
+471 248796
+fi=(1116)
+1176 62199
+fi=(624)
+90 186597
+fi=(434)
++57 62199
+fi=(624)
+-56 435393
+cfi=(648)
+cfn=(34186)
+calls=62199 -10 
+* 68246317
+* 62199
+-1 124398
+fe=(1122)
+469 124398
+cfi=(954)
+cfn=(24134)
+calls=62199 52 
+* 808587
++8 559791
++3 159692
++1 1277536
+-10 186597
+
+fn=(34796) MiningDrill::getResource(Surface const&, unsigned char) const
+346 812
++2 116
++2 116
+-4 232
+fi=(530)
+72 232
+fi=(644)
+-57 116
+fe=(1122)
+349 116
+fi=(530)
+72 116
+fe=(1122)
+349 116
+fi=(530)
+20 464
++52 116
+-1 116
++1 232
+-1 116
++1 116
+fi=(1344) /tmp/factorio-build-ZMjCBB/src/Entity/HeuristicEntitySearch.hpp
++40 116
+fi=(530)
+-41 116
++1 116
+fi=(1344)
++40 116
+fi=(530)
+-41 116
+fi=(1344)
++41 116
+cfi=(1210)
+cfn=(32466)
+calls=116 +34 
+* 14964
+fe=(1122)
+351 1392
+1084 348
+351 232
+cfi=(1210)
+cfn=(32476)
+calls=116 226 
+* 348
+* 1866
+cfi=(1210)
+cfn=(32476)
+calls=933 226 
+* 2799
+* 1049
+1072 3147
+cfi=(1382) /tmp/factorio-build-ZMjCBB/src/Entity/ResourceEntity.hpp
+cfn=(34802) ResourceEntity::isResourceEntity() const
+calls=121 23 
+* 242
+cfi=(1119)
+cfn=(34798)
+calls=928 429 
+* 1856
++1 2098
+-1 242
++2 363
+cfi=(620)
+cfn=(31660)
+calls=121 547 
+* 3267
+* 362
++10 480
+cfi=(608)
+cfn=(34804)
+calls=120 42 
+* 960
++1 840
+-1 360
++1 240
+355 120
+-4 120
++5 240
+-5 2098
+cfi=(1210)
+cfn=(32478)
+calls=1049 238 
+* 57954
+* 2098
++9 116
+-1 116
++1 116
+-1 116
++1 812
+
+fn=(34106)
+602 398049
+fi=(677) /tmp/factorio-build-ZMjCBB/src/Util/Direction.cpp
+71 132683
+fe=(1122)
+602 265366
++1 398049
+fi=(677)
+71 132683
+fe=(1122)
+603 132683
+fi=(677)
+71 1061464
+fi=(644)
+-19 663415
+fi=(640)
+243 265366
+fe=(1122)
+604 132683
+fi=(640)
+243 928781
+fe=(1122)
+604 132683
+fi=(640)
+243 265366
+fe=(1122)
+604 530732
+cfi=(540)
+cfn=(13638)
+calls=132683 184 
+* 23086842
+fi=(529)
+121 265366
+fi=(530)
+20 530732
+fi=(529)
+121 132683
+fi=(530)
+20 132683
++51 132683
+-50 132683
+fi=(529)
+121 132683
+fi=(530)
+20 398049
++51 132683
+-50 132683
+fe=(1122)
+606 663415
+
+fn=(34128)
+807 255458
++1 127729
+-1 127729
++1 383187
++21 510916
+-19 606230
++1 47657
++4 255458
+-3 287850
+fi=(1125)
+521 127706
++1 222958
+-1 95252
++3 47626
+fe=(1122)
+813 127706
+
+fn=(34132)
+363 159692
++1 319384
++2 319384
++1 159692
++47 159692
+
+fn=(34794)
+362 464
++20 232
+-1 116
++1 116
+cfn=(34796)
+calls=116 -36 
+* 105189
+fi=(926)
+87 232
+fe=(1122)
+382 116
+fi=(926)
+87 116
+cfi=(952)
+cfn=(34808)
+calls=116 +11 
+* 1508
+fe=(1122)
+384 116
++1 696
++4 348
++9 232
+fi=(610)
+23 116
+fe=(1122)
+413 116
+-14 232
++1 116
++14 464
+
+fl=(1382)
+fn=(34802)
+23 242
+
+ob=(2)
+fl=(2)
+fn=(7286)
+0 47600
+cfn=(7288) __syscall_clock_gettime
+calls=3628 0 
+0 13600
+0 20400
+
+fn=(7288)
+0 13600
+
+fn=(610)
+0 45454
+cfn=(612) _int_free
+calls=4568382 0 
+0 280198
+0 48
+
+fn=(390) (below main)
+cob=(9)
+cfi=(389)
+cfn=(6566)
+calls=1 84 
+0 2837114272
+
+fn=(6930) malloc_consolidate
+0 20833
+
+fn=(470) _int_malloc
+0 2693006
+cfn=(6930)
+calls=1020 0 
+0 20833
+0 728501
+
+fn=(488)
+0 14
+
+fn=(694)
+0 19615
+
+fn=(5734) _int_realloc
+0 54
+cfn=(612)
+calls=2199 0 
+0 59
+0 1
+
+fn=(5730)
+0 82
+cfn=(5734)
+calls=18269 0 
+0 114
+0 17
+
+fn=(612)
+0 280257
+
+fn=(450)
+0 520166
+cfn=(470)
+calls=3259448 0 
+0 3442340
+0 66582
+
+ob=(5)
+fl=(5)
+fn=(462)
+0 5700
+cfn=(464) __pthread_mutex_unlock_usercnt
+calls=2403 0 
+0 39900
+
+fn=(464)
+0 39900
+
+fn=(458)
+0 52200
+
+fn=(33680)
+0 3900
+
+totals: 2837114272

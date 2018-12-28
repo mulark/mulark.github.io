@@ -42,9 +42,9 @@
 <p>
     Beacon sharing is essentially getting more bang for your buck on beacon coverage. Overlapping the rows of beacons reduces the number of beacons required to achieve a target coverage. Building more compactly generally increases the coverage per beacon.
     In our example the top image requires 72 beacons to fully cover the 10 furnaces, while the bottom requires 88.
-    <img src="images/shared beacons.png"></img>
-    <img src="images/less shared beacons.png"></img>
 </p>
+<img src="images/shared beacons.png"></img>
+<img src="images/less shared beacons.png"></img>
 
 <h3 id="The-Test"> The Test </h3>
 <p>
@@ -80,7 +80,7 @@
     Based on this data we can see there is a clear performance advantage to increased beacon sharing. There is roughly a 10% victory for increased sharing.
 </p>
 <p>
-    My speculation on what could have caused the performance disparity is as follows. First, to consume power the game must look at do calculations on more entities. Second, it's possible that the game applies beacon effect radius more effciently when it's considering fewer entities. Third, and in my opinion least likely, is that entities in beacon effect radius cause checks if that effect can be applied even if that type of entity is not able to have effects. This could easily be tested by spacing out the rows even further so the beacon effect radius doesn't hit any other beacons.
+    My speculation on what could have caused the performance disparity is as follows. First, to consume power the game do calculations on more entities. Second, it's possible that the game applies beacon effect radius more efficiently when it's considering fewer entities. Third, and in my opinion least likely, is that entities in beacon effect radius cause checks if that effect can be applied even if that type of entity is not able to have effects. This could easily be tested by spacing out the rows even further so the beacon effect radius doesn't hit any other beacons.
 </p>
 
 

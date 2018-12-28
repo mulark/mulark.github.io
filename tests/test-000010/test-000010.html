@@ -1,0 +1,104 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000010 : A deeper dive into the results of test-000009. Why did more beacons perform worse?</h2>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    ElectricNetworkManager::update() consumes signifigantly more time on the maps with additional beacons.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Based on the results of test-000009, we saw that having more beacon sharing (ie fewer beacons but the same coverage) had a signifigant performance uplift. It was speculated at that time that three possible causes could have caused that performance disparity.
+</p>
+<p>
+    The first suspected cause was the additional power network overhead. While power generation by solar panels and accumulators are grouped so that the calculation is effectively O(1), power consumption very likely is not grouped in that same manner.
+</p>
+<p>
+    The second suspected cause was more efficienct updating of beacon entities and effects with fewer entities. Said another way, by having fewer entities providing effects, it's likely more performant.
+<p>
+    A third possible cause was beacons incurring additional UPS cost when entities are in effect range, even if the entities in range are not affected by the beacon effects. For instance a beacon in range of another beacon could cause that other beacon to do checks, even though it is not affected by the modules.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    In order to test these attributes, we need another tool. Valgrind/Callgrind are performance profilers. A profiler essentially runs a program and records how long each function takes. Since the Factorio developers included debugging symbols in their executables, these functions can have human readable and useful names. We will profile all our maps to generate a call graph, which we can extrapolate information from. A quick bash script lets us automate it, that script is available <a href="https://github.com/mulark/Factorio-benchmarking-tools/blob/master/profile_benchmark.sh">here.</a>
+</p>
+<p>
+    We will also need another map. We will take our more shared design and add some beacons off to the side, where they are not in range of each other or any other entities (except power poles). We will add roughly 32,000 beacons in this manner to bring the total number to approximately the same as our less shared map. By benchmarking this map we should be able to reasonably know if the beacon effect range has any effect on performance. This map should effectively only add the performance penalty of the power network, not any beacon effects.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    First up we will benchmark our new variant map. Doing 3 runs of the map at the same duration as test-000009, we get 9.98 average ms/tick. Compared to our results then, the less shared version got 9.93 average ms/tick. Effectively these two are within margin of error. This would lend credence to the theory that the performance cost is due to the power network overhead. Moreso, it indicates that effect application is either constant or irrelevant.
+</p>
+<p>
+    To further dive into the behavior, we can review our performance profiles. kcachegrind is a useful tool to review the profiles. Data is presented in terms of Ir. Ir stands for instruction fetch. Essentially, functions that have a bigger Ir took longer to execute.
+</p>
+<p>
+    The most relevant function we can look at is Map::update(). Or, to be specific, the children to Map::update(). There are three functions here that take 99% of the time. Surface::update(), ElectricNetworkManager::update(), and TransportLine::update(). Since our profiles are done by benchmarking for 100 ticks (which given the similar nature of the maps, should be enough time), we don't have to worry about the number of calls, rather the Ir per call.
+
+</p>
+<div style="width:80%; padding:20px; border: 1px solid black;">
+<div style="width:20%; float:left; font-size:1.5em; font-family:monospace;">Less beacon sharing</div>
+<img src="images/less_shared_profile.png"></img>
+<div style="width:20%; float:left; font-size:1.5em; font-family:monospace;">More beacon sharing</div>
+<img src="images/more_shared_profile.png"></img>
+<div style="width:20%; float:left; font-size:1.5em; font-family:monospace;">More beacon sharing with extra beacons in the map</div>
+<img src="images/more_shared_with_extras.png"></img>
+</div>
+<p>
+    For all profiles the Ir per call of Surface::update() is roughly ~18.5M. Surface::update() contains updating all the entities in the surface. This would be a strong indcator that entity behavior between saves is the same or very similar.
+</p>
+<p>
+    Meanwhile ElectricNetworkManager::update() consumes ~6.9M Ir per call for our two maps with the same number of beacons, but only 5.2M Ir per call for our map that shares beacons effectively. This is a huge gulf which appears to be responsible for the performance loss.
+</p>
+<p>
+    As for TransportLine::update(), it appears to be exactly as we expect, because the transport lines in every map should be identical (barring any positional symmetry inconsistencies).
+<p>
+    With this information, it is pretty clear that the cause of the reduced performance is due to the electric network overhead. Unfortunately we can't dive deeper into ElectricNetworkManager, since we get hit a stopping point at useDemand() and getDemand(). These two functions don't have any useful child functions we could extract further meaning from.
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    Based on the findings of these tests, it's clear that the additional beacons harm performance due to electric network overhead, by at least an order of magnitude over the next closest possible cause. Further diving into entity behavior under Surface::update() could be done, but most likely would not yield any interesting result in this case.
+</p>
+<p>
+    Full profiles available inside the raw-data folder for this test.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on December 27, 2018 </div>
+</footer>

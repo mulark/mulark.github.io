@@ -42,19 +42,12 @@ In the majority of cases, the inbuilt benchmarking utility should be used. It ca
 Multiple tests should be conducted for the same map, to minimize the run to run variance.
 </p>
 <p>
-Where applicable running system fans locked to 100% speed may be beneficial. This can reduce the chance of thermal throttling having a different magnitude of effect between maps/runs.
+    Where applicable running system fans locked to 100% speed may be beneficial. This can reduce the chance of thermal throttling having a different magnitude of effect between maps/runs.
+</p>
+<p>
+    Designs should be scaled to around the 60UPS mark to ensure that non-linear scaling doesn't change results done at low production levels.
+</p>
+<p>
+    A MTU (minimum tilable unit) should be decided upon that accurately describes how a design would be built in a typical game. A good MTU would be the production neccessary for 10k SPM worth of a resource. Within that MTU you achieve the most representative view of what a typical game design would be. An example of this is achieving a certain level of beacon sharing within a MTU.
 </p>
 </ul>
-
-
-
-
-
-
-<h4>
-Pitfalls and Mitigations
-</h4>
-
-<p>
-There are a number of measures and potential pitfalls possible when benchmarking any ingame tests. I will outline potential pitfalls and mitigations that can be taken to avoid those pitfalls. When applicable supporting evidence will be included, often in the form of linking to past tests.
-</p>

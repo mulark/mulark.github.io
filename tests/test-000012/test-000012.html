@@ -1,0 +1,80 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000012 : A look at how overbuilding a synthetic yellow science build affects performance</h2>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Building more entities than required reduced performance by ~9%, even though the total active time among all entities was the same.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Overbuilding is where you have more machines than required to produce a given production target. A typical example of this in the early game is where you have 2 copper cable assemblers directly inserting into 1 green circuit assembler. (as opposed to another common ratio of 3:2, which is not overbuilt). Overbuilding can allow for more direct insertion which by itself is the most effective way to transfer items. Thus a balancing act will likely be required to achive direct insertion, while keeping overbuilding in check. In this test we will not test this aspect of the overbuilding question.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<div style="width:66%; padding:10px">
+<img style="width:50%; float:right" src="images/test-000012-not.png"></img>
+<img style="width:50%; float:right" src="images/test-000012-is.png"></img>
+</div>
+<p>
+    For our test we will take the scenario of yellow science. If fully beaconed, 1 copper cable assembler is capable of providing coil to ~2.61 yellow science assemblers. If we have fewer yellow science assemblers than that figure, we end up overbuilt. A typical case is to go 1:2 which means our copper cable assembler is only active for ~76.5% of the time. For purposes of the test, we can also look at a 1:1 design, yielding ~38% active time on the cable. The direct insertion between these two is very similar, requiring 2 inserters and 1 chest per yellow science assembler.
+</p>
+<p>
+    In terms of entity counts, overbuilding costs not only more assemblers, but more beacons, and inserters too. Our MTU (minimum tilable unit) is 100 yellow science assemblers, close to that of the amount needed for 10kSPM. Both designs have reasonable sharing in that MTU, which should reduce beacon overhead cost to overbuilding relatively speaking. Tests 9 and 10 have a closer look at how beacon sharing or lack thereof affects performance.
+</p>
+<p>
+    Of the interesting entites in this test, overbuilding costs us 1.1x more stack inserters, 1.3x more assemblers, 1.3x more beacons, and 1.2x more infinity chests. Test 9 effectively tested overbuilding, except exclusively on beacons, where it was 1.6x more beacons.
+    Our finding at that time was around 10% performance uplift.
+</p>
+
+
+<h3 id="The-Data"> The Data </h3>
+<img style="width:60%" src="images/test-000012-data.svg"></img>
+<p>
+    Interestingly, we also measure around about 9.5% performance delta by overbuilding. I wonder if that delta is solely responsible by the power network, similar to what we saw in test 9. If we sum all power consuming entities from both tests (9 and 12), we find that there are 32% more entities that consume power in the beacon sharing test, while only 24% more entities consuming power in this test. If all entities cost power equally, and power consumption was our only performance costing factor, extrapolating test 9 to test 12 we would expect about 7.5% performance lost. Beacons have constant power draw, while inserters and assemblers are variable. Thus, if the penalty for overbuilding lies exclusively in the ElectricNetworkManager overhead, this data suggests that not every entity is equally damaging to that overhead.
+</p>
+<p>
+    More likely than exclusive ElectricNetworkManager overhead is some combination of that and other factors. Possible other factors are the cost to sleep and wake up machines, and costs to cache thrashing behavior. A future test looking closely at these results under a profile microscope might yield further insight.
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    There is a clear penalty to overbuilding, though it remains to be seen if that penalty is worth paying to achieve greater direct insertion.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on January 4, 2018 </div>
+</footer>

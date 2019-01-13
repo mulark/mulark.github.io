@@ -61,7 +61,7 @@
     By using commands, we can create around 90,000 cars in a big square. We can also first create belts so the newly created cars will move. By carefully choosing multipliers, we can specify the distance between cars. The game works on a 2x2 tile grid for collision calculations, and cars have a collision box that is 1.4 x 2 tiles. Thus we can craft our command to place the cars 2.1 tiles apart, as well as 5 tiles apart for a comparison point. (We used 3 for our other dimension since belts can't be on a fraction of a tile). This will be done where cars are stationary, as well as where belts will exist, pushing the cars northward. We have enough belts in our test that for the test duration specified we won't end up at the end of a belt.
 </p>
 <p>
-    As a point of comparison we will also test the case where stationary cars are so close to each other their collision boxes overlap. Thus, the summary of tile spacings we are testing is for moving cars: {x=3, y=2.1}, {x=5, y=5}. And for stationary cars: {x=1, y=1}, {x=3, y=2.1}, {x=5, y=5}. For each spacing we test with cars facing both north and facing south. These two orientations have the same collision box, but the north facing ones will, according to the theory presented in this test, hit the fast-path in terms of their rotation calculation.
+    As a point of comparison we will also test the case where stationary cars are so close to each other their collision boxes overlap. Thus, the summary of tile spacings we are testing is for moving cars: {x=3, y=2.1}, {x=5, y=5}. And for stationary cars: {x=1, y=1}, {x=3, y=2.1}, {x=5, y=5}. For each spacing we test with cars facing both north and facing south. These two orientations have the same collision box<sup><a href=#[1]>[1]</a></sup>, but the north facing ones will, according to the theory presented in this test, hit the fast-path in terms of their rotation calculation.
 </p>
 <p>
 
@@ -89,5 +89,8 @@
 </p>
 
 <footer>
+    <p id="[1]">
+        [1] Technically in 0.16 north facing hitboxes are different size. <a href="https://forums.factorio.com/viewtopic.php?f=218&t=63842"> https://forums.factorio.com/viewtopic.php?f=218&t=63842 </a>
+    </p>
     <div style="font-size:.9em"> Written by mulark on January 12, 2019 </div>
 </footer>

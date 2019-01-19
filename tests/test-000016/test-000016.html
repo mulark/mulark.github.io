@@ -1,0 +1,125 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000016 :  Do train wagons perform collision checks on their directly connected neighbour?</h2>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Yes, trains do perform collision checks on their directly connected neighbour. It does appear to be cheaper than a standard collision check, for an unknown reason.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Do trains perform collision checks their directly connected neighbour? It is not possible for trains to collide with their directly connected neighbour. That is, rolling stock cannot hit the rolling stock they are directly attached to.
+    <img src="images/Trains-1-2-3.png"></img>
+</p>
+<p>
+    In our example picture, rolling stock 2 cannot hit rolling stock 1 or 3. Theoretically, rolling stock 3 could hit rolling stock 1 (assuming magical rails), but under normal circumstances, these two would not be in the same 2x2 grid to perform the collision check.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    For our test we will create 1000 locomotives. We will put them into trains of 10 length, for a total of 100 trains. The other test scenario is to take those same trains, and split them into individual locomotives. Finally we will have a test case where we take those split locomotives and space them far apart. We will create a track where trains can go in a straight line, and is long enough that we can benchmark for our specified duration without the trains reaching the end. Another idea would be to control the order by which the trains are split, to ensure the front trains have a lower train id, thereby being updated first (among the same tick). This will not be tested here as we ought to keep our tests as atomic as possible.
+</p>
+<p>
+    We will deliberately orient the trains so they are not north, in order to maximize any performance differences, to make such data stand out. This was previously shown to have a difference in <a href="/tests/test-000015/test-000015.html">test-000015.</a> As such, choosing a worst case scenario for collision checks would be ideal.
+</p>
+<p>
+    We will set the trains to automatic, all in the same tick, after which we will save the map. The below command performs that action.
+</p>
+<code>
+    /c
+    for key,ent in pairs (game.player.surface.find_entities_filtered{name="locomotive"}) do
+        ent.train.manual_mode = false
+    end
+</code>
+<p>
+    All map begin their journey, and as long as we do not run our tests longer than the time it would take for the trains to reach the end, data should be consistent.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    For this test, we are specifically looking to see if trains perform collision checks against their directly connected neighbour. Thus, it does not make sense to test these maps in a --benchmark, since there are numerous other factors which could change performance that are not the <i>specific</i> thing we want to test here. To see the data we need, we will employ the callgrind profiler, and the kcachegrind visualizer.
+</p>
+<p>
+    There are numerous functions presented, but one that stands out is Train::collides(). It would be logical that our desired information resides here. This function is called once per tick per train. In our profile of a 500 tick benchmark, we see it called 500,000 times for the split trains, and 50,000 times for the connected train case, exactly in line with our assertation. Since Train::collides() is present on our case where wagons are split and spread apart, it is clear that this function alone is not responsible for performing collision checks in the 2x2 tile grid.
+</p>
+<p>
+    When we dig deeper into the child functions to Train::update(), things get more interesting.
+</p>
+<div style="width:50%">
+    <div style="border-style:solid; padding:4px">
+        <img style="width:100%" src="images/connected_profile.png"></img>
+        <p> The profile data in the connected case </p>
+    </div>
+    <div style="border-style:solid; padding:4px">
+        <img style="width:100%" src="images/split_profile.png"></img>
+        <p> The profile data in the split case </p>
+    </div>
+    <div style="border-style:solid; padding:4px">
+        <img style="width:100%" src="images/split_and_spaced_profile.png"></img>
+        <p> The profile data in the split and spread out case </p>
+    </div>
+</div>
+<p>
+    The data generated here clearly and explicity shows that connected wagons do perform collision checks. Entity::collides() is nowhere to be seen on the third, spread out case. This means it was never called.
+</p>
+<p>
+    What is unexplained is why the split and close case spent much more time in Entity::collides(). Travelling down the child function chain eventually gets us to two functions, Math::sinUnsafe(), and MapPosition::rotate(). For some unknown reason, these two are called way more often on the split case. Logically, the expected number of calls to these function should be the same (since we have the same number of locomotives spaced the same distance apart). It could be worth investigating if changing the locomotive id layout reduces the number of calls here. Locomotives further up the track would be updated first.
+</p>
+<p>
+    At exactly the same cost per call, calling these more than 4x as often is simply not ideal.
+</p>
+<div style="width:50%">
+<div style="border-style:solid; padding:4px">
+    <img style="width:100%" src="images/rotated_vertices.png"></img>
+    <p> A curious cost. </p>
+</div>
+<div style="border-style:solid; padding:4px">
+    <img style="width:100%" src="images/rotated_vertices_cheap.png"></img>
+    <p> A curious cost, but cheaper. </p>
+</div>
+</div>
+<p>
+    Another mild curiosity is the save file size for each case. The trains connected map had a save file of 6.8MB, versus roughly 12MB on the other two cases. This difference is not likely to matter in any real world case, but it is interesting nonetheless.
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    There is a collision checking cost to trains directly attached, but it is very likely not going to matter because if you use trains you are forced to pay the cost. A future test will cover the relative performance of varying train lengths.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on January 19, 2019 </div>
+</footer>

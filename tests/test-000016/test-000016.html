@@ -49,7 +49,7 @@
 
 <h3 id="The-Test"> The Test </h3>
 <p>
-    For our test we will create 1000 locomotives. We will put them into trains of 10 length, for a total of 100 trains. The other test scenario is to take those same trains, and split them into individual locomotives. Finally we will have a test case where we take those split locomotives and space them far apart. We will create a track where trains can go in a straight line, and is long enough that we can benchmark for our specified duration without the trains reaching the end. Another idea would be to control the order by which the trains are split, to ensure the front trains have a lower train id, thereby being updated first (among the same tick). This will not be tested here as we ought to keep our tests as atomic as possible.
+    For our test we will create 1000 locomotives. We will put them into trains of length 10, for a total of 100 trains. The other test scenario is to take those same trains, and split them into individual locomotives. Finally we will have a test case where we take those split locomotives and space them far apart. We will create a track where trains can go in a straight line, and is long enough that we can benchmark for our specified duration without the trains reaching the end. Another idea would be to control the order by which the trains are split, to ensure the front trains have a lower train id, thereby being updated first (among the same tick). This will not be tested here as we ought to keep our tests as atomic as possible.
 </p>
 <p>
     We will deliberately orient the trains so they are not north, in order to maximize any performance differences, to make such data stand out. This was previously shown to have a difference in <a href="/tests/test-000015/test-000015.html">test-000015.</a> As such, choosing a worst case scenario for collision checks would be ideal.
@@ -64,7 +64,7 @@
     end
 </code>
 <p>
-    All map begin their journey, and as long as we do not run our tests longer than the time it would take for the trains to reach the end, data should be consistent.
+    All trains in each map begin their journey, and as long as we do not run our tests longer than the time it would take for the trains to reach the end, data should be consistent.
 </p>
 
 <h3 id="The-Data"> The Data </h3>

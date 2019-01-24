@@ -95,7 +95,7 @@
     The data generated here clearly and explicity shows that connected wagons do perform collision checks. Entity::collides() is nowhere to be seen on the third, spread out case. This means it was never called.
 </p>
 <p>
-    What is unexplained is why the split and close case spent much more time in Entity::collides(). Travelling down the child function chain eventually gets us to two functions, Math::sinUnsafe(), and MapPosition::rotate(). For some unknown reason, these two are called way more often on the split case. Logically, the expected number of calls to these function should be the same (since we have the same number of locomotives spaced the same distance apart). It could be worth investigating if changing the locomotive id layout reduces the number of calls here. Locomotives further up the track would be updated first.
+    What is unexplained is why the split and close case spent much more time in Entity::collides(). Travelling down the child function chain eventually gets us to two functions, Math::sinUnsafe(), and MapPosition::rotate(). For some unknown reason, these two are called way more often on the split case. Logically, the expected number of calls to these function should be the same (since we have the same number of locomotives spaced the same distance apart). It could be worth investigating if changing the locomotive train id layout reduces the number of calls here. Locomotives further up the track would be updated first.
 </p>
 <p>
     At exactly the same cost per call, calling these more than 4x as often is simply not ideal.

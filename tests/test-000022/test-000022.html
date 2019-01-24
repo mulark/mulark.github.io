@@ -1,0 +1,70 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000022 : Are trains moving north more UPS effcient than other directions?</h2>
+<figure>
+    <img src="images/sample.png"></img>
+    <figcaption>Mysterious red rectange or 101 trains travelling to a far away land?</figcaption>
+</figure>
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Yes, trains travelling north (orientation 0) do have higher performance.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Previous tests showed that cars travelling north were more UPS effcient. For the sake of completeness, it is important to check trains as well. We fully expect that any moving entity with orientation 0 will perform better than any other orientation.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    For our test we will have 101 trains, consisting of 23 locomotives each. Each train will have its own track, travelling to a far away station. Each track will be thousands of tiles long, which means for our specified duration of 5,000 ticks, no train will reach the end. We will have two sets of tracks, one in the northward direction, and one in the eastward direction. We will set all trains to manual mode with command in the same tick and then take our test save shortly after.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<img style="width:40%" src="images/test-000022.svg"></img>
+<p>
+    Data here is the average ms per tick of a 5,000 tick benchmark. As usual, the benchmarks were ran 3 times and results averaged. There is a clear victory for the configuration where trains are moving north.
+</p>
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    The result is exactly the result we expected, but it is important to record the result regardless. This data further reinforces the findings of <a href="/tests/test-000015/test-000015.html">test-000015</a> and <a href="/tests/test-000016/test-000016.html">test-000016.</a> Test-000015 is reinforced by showing that orientation 0 is the most effcient once again. Test-000016 is further reinforced by showing that the collision checks are cheaper in orientation 0. If rolling stock did not perform collision checks on their directly connected neighbour, there would have been no or marginal difference between the orientations.
+</p>
+<p>
+    One annoying thing indicated by these results is the idea that having trains move quite some distance is more optimal in the north/south direction. This ends up being annoying because screens are almost always wider than they are tall, which means north/south is a bit more cumbersome to work with.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on January 23, 2019 </div>
+</footer>

@@ -1,0 +1,115 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000014 : Does the update order of trains affect the performance of trains?</h2>
+<figure>
+    <video autoplay controls>
+        <source src="images/out2.webm" type="video/webm">
+    </video>
+    <figcaption>A train being disassembled so that the front locomotives have a lower train id.</figcaption>
+</figure>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Yes, trains that are close to each other can have performance change depending on their update order.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<img style="float:right;width:20%" src="images/train_id.png"></img>
+<p>
+    Each train in the game has an id assigned to it. Such id can be read with the circuit network when a train is stopped at a station or by viewing entity info window. Each rolling stock has a train id, but multiple rolling stock combined into a train share one common train id. Additionally, there is an entity id for every entity in the game. It is not possible to read such a value, at least not one that I've found. Connecting and disconnecting rolling stocks together updates the train id, but does not update the entity id.<sup><a href=#[1]>[1]</a></sup>
+</p>
+<p>
+    In an example tick, entities are updated with the lowest id being updated first (entities are updated on a per chunk basis which complicates this, I don't know how this affects it). This also happens for trains, lower train ids will be updated before higher train ids. Consider a hypothetical case where two trains are right next to each other, and moving. If the lower id train is in the back, it will do its calculations to determine on which tile it will be in the next tick. If it would hit the front train, it is forced to do many calculations. Next, the front train would be updated, moving it clear of the back train. It may then be required to update the back train once again, to determine where it will be.
+</p>
+<p>
+    There are two properties we wish to test, the train update order, and the entity update order (within a train). It is theorised that the entity update order will not have signifigant effect since the things updated based on entity (rather than train), are not dependant on other entities in the save.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    To test this, let's take out hypothetical case and make it reality. We will have 101 tracks, each with 23 trains (1 locomotive per train). We will assemble the trains such that the lowest id is either the train leading the pack, or trailing the pack (and all further trains having a higher id down the line). Trains will be spaced at the typical distance between rolling stock that a train typically has.
+</p>
+<p>
+    Additionally we will test if the entity update order (rather than the train update order) has any effect. To do this we make create locomotives in order from front to back/back to front. We keep the trains of 23 wagons merged into one train. Thus, there is 101 trains of length 23.
+</p>
+<p>
+    Finally we extend our tracks far into the distance such that no train will reach the end before our specified benchmark duration. This ensures we are only looking at a period where trains are constantly moving.
+</p>
+<p>
+    For funsies, we can also look at performance when the split trains have crashed into the end of the track, and perform a benchmark there. This provides a different view, where instead of collision checks never resulting in a collision, all collision checks are a collision.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<img src="images/test-000014.svg"></img>
+<p>
+    <ul>
+    <li>{Attached: Moving}: Test with entity ids in ascending/descending configuration.
+    <li>{Split: Moving|Crashed}: Tests with train ids in ascending/descending configuration.
+    </ul>
+</p>
+<p>
+    First up, the entity id within a train does appear to be completely irrelevant.
+</p>
+<p>
+    Secondly, train id does appear to make a signifigant difference, but only when not crashed. Crashed appears to be effectively with the margin of error, and further successive runs could flip the result either direction.
+</p>
+<p>
+    The interesting result is the moving split configuration. Here, run to run variance cannot explain the roughly 7% performance gap. The gap is actually massive, when you consider how exceedingly similar the two test cases are. When we take a profile of each of these two maps, there is one immediate standout which takes a lot longer in one case than the other.
+</p>
+<div style="width:50%">
+    <div style="border-style:solid; padding:4px">
+        <img style="width:100%" src="images/front_lower_id_profile.png"></img>
+        <p style="width:100%"> The profile data in the scenario with trains in front having a lower train id.<p>
+    </div>
+    <div style="border-style:solid; padding:4px">
+        <img style="width:100%" src="images/back_lower_id_profile.png"></img>
+        <p style="width:100%"> The profile data in the scenario with trains in back having a lower train id.<p>
+    </div>
+</div>
+<p>
+    It is clear that collision checks are called way more often, but at roughly the same cost per call. It would appear that within a tick, a lower train id moves out of the way before the one behind it causes collision checks unnecessarily.
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    In practice, will such a design consideration matter? Probably not. This data does show us that small or insignifigant differences may not in actuality be small or insignifigant.
+</p>
+
+<footer>
+    <p id="[1]">
+        [1] As tested by saving an entity to a variable, then disconnecting/reconnecting rolling stock, and then using the == operator to compare the entity. Technically the entity id could still be updated for both the variable and compared entity.
+    </p>
+    <div style="font-size:.9em"> Written by mulark on January 24, 2019 </div>
+</footer>

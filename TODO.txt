@@ -14,3 +14,6 @@ Does expanding the map far out have performance penalty? Even when those chunks 
 How expensive is setting requests by the circuit network.
 See if miners having only one ore tile changes their performance.
 Does fine tuning the train id's have performance benefits (IE having a lower train id in front of one which could perform collision checks on it)
+Are diagonal trains of similar cost to trains orientation != 0?
+Test rebinding to collision grid
+Test train signals helping performance (potential due to checking the rail blocks)

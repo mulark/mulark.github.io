@@ -50,7 +50,7 @@
     Each train in the game has an id assigned to it. Such id can be read with the circuit network when a train is stopped at a station or by viewing entity info window. Each rolling stock has a train id, but multiple rolling stock combined into a train share one common train id. Additionally, there is an entity id for every entity in the game. It is not possible to read such a value, at least not one that I've found. Connecting and disconnecting rolling stocks together updates the train id, but does not update the entity id.<sup><a href=#[1]>[1]</a></sup>
 </p>
 <p>
-    In an example tick, entities are updated with the lowest id being updated first (entities are updated on a per chunk basis which complicates this, I don't know how this affects it). This also happens for trains, lower train ids will be updated before higher train ids. Consider a hypothetical case where two trains are right next to each other, and moving. If the lower id train is in the back, it will do its calculations to determine on which tile it will be in the next tick. If it would hit the front train, it is forced to do many calculations. Next, the front train would be updated, moving it clear of the back train. It may then be required to update the back train once again, to determine where it will be.
+    In an example tick, entities are updated with the lowest id being updated first (entities are updated on a per chunk basis which complicates this, I don't know how this affects it). This also happens for trains, lower train ids will be updated before higher train ids. Consider a hypothetical case where two trains are right next to each other, and moving. If the lower id train is in the back, it will do its calculations to determine on which tile it will be in the next tick. If it would hit the front train, it is forced to do many calculations. Next, the front train would be updated, moving it clear of the back train. It may then be required to update the back train once again, to determine where it will be.<sup><a href=#[2]>[2]</a></sup>
 </p>
 <p>
     There are two properties we wish to test, the train update order, and the entity update order (within a train). It is theorised that the entity update order will not have signifigant effect since the things updated based on entity (rather than train), are not dependant on other entities in the save.
@@ -110,6 +110,9 @@
 <footer>
     <p id="[1]">
         [1] As tested by saving an entity to a variable, then disconnecting/reconnecting rolling stock, and then using the == operator to compare the entity. Technically the entity id could still be updated for both the variable and compared entity.
+    </p>
+    <p id="[2]">
+        [2] In practice this is not what the game actually does. If a collision is detected, then it is executed, regardless if whether or not the second updated train would have moved out of the way or not. <a href="https://forums.factorio.com/viewtopic.php?f=23&t=61178"> Forum thread.</a> A future test to verify such an event would be to create a mod by which the speed of trains is increased (to say 5 tiles a tick) and then space such trains 5 tile apart. If assembled with lower train ids in the back, the trains would collide. If lower train ids were in the front, there would be no collision.
     </p>
     <div style="font-size:.9em"> Written by mulark on January 24, 2019 </div>
 </footer>

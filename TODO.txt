@@ -18,3 +18,4 @@ Are diagonal trains of similar cost to trains orientation != 0?
 Test rebinding to collision grid
 Test train signals helping performance (potential due to checking the rail blocks)
 What functions do active/inactive but disabled inserters check?
+does overlapping vehicle map markers have additional render cost?

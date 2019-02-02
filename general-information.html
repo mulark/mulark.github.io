@@ -106,3 +106,55 @@ Common Terms
 </h3>
 <p>UPS: updates per second. The game runs calculations (updates) every second. The normal amount is 60 updates a second. </p>
 <p>di: direct insertion. Refers to the design concept where ingredients are directly passed from one crafting machine to another. As opposed to putting onto a train/bot/belt.</p>
+
+<h3>
+    Decoding the fields commonly logged in raw data fields
+</h3>
+<h4>map_name</h4>
+<p>
+    The map name used in this benchmark.
+</p>
+<h4>run_index</h4>
+<p>
+    The run index indicates that this is the Nth benchmark of this map_name, for this set of data.
+</p>
+<h4>startup_time</h4>
+<p>
+    The time it took for the game to load in seconds. When the game logs "Loading script.dat" in the log file, this is that time.
+</p>
+<h4>end_time</h4>
+<p>
+    The time the game exited, found by reading the log for "Goodbye".
+</p>
+<h4>avg_ms</h4>
+<p>
+    The time per tick average it took to run the benchmark. Printed to the console after a finished benchmark run.
+</p>
+<h4>min_ms</h4>
+<p>
+    The time of the fastest tick during this benchmark. Printed to the console after a finished benchmark run.
+</p>
+<h4>max_ms</h4>
+<p>
+    The time of the slowest tick in this benchmark. Printed to the console after a finished benchmark run.
+</p>
+<h4>ticks</h4>
+<p>
+    The duration of this benchmark in ticks.
+</p>
+<h4>execution_time</h4>
+<p>
+    The total time the benchmark took (ms), as printed to the console at the end of a benchmark run.
+</p>
+<h4>effective_UPS</h4>
+<p>
+    A computed value that converts the execution_time and ticks into ticks per second (or UPS). (minor precision loss)
+</p>
+<h4>factorio_version</h4>
+<p>
+    The game version the benchmark was performed.
+</p>
+<h4>executable_type</h4>
+<p>
+    Indicates the platform where testing was conducted. Possible values are {Linux headless server, Linux standalone, Windows standalone}
+</p>

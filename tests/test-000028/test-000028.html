@@ -1,0 +1,108 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000028 : Does having cars aligned to the collision grid improve performance when they are moving?</h2>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Yes, there is a tangible benefit to aligning cars to the collision grid.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Cars are free to move whereever in a tile as they please. The car collision box is 1.4w x 2.0h tiles. Depending on the precise position on the tile grid, it would be possible for the car to reside entirely within one horizontal set of 2x2 tile grid tiles (2x2 being the grid by which collision calculations are performed).
+</p>
+<p>
+    However, it is also possible for such a car to be further than (roughly) 0.3 + 1/256 from the center of a 2x2 collision grid alignment. In this case, the car is now present on twice as many 2x2 collision grid tiles.
+</p>
+<p>
+    This means that the car will perform twice as many calculations to determine which 2x2 grids it resides on, while moving. This we can call the rebind rate. By calculating the rebind rate from the speed of cars (3/32 tiles/tick on express-belt), we see that per car, the rebind rate for aligned to grid is 2.8125 rebinds/second. The misaligned configuration is exactly double, 5.625 rebinds/second.
+</p>
+<h3 id="The-Test"> The Test </h3>
+<p>
+    For our test we will perform 5 runs of 5,000 ticks of benchmarking. First, we will create "tracks" for each set of cars to move forward on. Each track is long enough that for the 5,000 tick benchmark, no car will reach the end. All cars will face north to maximise the element we wish to test, and to minimise other factors. We will use exceedingly similar parameters to <a href=/tests/test-000015/test-000015.html>test-000015</a>. Each track will be horizonally spaced apart from another such that no 2x2 grid would be shared between two cars in any case.
+</p>
+<p>
+    The vertial spacing between cars will be 5 tiles (leaving 3 tiles of gap, due to the collision box). This ensures that no 2x2 grid is ever shared between cars on the same track. Like our previous test, there is roughly 90,000 cars in total. In the first case, the cars will be created exactly at the center of the appropriate 2x2 grid. The second case is to offset car creation by 0.9 tiles from the 2x2 tilegrid. This ensures that each car is on and activates collision grids at twice the first case rate.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    <img style="width:100%" src="images/chart.svg"></img>
+    <ul>
+    <li>{Aligned | Misaligned}: Indicates whether or not the cars were aligned to the 2x2 tile grid or not.
+    <li>{1 .. 5}: Indicates the run index for that configuration.
+    </ul>
+</p>
+<p>
+    Viewing the data, there is a signifigant performance uplift by alignment to the collision grid. It is clear car belt designs should be collision grid aligned as much as possible.
+</p>
+<p>
+    Another question one would ask is why or what functions are resposible for this rebinding. A performance profile may be able to place the blame.
+</p>
+<div style="width:66.6%">
+    <div style="border-style:solid; padding:4px">
+        <img style="width:100%" src="images/aligned.png"></img>
+        <p> The profile data of Entity::changePosition(Vector const&) in the aligned case </p>
+    </div>
+    <div style="border-style:solid; padding:4px">
+        <img style="width:100%" src="images/misaligned.png"></img>
+        <p> The profile data of Entity::changePosition(Vector const&) in the misaligned case </p>
+    </div>
+    <div style="border-style:solid; padding:4px">
+        <img style="width:100%" src="images/aligned2.png"></img>
+        <p> The profile data of Surface::collideWithEntity(BoundingBox const&, CollisionMask, Entity const*) in the aligned case </p>
+    </div>
+    <div style="border-style:solid; padding:4px">
+        <img style="width:100%" src="images/misaligned2.png"></img>
+        <p> The profile data of Surface::collideWithEntity(BoundingBox const&, CollisionMask, Entity const*) in the misaligned case </p>
+    </div>
+</div>
+<p>
+    Immediately we can see 3 key functions under Entity::changePosition(Vector const&) which show a performance differential. Surface::collide(), Surface::addEntityWithoutSetup(), and Entity::release(). Surface::collide() does not show the expected twice the cost per call / twice as many calls, so we dig further into its child functions, until we get to Surface::collideWithEntity(). Our 2x cost is found at Surface::getChunkSafe() as a child function to Surface::collide()
+</p>
+<p>
+    The direct knowledge of these functions doesn't help us here much, but expenses here can be extrapolated to other tests.
+</p>
+<p>
+    In terms of absolute cost, Surface::collide() consumes roughly 1B Ir, of which 500M is contributed by Surface::getChunkSafe(), with the other half being a cost of the function itself (and therefore we can't see any further detail). A further 120M Ir is spent in Surface::addEntityWithoutSetup(), and an additional 83M spent in Entity::release(). If comparing two future designs which encouter a varying number of 2x2 collision grids, looking into the Surface::collide() function first would likely achieve the desired result sooner.
+</p>
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    Importantly, we have determined which functions are resposible for rebinding to the collision grid. (Or, at least the ones with a signifigant performance overhead). Designs should be tuned such that possible opportunities to reduce collision grid transitions should be taken. Alignment to the center of the 2x2 grid should be executed where applicable.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on February 2, 2018 </div>
+</footer>

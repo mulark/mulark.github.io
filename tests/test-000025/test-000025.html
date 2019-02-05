@@ -1,0 +1,118 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000025 : Does the spacing between rails affect performance?</h2>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Yes, if the rails are diagonal and contain parallel trains, performance can be greatly degraded. A minimum of 5 diagonal tiles is required to not be impacted.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Two diagonal trains can exist on the same 2x2 collision grid tile, if there is a 0 tile gap between diagonal rails. Even if these trains are on different rail blocks, it's likely that collision checks would still be triggered, since both entities belong to the train-layer collision mask. The game uses collision masks to determine which entities will ever try to collide. Rolling stock belong to the train-layer, so to initiate a collision check the other entity must also belong to that mask. Cars/tanks, the player, gates, rolling stock, and biters all belong to the train-layer. All other entity types cannot cause a collision check to occur. Since rails do not belong to the train-layer, we can immediately throw out collision as a cause for any performance difference, if the adjacent rails are unoccupied.
+</p>
+<p>
+    The game uses AABB collision boxes to perform its initial collision calculations. (We know this from profiles which contain the function name getAABB()). AABB stands for axis aligned bounding box. If two AABB collision boxes overlap, then a more expensive algorithm is ran. It does not seem likely that collision boxes aligned to the tile grid would have their AABBs overlap. The game also uses the 2x2 tile grid to determine if two entities are possible to collide. Most likely, the AABB is how the game determines what 2x2 grids a entity resides on.
+</p>
+<p>
+    <img src="images/2x2 casts.png"></img>
+</p>
+<p>
+    Using a paint program, we can sketch up what this type of secenario looks like. Yellow is the AABB collision box for the locomotive entity, and purple shows which 2x2 grids a locomotive's AABB resides on.
+</p>
+<p>
+    The diagonal case "activates" 12 (or 9) of these 2x2 grids, while straight locomotives only "activate" 4 (or 3) of these 2x2 grids.
+</p>
+<p>
+    A big problem emerges when we have multiple trains within a few tiles of each other. Those grids begin to overlap. An example of such an event is pictured here. (3 tiles gap)
+</p>
+<p>
+    <img src="images/AABB parallel.png"></img>
+</p>
+<p>
+    When the purple region (AABB cast to 2x2 grid) overlaps, it gets expensive. When the yellow region (the AABB itself) overlaps, it gets really expensive. It takes a minimum of 5 tiles of gap to ensure no purple area overlaps.
+</p>
+<p>
+    Furthermore, when we apply this technique to rolling stock of the same train, we see another major cause for concern.
+</p>
+<p>
+    <img src="images/same train AABB.png"></img>
+</p>
+<p>
+    Yes, you are seeing that right, diagonal trains naturally have the AABB 2x2 tile grid cast between their directly connected neighbor overlapping! This can't bode well for diagonal train peformance, but this factor shall be tested in test-000026. We should attempt to keep this test as atomic as possible, which means looking only at tile gap factors.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    This test will create many different rail tracks with varying tile spacing between them. For straight tracks we will consider the vertical spacing between rails, and for diagonal tracks, we will consider the diagonal tile length.
+</p>
+<p>
+    Diagonal rails will be tested with 0, 1, 3, 5, and 10 tile gaps. Straight rails will be tested at 0, 2, 4, and 6 tile gaps. We expect 5 and 10 tile gaps for diagonal rails to perform exactly the same. We also expect every straight rail configuration to perform like one another.
+</p>
+<p>
+    There will be 101 trains and tracks, each consisting of 23 locomotives each. The diagonal tracks will be travelling to the northeast, while the straight trains will travel to the east. Since we are not concerned with performance of diagonal vs straight, each train will be tested under continuous operation. This results in a benchmark duration of 5000 ticks, which will have none of the trains reach the end of the track. In our next test, test-000026, we will test for such a duration that straight vs diagonal trains are comperable.
+</p>
+<p>
+    Trains will be travelling in parallel, so the maximum number of extra checks are executed. Paritally overlapping or trains travelling in opposite directions would be more common cases, but still suffer additional checks.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<img src="images/tile gap data.svg"></img>
+<p>
+    Data here ranges from entirely expected to shockingly catastrophic.
+</p>
+<p>
+    First, we see that straight rails don't care one bit whether or not there is any tile spacing.
+</p>
+<p>
+    Secondly we immediately see that for continuous operation, diagonal trains are more than sqrt(2) slower (if diagonal was otherwise equal to straight that is the factor we would expect). As we expected, there is no performance delta between spacing diagonal tracks 5 and 10 tiles apart.
+</p>
+<p>
+    Looking towards the cases with smaller gaps, the penalty looks to be almost exponentially worse as you shrink the gap. There is a potential 3.5x speedup by simply spacing the tracks further apart. In the more common case because it allows signaling, there is still roughly a 2x speedup opportunity.
+</p>
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    The next test, test-000026 will test not continuous operation of trains, but work based operation. This changed focus will allow us to make better comparisons between straight and diagonal tracks. The key takeaway is to ensure 5 tiles spacing minimum if you decide to have parallel trains on diagonal tracks. Curved rails will likely have a similar (possibly greater) penalty if you space them too close together, but testing them will be more difficult.
+</p>
+<p>
+    Perhaps the most common case this behavior would be encountered is within a stacker. If your design requires a stacker, you will want to use cardinal rails or allocate ample space between tracks.
+</p>
+
+<footer>
+    <p>
+        Further testing performed in <a href="/tests/test-000026/test-000026.html">test-000026</a>.
+    </p>
+    <div style="font-size:.9em"> Written by mulark on February 4, 2019 </div>
+</footer>

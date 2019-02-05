@@ -1,0 +1,127 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000026 : Are diagonal trains more or less UPS effective than straight trains?</h2>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Despite the reduced in game time it takes to reach another diagonal location, it is better to use a L shape with straight rails to get from A to B.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Initially, one would think that to get from A to B, the shortest path possible would be the best. As shown by our previous test, there are a mutitude of factors which could trump that intuition. If you have not read that test, it is a dependency for this test. One can read that test <a href="/tests/test-000025/test-000025.html">here</a>.
+</p>
+<p>
+    One of these factors is the number of 2x2 grids a train is activating at any one time. Under the assumption that the AABB collision box casts to the 2x2 grid, a diagonal train is activating between 9 and 12 of these at any given time. A straight train only activates 3 or 4 of them at any given time.
+</p>
+<p>
+    Another intuition which doesn't actually work out is the idea that you are travelling through fewer 2x2 tile grids. Normally, we would expect a 2 : sqrt(2) factor (or sqrt(2)). However, diagonal travelling actually travels through the same number of grids.
+</p>
+<p>
+    <img src="images/2x2 diagonal path.png"></img>
+</p>
+<p>
+    In our example picture, it takes 9 hops regardless of if you take the diagonal path or a L style path.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    For our test, we need to create two sets of tracks. One that takes the shortest (diagonal) path, and another set which takes a L formation. We will time the start tick and the tick where the trains reach the destination station. In terms of game ticks, if the diagonal track takes time T, then the L formation would take approximately T*sqrt(2).
+</p>
+<p>
+    Tracks will be spaced 5 diagonal tiles apart, as we determined was the minimum to not incur any parallel train costs in test-000025.
+</p>
+<p>
+    Before we benchmark anything, we need to determine our T1 and T2 tick durations.
+</p>
+<pre><code>    /c
+    --[[Print the game tick when trains start/stop]]
+    script.on_event(defines.events.on_train_changed_state,function(event)
+        game.print(game.tick)
+    end)
+</code></pre>
+<p>
+    The above command will tell us when a train state changes (for example when it starts/ reaches a station).
+</p>
+<pre><code>    /c
+    for key,ent in pairs (game.player.surface.find_entities_filtered{name="locomotive"}) do
+        ent.train.manual_mode = false
+    end
+</code></pre>
+<p>
+    The above command starts every train by flipping it to automatic. It is here that we read our initial tick, and then we wait until trains reach the destination station, to read the second measurement.
+</p>
+<p>
+    Performing this procedure, we find that it takes 5872 ticks to reach the station in the diagonal case, and 8182 ticks to reach the end in the straight L case. This is our defined benchmark durations for each case. One might be tempted to test both maps at the 8182 tick duration, but that is not recommended. We don't wish to test the idle behavior of trains, in this test, but if such a factor was at or very close to 0, it wouldn't matter either way. We are not interested in the updates per second rate, rather the total sum of time. These measured tick values are very close to our expected sqrt(2) factor.
+</p>
+<p>
+    We should consder the work completed by each case. To move 101 trains from A to B, we consider the real time duration it would take to move those trains. Said another way, we care about how much update time it took to move those trains from A to B, instead of the number of updates. We can multiply the straight case by sqrt(2) at the end if we wish to factor based on rate of work in game ticks.
+</p>
+<p>
+    The final factor we can test is direction of travel. For the diagonal case it should not matter if we're travelling northeast or southwest, but for the L case, north facing trains would be cheaper. By reversing the direction of a train after they've travelled the first time, we can test both directions.
+<p>
+    As per usual we will perform 3 runs of each map.
+</p>
+
+
+<h3 id="The-Data"> The Data </h3>
+<img src="images/sum time.svg"></img>
+<p>
+    <ul>
+    <li>{Straight | Diagonal}: Indicates if the tracks are diagonal or straight.
+    <li>{8182 | 5872}: Indicates the number of ticks required for a train to travel the full track length. This is the benchmark duration.
+    <li>{SW | NE}: Indicates the general direction of travel. Straight will travel each of these directions piece by piece.
+    </ul>
+</p>
+<p>
+    Here we can see that straight rails perform better! To move 101 trains from the start to the station, it takes slightly more than half the update time by using a L shape. Even when we multiply these results by sqrt(2), it's still a bloodbath.
+</p>
+<p>
+    Once again we show that there is advantage to orientation 0 since the NE configuration on straight rails spends about half the time in that orientation.
+</p>
+<p>
+    That NE and SW have a performance gap on the diagonal case is a curious one. We expect 0 difference between the two cases. Some speculative reasons could be: slightly different time of save, the command used to reverse the trains changed which locomotive is considered the front, or simply just run to run variance.
+</p>
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    This result is rather unintuitive from a surface perspective, but the cumulative factors outlined here and in test-000025 do lend some credence to the result.
+</p>
+
+<footer>
+    <p>
+        Further testing performed in <a href="/tests/test-000025/test-000025.html">test-000025</a>.
+    </p>
+    <div style="font-size:.9em"> Written by mulark on February 4, 2019 </div>
+</footer>

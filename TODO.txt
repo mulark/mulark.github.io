@@ -1,21 +1,22 @@
 test pebbles GC
-test nearest neighbour train collision
-test cars moving on 2x2 or 4x2 collision grid
+DONE -- test nearest neighbour train collision
+DONE -- test cars moving on 2x2 or 4x2 collision grid
 test efficiency modules in miners
 test effc mods in rocket fuel design on solid fuel part
 test beacons removed there as well
 test allaizns car beacon setup vs the other way (power for collision checks test)
 Make/find a mod that sets 0.17's recipes to 0.16's, then test (Rusty is doing this YAY!)
 Triple channel RAM, vs Dual, Vs multiple dimms in 1 channel
-Is it better to optimise for passive provider sharing or forego sharing to achieve the shortest travel distance on bot builds?
+Is it better to optimize for passive provider sharing or forego sharing to achieve the shortest travel distance on bot builds?
 Testing copied designs with various memory frequencies to validate best megabase scaled design. At megabase scale, the game becomes more memory bound.
 Testing with a dummy megabase, so that you are not forced to clone the thing you want to test beyond the scale it would otherwise be at
 Does expanding the map far out have performance penalty? Even when those chunks are not doing anything?
 How expensive is setting requests by the circuit network.
 See if miners having only one ore tile changes their performance.
-Does fine tuning the train id's have performance benefits (IE having a lower train id in front of one which could perform collision checks on it)
-Are diagonal trains of similar cost to trains orientation != 0?
-Test rebinding to collision grid
+DONE -- Does fine tuning the train id's have performance benefits (IE having a lower train id in front of one which could perform collision checks on it)
+DONE -- Are diagonal trains of similar cost to trains orientation != 0?
+DONE -- Test rebinding to collision grid
 Test train signals helping performance (potential due to checking the rail blocks)
 What functions do active/inactive but disabled inserters check?
 does overlapping vehicle map markers have additional render cost?
+Does a dual headed train traveling backwards (relative to the "front" locomotive which is determined when a train is created) have performance loss?

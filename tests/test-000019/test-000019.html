@@ -1,0 +1,107 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000019 : Does the wait condition on trains have a signifigant performance delta?</h2>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Yes, the most optimal train wait conditions to use are time passed and inactivity. Using anything except item count is advisable.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Trains waiting at a station have multiple schedule types available to them. Certain scedule types, for example item count and inventory full, one would expect to have additional performance overhead relative to for example a time passed condition.
+</p>
+<p>
+    Based on the factors of each condition, one might predict that from best to worst the order might be: Time passed, Inactivity, Circuit condition, Inventory full + empty and/or Item count. This however is only a prediction, so we will set out to find the real hierarchy.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<img src="images/short loop.png"></img>
+<p>
+    The tests will have the a short loop track of trains with each possible waiting condition. We will not test fluid count, but it is likely that it would perform similarly to item count. The waiting conditions we will test are:
+    <ul>
+        <li>Time passed
+        <li>Inventory full + empty
+        <li>Item count
+        <li>Circuit condition
+        <li>Inactivity
+    </ul>
+</p>
+<p>
+    Each track has an unload and load station, each with 1 inserter loading directly into/from an infinity-chest. The circuit network case will contain a simple timer based circuit network, and it only sends the signal to the train when the condition will be true (circuit network noise suppression).
+</p>
+<p>
+    We will load our trains with iron plate as it is a good balance of stack size. Going up to space science could reduce the frequency which we have to move between load/unload stations, but that was not tested here.
+</p>
+<p>
+    The total duration it takes to load or unload a train is 4000/~27.7i/s which comes out to 144.4s. Our trains in the time passed and circuit network condition cases will have 145s waiting applied. The inactivity state is for 1 second of inactivity. Item count is defined to be iron-plate = 0 or iron-plate = 72000.
+</p>
+<p>
+    We will test at a varying number of pastes. Each 1x paste unit represents 101 trains. Therefore, a hypothetical 4x paste would contain 404 trains. Each train consists of 4 locomotives each powered by nuclear fuel, and 18 cargo wagons. No inventory filters were applied to the cargo wagons.
+</p>
+<p>
+    No special care was taken to ensure trains of different schedules would leave or arrive at the same time. Based on slight differences in scheduling technique, these trains would eventually diverge anyway. We will mitigate this potential cause for concern by carefully choosing the benchmark duration.
+</p>
+<p>
+    To complete a full loop, a train must both unload and load, as well as travel between stations. Using a command to print the game ticks when a train leaves or arrives at a station, we find that it takes 417 ticks. Doubling it gives us the time it takes to complete a full loop, 834 ticks. The same logic can be applied to the station wait condition. (145 seconds X 2 stations X 60 ticks per second) gives us 17400 ticks, and adding back in the movement time we get 18234 ticks. We multiply this number by 10 so that any slight variations between schedulers are not impactful.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<img src="images/data.svg"></img>
+<p>
+    <ul>
+    <li>{1x | 2x | 3x | 4x | 5x}: Describes the scale at which each map was tested. Each 1x unit represents 101 trains.
+    </ul>
+</p>
+<p>
+    This data reveals that the most performant options for train schedules are time passed and inactivity. These two values are very close so either one is a viable option.
+</p>
+<p>
+    Up next we have inventory full / empty. This one is measurably worse than the previous two, but not by much.
+</p>
+<p>
+    Worse still we have the circuit network. This one is worse than it looks since each station has one timer based circuit. Typically we could reduce this number to one timer for several stations. I would predict this to be of similar cost to inventory full / empty if we reduced the number of these clocks.
+</p>
+<p>
+    Finally we reach the truly terrible, item count. This condition is much slower than the others, and it would stand to reason that this condition should be avoided if at all possible. The fact that this condition is much worse than the inventory full / empty case indicates that there must be a fast path being applied in that case.
+</p>
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    It would be most advisable to not use the item count conditions. Depending on the case either time passed or inactivity would achieve the best results. Determining how long it takes to unload or load a train and using that predefined value would acieve measureable speedup.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on February 10, 2019 </div>
+</footer>

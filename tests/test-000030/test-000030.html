@@ -1,0 +1,144 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000030 : Part 2 of testing train wait conditions</h2>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    If not using the time passed or inactivity wait conditions, you should put a time passed AND condition preceding the condition you want to check.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Our previous testing conducted in <a href="/tests/test-000019/test-000019.html">test-000019</a> covered the basic cases where a single wait condition is applied. However, there are more possibilities that were not covered there. One such case is where multiple wait conditions are applied. In theory, wait conditions joined by the AND operator would not perform any further checks if the first condition was not true. This will be one of the things we aim to test.
+</p>
+<p>
+    Since we are ANDing our conditions, we will no longer need to have any actual loading/unloading performed. If a performance difference is measurable, it also serves as proof that a cost to a particular wait condition is based on continuous checks, rather than checks performed when the attribute changes. An example of this would be the item count condition. There are two possibilities, either all wagons are checked for their item count every tick, or the check only occurs whenever a wagon's content changes (like when an inserter grabs some items).
+</p>
+<p>
+    Another possibility we did not test is the fluid count wait condition. It was theorized to cost as much as item count at that time, though that is baseless speculation. In terms of the number of slots needing to be checked, a fluid wagon would have 1/40 as many "slots". This could yield an interesting performance conclusion. Another possibility is to test fluid count on a train with no fluid wagons. (or item count on a train with no cargo wagons). Such tests are dependent on the first part of this test. If the wait condition cost is based on changes to the condition, testing these attributes won't be viable (due to the highly dissimilar nature of a requisite un/loader for fluids/solids).
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    For testing, we will take a 5x paste of our previous test. It is here that we will modify the attributes important to our test. We will remove all unloading/loading inserters and infinity chests.
+</p>
+<p>
+    As a dependency for other attributes, we need to first establish the AND condition behavior. We will take out biggest magnitude difference case, item count. There are 3 specific condition cases we need to test. First, we take our basic time passed condition, still at 145 seconds. Next, we take the condition where time passed = 145s AND item count iron-plate = 0. Finally, we flip it to get item count iron-plate = 0 AND time passed = 145s.
+</p>
+<p>
+    This will conclusively tell us if the item count condition is costly even if there are no load/unload events. This first round of tests will be conducted at a duration of 18234 ticks.
+</p>
+<p>
+    If such an event is costly, we will then move on to our fluid count tests.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    <img style="width:100%" src="images/data.svg"></img>
+    <ul>
+    <li>{Time passed | Time passed AND item count | Item count AND time passed}: Describes the ordering of the scheduled wait conditions.
+    </ul>
+</p>
+<p>
+    This data shows a very clear picture that the wait condition is performing checks regardless of there being actual loading/unloading. It also shows us that ANDed conditions don't appear to be further evaluated once the first false is encountered. There is a significant delta between the time passed and time passed + item count, but with the data available here it can't be reasonably known what causes it. The two main speculations are that ANDed conditions are inherently more expensive, or it being that when the first condition eventually becomes true, it checks the item count once.
+</p>
+<p>
+    Now that we know that conditions can be expensive even if there are not changes to whats being checked, we can proceed with the second section of tests.
+</p>
+
+<h3> The Test ... Again </h3>
+<p>
+    We will take our same 505 train map and apply the wait conditions we need for this round two.
+</p>
+<p>
+    First we will test a fluid count where water = 0 AND time passed. We will do this for both a train with cargo wagons, and one with fluid wagons.
+</p>
+<p>
+    We will also test the item count condition on trains containing fluid wagons.
+</p>
+<p>
+    The delta between the vanilla time passed and the item count grafted one is pretty curious. We need a reasonable way to test it, to be able to confirm if the ANDing causes the delta or if it is based on the additional item count check. An idea to test such an thing is to put a very large time passed in front. If our benchmark duration is 18234 ticks, we could have a wait condition of 50000 ticks. The secondary item count condition would never run, thereby telling us if ANDing at all is costly.
+</p>
+<p>
+    If ANDing ends up being costly, then we should retest the inventory full/empty case, since it's possible that the ANDing cost would exceed the additional cost to that condition.
+</p>
+
+<h3 id="The-Data"> The Data ... 2 (The search for more money) </h3>
+<p>
+    <img style="width:100%" src="images/fluid.svg"></img>
+    <ul>
+    <li>{Item | Fluid}: Describes the wait condition type (item count or fluid count).
+    <li>{Cargo | Fluid}: Describes the train composition (cargo wagons or fluid wagons).
+    </ul>
+</p>
+<p>
+    Here we can see a significant delta between the item count and fluid count conditions. The fluid count condition is far cheaper than the item count condition, and we also see that the composition of a train affects the performance of these conditions.
+</p>
+<p>
+    <img style="width:100%" src="images/long.svg"></img>
+    <ul>
+    <li>{Time passed | Time passed + Item count}: A long preceding time passed condition that always evaluates false, followed by 0 or 1 item count conditions.
+    </ul>
+</p>
+<p>
+    This data would appear to show that there is a performance delta associated with ANDing conditions, even if the initial condition always evaluates to false. It is for that reason that this could cause a situation where ANDing the conditions adds more additional overhead than would be saved.
+</p>
+<p>
+    In our past test, the best condition other than time passed and inactivity was inventory full/empty. Since it is the most slight penalty, we should test with preceding time passed conditions with it. If performance here is better than an AND-less condition, it can reasonably be assumed that all more expensive conditions will also benefit from ANDing.
+</p>
+<p>
+    For this test we will go back to our previous test setup, including unloading/loading. We will test 3 scenarios once again, time passed alone, inventory full/empty alone, and time passed AND inventory full/empty. Wait condition will be 145s once again.
+</p>
+<p>
+    <img style="width:100%" src="images/anded.svg"></img>
+    <ul>
+    <li>{Time passed | Full/Empty | ANDed}: Indicates the wait condition for the given map. ANDed refers to a time passed and then inventory full/empty condition.
+    </ul>
+</p>
+<p>
+    Finally, we can see that despite the additional cost to the ANDing of conditions, the cost is less than not ANDing the conditions at all. Therefore, if you need precise wait conditions, it is best to prefix the time period where those conditions will evaluate false with a time passed of that duration.
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    There is a small penalty overhead to ANDing conditions, but in every tested case, it remains better to prefix expensive wait conditions with time passed.
+</p>
+<p>
+    The fluid count condition was theorized to cost about the same as item count, but in actuality it is far cheaper.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on February 14, 2019 </div>
+</footer>

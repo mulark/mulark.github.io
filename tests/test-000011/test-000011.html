@@ -1,0 +1,118 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000011 : A performance comparison of /u/swolar and /u/schaev's bases</h2>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    A short summary of the data collected in the test that answers the question posed by the test
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    The first contender is /u/schaev's base. It is a 10k SPM base created with mods (but runnable in vanilla) consisting of trains shuffling ingredients around. It consists of 4 2500 SPM self contained modules. I could try explaining it further, but really you should just read the comments by the engineer <a href="https://www.reddit.com/r/factorio/comments/98qruz/10k_spm_ups_optimized_train_megabase/e4i2uxu/"> here</a>.
+</p>
+<p>
+    I made a tweak to schaev's base to replace the water infrastructure of the map with offshore pumps directly in. I did not go through the effort of rerunning the pipes containing other fluid, but pipes could be reduced from 4 to 3 in quite a few locations.
+</p>
+<figure>
+    <img src="images/2500_overview.png"></img>
+    <figcaption>schaev's cell, 2500 SPM.</figcaption>
+</figure>
+<p>
+    The second contender is /u/swolar. He contacted me to show his bot production cell based design. It targets 373SPM per cell, and 27 of these cells will push us to the idealized 10000 SPM. There are severial iterations of this cell, each of which will be tested. For rapid cell scalability to 27x copies, the <a href="https://mods.factorio.com/mod/region-cloner">region-cloner</a> mod was used.
+</p>
+<p>
+    The first cell is designed for 373SPM as it is a local minimum in terms of machines required to achieve a given science per minute rate. The rounging/overbuilding problem is reduced by careful science per minute targeting by this decision. This v1 of the cell includes military science, but does not include coal or stone brick smelting. It features 4 distinct cells, iron-plate, copper-plate, steel-plate, and all the rest. Direct insertion was used in some places, but primarily bot travel is employed. Trains transport material between the cells.
+</p>
+<p>
+    After seeing swolar's first cell, I made several changes that I believed would result in higher performance. I cut out military science, but added in proper stone brick and coal sources. I replaced the existing oil's water supply with offshores directly in. I also slightly relocated a few machines to reduce bot travel times.
+</p>
+<p>
+    Next, swolar created a v2 of his design. Compared to v1, the entire cell was squashed closer together. The iron and copper stations were combined into 1 station. Additionally, direct insertion (di) is now occuring directly from the train. Green circuits and copper cable are now di'd directly from the trains, and further di'd to blue circuits. This results in a significant reduction in the number of bots. The steel/coal/stonebrick is moved out of the center of the cell, and the stonebrick is di'd directly into the furnaces. Further, much of the layout has been tweaked to reduce the overall bot flights.
+</p>
+<p>
+    Like last time, I made several modifications to the cell. Once again I replaced the water infrastructure with offshores directly in. One other major improvement was to reduce the number of beacons on some of the green circuit machines from 12 to 11. This allows the copper cable being di'd to back up, improving the items per swing of the inserters. The number of bots was also tweaked.
+</p>
+<p>
+    The next significant evolution of the cell is the v4.2 iteration. It splits steel into its own train from coal/stonebrick, and makes further layout and bot tweaks. The beacon reduction trick has been applied here as well.
+</p>
+<p>
+    Once again I replaced water for offshores. I can't remember if I made any futher tweaks, but at this point the cell was becoming very refined.
+</p>
+<p>
+    That is, until swolar decided to take up simulated annealing. The v5f cell takes the essentials of the v4.2 cell, except now swolar wrote a script to swap machine locations to achieve reduced bot travel. Essentially a cost was assigned to di, bot travel, and pipes. Then, after many permutations, a lower cost cell was found. The v5f cell also includes (I swear I'll write it up someday) a test-000007 rocket fuel design. Another change is to use inactivity wait conditions, since they were found to be cheaper in <a href=/tests/test-000019/test-000019.html">test-000019</a>. Overall the technique worked and reduced bot numbers even further. Compared to the original v1 cell, we're roughly at half the bot activity. Swolar also decided to use offshores directly in, depriving me of a modifications job for this cell. (Though I'm sure I could still shave a bot or two).
+</p>
+<p>
+    The final final cell included final changes of using long handed inserters in some cases (to be tested extensively in a future test, the gist is that stack can thrash at low throughput). Additionally, ANDed train wait conditions were used to further save some calculation time. There was also a handful of requester chest sharing employed.
+</p>
+<figure>
+    <img src="images/373_overview.png"></img>
+    <figcaption>The final iteration of swolar's cell. One of 27 in the map.</figcaption>
+</figure>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    A quick summary of the maps in question:
+    <ul>
+        <li>schaev
+        <li>swolar v1
+        <li>swolar v2
+        <li>swolar v4.2
+        <li>swolar v5f
+        <li>swolar final
+    </ul>
+    For all maps except v5f and {swolar final}, I made a small tweaks version.
+</p>
+<p>
+    Each map here was tested for 50000 ticks, a total of 3 times. Testing was conducted in Factorio version 0.16.51.
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    <img style="width:100%" src="images/test-000011.svg"></img>
+</p>
+<p>
+    This data shows that bots still have a significant ability to compete with trains, at least as far as the test system is concerned.
+</p>
+<p>
+    This data clearly shows the iterative process towards design, as the v1 version of the cell (the one missing stonebrick and coal mind you) is approximately 20% slower than the final iteration.
+</p>
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    It was a hard fought victory, but swolar's cell based design prevailed over schaev's. This new base marks the highest performing vanilla runnable cheat created map. At least, on this hardware.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on February 23, 2019 </div>
+</footer>

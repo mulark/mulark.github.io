@@ -30,12 +30,12 @@
 <!-- end menu block -->
 <body class="test-index">
 
-<h2>test-000011 : A performance comparison of /u/swolar and /u/schaev's bases</h2>
+<h2>test-000011 : A performance comparison of /u/Swolar and /u/schaev's bases</h2>
 
 
 <h3 id="The-TLDR"> The TLDR </h3>
 <p>
-    A short summary of the data collected in the test that answers the question posed by the test
+    /u/Swolar's base achieves greater perfomance than /u/schaev's, thereby creating a new performance champion in the cheat assisted category.
 </p>
 
 <h3 id="The-Question"> The Question </h3>
@@ -50,49 +50,92 @@
     <figcaption>schaev's cell, 2500 SPM.</figcaption>
 </figure>
 <p>
-    The second contender is /u/swolar. He contacted me to show his bot production cell based design. It targets 373SPM per cell, and 27 of these cells will push us to the idealized 10000 SPM. There are severial iterations of this cell, each of which will be tested. For rapid cell scalability to 27x copies, the <a href="https://mods.factorio.com/mod/region-cloner">region-cloner</a> mod was used.
+    The second contender is /u/Swolar. He contacted me to show his bot production cell based design. It targets 373SPM per cell, and 27 of these cells will push us to the idealized 10000 SPM. There are severial iterations of this cell, each of which will be tested. For rapid cell scalability to 27x copies, the <a href="https://mods.factorio.com/mod/region-cloner">region-cloner</a> mod was used. Note that maps are reversioned for this test (Swolar's initial cell he showed me was his v3, here renamed v1). Swolar was kind enough to write detailed notes of his progress and reasoning for his various iterations.
+</p>
+<h4> Swolar's cell designs </h4>
+<h5> Section author - Swolar </h5>
+<h4> Swolar v1 </h4>
+<p>
+    The first design was inspired by the idea of reducing the excessive transport of intermediate products that standard bot megabases suffer very much from. By making all science in one place, we can completely cut down on the trains moving intermediate products and shorten total bot travel by a significant amount.
 </p>
 <p>
-    The first cell is designed for 373SPM as it is a local minimum in terms of machines required to achieve a given science per minute rate. The rounging/overbuilding problem is reduced by careful science per minute targeting by this decision. This v1 of the cell includes military science, but does not include coal or stone brick smelting. It features 4 distinct cells, iron-plate, copper-plate, steel-plate, and all the rest. Direct insertion was used in some places, but primarily bot travel is employed. Trains transport material between the cells.
+    Having all science and intermediates production in one place, opens up the possibility of adjacent direct insertion (DI) through intermediate chests. In this build we can prioritize the recipes with the highest volume of product: copper wire for green circuits and gold science, green circuits for blue circuits and solar panels, iron gears for mining drills and solid fuel for rocket fuel.
 </p>
 <p>
-    After seeing swolar's first cell, I made several changes that I believed would result in higher performance. I cut out military science, but added in proper stone brick and coal sources. I replaced the existing oil's water supply with offshores directly in. I also slightly relocated a few machines to reduce bot travel times.
+    A consequence of mixing all production into a big module is that the layout for the assembly machines and chem labs becomes very relevant; a poor layout can reduce UPS performance. The layout for this base was designed taking a greedy approach: placing machines that are ingredient intensive near the trains, and the ones that are product intensive near the machines that consume those.
 </p>
 <p>
-    Next, swolar created a v2 of his design. Compared to v1, the entire cell was squashed closer together. The iron and copper stations were combined into 1 station. Additionally, direct insertion (di) is now occuring directly from the train. Green circuits and copper cable are now di'd directly from the trains, and further di'd to blue circuits. This results in a significant reduction in the number of bots. The steel/coal/stonebrick is moved out of the center of the cell, and the stonebrick is di'd directly into the furnaces. Further, much of the layout has been tweaked to reduce the overall bot flights.
+    However, this design requires an efficient dedicated smelter design to be viable. Drawing inspiration from the designs featured in the smelting challenge, we can adapt them to improve space efficiency and beacon sharing, resulting in better UPS and making the designs viable in that they don't require as much ore real state.
 </p>
 <p>
-    Like last time, I made several modifications to the cell. Once again I replaced the water infrastructure with offshores directly in. One other major improvement was to reduce the number of beacons on some of the green circuit machines from 12 to 11. This allows the copper cable being di'd to back up, improving the items per swing of the inserters. The number of bots was also tweaked.
+    mulark -- After seeing Swolar's first cell, I made several changes that I believed would result in higher performance. I cut out military science, and additionally added in proper stone brick and coal sources. I replaced the existing oil's water supply with offshores directly in. I also slightly relocated a few machines to reduce bot travel times.
+</p>
+<h4> Swolar v2 </h4>
+<p>
+    Even though the initial design greatly exceeded expectations, it could still be improved further. The majority of the bot usage was focused on moving iron and copper plates for green circuits. By doing a DI chest chain off the train, we could further reduce bot usage and improve UPS. The new design required the challenge of using a single station to unload both copper and iron trains; this was solved by using a clock on the stations and creating a train round-robin design that alternated the trains.
 </p>
 <p>
-    The next significant evolution of the cell is the v4.2 iteration. It splits steel into its own train from coal/stonebrick, and makes further layout and bot tweaks. The beacon reduction trick has been applied here as well.
+    The previous smelter design still wasn't quite viable enough, and it required using bots to cover spots where mining drills would not reach the ore patches. To solve this, the smelter was further divided in two, keeping the same total amount of trains and smelter production but halving the required ore area.
 </p>
 <p>
-    Once again I replaced water for offshores. I can't remember if I made any futher tweaks, but at this point the cell was becoming very refined.
+    mulark -- Like last time, I made several modifications to the cell. Once again I replaced the water infrastructure with offshores directly in. One other major improvement was to reduce the number of beacons on some of the green circuit machines from 12 to 11. This allows the copper cable being di'd to back up, improving the items per swing of the inserters. The number of bots was also slightly reduced.
+</p>
+<h4> Swolar v4.2 </h4>
+<p>
+    For this version, a completely new steel smelter was designed by fully taking advantage of direct insertion and removing bots. The build is now fed directly by trains carrying ore, which in turn they pick up through direct insertion from mining drills.
 </p>
 <p>
-    That is, until swolar decided to take up simulated annealing. The v5f cell takes the essentials of the v4.2 cell, except now swolar wrote a script to swap machine locations to achieve reduced bot travel. Essentially a cost was assigned to di, bot travel, and pipes. Then, after many permutations, a lower cost cell was found. The v5f cell also includes (I swear I'll write it up someday) a test-000007 rocket fuel design. Another change is to use inactivity wait conditions, since they were found to be cheaper in <a href=/tests/test-000019/test-000019.html">test-000019</a>. Overall the technique worked and reduced bot numbers even further. Compared to the original v1 cell, we're roughly at half the bot activity. Swolar also decided to use offshores directly in, depriving me of a modifications job for this cell. (Though I'm sure I could still shave a bot or two).
+    The new steel smelter required us to separate the steel-coal-brick train into two; instead of simply doing that we added more item capacity to the wagons so the base's buffers would last longer, and removed the second trains of these types.
 </p>
 <p>
-    The final final cell included final changes of using long handed inserters in some cases (to be tested extensively in a future test, the gist is that stack can thrash at low throughput). Additionally, ANDed train wait conditions were used to further save some calculation time. There was also a handful of requester chest sharing employed.
+    mulark -- Once again I replaced water for offshores. I can't remember if I made any futher tweaks, but at this point the cell was becoming very refined. Or so I thought.
+</p>
+<h4> Swolar v5f </h4>
+<p>
+    Simulated annealing is a stochastic search algorithm that uses probability to skip out of local optimum. It takes a cost function that "measures" the quality of a solution for any given layout, and iterates randomly through its neighbors until it can't produce one that is better.
+</p>
+<p>
+    Using simulated annealing we can find a better layout that minimizes the cost function. The cost function estimates total bot travel using recipe data and material volumes, accounting for position, distance and even direct insertion on adjacent machines. It also considers minimizing pipe usage which is critical in 0.16, and tries to keep assemblies with low output of the same type adjacent to one another so that they share passive provider chests.
+</p>
+<p>
+    In the layout, costs were assigned as follows: side di was 0.1, vertical di was 0.3, pipe was 200 per "square" in the grid and the cost for not sharing passive chest was 200 per machine. In total, the initial v4.2 design had a sum cost of 360k, while the v5f annealed design achieved a cost of 237k.
+</p>
+<p>
+    Furthermore, we can take the rocket fuel build featured (to be featured?) in test-000007 and adapt it to a bot build, using long handed inserters to share passive provider chests and reducing the amount of solid fuel chest handoffs by one. This frees up room in the base to have an even better layout.
+</p>
+<p>
+    After implementing the AI generated layout, we saw a significant improvement in bot usage (37% reduction in active bots) and total bot travel (35% reduction).
+</p>
+<h4> Swolar vfinal </h4>
+<p>
+    Using the results of tests 000019, 000022 and 000030, we favored the two cheapest train conditions (time passed and inactivity) whenever possible as well as switching to straight rail sections even if it meant longer train paths. Wait conditions were prefixed with a time passed condition when applicable.
+</p>
+<p>
+    Another significant discovery was that using the slower long-handed inserters on the smelter output was more UPS efficient than using the faster stack inserters. The game's function where an inserter looks for items to pick up is more expensive than the function for rotating an inserter to its target; by switching to long handed inserters we do less item pickup checks even if we spend more time in the "swinging" state. -- Will be extensively tested with writeup in the future.
+</p>
+<p>
+    Finally, we added some finishing touches like sharing requester chests whenever possible.
 </p>
 <figure>
     <img src="images/373_overview.png"></img>
-    <figcaption>The final iteration of swolar's cell. One of 27 in the map.</figcaption>
+    <figcaption>The final iteration of Swolar's cell. One of 27 in the map.</figcaption>
 </figure>
 
 <h3 id="The-Test"> The Test </h3>
+<h5> Section author - mulark </h5>
 <p>
     A quick summary of the maps in question:
     <ul>
         <li>schaev
-        <li>swolar v1
-        <li>swolar v2
-        <li>swolar v4.2
-        <li>swolar v5f
-        <li>swolar final
+        <li>Swolar v1
+        <li>Swolar v2
+        <li>Swolar v4.2
+        <li>Swolar v5f
+        <li>Swolar final
     </ul>
-    For all maps except v5f and {swolar final}, I made a small tweaks version.
+</p>
+<p>
+    For all maps except v5f and {Swolar final}, I made a small tweaks version.
 </p>
 <p>
     Each map here was tested for 50000 ticks, a total of 3 times. Testing was conducted in Factorio version 0.16.51.
@@ -110,9 +153,9 @@
 
 <h3 id="Closing"> Closing </h3>
 <p>
-    It was a hard fought victory, but swolar's cell based design prevailed over schaev's. This new base marks the highest performing vanilla runnable cheat created map. At least, on this hardware.
+    It was a hard fought victory, but Swolar's cell based design prevailed over schaev's. This new base marks the highest performing vanilla runnable cheat created map. At least, on this hardware.
 </p>
 
 <footer>
-    <div style="font-size:.9em"> Written by mulark on February 23, 2019 </div>
+    <div style="font-size:.9em"> Written by mulark and Swolar on February 23, 2019 </div>
 </footer>

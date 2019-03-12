@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="250mm" height="171mm" viewBox="0 0 25000 17100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke-width="28.222" stroke-linejoin="round" xml:space="preserve">
+ <path fill="rgb(255,255,255)" stroke="none" d="M 12483,17104 L -41,17104 -41,1 25006,1 25006,17104 12483,17104 Z"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 15152,15665 L 7221,15665 7221,1775 23083,1775 23083,15665 15152,15665 Z"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 7221,1774 L 7221,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 10393,1774 L 10393,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 13565,1774 L 13565,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 16737,1774 L 16737,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 19910,1774 L 19910,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 23083,1774 L 23083,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 7071,15664 L 7221,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 7071,13348 L 7221,13348"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 7071,11033 L 7221,11033"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 7071,8718 L 7221,8718"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 7071,6404 L 7221,6404"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 7071,4089 L 7221,4089"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 7071,1774 L 7221,1774"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 7221,15664 L 7221,1774"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 7221,15814 L 7221,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 7221,15814 L 7221,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 10393,15814 L 10393,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 10393,15814 L 10393,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 13565,15814 L 13565,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 13565,15814 L 13565,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 16737,15814 L 16737,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 16737,15814 L 16737,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 19910,15814 L 19910,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 19910,15814 L 19910,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 23083,15814 L 23083,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 23083,15814 L 23083,15664"/>
+ <path fill="none" stroke="rgb(179,179,179)" stroke-linejoin="round" d="M 7221,15664 L 23083,15664"/>
+ <path fill="rgb(52,101,164)" stroke="none" d="M 7221,3510 L 7221,2352 14838,2352 14838,3510 7221,3510 Z"/>
+ <path fill="rgb(52,101,164)" stroke="none" d="M 7221,5825 L 7221,4667 16044,4667 16044,5825 7221,5825 Z"/>
+ <path fill="rgb(52,101,164)" stroke="none" d="M 7221,8140 L 7221,6983 13219,6983 13219,8140 7221,8140 Z"/>
+ <path fill="rgb(52,101,164)" stroke="none" d="M 7221,10454 L 7221,9297 17055,9297 17055,10454 7221,10454 Z"/>
+ <path fill="rgb(52,101,164)" stroke="none" d="M 7221,12770 L 7221,11612 13778,11612 13778,12770 7221,12770 Z"/>
+ <path fill="rgb(52,101,164)" stroke="none" d="M 7221,15085 L 7221,13927 19638,13927 19638,15085 7221,15085 Z"/>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Bitstream Vera Sans Mono, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="3362" y="14643"><tspan fill="rgb(0,0,0)" stroke="none">Synthetic pipes</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Bitstream Vera Sans Mono, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="3602" y="12328"><tspan fill="rgb(0,0,0)" stroke="none">Synthetic cars</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Bitstream Vera Sans Mono, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="3121" y="10013"><tspan fill="rgb(0,0,0)" stroke="none">Synthetic trains</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Bitstream Vera Sans Mono, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="5287" y="7697"><tspan fill="rgb(0,0,0)" stroke="none">Nuclear</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Bitstream Vera Sans Mono, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="3602" y="5382"><tspan fill="rgb(0,0,0)" stroke="none">Oil processing</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Bitstream Vera Sans Mono, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="4805" y="3067"><tspan fill="rgb(0,0,0)" stroke="none">Rendering</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="monospace, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="6619" y="16296"><tspan fill="rgb(0,0,0)" stroke="none">0.00%</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="monospace, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="9671" y="16296"><tspan fill="rgb(0,0,0)" stroke="none">50.00%</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="monospace, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="12724" y="16296"><tspan fill="rgb(0,0,0)" stroke="none">100.00%</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="monospace, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="15896" y="16296"><tspan fill="rgb(0,0,0)" stroke="none">150.00%</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="monospace, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="19069" y="16296"><tspan fill="rgb(0,0,0)" stroke="none">200.00%</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="monospace, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="22242" y="16296"><tspan fill="rgb(0,0,0)" stroke="none">250.00%</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Bitstream Vera Sans Mono, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="17854" y="14643"><tspan fill="rgb(255,255,255)" stroke="none">195.71%</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Bitstream Vera Sans Mono, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="11995" y="12328"><tspan fill="rgb(255,255,255)" stroke="none">103.36%</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Bitstream Vera Sans Mono, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="15271" y="10013"><tspan fill="rgb(255,255,255)" stroke="none">155.01%</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Bitstream Vera Sans Mono, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="11676" y="7697"><tspan fill="rgb(255,255,255)" stroke="none">94.55%</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Bitstream Vera Sans Mono, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="14260" y="5382"><tspan fill="rgb(255,255,255)" stroke="none">139.07%</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Bitstream Vera Sans Mono, monospace" font-size="423px" font-weight="400"><tspan class="TextPosition" x="13054" y="3067"><tspan fill="rgb(255,255,255)" stroke="none">120.06%</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="monospace, monospace" font-size="494px" font-weight="400"><tspan class="TextPosition" x="7726" y="613"><tspan fill="rgb(0,0,0)" stroke="none">Harmonic mean precentage of performance</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="monospace, monospace" font-size="388px" font-weight="400"><tspan class="TextPosition" x="11605" y="1140"><tspan fill="rgb(0,0,0)" stroke="none">higher is better</tspan></tspan></tspan></text>
+</svg>

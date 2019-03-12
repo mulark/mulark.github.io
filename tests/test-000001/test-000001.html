@@ -43,6 +43,7 @@ div.table_style3 td {
 </style>
 
 <h2>test-000001 : What is the best way to benchmark Factorio? </h2>
+<h5>Factorio Version 0.16.51</h5>
 
 
 <h3 id="The-TLDR"> The TLDR </h3>
@@ -71,39 +72,39 @@ show-fps
 show-time-usage
 </h4>
 <p> This method of measuring performance is effectively a step up on <code>show-fps</code>. Performance here is broken down into several categories, though we have changed the units from updates per second, to milliseconds per update. That means our typical 60UPS is now equal to 16.66ms per tick. </p>
-<p> This breakdown of the game's update is quite useful for us. We can now factor out the GPU's effect<sup><a href="#[1]">[1]</a></sup> on the performance by ignoring the render time and instead looking at the Update: and Game Update: sections. The Update: section gives us a good indicator of the time a design consumes but it is still subject to the same faults that <code>show-fps</code> has. If one design is signifigantly better than another (+50%), we can know almost immediately. This measurement is also not dependant on the game's speed, so no commands need to be run here.
+<p> This breakdown of the game's update is quite useful for us. We can now factor out the GPU's effect<sup><a href="#[1]">[1]</a></sup> on the performance by ignoring the render time and instead looking at the Update: and Game Update: sections. The Update: section gives us a good indicator of the time a design consumes but it is still subject to the same faults that <code>show-fps</code> has. If one design is significantly better than another (+50%), we can know almost immediately. This measurement is also not dependent on the game's speed, so no commands need to be run here.
 <p> The Game Update: section gives us a top level breakdown of where the time is being spent.
 <ul>
-<li>Circuit networks are pretty self explanitory. Simply any entity checking the circuit network adds to this time.
+<li>Circuit networks are pretty self explanatory. Simply any entity checking the circuit network adds to this time.
 <li>Transport lines are effectively the two lanes on belts where items can travel. Splitters, belts, and underground belts add to this overhead.
 <li>Entity update is nearly every entity in the game, meaning bots, inserters, assembling machines and so on. If it doesn't fall under another category it ends up here.
 <li>Map generator takes time everytime a new chunk is generated. The player character and radars scanning typically cause this.
 <li>CRC is a check done to ensure integrity of the game in multiplayer.
 <li>Electric network primarily consists of getting and using the power. Every entity that uses power adds a small amount of overhead to this, which does add up. Power generation is also included here but it is effectively free if using solar panels.
 <li>Logistic manager is how robots are controlled. This consumes time when it looks for requester chests that need items, provider chests to provide the items, and controls the logic behind robots going to charge.
-<li>Contruction manager is the time consumed by every ghost entity in the world, as well as any damaged entities. It does not matter if these ghosts are in range of any contruction radius, they will still consume time.
+<li>Construction manager is the time consumed by every ghost entity in the world, as well as any damaged entities. It does not matter if these ghosts are in range of any contruction radius, they will still consume time.
 <li>Path finder is used to create paths for biters. Ideally play exists without these menace so this does not factor in.
 <li>Trains are self evident. Updating their speeds, fuel levels, and station conditions all play a role.
 <li>Train path finder is the path finder for trains. Need I say more?
 <li>Commander controls biters, handling their movement and attack groups, and ordering them to expand. In the ideal game this never does anything.
 <li>I'm not sure how Chart Refresh differs from Chart update further below, but these control how the map is revealed, as well as things like map pins and trains moving on the map.
 </ul>
-<p> All these attributes are useful in debugging a design. And they can give a gauge of where to spend time optimising. But as they exist here they aren't all that useful as this data is constantly changing and can't be easily collected.
-<p> Also of note is the Script update: section. This section gives us a per mod breakdown of how much time each mod takes to process. Particually offending mods can be noted and removed if required. </p>
+<p> All these attributes are useful in debugging a design. And they can give a gauge of where to spend time optimizing. But as they exist here they aren't all that useful as this data is constantly changing and can't be easily collected.
+<p> Also of note is the Script update: section. This section gives us a per mod breakdown of how much time each mod takes to process. Particularly offending mods can be noted and removed if required. </p>
 
 <h4>
 Using a Profiler
 </h4>
 <p>If you thought the information in <code>show-time-usage</code> was too high level, then this section is for you.</p>
-<p>A profiler essentially looks into the game while it is running and reports back the number of calls to a function as well as time spent in those functions. Because the devlopers of Factorio include debugging symbols in the game, these function names are useful to us. Some good profilers to use are Visual Studio or VerySleepyCS, or for Linux, Callgrind.</p>
+<p>A profiler essentially looks into the game while it is running and reports back the number of calls to a function as well as time spent in those functions. Because the developers of Factorio include debugging symbols in the game, these function names are useful to us. Some good profilers to use are Visual Studio or VerySleepyCS, or for Linux, Callgrind.</p>
 <p>Instead of a category like entity update in our <code>show-time-usage</code> section, each individual entity type's functions are available to us. We can see exactly what ratio of time is used by inserters or labs. And in these entities we can see which functions are time consuming. Ex: A function of inserters is to get a pickup target, or to drop items.</p>
-<p>However, the pitfall associated with this method is the larger amount of time required to gather and process results. It is excellent as a tool to deep dive into the finest details of a particuar design, but becomes tiresome to attempt on more than a handful of designs.</p>
+<p>However, the pitfall associated with this method is the larger amount of time required to gather and process results. It is excellent as a tool to deep dive into the finest details of a particular design, but becomes tiresome to attempt on more than a handful of designs.</p>
 
 <h4>
 --benchmark
 </h4>
-<p>That brings us to our final canidate for collecting and processing performance data, the <code>--benchmark</code> parameter. This parameter runs the game without rendering anything, as fast as it possibly can. With this parameter and related parameters, we can supply the exact number of ticks to run, as well as specific maps that we intend to benchmark. All of the data can be collected automatically for easy storage, retrieval, and processing.</p>
-<p>Related parameters are <code>--benchmark-ticks</code>, which gives us specified ticks to benchmark for. <code>--disable-audio</code> saves us time by not loading the sound files. On Windows and Linux, we load all the textures which does take signifigant time still. However, we can use the headless version of Factorio available for Linux and intended for servers to skip this step (<code>--disable-audio</code> not needed for headless). As an example, this command will benchmark the map foo.zip for 1000 ticks on Linux.</p>
+<p>That brings us to our final candidate for collecting and processing performance data, the <code>--benchmark</code> parameter. This parameter runs the game without rendering anything, as fast as it possibly can. With this parameter and related parameters, we can supply the exact number of ticks to run, as well as specific maps that we intend to benchmark. All of the data can be collected automatically for easy storage, retrieval, and processing.</p>
+<p>Related parameters are <code>--benchmark-ticks</code>, which gives us specified ticks to benchmark for. <code>--disable-audio</code> saves us time by not loading the sound files. On Windows and Linux, we load all the textures which does take significant time still. However, we can use the headless version of Factorio available for Linux and intended for servers to skip this step (<code>--disable-audio</code> not needed for headless). As an example, this command will benchmark the map foo.zip for 1000 ticks on Linux.</p>
 <p><code>./factorio --benchmark "foo.zip" --benchmark-ticks 1000 --disable-audio</code></p>
 <p>It's not entirely free, because we lose the ability to test render related attributes<sup><a href="test-000001.html#[1]">[1]</a></sup>. Normally this is a good thing, though there are test possibilities we lose by using this.</p>
 
@@ -165,7 +166,7 @@ Using a Profiler
 </table>
 </div>
 
-<p> This yeilds us an average UPS of 35.02 </p>
+<p> This yields us an average UPS of 35.02 </p>
 
 <p> Next we have the <code>--benchmark</code> method. I wrote a helper script to automatically run and record the values reported by the benchmark. It is available here: <a href=https://github.com/mulark/factorio_benchmark_scripts>https://github.com/mulark/factorio_benchmark_scripts</a></p>
 

@@ -31,6 +31,7 @@
 <body class="test-index">
 
 <h2>test-000002 : Does performance of designs scale linearly to the amount of entities?</h2>
+<h5>Factorio Version 0.16.51</h5>
 
 
 <h3 id="The-TLDR"> The TLDR </h3>
@@ -54,7 +55,7 @@
 <p> The bot design loses in the first couple of pastes, but then pulls ahead when we reach the hundreds of pastes.</p>
 
 <h3 id="Closing"> Closing </h3>
-<p> With this data, we can see that we need to scale up designs signifigantly to ensure that the performance characteristics are catalogued correctly. Scaling designs to achieve 60UPS should be most representative of what a megabase is capable of. Though this method would be more favorable towards smaller and more granular designs. ex: A design that does 10K science per minute at 80 UPS would in effect beat a design that did 1K science per minute with 11 copies of it at 66 UPS. The likely better solution is to scale at least 1 of the designs to 60 UPS, and then scale the other deigns to that same amount of production.  </p>
+<p> With this data, we can see that we need to scale up designs significantly to ensure that the performance characteristics are catalogued correctly. Scaling designs to achieve 60UPS should be most representative of what a megabase is capable of. Though this method would be more favorable towards smaller and more granular designs. ex: A design that does 10K science per minute at 80 UPS would in effect beat a design that did 1K science per minute with 11 copies of it at 66 UPS. The likely better solution is to scale at least 1 of the designs to 60 UPS, and then scale the other deigns to that same amount of production.  </p>
 <p> Also of interest is that the cost per paste appeared to start increasing linearly after 200 pastes on the bot design. The belt increase was tapering off as well, thus at excessive scale well below 60 UPS performance could reverse again.
 <p> Full raw data available for download: <a href="raw/v2 scaling.ods">here</a></p>
 

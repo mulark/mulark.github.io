@@ -1,0 +1,125 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000034 : When using cars as a handoff, is it better to leave the fuel and ammo slots empty, or fill them?</h2>
+<h5>Factorio Version 0.17.17</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    It is very slightly better to leave both slots empty, rather than fill or partially fill them.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    When using cars as a handoff, you by default get two additional inventories. These are the fuel inventory and the ammo inventory. If using a car to handoff a material that doesn't go to one of these slots, we end up with potential additional checks to see if the material could go into those slots.
+
+    If the slot is occupied, that check could have differing perfomance to the one performed to see if it is a fuel/ammo type item.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<div style="min-height:350px;"
+<p>
+<figure style="float:right;">
+    <img style="width:40%;" src="images/car_passthrough_unit.png"></img>
+    <figcaption> 1 such passthrough unit. </figcaption>
+</figure>
+<p>
+    For this test, we will create a very simple and synthetic setup. We will have a car fed by two stack inserters and drained by two stack inserters. Infinity chests will provide/void the items to those inserters. The cars will be filtered to every slot containing raw-fish, except the first slot containing and filtered to the copper cable being passed through.
+</p>
+<p>
+    These passthrough units will be copied to 5312 total such of these units.
+</p>
+<p>
+    Each car will be set such that fuel can be empty, can have 1 rocket fuel, or can have a stack of rocket fuel. The same applies to the ammo slot, where a firearm-magazine is used. Each of the possible combinations of these will also be tested. (Like fuel full, ammo has 1 magazine).
+</p>
+<p>
+    Each of these car passthrough units will be built such that no passthrough unit is on a chunk border.
+</p>
+<p>
+    Each design will be scaled identically, and a map saved of each permutation. All maps will be benchmarked using the --benchmark command for a duration of 10000 ticks. Each map will be benchmarked 3 times. All maps are re-saved in vanilla prior to benchmarking.
+</p>
+<p>
+    A single electric network powered by a single electric energy interface provides power to all power consumers in the map.
+</p>
+
+</div>
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    Data presented is the relative speed of each case compared to the no fuel no ammo case. The values of the average ms per tick are used, thus the lower the better.
+</p>
+<table>
+  <tr>
+    <td></td>
+    <td>Empty Ammo</td>
+    <td>Partial Ammo</td>
+    <td>Full Ammo</td>
+  </tr>
+  <tr>
+    <td>Empty Fuel</td>
+    <td>100.00%</td>
+    <td>100.62%</td>
+    <td>100.40%</td>
+  </tr>
+  <tr>
+    <td>Partial Fuel</td>
+    <td>100.88%</td>
+    <td>100.40%</td>
+    <td>100.31%</td>
+  </tr>
+  <tr>
+    <td>Full Fuel</td>
+    <td>100.43%</td>
+    <td>100.44%</td>
+    <td>100.36%</td>
+  </tr>
+</table>
+<p>
+    Here it can be seen that the case where no fuel or ammo present was the fastest.
+</p>
+<p>
+    The difference is very minor, with the delta being less than 1%. However, it is measurably worse to have partial or full stacks in those slots. There does not appear to be a significant difference between having a partial or full stack.
+</p>
+<p>
+    Speculatively, occupying the slots with data makes it more likely to fill the cache, like putting a rock in your pack. Alternatively, it could also be that the check is cheaper for the item's type, rather than checking if the thing in the slot matches the thing being inserted. However for this case, the difference is so minor that putting fuel in to get rid of the annoying blinking icon is probably worthwhile. Remember that this is the ultimate synthetic case, and even here we cant get a 1% delta.
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    Having fuel and ammo slots occupied has a measurable performance impact. You can't notice the difference except in the most synthetic of cases.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on March 24, 2019 </div>
+</footer>

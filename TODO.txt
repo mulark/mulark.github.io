@@ -21,3 +21,4 @@ What functions do active/inactive but disabled inserters check?
 does overlapping vehicle map markers have additional render cost?
 Does a dual headed train traveling backwards (relative to the "front" locomotive which is determined when a train is created) have performance loss?
 Backed up miners don't consume power, do they still perform electric network calculations?
+MIGRATION OF MOD OR FACTORIO VERSION

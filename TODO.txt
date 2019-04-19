@@ -22,3 +22,7 @@ does overlapping vehicle map markers have additional render cost?
 Does a dual headed train traveling backwards (relative to the "front" locomotive which is determined when a train is created) have performance loss?
 Backed up miners don't consume power, do they still perform electric network calculations?
 MIGRATION OF MOD OR FACTORIO VERSION
+Test orientation flipped cargo-wagons within a train (half 0 half 0.5, interleave or in blocks)
+is it better to activate all clocked inserters in one tick or space them out?
+When clocking inserters should you pulse for 12 items or set to active to unload 96 items and sleep in between for longer.
+How much do clocked inserters help with bot travel?

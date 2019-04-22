@@ -26,3 +26,5 @@ Test orientation flipped cargo-wagons within a train (half 0 half 0.5, interleav
 is it better to activate all clocked inserters in one tick or space them out?
 When clocking inserters should you pulse for 12 items or set to active to unload 96 items and sleep in between for longer.
 How much do clocked inserters help with bot travel?
+is it better to change a value of a signal via 1->2->1  or 0->1->0, since one keeps the signal, while the other deletes and recreates it all the time
+Test if rezipping a map so it actually gets compressed affects UPS of a benchmark of that map.

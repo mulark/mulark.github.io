@@ -148,17 +148,33 @@
 <p>
     <img src="images/relative_update_time.svg"></img>
     <ul>
-    <li>{Element A1 | Element A2}: Describes the elements A1 and A2 with regards to the setup differences.
+    <li> To decode maps: For the first character of a pair, F means full, P means partial, N means none. The second character refers to the (F)uel or (A)mmo slots. As an example FF-PA will have a fully filled fuel slot and partial stack in ammo slot.
     </ul>
 </p>
 <p>
-    Data collected from the test. Graphs, screenshots, and supporting evidence
+    These graphs show take the minimum update time per tick across all 30 runs, and then that time is averaged across all ticks.
 </p>
 <p>
-    Included in this template folder is a folder for raw data. Data that is too big, clunky, or ugly can be dumped here. There is also an images folder to store images needed for this test. Consider using the <a href="http://optipng.sourceforge.net/">optipng</a> utility to keep the size down a bit. For graphs, .svg format does work well since it is scalable.
+    Frustratingly, we still see that there is a 0.2% performance delta despite benchmarking for 10010 ticks across 30 runs. This would seem to indicate one of two things. Either there is a performance difference as measured, or there is not a performance difference and these results are due to random variance. Neither option is satisfying.
 </p>
 <p>
-    All maps will be uploaded <a href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf"> here.</a>
+    If the first option is true, that would mean that performance is the greatest when using cars with no fuel but full ammo. The next fastest configuration would be partial fuel and no ammo. There does not seem to be any logical hierarchy to which configuations perform the best. It is for that reason that I believe option 1 is unlikely.
+</p>
+<p>
+    Option 2 is that despite a ridiculous number of data collected, variance is still observed. Since this option seems to be the more likely option, we should examine if that variance is natural to the data, or to our measurement methodology.
+</p>
+
+<h3> The Test 2 </h3>
+<p>
+    Our maps were first created by making a bunch of cars with inserters pulling and pushing to them. Afterwards, the fuel or ammo slots were selectively modified, without changing the rythym of the inserters. Since we know that our maps diverge after they are locked into a cycle, we can carefully choose a starting tick to base all the maps off of. Using a carefully crafted command, we can create maps which will be at exactly the same stage of execution. Doing this allows comparison of ticks where we can be sure they are the same effective tick. This methodology is only applicable to a subset of all possible tests, since alignment like this won't be possible under most scenarios.
+</p><code><pre>/c
+script.on_event(defines.events.on_tick, function(event)
+    if (game.tick == 90000) then
+        game.auto_save("Foo")
+    end
+end)</code>
+<p>
+    Once again we will run these maps using 30 runs and 10010 ticks per run. If a similar performance delta is observed between this new set of maps and the prior ones, it must be concluded that such accurate measurement is simply not feasable.
 </p>
 
 

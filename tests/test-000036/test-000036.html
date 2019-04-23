@@ -1,0 +1,178 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000036 : Building a better benchmark.</h2>
+<h5>Factorio Version 0.17.31</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Future tests will be conduced by performing multiple --benchmark-verbose passes on them. The minimum update time for each specific tick will be saved. Aggregation will be used at times but caution must be taken.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Before 0.17 was released, we had limited options when it came to benchmarking. <a href="/tests/test-000001/test-000001.html">test-000001</a> looked at possible ways to benchmark Factorio. At the time it was decided that the best way to benchmark the game was using the <code>--benchmark</code> command switch. However, with the release of 0.17, another command switch, <code>--benchmark-verbose</code>, was added. This test is to evaluate this switch and determine how it can be useful in our benchmarks.
+</p>
+<h4> The Past </h4>
+<p>
+    In order to understand what you can do better, it's important to understand what you do now. The current methodology is as follows.
+</p>
+<p>
+    First, a hypothesis is formulated. This can be any manner of things, from a comparison of two designs to a comparison of two versions of the game. It is helpful to frame the thing you wish to test as a question.
+</p>
+<p>
+    Second, the test maps are to be created. Sometimes only a single map is needed, other times many different ones are. The intent is to create maps as comparable to one another as possible, except for the aspect of our hypothesis we are attempting to test. Usually I end up creating one common map and then at the very end make whatever modification I am testing and save the variations. All maps except those testing such aspects will be void of pollution, biters, and any other extraneous factors. Further, as the cost to designs does not scale linearly, designs are copied several times with the goal of bringing the effective UPS into the 60-120 range.
+</p>
+<p>
+    While testing highly varying designs can be done, it doesn't accurately tell you which aspects of each design are better or worse than one another. Two entire bases benchmarked won't be as informative as two specific rocket fuel designs, which itself doesn't tell you as much as two trains waiting at a staion with differing conditions. Attempting where possible to narrow the focus of the saves is ideal. There is a risk of going too narrow, however. If you are attempting to validate two competing belt based furnace designs, there is a possiblity that by using infinity chests and loaders to provide the ore you are not accurately capturing the performance of the miners. My aim is to narrow the field but not so much that the design no longer represents how it would be built in the normal game.
+</p>
+<p>
+    Once comparable maps have been created, they are benchmarked. Normally, the headless Linux version of the game is used to perform benchmarking. Each map is benchmarked for 3 times and then the results averaged. Benchmarks are ran such that the order is run1: map1, map2, map3 ... run2: map1, map2, map3 ... This interleaving should minimize any advantage or disadvantage, but overall that has yet to be tested. The duration of each benchmark varies. Typically the duration is 10k or 20k ticks. If there is a known cycle, a value encompassing that known is used (for example: we know a train will get to its station in 7546 ticks, if we are measuring movement, a value less than that will be chosen).
+</p>
+<p>
+    Finally results are aggregated and then conclusions drawn. If further insight is needed, additional benchmarks or performance profiles are conducted. At this stage a detailed writeup is created describing the steps taken and data collected. If data is incorrect or outside factors could plausibly change the results and conclusions, the test writeup may be ammended, or an additional test with writeup created which considers those factors.
+</p>
+
+<h4> Looking Ahead </h4>
+<p>
+    For those unfamiliar, <code>--benchmark-verbose</code> is a command line switch which allows outputting the per tick cost of numerous different timings. The (nearly) full list of timings available is as follows:
+</p>
+<ul>
+    <li>tick: The tick number of this test. Tick 0 is the first tick of this benchmark (rather than the in game tick number).
+    <li>timestamp: The time (in nanoseconds) since the benchmark began. Recorded at the beginning of the tick.
+    <li>wholeUpdate: The timed duration of this tick in ns.
+    <li>latencyUpdate: A multiplayer exclusive timing. Since it is not possible to benchmark a multiplayer connected scenario, this timing is always 0 and can thus be safely ignored.
+    <li>gameUpdate: This timing includes most of the following timings, and is thus not that useful. It also includes functions internal to itself, but since it is effectively a black box, running a profile would be better in almost every case than using this timing. wholeUpdate is a better general timing, and the individual timings below are better specific timings.
+    <li>circuitNetworkUpdate: The time it took to update the circuit networks in the map.
+    <li>transportLinesUpdate: The time it took to update the transport lines in the map.
+    <li>fluidsUpdate: The time it took to update the fluids in the map. It is not clear at this time if that is an incremental or cumulative timing due to the threaded nature of pipes. For this investigation it doesn't matter.
+    <li>entityUpdate: This timing measures the update time of entities. Unfortunately all entities are measued here so it's not possible to see what share is inserters versus assemblers without digging further into a profile.
+    <li>mapGenerator: Time it took to generate chunks. There are 3 main subgroups here: tiles, tile corrections, and entities. However for our purposes capturing the combined timing is enough since this should be 0 or effectively 0 in properly set up tests.
+    <li>crcComputation: A multiplayer exclusive timing. Since it is not possible to benchmark a multiplayer connected scenario, this timing is always 0 and can thus be safely ignored.
+    <li>electricNetworkUpdate: This timing shows the time it takes to update electric networks. It is particularly interesting as it can show the overall effectiveness of increased beacon sharing between comparable designs.
+    <li>logisticManagerUpdate: The time it took to update robots in a tick. It also controls logistic chest checks.
+    <li>constructionManagerUpdate: The time taken to process construction jobs. There is low probability it shows up under normal test cases.
+    <li>pathFinder: The time taken to calculate a path for biters to follow. Generally will be 0 or close.
+    <li>trains: The time taken to update trains. For instance moving and station condition logic.
+    <li>trainPathFinder: The time it took to calculate train paths in this tick. Most of the time this will be 0 since trains infrequently calculate a path.
+    <li>commander: The time it took to control the various unit groups in a tick. Since every test which isn't specifically testing biters will have them disabled, this timing will be close to 0.
+    <li>chartRefresh: A timing related to updating the map. How this timing specifically differs from chartUpdate, I do not know.
+    <li>luaGarbageIncremental: The lua modding API's garbage collector. Costs time regardless of whether or not any mods are enabled.
+    <li>chartUpdate: A timing related to updating the map. How this timing specifically differs from chartRefresh, I do not know.
+    <li>scriptUpdate: The time consumed by mods that use scripts. Note that mods which change data.raw directly (for example changing the craft time of a recipe) won't cost time here.
+</ul>
+<p>
+    While these timings are useful to know, the bigger benefit here is that we receive the per tick data. We know exactly which ticks took a long time, and which high level category(s) caused it.
+</p>
+<h4> Defining the Shortcomings </h4>
+<p>
+    By far the biggest cause for concern in our current methodology is the run to run variance observed. While running 3 runs and taking an average does smooth outliers, it is still factoring them in. Prior to the introduction of <code>--benchmark-verbose</code>, the three datapoints we could feasably collect from a benchmark were avg_ms, min_ms, and max_ms. There was no way to know if for example 50% of the ticks took ~min_ms and 50% took ~max_ms, or if all the ticks except for 2 were at avg_ms.
+</p>
+<p>
+    Since the game is deterministic, running a 1000 tick benchmark on the same map should produce the same result every time. Due to operating system interuptions or processor throttling, it is rare to see two perform in that manner. Now that per tick data can be collected, several runs on that map can be taken, and specific ticks filtered. There are several ideas that could be employed to filter the data, for example averaging the results of that tick together after removing the slowest tick. Another option is to take the fastest instance of a given tick and use that as the result. The reasoning is that any tick slower than the best tick must have been interfered with by the operating system. For the time being we will select the minimum tick time of each tick as our result.
+</p>
+<p>
+    Since we are taking the minimum result of each tick, each additional run of a set of maps gets us closer to the perfect dataset for each map, without penalizing us for any operating system interruption. The number of runs is likely to increase beyond 3, but the exact number will have to be explored in the data portion of this writeup.
+</p>
+
+<h4> Getting an Upgrade </h4>
+<p>
+    By virtue of getting per tick data, we are multiplying our data load by a factor of 10-20k. That is, assuming no changes to number of runs or tick counts. With this level of data growth, storing and managing that much data in csv format would simply be unfeasable. Fortunately, there are plenty of free database software available.
+</p>
+<p>
+    Before we even select a software, it is good to plan what tables and data we will store.
+</p>
+<img src="images/db.svg"></img>
+<p>
+    A benchmark collection is as the name states, a collection of benchmarks. Specifically, it is the maps associated with each other when a benchmark is ran, for instance, benchmarking all maps that start with "test-000036".
+</p>
+<p>
+    A benchmark base is a single map belonging to a collection. For instance "test-000036.infinity_chest_2k_spm_rev1.zip".
+</p>
+<p>
+    A benchmark verbose is a datapoint of a verbose benchmark. It represents a single tick in a single run of all runs performed in this benchmark collection for each benchmark base. The vast majority of the data ends up here.
+</p>
+<p>
+    A benchmark tick aggregate is the best tick of each tick of all benchmark runs performed to a given map. While this data is generated off the benchmark verbose data, this table serves as a convenience.
+</p>
+<p>
+    Finally we have a many to many relation with a writeup and a collection. A collection could be associated with many writeups, and a writeup could be associated with multiple collections. This table also serves as a convenience table.
+</p>
+<p>
+    Now that we know how we want our data organized, we need to implement it. It was decided to use MariaDB. However, considering the similarity of the various SQL databases, it is not likely to matter which one we choose. In the future either the exact database structure will be released or outside submissions will be enabled to this database.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    Now that we have set up data storage and defined the initial new methodology, we need to validate it. It would be advantageous to use both methodologies on a common set of tests to validate. At the same time, we may also be able to kill two birds with one stone.
+</p>
+<p>
+    test-000034 featured several highly similar designs, only varying in the contents of the cars' fuel or ammo slots. A critisim of that test was that because the designs were so similarly performing, the conclusion that the case with the fuel and ammo slots empty performing the best was incorrect. I would also agree that due to the extreme closeness of the results, random variance could have produced those results just as much as any actual difference could have.
+</p>
+<p>
+    With a more rigorous approach, the correct answer should be determined. In the previous test, 3 runs were performed with 10000 ticks per benchmark. This time, more considerate numbers will be chosen. Since this map consists of near exclusively inserters moving items through cars, there will be a period of 26 ticks for a huge portion of the update. As such, choosing exactly 10010 (385*26) ticks should normalize the amount of swings across the different maps. For the number of runs, we will multiply by 10. Doing 30 runs allows us to see 10 old methodology datapoints as well as a 30 possible "best" ticks.
+</p>
+
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    <img src="images/relative_update_time.svg"></img>
+    <ul>
+    <li>{Element A1 | Element A2}: Describes the elements A1 and A2 with regards to the setup differences.
+    </ul>
+</p>
+<p>
+    Data collected from the test. Graphs, screenshots, and supporting evidence
+</p>
+<p>
+    Included in this template folder is a folder for raw data. Data that is too big, clunky, or ugly can be dumped here. There is also an images folder to store images needed for this test. Consider using the <a href="http://optipng.sourceforge.net/">optipng</a> utility to keep the size down a bit. For graphs, .svg format does work well since it is scalable.
+</p>
+<p>
+    All maps will be uploaded <a href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf"> here.</a>
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    Closing notes about this test and other tests which may test a similar attribute or property
+</p>
+
+<footer>
+    <p id="[1]">
+        [1] Important notes that could be further investigated/ inline links to notes that have been investigated.
+    </p>
+    <p id="[2]">
+        [2] A second one for sample purposes. Similar to: <a href=/tests/test-000001/test-000001.html> test-000001.html </a>
+    </p>
+    <div style="font-size:.9em"> Written by mulark on December 21, 2012 </div>
+</footer>

@@ -43,13 +43,13 @@
 
 <h3 id="The-Question"> The Question </h3>
 <p>
-    Which is better as an intermediate for loading to and from trains in a 12-beacon setup, cars or chests?  And how much of a difference does clocking furnace output make?</p>
+    Which is better as an intermediate for loading to and from trains in a 12-beacon setup, cars or chests?  And how much of a difference does clocking furnace output make?
 </p>
 
 <h3 id="The-Test"> The Test </h3>
 <p>
     To measure this, I created a suite of test maps with 10000 12-beacon iron furnaces (with productivity modules) using Region Cloner.  Ore is supplied from infinity chests (mimicking trains bringing it in) and voided to infinity chests (mimicking trains picking it up).  Then Allaizn made a separate suite of maps using a square layout instead of the long line I had used originally; I've included results from his maps as well.  This resulted in quite a few variations of the test maps (12 from KnightElite, 11 by Allaizn), so here are their meanings:</p>
-    
+
     <p><strong>Clocked:</strong>  Uses the circuit network to reduce processing time spent on inserters.  Indicates the output stack inserter from the furnace has been replaced with a filter stack inserter in whitelist mode connected to the circuit network in "set filter" mode; all the furnace output inserters are connected to the same circuit network wire. With productivity modules factored in, a 12-beacon furnace generates an iron plate every approximately 0.199 seconds.  To pick up 12 plates per swing we want to swing approximately every 2.388 seconds, or every 143.28358 ticks, which is an approximation of the true timing of 9600/67 ticks per swing.  The combinators used for clocking makes use of this ratio to synchronize to the output rate of the furnace by having a constant combinator set to output 67, an arithmetic combinator set to modulo(%) 9600 with its output connected back to its input as well as to a decider combinator set to "&lt;67, output 1 Iron Plate".  This is expected to produce a significant UPS savings by reducing the number of inserters swings, and because filter inserters go to sleep when they have no filter set and are in whitelist mode since version 0.17.29.</p>
     <img src="images/clocked_combinator_settings.jpg"></img>
     <p><strong>Chest:</strong>  Indicates the input to and output from the furnace using the sequence of: Infinity Chest - Inserter - Wooden Chest - Inserter - Wooden Chest - Inserter - Furnace.  Wooden chests are limited to a single stack.  Wooden chests are chosen since containers with a lower number of slots are more performant, and are limited to a single stack for the same reason.</p>
@@ -92,10 +92,10 @@ end</code>
 <h3 id="Closing"> Closing </h3>
 <p>
     It was already known prior to this that clocking furnace output inserters made a significant difference, but it wasn't known how much exactly.  The change from version 0.17.29 which allows filter inserters to sleep when no filter is set makes a huge difference in performance when used to clock inserters on the output of furnaces.  Further investigation is required to see how much of a difference it makes on faster or slower productions cycles; furnaces make the maximum difference due to the inserters swinging essentially constantly without clocking, though only picking up one or two plates per swing.</p>
-    
-    
+
+
     <p>It was also unknown how much worse on performance cars were than chests , and how much of a difference putting cars to sleep would make to performance.  We now know that sleeping cars are slightly better than chests in most cases (and way better than non-sleeping cars), but that if there is an option to use cars or chests (and command line to set cars to sleep is not available) then chests are faster in 0.17.32.  If cars were changed to go to sleep when stationary, this test should be rerun to confirm that the cars perform the same as they do when put to sleep from the console.</p>
-    
+
     <p>This also shows it may be worth further investigating the North-facing vs. non-North facing cars cases, as the results were not close enough to make a judgement in this test.
 </p>
 

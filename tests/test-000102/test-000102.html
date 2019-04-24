@@ -1,0 +1,79 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000102 : Do Stack Inserters perform better than filter stack inserters?</h2>
+<h5>Factorio Version 0.17.32</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Regular stack inserters seem to be very slightly faster than filter stack inserters, but the difference is very small.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Is there any performance difference between stack inserters and filter stack inserters statically set to whitelist one item?
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    The test consists of 10010 sets of infinity chest - stack inserter - infinity chest.  The bottom infinity chests are set to create Iron Ore, the top ones are set to void everything.  One map has stack inserters, the other has filter stack inserters with the filter set to whitelist Iron Ore.
+    <a href="images/20190423225416_1.jpg"><img style="width:40%" src="images/20190423225416_1.jpg"></img></a>
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    Per tick data over 100 runs of each test was collected, and the minimum was sampled.  The data was aligned between the two saves so the inserter periods would be synchronized in the graph.
+    
+    <a href="images/results_per_tick.svg"><img style="width:100%" src="images/results_per_tick.svg"></img></a>
+    
+    The above graph also contains a filter stack inserters / stack inserters line for each tick of test time, showing difference in performance on those ticks.
+    </p><p>
+    Average minimum time for filter stack inserters: 2.648ms <br>
+    Average minimum time for stack inserters: 2.636ms<br>
+    
+    <img src="images/average_tick_time.svg"></img>
+    
+</p>
+<p>
+    All maps will be uploaded <a href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf"> here.</a>
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    Stack inserters seem to be very slightly faster than filter stack inserters, but the difference is only on the order of 0.4%.  Likely makes little difference which is used.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by KnightElite on April 24, 2019 </div>
+</footer>

@@ -36,7 +36,7 @@
 
 <h3 id="The-TLDR"> The TLDR </h3>
 <p>
-    Regular stack inserters seem to be very slightly faster than filter stack inserters, but the difference is very small.
+    The difference is so tiny (and went the other direction on shorter tests) that it seems to be too close to call, use whichever inserter type you prefer.
 </p>
 
 <h3 id="The-Question"> The Question </h3>
@@ -57,10 +57,8 @@
     <a href="images/results_per_tick.svg"><img style="width:100%" src="images/results_per_tick.svg"></img></a>
     
     The above graph also contains a filter stack inserters / stack inserters line for each tick of test time, showing difference in performance on those ticks.
-    </p><p>
-    Average minimum time for filter stack inserters: 2.648ms <br>
-    Average minimum time for stack inserters: 2.636ms<br>
     
+    <br>
     <img src="images/average_tick_time.svg"></img>
     
 </p>
@@ -71,7 +69,7 @@
 
 <h3 id="Closing"> Closing </h3>
 <p>
-    Stack inserters seem to be very slightly faster than filter stack inserters, but the difference is only on the order of 0.4%.  Likely makes little difference which is used.
+    Appears to be too close to call conclusively (0.4% difference); use whichever inserter type you want!
 </p>
 
 <footer>

@@ -1,0 +1,96 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000103 : Performance of trains in different states</h2>
+<h5>Factorio Version 0.17.33</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Trains are an order of magnitude more computationally expensive while moving than while stationary.  While moving, performance cost seems to be linked to train speed; faster trains are more impacting on performance.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    How much more expensive are moving trains than stationary trains?  Does it matter whether the train is accelerating or decelerating or going at full speed?
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    The test consists of 1000 6-12 trains facing east.  All start stations are connected to the circuit network and set to send the signal to the trains.  The game was saved at the following points:
+    <ul>
+    <li> All trains stationary (with wait for circuit network G > 0 condition)
+    <li> A few ticks after trains start accelerating.
+    <li> A few ticks after trains reach full speed.
+    <li> A few ticks after trains start decelerating.
+    <li> All trains stationary with a circuit network timer set to start them when it reaches 200.  This map was only used for the full trip measurement.
+    </ul>
+    
+    The track is long enough to guarantee over 100 ticks at full speed.  100 ticks are sampled from each save.  6-12 trains were chosen because they would have at least 100 tick sin each of the states.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    <img src="images/average_time_per_state.svg"></img>
+    <img src="images/per_tick_time_diff_states.svg"></img>
+    
+    <ul>
+    <li>Stationary trains are less than 10% of the processing cost of moving trains.
+    <li> Trains are more expensive the faster they're going.  This might be due to number of collision grids entered in each tick.  It might also have something to do with how locomotives generate smoke.
+    </ul>
+    
+    This prompted me to want to see what the whole run looked like, so I ran another test start to finish and got this:
+    
+    <br>
+    <img src="images/full_trip_all.svg"></img>
+    <br>
+    We can see the trains start out in idle, start moving when the circuit network timer tells them to start (the spike here at time 182 is the rail pathfinder), move to the other station and stop.  I'm not sure what the large spike when the train stops or the one two seconds afterward are.
+    <br><br>
+    Here's the same thing with the large spikes filtered out so we can see better.
+    <br>
+    <img src="images/full_trip_zoomed.svg"></img>
+    <br>
+    It's quite clear that the performance cost slowly increases as the train gains speed, then decreases again once it starts braking.  Braking is an immediate significant decrease from constant speed once it starts, likely because <a href=https://docs.google.com/spreadsheets/d/1UIwpIDCd2vsq2SaMxm3uMWXY0tumes9mhqhLij5aJ_M/edit#gid=1156092035>the math for braking is much simpler than that used for acceleration and constant speed</a>.  It might also be because trains stop generating smoke when they brake.
+</p>
+<p>
+    All maps will be uploaded <a href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf"> here.</a>
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    Faster moving trains are the more expensive.  When a train starts moving there is a large (expected) spike in overhead due to the rail pathfinder being run.  When stopping there is another large spike for unknown reasons, and again two seconds later.  Additional investigation will be required to determine what causes these spikes (one possibility is generation of smoke when the train stops).
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by KnightElite on April 25, 2019 </div>
+</footer>

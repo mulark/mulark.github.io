@@ -1,0 +1,87 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000104 : Performance Cost of stationary trains</h2>
+<h5>Factorio Version 0.17.33</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Stationary trains require very little update time.  A large number of small trains is more computationally unfriendly than a smaller number of large trains.  Wagons require less processing time than locomotives while stationary.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    How much processing time do stationary trains consume?  How much is consumed by wagons vs. how much by locomotives?  While keeping number of units of rolling stock the same, are fewer longer trains more efficient than a larger number of shorter trains?
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    Each test map consists of 10000 rolling stock, either all wagons or all locomotives.  All locomotives and wagons are horizontal (West to East).  Locomotives are all fueled with three units of nuclear fuel.  Maps consist of either 1000 trains of 10 wagons/locomotives, or 100 trains of 100 wagons/locomotives.  Variations exist for trains in automatic and manual mode.  For automatic trains with locomotives, tests include stopped at a station using the "time passed" condition, as well as no station and doing "No Path".  Wagons only trains were put into automatic via the following command:</p>
+    
+<code>
+/c 
+for _, ent in pairs(game.player.surface.find_entities_filtered{name = "cargo-wagon"}) do
+    ent.train.manual_mode = false
+end
+</code>
+
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    <img src="images/stationary_trains_average_tick_duration.svg"></img>
+    <ul>
+    <li>It is immediately apparent that all maps with 100 trains of length 100 are faster than maps with 1000 trains of length 10.
+    <li>Stationary trains made entirely of locomotives are approximately 5-7% more expensive than their equivalents made entirely of wagons.
+    <li>Automatic trains at a station on time condition are cheaper than either trains in manual mode or automatic trains doing no path.  See <a href="/tests/test-000019/test-000019.html">test-000019</a> and <a href="/tests/test-000019/test-000030.html">test-000030</a> for more on costs of different train wait conditions.
+    </ul>
+</p>
+<p>
+    I've also graphed the per-tick data of the tests. <br>
+    <a href=images/per_tick_breakdown.svg><img style="width:100%" src="images/per_tick_breakdown.svg"></img></a>
+</p>
+<p>
+    All maps will be uploaded <a href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf"> here.</a>
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    For stationary trains, a smaller number of large trains is more UPS friendly than a large number of smaller trains.  Wagons are more efficient than locomotives, even when stationary.  Stationary trains are overall still very UPS efficient; even in the worst case in this test 10000 locomotives only used up 0.715ms of processing time.
+    
+    Another test will be required to see if this pattern of relative costs holds true for moving trains, or if the relative cost of locomotives vs. wagons increases further when trains are moving.
+</p>
+
+<footer>
+
+    <div style="font-size:.9em"> Written by KnightElite on April 25, 2019 </div>
+</footer>

@@ -1,0 +1,97 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000038 : 0.17 Revisit: Is it better to use offshore pumps where they are needed directly in, or use as few as possible and pipe water to its destination?</h2>
+<h5>Factorio Version 0.17.33 and 0.17.34</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    In versions 0.17.34 onwards, there is a very slight performance penalty to using offshores directly in.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Testing during the 0.16.x era showed that using offshores directly in were needed to crafting machines performed better. However, with the release of 0.17, many optimizations were applied to the fluid simulation. Additionally, on the builds of the game which are not Windows, versions prior to 0.17.34 did not contain threading of fluid groups. It did have memory locality of fluid, and potentially other optimizations, as shown by performance improvements measured in test-000017.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    For simplicity's sake, we will take the same basic design as the one we used in test-000003 and test-000017. We will use the old version simulator mod maintain the same overall design characteristics. However, we should make improvements to our methodology. This is one of the few situations where we can align the starting tick of comparison maps.
+</p>
+<p>
+    To do such an alignment, we pause one common map. Then, we unpause the map and take a save, all within the same tick. The most minimal example of this is:
+</p>
+<pre><code>/c
+game.tick_paused = false
+game.auto_save("foobar")
+</code></pre>
+<p>
+    For the other case, we take a very similar approach: (the actual offshore placing script is <a href="https://github.com/mulark/Factorio-benchmarking-tools/blob/master/offshore_placer.lua">here</a>)
+</p>
+<pre><code>/c
+game.tick_paused = false
+--[[Remove all the water containing pipes and then place offshores directly where needed]]
+game.auto_save("foobar")
+</code></pre>
+<p>
+    Aligning maps in this manner allows us to more easily see variations in performance of the two cases. It also reduces the importance of benchmarking for long tick durations, as longer runs mask the dissimilar nature ticks typically have.
+</p>
+<p>
+    Since Windows had threading since 0.17.0, it is also interesting to throw into the mix. Given that, we will test it in 0.17.34.
+</p>
+<p>
+    In this test, we will benchmark for 260 ticks, and perform 100 runs of each map in each configuration. For each tick, the best time recorded in all 100 runs will be used. This provides an idealised best tick, and it is the most likely to be unaffected by operating system interference.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    <a href="images/offshores_revisit.svg"><img style="width:100%" src="images/offshores_revisit.svg"></img></a>
+    <ul>
+    <li>{Min | Direct}: Min means that only as few offshore pumps as needed are applied to the build. Pipes connect groups of consumers to those offshore pumps. Direct means that each consumer has one offshore pump directly pointing into its input.
+    </ul>
+</p>
+<p>
+    Data here shows that there was a large increase in performance between 0.17.33 and 0.17.34 on Linux due to the threading. There was an uplift of between 15-20%. This data also shows that using offshores directly in is no longer the most optimal configuration (slightly). Both Linux and Windows showed that offshore direct was ~0.7% slower, across these 100 runs. It's hard to say if it's truly conclusively better or if it was just chance that the data ended up as it did, though given that 200 runs across two different operating systems showed such similar results, I would consider it likely.
+</p>
+<p>
+    Also of note is that Windows performs better than Linux for this design. It is not conclusive to say that Windows will perform better on all hardwares and all designs, however it is an interesting result nonetheless.
+</p>
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    There is a very slight performance penalty to using offshores directly in. It's possible this characteristic could flip in favor of direct offshoring if more pipes than the minimum are used to provide fluid. The design compared against still effectively assumes you will build on a lake, since it connects offshores directly to each pipegroup providing water with no additional wasted piping.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on May 20, 2019 </div>
+</footer>

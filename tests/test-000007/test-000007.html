@@ -1,0 +1,136 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000007 : A look at a couple rocket fuel designs, and a investigation on the fluidsUpdate timing presented by verbose benchmarking.</h2>
+<h5>Factorio Version 0.17.33 and 0.17.34</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Even after optimizations, it is still best to use as few pipes as possible. In testing the same number of fluid groups but consisting of varying numbers of pipes, the threaded optimizations provided a ~2X speedup for all cases measured.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    The 0.17.0 update brought with it significant changes to the performance characteristics of fluids. However, for non-Windows builds, the actual threading of the fluid groups was not included until 0.17.34. Other optimizations were still applied, such as the locality of memory, for non-Windows versions of the game (known via measured improvements in test-000017).
+</p>
+<p>
+    Also added for 0.17 was the fluids update timing which can be gathered using the --benchmark-verbose command line flag. At this time it is not known if this timing is cumulative or total. This diagram shows two possible measurement methods by which the timing could be generated. Each fluid group could measure its time taken (unaware it may be running on another CPU core). Alternatively, a marker before all fluids are updated is taken, and another when all have completed. This would measure the total time it took, factoring in all available cores.
+</p>
+<a href="images/Possible timing topology.svg"><img style="width:33%" src="images/Possible timing topology.svg"></img></a>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    This test presents a few designs which create rocket fuel from light oil and directly void it into infinity chests. Since the beacon coverage on the rocket fuel portion of the design is identical at 12 beacon between designs, voiding like this should be comparable between designs.
+</p>
+<p>
+    All designs contain groups of 36 rocket fuel assemblers, each group being fed by one fluid network, which itself is fed by a single infinity pipe. Each of these groups has been copied to 100 pastes. Layouts have been tiled to maximize beacon sharing and reduce pipe usage in each of the cells. Each of these designs will be benchmarked 100 times, for a duration of 260 ticks. The tick duration is not precisely chosen as it would be infeasible to align the maps due to their dissimilarity. The maps do not contain any long period dissimilarity (like trains) so a short duration should be reasonable (especially if there is a large performance delta).
+</p>
+<p>
+    The first design of consideration is that of 12 beacons on the chemical plants. This layout uses fewer beacons due to better sharing, but also uses more pipes.
+</p>
+<img style="width:50%" src="images/12_beacon_compact.png"></img>
+<p>
+    The second of these designs also achieves 12 beacons on the chemical plant, but reduces the pipe count compared to the first as well. In total it has 359 beacons, compared to the 338 of the first design. It also has 108 pipes per group, compared to the first's 238.
+</p>
+<img style="width:50%" src="images/12_beacon_pipe_reduced.png"></img>
+<p>
+    The next design aims to minimize pipes at all cost, causing the chemplants to only achieve 10 beacon coverage. It contains a mere 68 pipes per group, while also using 282 beacons.
+</p>
+<img style="width:50%" src="images/10_beacon_pipe_reduced.png"></img>
+<p>
+    The fourth and final design takes the previous one and deliberately reduces beacon count on the chemplants to only 8 beacons. Given that the removed beacon hits 2 or 4 chemplants, it's not likely that the power cost savings will exceed the increased idle time on the chemplants, however, it is worthwhile to test.
+</p>
+<img style="width:50%" src="images/8_beacon_pipe_reduced.png"></img>
+
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    <img style="width:100%" src="images/min_wholeUpdate.svg"></img>
+</p>
+<p>
+    Initially, it's not entirely clear which is the winner. However, it is pretty easy to spot that the 12 beacon compacted setup is the slowest. It is also the design which improves the most between 0.17.33 and 0.17.34, as could be expected because it contains the most pipes.
+</p>
+<p>
+    It's also clear that we most likely will need to benchmark for longer than 260 ticks. Here is that data again filtered to the relevant comparison data.
+</p>
+<p>
+    <img style="width:100%" src="images/min_wholeUpdate2.svg"></img>
+</p>
+<p>
+    Given the high degree of similarity between the 8 and 10 beacon variants, it's unsurprising they're so close. Taking the aggregate sum of the min(wholeUpdate) per tick shows that the 10 beacon was ~5% better than the 8 beacon. But considering that the slowest tick (excluding the first tick) was 50% slower than the fastest tick, that result could be due to duration chosen. Ergo, we need to run longer benchmarks. This next set of data will be for 100 runs, 10,000 ticks. We will also limit ourselves to version 0.17.34 since the reason to run longer is to compare maps to one another, not one to itself. Comparing a map to itself is a perfectly aligned scenario, therefore, duration is unimportant.
+</p>
+<p>
+    However, before that 10k run, let's take a quick look at the fluids update timing.
+</p>
+<p>
+    <img style="width:100%" src="images/min_fluidsUpdate.svg"></img>
+</p>
+<p>
+    It's clear that the fluids update timing is not measured per fluid group and summed, rather it is one overall measurement to time all fluid updates. The stack of results lines up quite expectedly based on the number of pipes in each design. Threading doesn't change the ordering, but it does shift the scale down. One thing that may be placebo is that the results from 0.17.34 seem to be noisier than those produced with 0.17.33. It would make somewhat logical sense that during the fluid update portion of the game update, all cores are in use by the game. If during this time we encounter some operating system interference, there are no idle cores to handle it.
+</p>
+<p>
+    <img style="width:100%" src="images/relative_fluidsUpdate.svg"></img>
+</p>
+<p>
+    Looking at the relative ratios of the fluidsUpdate timing, there is essentially a 2x speedup across the board. Given the varying number of pipes in each measured pipe group, this is quite an interesting result. The best case scenario would have resulted in fluids update being 4x faster due to measurements being conducted on a quad core CPU. It is not known if having additional CPU cores would cause further speedups, or if we have capped out on some other bottleneck (most likely cache or memory).
+</p>
+<p>
+    In a typical base pipe groups will vary in size throughout the map so it is not known applicable an expected 2X speedup would translate.
+</p>
+<p>
+    Going back to the 10k run, now we have clearly captured several full cycles of each design. Immediately, it stands out that the 12 beacon has fallen off in favor of the other two designs.
+</p>
+<p>
+    <img style="width:100%" src="images/min_wholeUpdate3.svg"></img>
+</p>
+<p>
+    It's still kind of hard to make out which one, the 8 or 10 beacon design, is faster. The next graph makes it crystal clear. This graph takes the time the 8 beacon took, and subtracts the time the 10 beacon took. It then cumulatively adds it to the prior ticks. In the simplest terms, when the graph is rising, the 10 beacon is faster, and when it is falling, the 8 beacon variant wins.
+</p>
+<p>
+    <img style="width:100%" src="images/sum_wholeUpdate_8v10.svg"></img>
+</p>
+<p>
+    We don't even need to see the full 10k ticks to know where this is headed. It's really clear that the 10 beacon design wins out versus the 8 beacon. It would appear that for this case, the power overhead associated with the extra beacons doesn't put us at a ups deficit compared to the benefit they provide.
+</p>
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    The main takeaway from these tests is that although pipes were optimized significantly in 0.17 and later 0.17.34 (on Linux), it is best to minimize their use. Of the designs tested, the 10 beacon variant originally designed in 0.16 remains the best option known.
+</p>
+<p>
+    Also of note is a result showing that additional beacons with coverage on 2 or 4 chemical plants yielded better performance. It is not known specifically when the power overhead will result in reduced performance (specifically for the case were removing beacons doesn't incur additional machinery). There are several hypotheticals which will require further testing.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on June 5, 2019 </div>
+</footer>

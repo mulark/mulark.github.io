@@ -31,3 +31,4 @@ Test if rezipping a map so it actually gets compressed affects UPS of a benchmar
 Test if it's better to split circuit networks or have 1 huge one
 WIP green circuit builds (test-8)
 WIP electric networks (test-13)
+Design something around pipes that empty periodically.

@@ -1,0 +1,99 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000039 : How have the Intel security vulnerability mitigations impacted the performance of Factorio?</h2>
+<h5>Factorio Version 0.17.43</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Performance of Factorio in typical conditions has slowed by roughly 1%. Best case scenario performance is identical, but achieving that best case scenario in practice is not possible.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    In January 2018, we first learned of Spectre and Meltdown, two vulnerabilities affecting Intel processors. Since that time, we have learned of the existence of several more vulnerabilities to Intel processors. With each of these vulnerabilities, mitigations must be applied to secure the system against attackers. In certain workloads, these mitigations have been shown to have a significant performance cost. The question remains if Factorio is one such workload.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    To test the impact of Intel CPU vulnerabilities, we will pass the mitigations=off parameter to the Linux kernel at boot time. The <a href="https://github.com/speed47/spectre-meltdown-checker">spectre-meltdown-checker</a> was used to verify mitigations were disabled. Testing was done on a Haswell i5-4670k, it is possible that other Intel CPUs would be impacted differently than this one.
+</p>
+<p>
+    Six maps were chosen that represent a variety of possible build styles and capacities. Each of these 6 maps was benchmarked 100 times, using the verbose benchmark, thereby collecting per tick timings. These 100 runs were benchmarked with mitigations off, as well as with mitigations on, for a total of 200 runs. The first 260 ticks of each map was the duration benchmarked. The intent of this test is not to compare each of these designs with one another, so this short and inconsiderate duration is fine.
+</p>
+<p>
+    Each of the six maps is available for download at these locations:
+    <ul>
+        <li>megabase1: <a href="https://www.reddit.com/r/factorio/comments/bs9930/my_2something_k_spm_train_grid_deathworld_vanilla/"> 7cf2969bb88e9e7a6feed004ec2b5bb58ede623c</a>
+        <li>2700_v2: <a href="https://www.reddit.com/r/factorio/comments/brr0bm/27k_scienceminute_megabase/eojkirb/">35bd1e7cdfa89c85f03a9f95d82c36e6fe1953c5</a>
+        <li>0.17 World 02: <a href="https://www.reddit.com/r/technicalfactorio/comments/bsp3xy/2k_rail_outpost_base_with_no_unified_rail_network/">7b2e801506c504158d36343d2cc647beac421ce8</a>
+        <li>stevetrovs_10K_mega_belt_base: <a href="https://www.reddit.com/r/factorio/comments/bdkrwz/10k_spm_belt_megabase_benchmarked_83ups_with_way/">332e32a22673f9874d4f17924a7b4c5cf34a35cd
+        <li>TeKillA Green Planet: <a href="https://forums.factorio.com/viewtopic.php?f=204&t=69802">5a4d32481921d7c47982474bd2ad92399b8c056a</a>
+        <li>infinity_chest_10k_spm_rev1: <a href="https://drive.google.com/open?id=1T65vObsFGk5BWySWmBlYFkEoALvgJKNj">428ce61c680490e73eda4ab9b16083632478b63a</a>
+    </ul>
+    sha1sum should be compared, if tested versions of maps lose their availability, please contact me so I can mirror them.
+</p>
+<p>
+    Care should be given to deciding which metrics to use. Typically for our tests, the min(wholeUpdate) metric is used. Fundamentally, this metric looks at each tick across all benchmark runs, and returns the fastest instance of each tick. Since Factorio is deterministic, any time slower than the fastest could be assumed to be interference by other programs running on the system. This is not an average, rather it is an idealized best case scenario. This works well for measuring similar designs, especially in cases where there is a slim difference, as we want to suppress noise introduced by unrelated programs.
+</p>
+<p>
+    In practice, it is not possible to play the game without these micro interruptions from the operating system. If mitigations affect these system level interruptions, but do not affect the best case scenario path, then using min(wholeUpdate) will conceal that data. Therefore, we will also use sum(wholeUpdate). For each tick, every duration taken will be included. The sums of these ticks will be compared with mitigations on and off.
+</p>
+
+
+<h3 id="The-Data"> The Data </h3>
+<img src="images/min_wholeUpdate_relative.svg"></img>
+<p>
+    Kicking things of with min(wholeUpdate), we can see that as predicted, the idealized best case scenario shows effectively no difference between vulnerable and mitigated configurations.
+</p>
+<img src="images/sum_wholeUpdate_relative.svg"></img>
+<p>
+    Moving on to sum(wholeUpdate), we can see that there is a measurable and real penalty to turning mitigations on.
+</p>
+<img src="images/aggregate_wholeUpdate_relative.svg"></img>
+<p>
+    Averaging all maps together cleans up the line spam and shows that turning mitigations off resulted in 1.42% more performance on average. Conversely, looking at min() showed only a 0.06% speedup. This validates that using min() is a good option when the operating system should be removed as a factor.
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    Intel's security flaw mitigations do have an measurable though small performance impact for Factorio. Or more specifically, Intel's security mitigations slow the operating system's interruptions slightly. Since an operating system is required to play the game, this is an unavoidable cost.
+</p>
+<p>
+    Since this testing was conducted with all user programs closed, it's possible that in common scenarios like watching a video or listening to music, a larger performance impact due to the mitigations could be measured. A challenge with testing this is the variability, and thus this should be dedicated towards its own test.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on July 14, 2019 </div>
+</footer>

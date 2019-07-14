@@ -41,7 +41,7 @@
 
 <h3 id="The-Question"> The Question </h3>
 <p>
-    In January 2018, we first learned of Spectre and Meltdown, two vulnerabilities affecting Intel processors. Since that time, we have learned of the existence of several more vulnerabilities to Intel processors. With each of these vulnerabilities, mitigations must be applied to secure the system against attackers. In certain workloads, these mitigations have been shown to have a significant performance cost. The question remains if Factorio is one such workload.
+    In January 2018, we first learned of Spectre and Meltdown, two vulnerabilities affecting Intel processors. Since that time, we have learned of the existence of several more vulnerabilities affecting Intel processors. With each of these vulnerabilities, mitigations must be applied to secure the system against attackers. In certain workloads, these mitigations have been shown to have a significant performance cost. The question remains if Factorio is one such workload.
 </p>
 
 <h3 id="The-Test"> The Test </h3>
@@ -49,7 +49,7 @@
     To test the impact of Intel CPU vulnerabilities, we will pass the mitigations=off parameter to the Linux kernel at boot time. The <a href="https://github.com/speed47/spectre-meltdown-checker">spectre-meltdown-checker</a> was used to verify mitigations were disabled. Testing was done on a Haswell i5-4670k, it is possible that other Intel CPUs would be impacted differently than this one.
 </p>
 <p>
-    Six maps were chosen that represent a variety of possible build styles and capacities. Each of these 6 maps was benchmarked 100 times, using the verbose benchmark, thereby collecting per tick timings. These 100 runs were benchmarked with mitigations off, as well as with mitigations on, for a total of 200 runs. The first 260 ticks of each map was the duration benchmarked. The intent of this test is not to compare each of these designs with one another, so this short and inconsiderate duration is fine.
+    Six maps were chosen that represent a variety of possible build styles and capacities. Each of these 6 maps was benchmarked 100 times, using the verbose benchmark, thereby collecting per tick timings. These 100 runs were benchmarked with mitigations off, as well as with mitigations on, for a total of 200 runs. Each map was benchmarked for 260 ticks. The intent of this test is not to compare each of these designs with one another, so this short and inconsiderate duration is fine.
 </p>
 <p>
     Each of the six maps is available for download at these locations:
@@ -73,14 +73,17 @@
 
 <h3 id="The-Data"> The Data </h3>
 <img src="images/min_wholeUpdate_relative.svg"></img>
+<img src="images/min_wholeUpdate_relative_zoom.svg"></img>
 <p>
     Kicking things of with min(wholeUpdate), we can see that as predicted, the idealized best case scenario shows effectively no difference between vulnerable and mitigated configurations.
 </p>
 <img src="images/sum_wholeUpdate_relative.svg"></img>
+<img src="images/sum_wholeUpdate_relative_zoom.svg"></img>
 <p>
-    Moving on to sum(wholeUpdate), we can see that there is a measurable and real penalty to turning mitigations on.
+    Moving on to sum(wholeUpdate), we can see that there is a measurable and real penalty to turning mitigations on. Stevetrov's map is more affected than others, however the reason for such effects is unknown. Speculatively, it could be that the map is closer to the hardware limitations, thereby each interruption is more costly.
 </p>
 <img src="images/aggregate_wholeUpdate_relative.svg"></img>
+<img src="images/aggregate_wholeUpdate_relative_zoom.svg"></img>
 <p>
     Averaging all maps together cleans up the line spam and shows that turning mitigations off resulted in 1.42% more performance on average. Conversely, looking at min() showed only a 0.06% speedup. This validates that using min() is a good option when the operating system should be removed as a factor.
 </p>

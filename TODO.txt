@@ -1,34 +1,41 @@
-test pebbles GC
-DONE -- test nearest neighbour train collision
-DONE -- test cars moving on 2x2 or 4x2 collision grid
-test efficiency modules in miners
-test effc mods in rocket fuel design on solid fuel part
-test beacons removed there as well
-test allaizns car beacon setup vs the other way (power for collision checks test)
-Make/find a mod that sets 0.17's recipes to 0.16's, then test (Rusty is doing this YAY!)
-Triple channel RAM, vs Dual, Vs multiple dimms in 1 channel
-Is it better to optimize for passive provider sharing or forego sharing to achieve the shortest travel distance on bot builds?
-Testing copied designs with various memory frequencies to validate best megabase scaled design. At megabase scale, the game becomes more memory bound.
-Testing with a dummy megabase, so that you are not forced to clone the thing you want to test beyond the scale it would otherwise be at
-Does expanding the map far out have performance penalty? Even when those chunks are not doing anything?
-How expensive is setting requests by the circuit network.
-See if miners having only one ore tile changes their performance.
-DONE -- Does fine tuning the train id's have performance benefits (IE having a lower train id in front of one which could perform collision checks on it)
-DONE -- Are diagonal trains of similar cost to trains orientation != 0?
-DONE -- Test rebinding to collision grid
-Test train signals helping performance (potential due to checking the rail blocks)
-What functions do active/inactive but disabled inserters check?
-does overlapping vehicle map markers have additional render cost?
-Does a dual headed train traveling backwards (relative to the "front" locomotive which is determined when a train is created) have performance loss?
-Backed up miners don't consume power, do they still perform electric network calculations?
-MIGRATION OF MOD OR FACTORIO VERSION
-Test orientation flipped cargo-wagons within a train (half 0 half 0.5, interleave or in blocks)
-is it better to activate all clocked inserters in one tick or space them out?
-When clocking inserters should you pulse for 12 items or set to active to unload 96 items and sleep in between for longer.
-How much do clocked inserters help with bot travel?
-is it better to change a value of a signal via 1->2->1  or 0->1->0, since one keeps the signal, while the other deletes and recreates it all the time
-Test if rezipping a map so it actually gets compressed affects UPS of a benchmark of that map.
-Test if it's better to split circuit networks or have 1 huge one
-WIP green circuit builds (test-8)
-WIP electric networks (test-13)
-Design something around pipes that empty periodically.
+complete:
+    DONE -- test nearest neighbour train collision
+    DONE -- test cars moving on 2x2 or 4x2 collision grid
+    DONE -- Does fine tuning the train id's have performance benefits (IE having a lower train id in front of one which could perform collision checks on it)
+    DONE -- Are diagonal trains of similar cost to trains orientation != 0?
+    DONE -- Test rebinding to collision grid
+
+in progress:
+    test pebbles GC
+    test efficiency modules in miners
+    test effc mods in rocket fuel design on solid fuel part
+    test beacons removed there as well
+    test allaizns car beacon setup vs the other way (power for collision checks test)
+    Make/find a mod that sets 0.17's recipes to 0.16's, then test (Rusty is doing this YAY!)
+    Triple channel RAM, vs Dual, Vs multiple dimms in 1 channel
+    Is it better to optimize for passive provider sharing or forego sharing to achieve the shortest travel distance on bot builds?
+    Testing copied designs with various memory frequencies to validate best megabase scaled design. At megabase scale, the game becomes more memory bound.
+    Testing with a dummy megabase, so that you are not forced to clone the thing you want to test beyond the scale it would otherwise be at
+    Does expanding the map far out have performance penalty? Even when those chunks are not doing anything?
+    How expensive is setting requests by the circuit network.
+    See if miners having only one ore tile changes their performance.
+    Test train signals helping performance (potential due to checking the rail blocks)
+    What functions do active/inactive but disabled inserters check?
+    does overlapping vehicle map markers have additional render cost?
+    Does a dual headed train traveling backwards (relative to the "front" locomotive which is determined when a train is created) have performance loss?
+    Backed up miners don't consume power, do they still perform electric network calculations?
+    MIGRATION OF MOD OR FACTORIO VERSION
+    Test orientation flipped cargo-wagons within a train (half 0 half 0.5, interleave or in blocks)
+    is it better to activate all clocked inserters in one tick or space them out?
+    When clocking inserters should you pulse for 12 items or set to active to unload 96 items and sleep in between for longer.
+    How much do clocked inserters help with bot travel?
+    is it better to change a value of a signal via 1->2->1  or 0->1->0, since one keeps the signal, while the other deletes and recreates it all the time
+    Test if rezipping a map so it actually gets compressed affects UPS of a benchmark of that map.
+    Test if it's better to split circuit networks or have 1 huge one
+    WIP green circuit builds (test-8)
+    WIP electric networks (test-13)
+    Design something around pipes that empty periodically.
+    Does a train having a rider increase UPS cost?
+    Do bots contribute to additional collision checks when they're hovered over a moving car example.
+    Is stationary fluid cheaper to update than moving fluid?
+    What about empty pipes is cheap? Lack of fluid or lack of fluid filter?

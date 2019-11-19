@@ -1,0 +1,89 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000046 : Does recompressing game saves affect the resulting runtime performance?</h2>
+<h5>Factorio Version 0.17.78</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    No, recompressing a save has no measurable difference to performance.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Factorio saves produced by the game are optmized for speed, not size.
+    While this does allow for a quicker return to gameplay, it is not the most optimal for sharing maps between people.
+</p>
+<p>
+    Fortunately Factorio is capable of loading and running zip files compressed with more agressive settings.
+    However, before we go ahead and start recompressing saves, we should verify that there is no performance difference to doing so.
+    It's unlikely that there would be a performance change, therefore this test is a case of 'trust but verify'.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    For this test we will take a save, unzip it, and then rezip it with more aggressive settings.
+    While the zip format allows for additional algorithms, like bzip2, only deflate is acutally loadable by Factorio.
+    It is for this reason that we will compare zips compressed by Factorio and those compressed via deflate.
+</p>
+<p>
+    Our test setup will consist of around 9k furnaces fed by and feeding to infinity chests.
+    Additionally, an area of 2k x 2k was generated with normal (minus water) terrain.
+    Pollution was disabled as per usual.
+</p>
+<p>
+    This resulted in a filesize of 7.5MB for the Factorio produced zip, and recompression brought that figure down to 6.6MB.
+</p>
+<p>
+    Tests were conducted using the --benchmark-verbose command line flag, running for 260 ticks, and 100 runs.
+    The best ticks of each run was taken (ie: fastest tick of tick 0, fastest tick 1...).
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    <a href="images/test-000046.svg"><img style="width:100%" src="images/test-000046.svg"></img></a>
+</p>
+<p>
+    Collectively, the normal Factorio produced zip measured 0.3% slower than the recompressed version.
+    Since we only did 100 runs, this value is definitely within margin of error.
+    We would need an excessive number of runs to be able to conclude one is slower than another.
+</p>
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    This result was exactly the result we expected. That said, without data nothing should be assumed.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on November 18, 2019 </div>
+</footer>

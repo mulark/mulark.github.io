@@ -40,6 +40,7 @@ System Specifications:
 </h3>
 
 <p>Note: unless otherwise noted, System 1 is used to conduct testing (with 780ti)</p>
+<p>Note: Tests after 2019-7-1 use system 4 unless otherwise specified</p>
 
 <table>
 <tr>
@@ -47,56 +48,66 @@ System Specifications:
 <th> System 1 </th>
 <th> System 2 </th>
 <th> System 3 </th>
+<th> System 4 </th>
 </tr>
 <tr>
 <td>Processor Model</td>
 <td> i5-4670K </td>
 <td> FX-8320 </td>
 <td> Dual Xeon E5520s </td>
+<td> Ryzen 7 3700x </td>
 </tr>
 <tr>
 <td>CPU Frequency</td>
-<td> 4400MHz </td>
-<td> 4500MHz </td>
-<td> 2270MHz </td>
+<td> 4400MHz (OC) </td>
+<td> 4500MHz (OC) </td>
+<td> 2270MHz (Stock) </td>
+<td> 4400MHz (Stock) </td>
 </tr>
 <tr>
 <td>vCore (voltage)</td>
 <td>tbd</td>
 <td>tbd</td>
 <td>n/a</td>
+<td>n/a</td>
 </tr>
 <tr>
 <td>Memory (RAM)</td>
 <td colspan="2" align="center"> 8GB DDR3 1866MT/s</td>
 <td> 4GB-24GB per socket 1066MT/s (up to triple-channel) </td>
+<td> 32GB DDR4 3200MHz OC to 3733MHz </td>
 </tr>
 <tr>
 <td>Memory timings (XMP)</td>
 <td colspan="2" align="center">10-11-10-28 1T</td>
 <td> TBD </td>
+<td> 18-(20-16)-20-36 1T (GearDownMode) </td>
 </tr>
 <tr>
 <td>GPU</td>
 <td colspan="2" align="center">nVidia GTX 780ti or AMD Radeon HD 7870 GHz</td>
 <td>n/a</td>
+<td>AMD Radeon RX 580</td>
 </tr>
 <tr>
 <td>Motherboard</td>
 <td> MSI Z87i-ac mITX</td>
 <td> Gigabyte GA-970A-UD3 ATX</td>
 <td> Supermicro X8DTT </td>
+<td> Gigabyte AORUS X570-PRO Wifi </td>
 </tr>
 <tr>
 <td>BIOS version</td>
 <td>1.9</td>
 <td>TBD</td>
 <td>TBD</td>
+<td>Varies</td>
 </tr>
 <tr>
 <td>Operating System</td>
 <td>Antergos Linux rolling release</td>
 <td>TBD</td>
+<td>Arch Linux rolling release </td>
 <td>Arch Linux rolling release </td>
 </tr>
 </table>
@@ -110,6 +121,9 @@ Common Terms
 <h3>
     Decoding the fields commonly logged in raw data fields
 </h3>
+<p>
+    Note: no longer up to date as of 0.17
+</p>
 <h4>map_name</h4>
 <p>
     The map name used in this benchmark.

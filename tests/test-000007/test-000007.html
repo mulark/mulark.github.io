@@ -40,13 +40,15 @@
 </p>
 
 <h3 id="The-Question"> The Question </h3>
+<a href="images/Possible timing topology.svg">
+    <img style="float:right;width:30%" src="images/Possible timing topology.svg"></img>
+</a>
 <p>
     The 0.17.0 update brought with it significant changes to the performance characteristics of fluids. However, for non-Windows builds, the actual threading of the fluid groups was not included until 0.17.34. Other optimizations were still applied, such as the locality of memory, for non-Windows versions of the game (known via measured improvements in test-000017).
 </p>
 <p>
     Also added for 0.17 was the fluids update timing which can be gathered using the --benchmark-verbose command line flag. At this time it is not known if this timing is cumulative or total. This diagram shows two possible measurement methods by which the timing could be generated. Each fluid group could measure its time taken (unaware it may be running on another CPU core). Alternatively, a marker before all fluids are updated is taken, and another when all have completed. This would measure the total time it took, factoring in all available cores.
 </p>
-<a href="images/Possible timing topology.svg"><img style="width:33%" src="images/Possible timing topology.svg"></img></a>
 
 <h3 id="The-Test"> The Test </h3>
 <p>

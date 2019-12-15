@@ -43,7 +43,10 @@
     Initially, one would think that to get from A to B, the shortest path possible would be the best. As shown by our previous test, there are a mutitude of factors which could trump that intuition. If you have not read that test, it is a dependency for this test. One can read that test <a href="/tests/test-000025/test-000025.html">here</a>.
 </p>
 <p>
-    One of these factors is the number of 2x2 grids a train is activating at any one time. Under the assumption that the AABB collision box casts to the 2x2 grid, a diagonal train is activating between 9 and 12 of these at any given time. A straight train only activates 3 or 4 of them at any given time.
+    One of these factors is the number of 2x2 grids a train is activating at any one time.
+    Each 2x2 grid is an advanced tile.
+    Under the assumption that the AABB collision box casts to the 2x2 grid, a diagonal train is activating between 9 and 12 of these at any given time.
+    A straight train only activates 3 or 4 of them at any given time.
 </p>
 <p>
     Another intuition which doesn't actually work out is the idea that you are travelling through fewer 2x2 tile grids. Normally, we would expect a 2 : sqrt(2) factor (or sqrt(2)). However, diagonal travelling actually travels through the same number of grids.

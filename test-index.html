@@ -38,40 +38,240 @@ Test Index
 All maps from all tests are available for download from <a href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf"> here.</a>
 </p>
 
-<ul>
-<li><a href="test-template/test-template.html"> test-template</a> : Test template
-<li><a href="tests/test-000001/test-000001.html"> test-000001</a> : What is the best way to benchmark Factorio?
-<li><a href="tests/test-000002/test-000002.html"> test-000002</a> : Does performance of designs scale linearly to the number of entities / amount of production?
-<li><a href="tests/test-000003/test-000003.html"> test-000003</a> : Is it better to use offshore pumps where they are needed directly in, or use as few as possible and pipe water to its destination?
-<li><a href="tests/test-000004/test-000004.html"> test-000004</a> : Does the number of slots or type of chest influence the performance cost?
-<li><a href="tests/test-000005/test-000005.html"> test-000005</a> : What is the performance improvement for priming inserters?
-<li><a href="tests/test-000006/test-000006.html"> test-000006</a> : Does solar have a negative UPS impact due to the additional RAM consumption? (Part 1/1)
-<li><a href="tests/test-000007/test-000007.html"> test-000007</a> : A look at a couple rocket fuel designs, and a investigation on the fluidsUpdate timing presented by verbose benchmarking.
-<li><a href="tests/test-000009/test-000009.html"> test-000009</a> : Does having more beacon sharing impact performance in any meaningful way?
-<li><a href="tests/test-000010/test-000010.html"> test-000010</a> : A deeper dive into the results of test-000009. Why did more beacons perform worse?
-<li><a href="tests/test-000011/test-000011.html"> test-000011</a> : A performance comparison between /u/schaev and /u/swolar's designs.
-<li><a href="tests/test-000012/test-000012.html"> test-000012</a> : A look at how overbuilding a synthetic yellow science build affects performance.
-<li><a href="tests/test-000014/test-000014.html"> test-000014</a> : Does the update order of trains affect the performance of trains?
-<li><a href="tests/test-000015/test-000015.html"> test-000015</a> : Are cars with orientation 0 more UPS efficient than other orientations?
-<li><a href="tests/test-000016/test-000016.html"> test-000016</a> : Do train wagons perform collision checks on their directly connected neighbour?
-<li><a href="tests/test-000017/test-000017.html"> test-000017</a> : A performance comparison of 0.16 and 0.17.
-<li><a href="tests/test-000018/test-000018.html"> test-000018</a> : A look at on patch smelting, where directly mining into a furnace is compared against mining into a chest and using an inserter to move the ore.
-<li><a href="tests/test-000019/test-000019.html"> test-000019</a> : Does the wait condition on trains have a signifigant performance delta?
-<li><a href="tests/test-000022/test-000022.html"> test-000022</a> : Are trains moving north more UPS efficient than other directions?
-<li><a href="tests/test-000025/test-000025.html"> test-000025</a> : Does the spacing between rails affect performance?
-<li><a href="tests/test-000026/test-000026.html"> test-000026</a> : Are diagonal trains more or less UPS effective than straight trains?
-<li><a href="tests/test-000028/test-000028.html"> test-000028</a> : Does having cars aligned to the collision grid improve performance when they are moving?
-<li><a href="tests/test-000030/test-000030.html"> test-000030</a> : Part 2 of testing train wait conditions. Testing multiple conditions.
-<li><a href="tests/test-000034/test-000034.html"> test-000034</a> : When using cars as a handoff, is it better to leave the fuel and ammo slots empty, or fill them?
-<li><a href="tests/test-000038/test-000038.html"> test-000038</a> : 0.17 Revisit: Is it better to use offshore pumps where they are needed directly in, or use as few as possible and pipe water to its destination?
-<li><a href="tests/test-000039/test-000039.html"> test-000039</a> : How have the Intel security vulnerability mitigations impacted the performance of Factorio?
-<li><a href="tests/test-000046/test-000046.html"> test-000046</a> : Does recompressing game saves affect the resulting runtime performance?
-<li><a href="tests/test-000101/test-000101.html"> test-000101</a> : Best way to load/unload furnaces?  Cars vs. Chests, clocked vs freerunning inserters?
-<li><a href="tests/test-000102/test-000102.html"> test-000102</a> : Do Stack Inserters perform better than filter stack inserters?
-<li><a href="tests/test-000103/test-000103.html"> test-000103</a> : Performance of trains in different states
-<li><a href="tests/test-000104/test-000104.html"> test-000104</a> : Performance Cost of stationary trains
-<li><a href="tests/test-000105/test-000105.html"> test-000105</a> : Is it worth making trains stay at the station instead of a signal so inserters remain inactive?
-</ul>
+
+<table>
+    <tr>
+        <th>Test</th>
+        <th>Title</th>
+        <th>Factorio Version</th>
+        <th>Date</th>
+        <th>Author</th>
+    </tr>
+    <tr>
+        <td><a href="test-template/test-template.html"> test-template</a></td>
+        <td>Test template</td>
+        <td>0.17.79</td>
+        <td>n/a</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td><a href="tests/test-000001/test-000001.html"> test-000001</a></td>
+        <td>What is the best way to benchmark Factorio?</td>
+        <td>0.16.51</td>
+        <td>2018-10-21</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td><a href="tests/test-000002/test-000002.html"> test-000002</a></td>
+        <td>Does performance of designs scale linearly to the number of entities / amount of production?</td>
+        <td>0.16.51</td>
+        <td>2018-10-21</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td><a href="tests/test-000003/test-000003.html"> test-000003</a></td>
+        <td>Is it better to use offshore pumps where they are needed directly in, or use as few as possible and pipe water to its destination?</td>
+        <td>0.16.51</td>
+        <td>2018-11-09</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000004/test-000004.html"> test-000004</a> </td>
+        <td> Does the number of slots or type of chest influence the performance cost? </td>
+        <td>0.16.51</td>
+        <td>2018-11-09</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000005/test-000005.html"> test-000005</a> </td>
+        <td> What is the performance improvement for priming inserters? </td>
+        <td>0.16.51</td>
+        <td>2018-11-09</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000006/test-000006.html"> test-000006</a> </td>
+        <td> Does solar have a negative UPS impact due to the additional RAM consumption? (Part 1/1) </td>
+        <td>0.16.51</td>
+        <td>2018-12-19</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000007/test-000007.html"> test-000007</a> </td>
+        <td> A look at a couple rocket fuel designs, and a investigation on the fluidsUpdate timing presented by verbose benchmarking. </td>
+        <td>0.17.33/0.17.34</td>
+        <td>2019-06-05</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000009/test-000009.html"> test-000009</a> </td>
+        <td> Does having more beacon sharing impact performance in any meaningful way? </td>
+        <td>0.16.51</td>
+        <td>2018-12-23</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000010/test-000010.html"> test-000010</a> </td>
+        <td> A deeper dive into the results of test-000009. Why did more beacons perform worse? </td>
+        <td>0.16.51</td>
+        <td>2018-12-27</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000011/test-000011.html"> test-000011</a> </td>
+        <td> A performance comparison between /u/schaev and /u/swolar's designs. </td>
+        <td>0.16.51</td>
+        <td>2019-02-23</td>
+        <td>mulark, swolar</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000012/test-000012.html"> test-000012</a> </td>
+        <td> A look at how overbuilding a synthetic yellow science build affects performance. </td>
+        <td>0.16.51</td>
+        <td>2019-01-04</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000014/test-000014.html"> test-000014</a> </td>
+        <td> Does the update order of trains affect the performance of trains? </td>
+        <td>0.16.51</td>
+        <td>2019-01-24</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000015/test-000015.html"> test-000015</a> </td>
+        <td> Are cars with orientation 0 more UPS efficient than other orientations? </td>
+        <td>0.16.51</td>
+        <td>2019-01-12</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000016/test-000016.html"> test-000016</a> </td>
+        <td> Do train wagons perform collision checks on their directly connected neighbour? </td>
+        <td>0.16.51</td>
+        <td>2019-01-19</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000017/test-000017.html"> test-000017</a> </td>
+        <td> A performance comparison of 0.16 and 0.17. </td>
+        <td>0.16.51/0.17.1/0.17.7</td>
+        <td>2019-03-11</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000018/test-000018.html"> test-000018</a> </td>
+        <td> A look at on patch smelting, where directly mining into a furnace is compared against mining into a chest and using an inserter to move the ore. </td>
+        <td>0.16.51</td>
+        <td>2019-01-12</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000019/test-000019.html"> test-000019</a> </td>
+        <td> Does the wait condition on trains have a signifigant performance delta? </td>
+        <td>0.16.51</td>
+        <td>2019-02-10</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000022/test-000022.html"> test-000022</a> </td>
+        <td> Are trains moving north more UPS efficient than other directions? </td>
+        <td>0.16.51</td>
+        <td>2019-01-23</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000025/test-000025.html"> test-000025</a> </td>
+        <td> Does the spacing between rails affect performance? </td>
+        <td>0.16.51</td>
+        <td>2019-02-04</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000026/test-000026.html"> test-000026</a> </td>
+        <td> Are diagonal trains more or less UPS effective than straight trains? </td>
+        <td>0.16.51</td>
+        <td>2019-02-04</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000028/test-000028.html"> test-000028</a> </td>
+        <td> Does having cars aligned to the collision grid improve performance when they are moving? </td>
+        <td>0.16.51</td>
+        <td>2019-02-02</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000030/test-000030.html"> test-000030</a> </td>
+        <td> Part 2 of testing train wait conditions. Testing multiple conditions. </td>
+        <td>0.16.51</td>
+        <td>2019-02-14</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000034/test-000034.html"> test-000034</a> </td>
+        <td> When using cars as a handoff, is it better to leave the fuel and ammo slots empty, or fill them? </td>
+        <td>0.17.17</td>
+        <td>2019-03-24</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000038/test-000038.html"> test-000038</a> </td>
+        <td> 0.17 Revisit: Is it better to use offshore pumps where they are needed directly in, or use as few as possible and pipe water to its destination? </td>
+        <td>0.17.33/0.17.34</td>
+        <td>2019-05-20</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000039/test-000039.html"> test-000039</a> </td>
+        <td> How have the Intel security vulnerability mitigations impacted the performance of Factorio? </td>
+        <td>0.17.43</td>
+        <td>2019-07-14</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000046/test-000046.html"> test-000046</a> </td>
+        <td> Does recompressing game saves affect the resulting runtime performance? </td>
+        <td>0.17.78</td>
+        <td>2019-11-28</td>
+        <td>mulark</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000101/test-000101.html"> test-000101</a> </td>
+        <td> Best way to load/unload furnaces?  Cars vs. Chests, clocked vs freerunning inserters? </td>
+        <td>0.17.32</td>
+        <td>2019-04-22</td>
+        <td>KnightElite</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000102/test-000102.html"> test-000102</a> </td>
+        <td> Do Stack Inserters perform better than filter stack inserters? </td>
+        <td>0.17.32</td>
+        <td>2019-04-22</td>
+        <td>KnightElite</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000103/test-000103.html"> test-000103</a> </td>
+        <td> Performance of trains in different states </td>
+        <td>0.17.33</td>
+        <td>2019-04-22</td>
+        <td>KnightElite</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000104/test-000104.html"> test-000104</a> </td>
+        <td> Performance Cost of stationary trains </td>
+        <td>0.17.33</td>
+        <td>2019-04-25</td>
+        <td>KnightElite</td>
+    </tr>
+    <tr>
+        <td> <a href="tests/test-000105/test-000105.html"> test-000105</a> </td>
+        <td> Is it worth making trains stay at the station instead of a signal so inserters remain inactive? </td>
+        <td>0.17.34</td>
+        <td>2019-04-27</td>
+        <td>KnightElite</td>
+    </tr>
+</table>
 
 <h3> Ideas </h3>
 <a href="/TODO.txt"> TODO.txt </a>

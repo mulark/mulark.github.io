@@ -1,0 +1,162 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000047 : Revisiting train wait conditions in 0.17</h2>
+<h5>Factorio Version 0.17.79</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    The time passed, inactivity, and circuit condition waiting conditions all perform similarly to one another.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    We initially tested train wait conditions in test-000019, however, this testing was conducted in Factorio version 0.16.51.
+    Now that 0.17.79 has stabilized, we will redo this test to verify that those results still apply.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    This test will be conducted similarly to the last test on this topic.
+</p>
+<p>
+    To recap: We setup groups of 101 trains that go around in a short loop. Each train goes around loading and unloading in an alternating fashion.
+    All trains complete a full loop after roughly 18234 ticks.
+    Slight differences in wait conditions make it very difficult to verify that each train waits exactly as long as another.
+    It is for this reason that any slight measurement differences don't necessarily constitute a performance difference.
+</p>
+<p>
+    Compared to last time, we are making a couple changes. This time, we are benchmarking for 18234*5 = 91170 ticks, and doing a total of 3 runs.
+    We are also using the Steam version of the game (as opposed to headless), however it is still being ran headlessly (testing TBD of steam vs headless).
+</p>
+<p>
+    Additionally, another variant has been provided by /u/DaveMcW.
+    This version is another entrant into the circuit network wait conditions.
+    Instead of having each station clock itself for the proper duration, there is one singular circuit network connected to all train stations.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    Using the best tick of the 3 runs per tick, and then averaging showed:
+</p>
+<p>
+    <a href="images/absolute_cost.svg"><img style="width:100%" src="images/absolute_cost.svg"></img></a>
+</p>
+<p>
+    <a href="images/relative_cost.svg"><img style="width:100%" src="images/relative_cost.svg"></img></a>
+</p>
+<p>
+    Initial results show that inactivity, time passed, and circuit network (1 network) all performed highly similarly.
+    Item count was still much worse off than any other condition.
+</p>
+<p>
+    The per tick results for the top 3 showings are very curious. (5x scale).
+</p>
+<p>
+    <a href="images/per_tick.svg"><img style="width:100%" src="images/per_tick.svg"></img></a>
+</p>
+<p>
+    All of these results show some very unusual behavior. Let's first dive into the circuit network case.
+    A top level analysis allows us to annotate what the likely behavior is (excuse the paint).
+</p>
+<p>
+    <a href="images/per_tick_cnet.png"><img style="width:100%" src="images/per_tick_cnet.png"></img></a>
+</p>
+<p>
+    We left the save in a condition where all trains were unloading, therefore, we can determine that this period of the performance is where all trains are unloading.
+    We know that we have to move to the loading station, and relatively speaking that's a short journey. It would be reasonable to surmise that this cyan section belongs to moving the train.
+</p>
+<p>
+    When a train stops, it creates a lot of stop effect smoke.
+    Because this spike at the end of moving is way worse here than in the other maps, I would guess that this is caused by both smoke and the train attaching to the circuit network.
+    It would be interesting to know if this is because the train stop is attached to any circuit network, or if it's somehow worse due to the large size of the circuit network.
+</p>
+<p>
+    Next, we reach the part where we load the train. For some unknown reason, loading seems to cause dramatically noisier performance.
+    Looking at points instead of lines shows there are a few key bands of performance during this section.
+</p>
+<p>
+    <a href="images/per_tick_cnet_points.svg"><img style="width:100%" src="images/per_tick_cnet_points.svg"></img></a>
+</p>
+<p>
+    There appears to be 4 distinct bands, 3 appear to be about the same performance across the loading section, but one seems to be incrementally increasing in that same section.
+    Speculatively, as the train fills up, on average more slots will have to be iterated through to find the first available slot to insert the items into.
+    (slots are iterated to find the first partial stack, so if no partial stacks exist, all slots are iterated).
+    Ticks above this line could be caused by rolling over the partial stack, or completely filling and therefore forcing another full search.
+    Of course, this is all speculation, we will have to look into it further to be sure.
+</p>
+<p>
+    Changing gears for a minute to look at the other two maps, we see very curious behavior as well.
+    These maps contains the same 505 trains as all the others.
+    Due to the way it was cloned, not all 505 trains move around in one continuous block.
+    For now let's focus on the time passed condition map only, as information and deduction about this map should also reasonably apply to the inactivity case as well.
+</p>
+<p>
+    <a href="images/per_tick_time_passed_points.svg"><img style="width:100%" src="images/per_tick_time_passed_points.svg"></img></a>
+</p>
+<p>
+    With this map, we don't observe quite the same profile as the circuit network case. For the sake of comparison, let's redo this map such that all 505 trains move together as one block.
+</p>
+<p>
+    <a href="images/per_tick_time_passed_points_aligned.svg"><img style="width:100%" src="images/per_tick_time_passed_points_aligned.svg"></img></a>
+</p>
+<p>
+    And again, truncating the two most expensive ticks.
+</p>
+<p>
+    <a href="images/per_tick_time_passed_points_aligned_trunc.svg">
+        <img style="width:100%" src="images/per_tick_time_passed_points_aligned_trunc.svg"></img>
+    </a>
+</p>
+<p>
+    With this aligned case, we can see that the earlier speculation about attaching to the circuit network appears to be false.
+    The spike at the end of movement appears to be very similar for either case.
+</p>
+<p>
+    Truncating the graph of the two highest values allows for more detail to be shown.
+    During unloading, we also see that there is a slight incremental cost increase, whereas this information was obsfucated previously.
+    This incremental cost increase is less than the one(s) observed during unloading.
+</p>
+<p>
+    There are several other interesting things of note here, like the unusually cheap ticks right before the train moves.
+    But as this this test is supposed to be about the cost to wait conditions, further investigation into these costs will be deferred to another test.
+</p>
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    Overall, using circuit network (clocks used sparingly), time passed, or inactivity will all perform about the same in 0.17.79
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on December 15, 2019 </div>
+</footer>

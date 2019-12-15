@@ -41,16 +41,18 @@ h5 {
 p {
     width: 66.6%;
     font-size: 1.1em;
+    display: inline-block;
 }
-table, th, td {
-    border: 1px solid black;
+table {
+    text-align: center;
+    align-content: center;
+    display: inline-block;
     border-collapse: collapse;
-    width: 66.6%;
 }
 th, td {
-    padding: 2px;
+    border: 1px solid black;
+    padding: 3px;
     text-align: center;
-    width: 25%;
 }
 
 td {

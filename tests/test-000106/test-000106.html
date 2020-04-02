@@ -1,0 +1,115 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000106 : Which fuel type is most UPS efficient?</h2>
+<h5>Factorio Version 0.18.17</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    TODO
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    On the r/technicalfactorio discord server, flame_sla was wondering if slower trains (using non-nuclear fuel) were more UPS efficient than nuclear fueled trains.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    The test consists of 1000 6-12 trains facing east.  All start stations are connected to the circuit network and set to send the signal to the trains.
+    The distance between Start and End stations is approximately 520 tiles.
+    Note: This is the same test map as was used in <a href="../test-000103/test-000103.html">test-000103</a>
+    
+    The game was then paused, and the constant combinator set to send the start signal.  While paused, the following script was used to set the fuel in the locomotives for each test case:
+    <br>
+    <pre>
+      <code>
+        /c 
+        for _, ent in pairs(game.player.surface.find_entities_filtered{name = "locomotive"}) do
+            ent.clear_items_inside()
+            fuel = {}
+            fuel["count"] = 100
+            fuel["name"] = "solid-fuel"
+            ent.insert(fuel)
+        end
+      </code>
+    </pre>
+    <br>
+    
+    This then generated the following five maps for testing:
+    <ul>
+    <li> test_000106.base_save.zip: Combinator not set for trains to go, so trains remain stationary for the whole test.
+    <li> test_000106.coal.zip: Locomotives are fueled with coal.
+    <li> test_000106.nuclear.zip: Locomotives are fueled with nuclear fuel.
+    <li> test_000106.rocket_fuel.zip: Locomotives are fueled with rocket fuel.
+    <li> test_000106.solid_fuel.zip: Locomotives are fueled with solid fuel.
+    </ul>
+    
+    The test was then run for 2000 ticks on each map in verbose mode, ten times per map.  2000 ticks is enough time that even the slowest trains (coal) makes it from start to end, and stops for a bit.
+    The minimum time tick of each of the 10 runs was taken, and then all of those minimums were added together to create a total run time for each map.  This would present pretty close to best case performance
+    for each of the maps.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    <img src="images/total_run_time.png"></img>
+    <br>
+    From this it is quite clear that the faster trains are better.  Any reduction in per-tick processing caused by moving trains more slowly is more than made up for by the fact the journeys don't last as long with faster trains.
+    <p>
+    <img src="images/per_tick_execution_time.png"></img>
+    <br>
+    Since the data is available, it is interesting to look at the per-tick times for each test.
+    <br>
+    This is a bit noisy.  The large spikes are caused by smoke (as discussed in <a href="../test-000103/test-000103.html">test-000103</a>).  Zooming in on the graph a bit to get rid of those and see the lines better, we get this:
+    
+    
+    <br>
+    <img src="images/per_tick_execution_zoomed.png"></img>
+    <br>
+    From this we can see that the slower trains do have a lower processing overhead when accelerating more slowly (likely because of fewer collision checks being performed), the journey takes significantly less time with more
+    rapidly accelerating trains, thus using less processor time overall.
+</p>
+<p>
+    All maps will be uploaded <a href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf"> here.</a>
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    Nuclear fueled trains are more UPS efficient, as they complete their journey with significantly less overall processing.  Depending on the base, this may also mean that fewer total
+    trains are required (certainly fewer would need to be moving at any one time).
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by KnightElite on April 2, 2020 </div>
+</footer>

@@ -86,17 +86,15 @@
     <br>
     From this it is quite clear that the faster trains are better.  Any reduction in per-tick processing caused by moving trains more slowly is more than made up for by the fact the journeys don't last as long with faster trains.
     <p>
-    <img src="images/per_tick_execution_time.png"></img>
     <br>
     Since the data is available, it is interesting to look at the per-tick times for each test.
+    <img src="images/per_tick_execution_time.png"></img>
     <br>
     This is a bit noisy.  The large spikes are caused by smoke (as discussed in <a href="../test-000103/test-000103.html">test-000103</a>).  Zooming in on the graph a bit to get rid of those and see the lines better, we get this:
-    
-    
     <br>
     <img src="images/per_tick_execution_zoomed.png"></img>
     <br>
-    From this we can see that the slower trains do have a lower processing overhead when accelerating more slowly (likely because of fewer collision checks being performed), the journey takes significantly less time with more
+    From this we can see that while the slower trains do have a lower processing overhead when accelerating more slowly (likely because of fewer collision checks being performed), the journey takes significantly less time with more
     rapidly accelerating trains, thus using less processor time overall.
 </p>
 <p>

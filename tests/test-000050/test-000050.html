@@ -1,0 +1,77 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000050 : Measuring the performance cost of pipes based on fluid filters and fluid levels.</h2>
+<h5>Factorio Version 0.18.17</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Unfortunately, designs that empty out pipes would not get the full performance advantage compared to fluid groups without a fluid filter defined. There is a performance difference, but the magnitude of the difference is smaller than hoped.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Test-000017 showed that empty pipes appeared to have next to 0 UPS cost. However, before we begin to exploit that in our designs, we should make sure that empty pipes with a fluid filter behave in the same way.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    This test consists of 1122 chemical plants, each connected to a pipe array of 128 pipes.
+</p>
+<p>
+    In both cases, all pipes contain 0 fluid. But to set the filter on these pipe groups, we change the recipe on all these chemical plants to heavy oil cracking. This filters the fluid groups to light-oil.
+</p>
+<p>
+    With each of these scenarios, we benchmark for 3000 ticks, 10 times. Then, the best tick from the 10 runs is taken as our result, for each tick. This is an idealized performance metric, showing the best case scenario performance.
+</p>
+<p>
+    We also should check non-empty but filtered pipes to see if it causes further performance degradation. For this, we should consider pipes at half capacity, as well as pipes completely full.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<img src="images/pipes.svg"></img>
+<p>
+    The data shows that there is a significant advantage to not having any fluid filter on fluid groups. There is also a performance advantage to emptying pipes but keeping the fluid filter active. However, it's not clear if the extra costs to cause pipes to completely empty would be more than offset by the savings. Especially as fluid networks are updated in parallel, it seems unlikely that adding additional pumps/circuits would more than offset any real scenario.
+</p>
+<p>
+    Another curiosity is that completely full pipes measured slightly faster than half full ones. The difference is very small, and likely won't matter in practice.
+</p>
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    Without the ability to remove the fluid filter from a fluid group automatically, it seems improbable that oil designs which empty the network would work out in practice.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on April 02, 2020 </div>
+</footer>

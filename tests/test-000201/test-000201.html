@@ -1,0 +1,169 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000201 : What is the ideal amount of logistic bots in a network?</h2>
+<h5>Factorio Version 0.17.79</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Using the lowest possible amount of bots in the network, while maintaining
+    full production, results in the best performance.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    In this test we try and find out if there is a performance penalty for
+    having too many or too few logistic bots in a bot network, and if there is,
+    find out the ideal amount.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    For this test, we set up a bot build that is rotationally symmetrical to
+    ensure efficient bot travel, while still having a reasonably high count of
+    active bots (around 300). The build produces iron chests from iron ore.
+    Furthermore, recipes are clocked in a way that each quadrant outputs with
+    its own offset, to ensure that bot usage remains as constant as possible
+    throughout the runs.
+</p>
+<p>
+    Next, we set up the build with the lowest amount of bots possible that
+    ensures full production sustained for a long period of time (1h). Through
+    trial and error, this number resulted in 403 total bots.
+</p>
+<p>
+    At this minimum number of bots, it appears that the full 403 bots get used.
+    But as bots are additionally added, the apparent number of active bots in
+    use decreases. By measuring the number of active bots in a cell with a large
+    bot excess, the number of bots in use appears to be ~310.
+    <a href="raw-data/bot_measurement_bp.txt">(Blueprint)</a>
+</p>
+<p>
+    Using this ~310 number as the baseline, the lowest number of bots
+    effectively becomes a factor of 130%. Continuing with linear percentage
+    increases, we also test (130%), 135%, 140%, 150%, 200% and 1000% of that
+    310 number. These percentages correspond to bot networks with logistic bot
+    counts of (403), 418, 434, 465, 610, and 3100 respectively.
+</p>
+<p>
+    Benchmarks were conducted using the inbuilt Factorio benchmarking utility.
+    Each map was benchmarked 30 times, for 720 ticks each.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    <img src="images/benchmark results.png"></img>
+</p>
+<p>
+    The data paints a clear picture: each increment of bots on top of the lowest
+    possible amount results in a degradation of performance. Most notably, the
+    biggest difference between two consecutive saves is the one between the
+    lowest possible, and its neighbor with just a 30 bot increment.
+</p>
+<p>
+    If we simply look at the amount of active bots in each save, these results
+    seem counterintuitive since the save with the lowest amount of bots in the
+    network has the highest amount of active bots, while the save with the most
+    bots in the network (1000%) has the lowest amount of active bots.
+</p>
+<p>
+    To further analyze these results, we do a sleepy profile on the saves with
+    the lowest amount of bots in the network and the save with 150% bots
+    relative to the normal amount of active bots. The results were the
+    following:
+</p>
+<div>
+    <table>
+      <tr>
+          <th> Function </th>
+          <th> lowest </th>
+          <th> 150% </th>
+      </tr>
+      <tr>
+        <td> logisticNetwork::findBestAvailableRobot </td>
+        <td> 1.02s </td>
+        <td> 3.61s </td>
+      </tr>
+      <tr>
+        <td> logisticCell::spawnRobot </td>
+        <td> 0.05s </td>
+        <td> 0.53s </td>
+      </tr>
+      <tr>
+        <td> logisticNetwork::fillRequesters </td>
+        <td> 2.85s </td>
+        <td> 5.35s </td>
+      </tr>
+      <tr>
+        <td> logisticRobot::update </td>
+        <td> 4.29s </td>
+        <td> 3.86s </td>
+      </tr>
+      <tr>
+        <td> logisticRobot::moveToStationingLogic </td>
+        <td> 0.49s </td>
+        <td> 2.27s </td>
+      </tr>
+    </table>
+</div>
+<p>
+    The function <b>logisticRobot::moveToStationingLogic</b> is responsible for the
+    process of bots docking, entering a roboport and becoming idle. Usage here
+    is minimal in lowest because bots in this save tend not to dock, they
+    instead recharge and continue fulfilling jobs.
+</p>
+<p>
+    The biggest difference lies in <b>logisticNetwork::findBestAvailableRobot</b>.
+    Examining its child call <b>logisticCell::spawnRobot</b>, we learn that the cost of
+    de-spawning and spawning bots is significant. On top of that, we see from
+    <b>logisticNetwork::fillRequesters</b> that when looking for a bot to fulfill a
+    request it is significantly faster to pick one that is already in the air
+    than it is to look through the roboports and find an idle bot.
+</p>
+<p>
+    Lastly, <b>logisticRobot::update</b> confirms that the save with the lowest
+    possible amount of bots has the highest amount of active bots, but this
+    higher cost is completely offset by the cost of repetitive spawning and
+    de-spawning bots (docking).
+</p>
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    On a logistic bot network, reducing the amount of bots to the point where
+    they avoid docking, but still maintaining full production results in the
+    best performance.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by Swolar on May 05, 2020 </div>
+</footer>

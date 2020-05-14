@@ -1,0 +1,239 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000051 : Retesting the UPS cost of diagonal trains; Is it worth going diagonal to avoid ore?</h2>
+<h5>Factorio Version 0.18.24</h5>
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Diagonal trains still perform worse than their straight counterparts.
+    It was also determined that diverting to avoid ore patches is a worthwhile
+    optimization, albeit at a smaller gain than avoiding diagonals.
+</p>
+<p>
+    Unexpectedly, the northern direction of travel no longer seems to be advantageous
+    to travel in. Previously a 7% difference was observed, now it was measured at 0.5%.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Previously, we explored the UPS cost of diagonal trains in
+    <a href="/tests/test-000026/test-000026.html">test-000026</a>. In that test,
+    we found that diagonal trains were worse UPS wise even when accounting for
+    their shorter path.
+</p>
+<p>
+    As a recap, diagonal trains have their AABB (Axis Aligned Bounding Box) rest
+    on either 9 or 12 advanced tiles. As the train moves, it has to check that
+    many advanced tiles to potentially collide with anything in them.
+</p>
+<p>
+    Added sometime after 0.16.51, the <code>show-selected-entity-advanced-tiles</code>
+    debug option found in the F4 menu allows for easy visualization of the
+    advanced tiles occupied by an entity at any one time. The figure below shows
+    the 12 advanced tiles that are presently occupied. Depending on the precise
+    position of the locomotive along the rail, either 9 or 12 advanced tiles
+    will be occupied at any one time.
+</p>
+<figure>
+    <img style="width:30%" src="images/AdvancedTilesDiagonal.png"></img>
+    <figcaption>12 Advanced tiles occupied by this locomotive</figcaption>
+</figure>
+<p>
+    This is in contrast to straight locomotives, where only 3 or 4 advanced
+    tiles are occupied at the same time.
+</p>
+<figure>
+    <img style="width:20%" src="images/AdvancedTilesStraight.png"></img>
+    <figcaption>4 Advanced tiles occupied by this locomotive</figcaption>
+</figure>
+<p>
+    Compared to the last time we tested this, a number of factors might have
+    changed the results. These are as follows:
+    <ul>
+        <li> Factorio Version. We last tested this in Factorio Version 0.16.51.
+            That was quite a while ago as we are currently on 0.18.24. We need
+            to update the results in case and optimizations or behavior changed
+            in the meantime.
+        <li> Methodology. In the previous test we failed to account for other
+            obstaces that may be along the path in the way. By far the main
+            example of this is ore patches. This test needs to explore if diagonal
+            travel to avoid driving over an ore patch is a worthwhile tradeoff.
+    </ul>
+</p>
+
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    This time around, a new test map has been generated with the following settings
+</p>
+<figure>
+    <img style="width:40%" src="images/ResourceSettings.png"></img>
+    <figcaption>The map generation settings used.</figcaption>
+</figure>
+<p>
+    By including ore, we can more effectively test avoiding patches along the path.
+</p>
+<p>
+    We quickly set up 4 possible paths for a train to travel. Due to random chance,
+    not all paths have identical amounts of ore underneath. If the results are close,
+    we should take results with a healthy amount of salt.
+</p>
+<figure>
+    <img style="width:40%" src="images/NewMapPaths.png"></img>
+    <figcaption>The 4 possible paths to travel.
+        <br>
+        1: Straight rails, direct path.
+        <br>
+        2: Straight rails, avoiding ore.
+        <br>
+        3: Diagonal rails, direct path.
+        <br>
+        4: Diagonal rails, avoiding ore.
+        <br>
+    </figcaption>
+</figure>
+<p>
+    In the interest of simplifying the test, we instead swap out the multiple
+    train setup of the previous test for 1 really long train. The train has 102
+    locomotives and 206 cargo wagons.
+</p>
+<p>
+    Matching to the paths above:
+    <ol>
+        <li>
+            4930 ticks
+        <li>
+            4910 ticks
+        <li>
+            4063 ticks
+        <li>
+            4150 ticks
+    </ol>
+<p>
+    Note that a significant portion of the time is spent leaving/arriving to the
+    station portion of the journey. These portions are identical between contenders,
+    but it does mean we can't actually use the sqrt(2) rule directly when comparing
+    results.
+</p>
+<p>
+    In this test, we will also revist the maps tested previously, testing for
+    the same tick durations specified there.
+</p>
+<p>
+    All maps will be ran 10 times, and the best performing tick per run per tick
+    will be taken as the "idealized" measurement.
+</p>
+<p>
+    The saves for this test are available with factorio-benchmark-helper.
+    Their download links can be obtained from the master.json file
+    <a href="https://github.com/mulark/factorio-benchmark-helper/blob/master/master.json">
+        https://github.com/mulark/factorio-benchmark-helper/blob/master/master.json
+    </a>
+
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    First, let's take a look at the 4 paths on the new map.
+</p>
+<p>
+    <img src="images/MinWholeUpdatePerTick.svg"></img>
+</p>
+<p>
+    Visually, it looks like the straight rails have a clear advantage.
+</p>
+<p>
+    Next, taking a look at the sum of the previous graph, we can see that
+    straight rails took significantly less time to update. But this is not a
+    perfect metric, as it ignores the time in ticks it took for the train's journey.
+</p>
+<p>
+    <img src="images/SumMinWholeUpdatePerTick.svg"></img>
+</p>
+<p>
+    To account for the journey, we can multiply the time taken in ms by the
+    number of ticks needed to achieve that journey. We can call these "Points",
+    and fewer is better.
+</p>
+<p>
+    <img src="images/Points.svg"></img>
+</p>
+<p>
+    When accounting for the longer travel duration, we still see that the straight
+    paths clearly beat the diagonal ones. Additionally, it's clear that diverting
+    to avoid ore is advantageous.
+</p>
+<p>
+    Moving gears to the maps from test-000026, we start off with the min(wholeUpdate)
+    per tick once again.
+</p>
+<p>
+    <img src="images/OldMapPerTick.svg"></img>
+</p>
+<p>
+    Then, looking at the sum time taken by the previous ticks.
+</p>
+<p>
+    <img src="images/OldMapSum.svg"></img>
+</p>
+<p>
+    We can see that the straight case took ~1/2 the time to update from beginning
+    to end. The straight rails took 40% more ticks to achieve that, but it's
+    improbable that scaling up the straight rail case by 40% would result in 100%
+    more performance cost.
+</p>
+<p>
+    One thing of curiosity is that there no longer seems to be an advantage for
+    the north (orientation 0) case. The train travelling northeast was 0.5% faster
+    than the southwest one, well within the margin of error.
+</p>
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    Diagonal trains have a greater cost than their straight railed counterparts.
+    They should be avoided where possible.
+</p>
+<p>
+    Avoiding ore patches is ideal, but it should be done with straight rails as
+    much as possible. It's possible that some edge cases might result in superior
+    performance to go diagonal to avoid ore patches. But those ought to be
+    extreme edge cases.
+</p>
+<p>
+    The northern direction no longer appears to have a significant advantage
+    compared to the other cardinal directions.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on May 12, 2020 </div>
+</footer>

@@ -1,0 +1,288 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000055 : Regression testing Factorio</h2>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    No significant regressions were identified, but cross version migrations
+    (such as recharting the map) can result in performance hits across versions.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Factorio has had its fair share of updates over the years, and across those
+    versions, many optimizations have come. This test aims to categorize the performance
+    optimizations and potential regressions across a variety of saves.
+</p>
+<p>
+    These changes have often carried recipe changes as well, so accurate testing
+    does become more difficult. Fortunately, recipies have not changed since
+    0.17.60 (0.18.45 is current at the time of writing). This means we have
+    a good window where we can see approximate 1:1 equivalence between the
+    versions.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    For this test we'll want a fairly good collection of maps that stress a
+    reasonable variety of different playstyles. A small slice of all possible playstyles are catalogued
+    <a href = "https://raw.githubusercontent.com/technicalfactorio/technicalfactorio/master/megabase_index_incrementer/megabases.json">
+    here</a>. It is from this list that we will select a few maps from various
+    versions.
+</p>
+<p>
+    This test ran each of these maps in the version the savefile was created in (or nearest available version),
+    and all future Factorio versions available at the time of testing.
+</p>
+<p>
+    For each map in each version of Factorio, a verbose benchmark was ran for 100 ticks and
+    10 runs. Factorio-benchmark-helper was used to automate this process, using the
+    --regression-test flag (Linux only). Each version of Factorio used was the headless
+    version as it had the greatest availability/ease of use. The average of the 10
+    runs was taken, so minor differences should not neccessarily be treated
+    as genuine change.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<select class="selections">
+    <option onclick = "setSlide()">flame_Sla prototype 20000spm=20x1000spm v0.18 v2</option>
+    <option onclick = "setSlide()">flame_Sla prototype 10000spm=122x82spm</option>
+    <option onclick = "setSlide()">flame_Sla prototype 10000spm=10x1000spm</option>
+    <option onclick = "setSlide()">flame_Sla bots 10000=54x187spm</option>
+    <option onclick = "setSlide()">bot cell 10kspm LE</option>
+    <option onclick = "setSlide()">Stevetrov_train_10K_megabase_0_18</option>
+    <option onclick = "setSlide()">Sandbox_250SPMv2_x_60_15K</option>
+    <option onclick = "setSlide()">Community_map_july_2020</option>
+    <option onclick = "setSlide()">20k spm hybrid-modular</option>
+    <option onclick = "setSlide()">0.17-0.18 Poobers Beautiful Base</option>
+    <option onclick = "setSlide()">Maps beginning with 0.17.79</option>
+    <option onclick = "setSlide()">Maps beginning with 0.18.0</option>
+    <option onclick = "setSlide()">Maps beginning with 0.18.17</option>
+    <option onclick = "setSlide()">Maps beginning with 0.18.19</option>
+    <option onclick = "setSlide()">Maps beginning with 0.18.29</option>
+    <option onclick = "setSlide()">Maps beginning with 0.18.32</option>
+    <option onclick = "setSlide()">Maps beginning with 0.18.38</option>
+</select>
+<div class = "slides">
+    <div class = "slide">
+        <img src="images/flame_Sla prototype 20000spm=20x1000spm v0.18 v2.zip.svg"/>
+        <ul>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/hbp4c5/20k_spm_201000spm_belts_v018/">flame_Sla prototype 20000spm=20x1000spm v0.18 v2.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/flame_Sla prototype 10000spm=122x82spm.zip.svg"/>
+        <ul>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=122x82spm.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/flame_Sla prototype 10000spm=10x1000spm.zip.svg"/>
+        <ul>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=10x1000spm.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/flame_Sla bots 10000=54x187spm.zip.svg"/>
+        <ul>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/gvqze9/10k_spm_54187spm_bots_v018/">flame_Sla bots 10000=54x187spm.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/bot cell 10kspm LE.zip.svg"/>
+        <ul>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f3nje7/10k_spm_bot_base/">bot cell 10kspm LE.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/Stevetrov_train_10K_megabase_0_18.zip.svg"/>
+        <ul>
+            <li><a href="https://www.reddit.com/r/factorio/comments/elcl7a/monolithic_10k_train_megabase_google_map_style/">Stevetrov_train_10K_megabase_0_18.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/Sandbox_250SPMv2_x_60_15K.zip.svg"/>
+        <ul>
+            <li><a href="https://www.reddit.com/r/factorio/comments/cz4jx5/15k_belt_megabase_runs_at_70ups_no_mods_proof_of/">Sandbox_250SPMv2_x_60_15K.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/Community_map_july_2020.zip.svg"/>
+        <ul>
+            <li><a href="https://www.reddit.com/r/factorio/comments/i3smnr/58k_megabase_built_the_old_school_way_wo_editor/">Community_map_july_2020.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/20k spm hybrid-modular.zip.svg"/>
+        <ul>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/gels6c/20k_spm_hybrid_megabase/">20k spm hybrid-modular.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/0.17-0.18 Poobers Beautiful Base.zip.svg"/>
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=hMrxuaIdeeE">0.17-0.18 Poobers Beautiful Base.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/0.17.79.svg"/>
+        <ul>
+            <li><a href="https://www.reddit.com/r/factorio/comments/cz4jx5/15k_belt_megabase_runs_at_70ups_no_mods_proof_of/">Sandbox_250SPMv2_x_60_15K.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f3nje7/10k_spm_bot_base/">bot cell 10kspm LE.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=10x1000spm.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=122x82spm.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/0.18.0.svg"/>
+        <ul>
+            <li><a href="https://www.reddit.com/r/factorio/comments/cz4jx5/15k_belt_megabase_runs_at_70ups_no_mods_proof_of/">Sandbox_250SPMv2_x_60_15K.zip</a>
+            <li><a href="https://www.reddit.com/r/factorio/comments/elcl7a/monolithic_10k_train_megabase_google_map_style/">Stevetrov_train_10K_megabase_0_18.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f3nje7/10k_spm_bot_base/">bot cell 10kspm LE.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=10x1000spm.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=122x82spm.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/0.18.17.svg"/>
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=hMrxuaIdeeE">0.17-0.18 Poobers Beautiful Base.zip</a>
+            <li><a href="https://www.reddit.com/r/factorio/comments/cz4jx5/15k_belt_megabase_runs_at_70ups_no_mods_proof_of/">Sandbox_250SPMv2_x_60_15K.zip</a>
+            <li><a href="https://www.reddit.com/r/factorio/comments/elcl7a/monolithic_10k_train_megabase_google_map_style/">Stevetrov_train_10K_megabase_0_18.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f3nje7/10k_spm_bot_base/">bot cell 10kspm LE.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=10x1000spm.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=122x82spm.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/0.18.19.svg"/>
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=hMrxuaIdeeE">0.17-0.18 Poobers Beautiful Base.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/gels6c/20k_spm_hybrid_megabase/">20k spm hybrid-modular.zip</a>
+            <li><a href="https://www.reddit.com/r/factorio/comments/cz4jx5/15k_belt_megabase_runs_at_70ups_no_mods_proof_of/">Sandbox_250SPMv2_x_60_15K.zip</a>
+            <li><a href="https://www.reddit.com/r/factorio/comments/elcl7a/monolithic_10k_train_megabase_google_map_style/">Stevetrov_train_10K_megabase_0_18.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f3nje7/10k_spm_bot_base/">bot cell 10kspm LE.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=10x1000spm.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=122x82spm.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/0.18.29.svg"/>
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=hMrxuaIdeeE">0.17-0.18 Poobers Beautiful Base.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/gels6c/20k_spm_hybrid_megabase/">20k spm hybrid-modular.zip</a>
+            <li><a href="https://www.reddit.com/r/factorio/comments/cz4jx5/15k_belt_megabase_runs_at_70ups_no_mods_proof_of/">Sandbox_250SPMv2_x_60_15K.zip</a>
+            <li><a href="https://www.reddit.com/r/factorio/comments/elcl7a/monolithic_10k_train_megabase_google_map_style/">Stevetrov_train_10K_megabase_0_18.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f3nje7/10k_spm_bot_base/">bot cell 10kspm LE.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/gvqze9/10k_spm_54187spm_bots_v018/">flame_Sla bots 10000=54x187spm.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=10x1000spm.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=122x82spm.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/0.18.32.svg"/>
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=hMrxuaIdeeE">0.17-0.18 Poobers Beautiful Base.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/gels6c/20k_spm_hybrid_megabase/">20k spm hybrid-modular.zip</a>
+            <li><a href="https://www.reddit.com/r/factorio/comments/cz4jx5/15k_belt_megabase_runs_at_70ups_no_mods_proof_of/">Sandbox_250SPMv2_x_60_15K.zip</a>
+            <li><a href="https://www.reddit.com/r/factorio/comments/elcl7a/monolithic_10k_train_megabase_google_map_style/">Stevetrov_train_10K_megabase_0_18.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f3nje7/10k_spm_bot_base/">bot cell 10kspm LE.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/gvqze9/10k_spm_54187spm_bots_v018/">flame_Sla bots 10000=54x187spm.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=10x1000spm.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=122x82spm.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/hbp4c5/20k_spm_201000spm_belts_v018/">flame_Sla prototype 20000spm=20x1000spm v0.18 v2.zip</a>
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/0.18.38.svg"/>
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=hMrxuaIdeeE">0.17-0.18 Poobers Beautiful Base.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/gels6c/20k_spm_hybrid_megabase/">20k spm hybrid-modular.zip</a>
+            <li><a href="https://www.reddit.com/r/factorio/comments/i3smnr/58k_megabase_built_the_old_school_way_wo_editor/">Community_map_july_2020.zip</a> Note: this map crashes on 0.18.43, take results with a grain of salt.
+            <li><a href="https://www.reddit.com/r/factorio/comments/cz4jx5/15k_belt_megabase_runs_at_70ups_no_mods_proof_of/">Sandbox_250SPMv2_x_60_15K.zip</a>
+            <li><a href="https://www.reddit.com/r/factorio/comments/elcl7a/monolithic_10k_train_megabase_google_map_style/">Stevetrov_train_10K_megabase_0_18.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f3nje7/10k_spm_bot_base/">bot cell 10kspm LE.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/gvqze9/10k_spm_54187spm_bots_v018/">flame_Sla bots 10000=54x187spm.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=10x1000spm.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/f6r0f6/10k_spm_belts_a_bit_of_bots_v017/">flame_Sla prototype 10000spm=122x82spm.zip</a>
+            <li><a href="https://www.reddit.com/r/technicalfactorio/comments/hbp4c5/20k_spm_201000spm_belts_v018/">flame_Sla prototype 20000spm=20x1000spm v0.18 v2.zip</a>
+        </ul>
+    </div>
+</div>
+<script>
+    setSlide();
+    function setSlide() {
+        var slides = document.querySelectorAll('.slides .slide');
+        for (i = 0;  i < slides.length; ++i) {
+            if (slides[i] != null) {
+                slides[i].style.display = "none";
+            }
+        }
+        var cur_slide_idx = document.getElementsByClassName("selections")[0].selectedIndex;
+        if (slides[cur_slide_idx] != null) {
+            slides[cur_slide_idx].style.display = "block";
+        }
+    }
+</script>
+<p>
+    Based on this data, we can see a few interesting things.
+</p>
+<p>
+    For one, performance seemed to be greatly improved by version 0.18.22. As a matter of fact,
+    this version was one where in <a href="https://forums.factorio.com/viewtopic.php?p=478821#p478821">this bug</a>
+    was fixed. The fix only applies to Linux, but it's nice to see none the less.
+</p>
+<p>
+    Also of note is that the "other" section seemed to jump up after 0.17.79.
+    The overwhelming majority of the "other" section infact belongs to chartUpdate
+    instead, as a migration that recharts the map was introduced.
+</p>
+<p>
+    Another interesting thing to point out is that the fluids update time effectively
+    appeared to dissappear after 0.17.79. This is because it's now updated in parallel
+    with the electric network from 0.18.0 onwards. It does appear that it caused
+    the electric network time to take longer, but the combined cost was reduced.
+</p>
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    There wasn't any significant unexplained performance regression observed in the maps/versions
+    tested. At the same time, only two updates appeared to have a significant performance
+    uplift, 0.18.0 and 0.18.22. Considering many versions are trivial changes,
+    this is hardly a surprise.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on August 09, 2020 </div>
+</footer>

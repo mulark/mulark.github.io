@@ -1,0 +1,895 @@
+<svg height="640" viewBox="0 0 1280 640" width="1280" xmlns="http://www.w3.org/2000/svg">
+<g class="g-chart">
+<g class="g-title" transform="translate(640,25)">
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="24px" text-anchor="middle" x="0" y="0">
+flame_Sla bots 10000=54x187spm.zip
+</text>
+</g>
+<g class="x-axis" transform="translate(60,590)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1" x1="0" x2="1020" y1="0" y2="0"/>
+<g class="tick" transform="translate(32.807037,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.29
+</text>
+</g>
+<g class="tick" transform="translate(92.45616,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.30
+</text>
+</g>
+<g class="tick" transform="translate(152.10529,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.31
+</text>
+</g>
+<g class="tick" transform="translate(211.7544,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.32
+</text>
+</g>
+<g class="tick" transform="translate(271.40353,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.33
+</text>
+</g>
+<g class="tick" transform="translate(331.05264,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.34
+</text>
+</g>
+<g class="tick" transform="translate(390.70175,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.35
+</text>
+</g>
+<g class="tick" transform="translate(450.3509,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.36
+</text>
+</g>
+<g class="tick" transform="translate(510,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.37
+</text>
+</g>
+<g class="tick" transform="translate(569.6491,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.38
+</text>
+</g>
+<g class="tick" transform="translate(629.2983,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.39
+</text>
+</g>
+<g class="tick" transform="translate(688.9473,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.40
+</text>
+</g>
+<g class="tick" transform="translate(748.5965,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.41
+</text>
+</g>
+<g class="tick" transform="translate(808.24554,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.42
+</text>
+</g>
+<g class="tick" transform="translate(867.8947,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.43
+</text>
+</g>
+<g class="tick" transform="translate(927.5439,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.44
+</text>
+</g>
+<g class="tick" transform="translate(987.19293,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="0" y1="0" y2="6"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="middle" transform="rotate(-30,0,16)" x="0" y="16">
+0.18.45
+</text>
+</g>
+<text fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" transform="rotate(0)" x="510" y="42">
+Factorio Version
+</text>
+</g>
+<g class="y-axis" transform="translate(60,90)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1" x1="0" x2="0" y1="0" y2="500"/>
+<g class="tick" transform="translate(0,500)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="-6" y1="0" y2="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="end" transform="rotate(0,-12,0)" x="-12" y="0">
+0
+</text>
+</g>
+<g class="tick" transform="translate(0,450)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="-6" y1="0" y2="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="end" transform="rotate(0,-12,0)" x="-12" y="0">
+2
+</text>
+</g>
+<g class="tick" transform="translate(0,400)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="-6" y1="0" y2="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="end" transform="rotate(0,-12,0)" x="-12" y="0">
+4
+</text>
+</g>
+<g class="tick" transform="translate(0,350)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="-6" y1="0" y2="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="end" transform="rotate(0,-12,0)" x="-12" y="0">
+6
+</text>
+</g>
+<g class="tick" transform="translate(0,300)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="-6" y1="0" y2="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="end" transform="rotate(0,-12,0)" x="-12" y="0">
+8
+</text>
+</g>
+<g class="tick" transform="translate(0,250)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="-6" y1="0" y2="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="end" transform="rotate(0,-12,0)" x="-12" y="0">
+10
+</text>
+</g>
+<g class="tick" transform="translate(0,200)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="-6" y1="0" y2="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="end" transform="rotate(0,-12,0)" x="-12" y="0">
+12
+</text>
+</g>
+<g class="tick" transform="translate(0,150)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="-6" y1="0" y2="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="end" transform="rotate(0,-12,0)" x="-12" y="0">
+14
+</text>
+</g>
+<g class="tick" transform="translate(0,100)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="-6" y1="0" y2="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="end" transform="rotate(0,-12,0)" x="-12" y="0">
+16
+</text>
+</g>
+<g class="tick" transform="translate(0,50)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="-6" y1="0" y2="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="end" transform="rotate(0,-12,0)" x="-12" y="0">
+18
+</text>
+</g>
+<g class="tick" transform="translate(0,0)">
+<line shape-rendering="crispEdges" stroke="#bbbbbb" stroke-width="1px" x1="0" x2="-6" y1="0" y2="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" text-anchor="end" transform="rotate(0,-12,0)" x="-12" y="0">
+20
+</text>
+</g>
+<text fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" transform="rotate(-90)" x="-250" y="-42">
+Average update time (ms)
+</text>
+</g>
+<g class="g-view" transform="translate(60,90)">
+<g>
+<g class="bar" transform="translate(363.85965,0)">
+<rect fill="#1f77b4" height="186.30646" shape-rendering="crispEdges" width="53.684208" x="0" y="313.69354"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="406.84677">
+7.5
+</text>
+<rect fill="#ff7f0e" height="26.28064" shape-rendering="crispEdges" width="53.684208" x="0" y="287.4129"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="300.55322">
+1.1
+</text>
+<rect fill="#2ca02c" height="12.326965" shape-rendering="crispEdges" width="53.684208" x="0" y="275.08594"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="281.24942">
+0.5
+</text>
+<rect fill="#d62728" height="0.8111572" shape-rendering="crispEdges" width="53.684208" x="0" y="274.27478"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="274.68036">
+0.0
+</text>
+<rect fill="#9467bd" height="24.25769" shape-rendering="crispEdges" width="53.684208" x="0" y="250.01709"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="262.14594">
+1.0
+</text>
+<rect fill="#8c564b" height="12.264465" shape-rendering="crispEdges" width="53.684208" x="0" y="237.75262"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="243.88486">
+0.5
+</text>
+<rect fill="#e377c2" height="26.704498" shape-rendering="crispEdges" width="53.684208" x="0" y="211.04813"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="224.40038">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.91241455" shape-rendering="crispEdges" width="53.684208" x="0" y="210.13571"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="210.59192">
+0.0
+</text>
+<rect fill="#bcbd22" height="2.3550415" shape-rendering="crispEdges" width="53.684208" x="0" y="207.78067"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="208.95819">
+0.1
+</text>
+</g>
+<g class="bar" transform="translate(602.4562,0)">
+<rect fill="#1f77b4" height="186.09564" shape-rendering="crispEdges" width="53.684208" x="0" y="313.90436"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="406.95218">
+7.4
+</text>
+<rect fill="#ff7f0e" height="26.028442" shape-rendering="crispEdges" width="53.684208" x="0" y="287.87592"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="300.89014">
+1.0
+</text>
+<rect fill="#2ca02c" height="12.424316" shape-rendering="crispEdges" width="53.684208" x="0" y="275.4516"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="281.66376">
+0.5
+</text>
+<rect fill="#d62728" height="0.7755127" shape-rendering="crispEdges" width="53.684208" x="0" y="274.6761"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="275.06384">
+0.0
+</text>
+<rect fill="#9467bd" height="24.655014" shape-rendering="crispEdges" width="53.684208" x="0" y="250.02107"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="262.34857">
+1.0
+</text>
+<rect fill="#8c564b" height="12.243271" shape-rendering="crispEdges" width="53.684208" x="0" y="237.7778"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="243.89944">
+0.5
+</text>
+<rect fill="#e377c2" height="26.790955" shape-rendering="crispEdges" width="53.684208" x="0" y="210.98685"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="224.38232">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.91567993" shape-rendering="crispEdges" width="53.684208" x="0" y="210.07117"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="210.529">
+0.0
+</text>
+<rect fill="#bcbd22" height="2.6195374" shape-rendering="crispEdges" width="53.684208" x="0" y="207.45163"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="208.7614">
+0.1
+</text>
+</g>
+<g class="bar" transform="translate(483.1579,0)">
+<rect fill="#1f77b4" height="184.55408" shape-rendering="crispEdges" width="53.684208" x="0" y="315.44592"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="407.72296">
+7.4
+</text>
+<rect fill="#ff7f0e" height="26.016357" shape-rendering="crispEdges" width="53.684208" x="0" y="289.42957"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="302.43774">
+1.0
+</text>
+<rect fill="#2ca02c" height="12.265625" shape-rendering="crispEdges" width="53.684208" x="0" y="277.16394"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="283.29675">
+0.5
+</text>
+<rect fill="#d62728" height="1.0801392" shape-rendering="crispEdges" width="53.684208" x="0" y="276.0838"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="276.62387">
+0.0
+</text>
+<rect fill="#9467bd" height="24.89357" shape-rendering="crispEdges" width="53.684208" x="0" y="251.19023"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="263.63702">
+1.0
+</text>
+<rect fill="#8c564b" height="12.18309" shape-rendering="crispEdges" width="53.684208" x="0" y="239.00714"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="245.0987">
+0.5
+</text>
+<rect fill="#e377c2" height="26.349854" shape-rendering="crispEdges" width="53.684208" x="0" y="212.65729"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="225.83221">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.9081421" shape-rendering="crispEdges" width="53.684208" x="0" y="211.74915"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="212.20322">
+0.0
+</text>
+<rect fill="#bcbd22" height="2.0195618" shape-rendering="crispEdges" width="53.684208" x="0" y="209.72958"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="210.73936">
+0.1
+</text>
+</g>
+<g class="bar" transform="translate(721.7544,0)">
+<rect fill="#1f77b4" height="184.99146" shape-rendering="crispEdges" width="53.684208" x="0" y="315.00854"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="407.50427">
+7.4
+</text>
+<rect fill="#ff7f0e" height="24.862946" shape-rendering="crispEdges" width="53.684208" x="0" y="290.1456"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="302.5771">
+1.0
+</text>
+<rect fill="#2ca02c" height="12.346954" shape-rendering="crispEdges" width="53.684208" x="0" y="277.79865"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="283.9721">
+0.5
+</text>
+<rect fill="#d62728" height="0.9313965" shape-rendering="crispEdges" width="53.684208" x="0" y="276.86725"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="277.33295">
+0.0
+</text>
+<rect fill="#9467bd" height="24.352448" shape-rendering="crispEdges" width="53.684208" x="0" y="252.5148"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="264.69104">
+1.0
+</text>
+<rect fill="#8c564b" height="12.142456" shape-rendering="crispEdges" width="53.684208" x="0" y="240.37234"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="246.44357">
+0.5
+</text>
+<rect fill="#e377c2" height="26.457367" shape-rendering="crispEdges" width="53.684208" x="0" y="213.91498"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="227.14366">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.89816284" shape-rendering="crispEdges" width="53.684208" x="0" y="213.01682"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="213.4659">
+0.0
+</text>
+<rect fill="#bcbd22" height="2.2838135" shape-rendering="crispEdges" width="53.684208" x="0" y="210.733"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="211.87491">
+0.1
+</text>
+</g>
+<g class="bar" transform="translate(244.56142,0)">
+<rect fill="#1f77b4" height="185.33282" shape-rendering="crispEdges" width="53.684208" x="0" y="314.66718"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="407.3336">
+7.4
+</text>
+<rect fill="#ff7f0e" height="26.309204" shape-rendering="crispEdges" width="53.684208" x="0" y="288.35797"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="301.51257">
+1.1
+</text>
+<rect fill="#2ca02c" height="12.308472" shape-rendering="crispEdges" width="53.684208" x="0" y="276.0495"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="282.20374">
+0.5
+</text>
+<rect fill="#d62728" height="1.3726807" shape-rendering="crispEdges" width="53.684208" x="0" y="274.67682"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="275.36316">
+0.1
+</text>
+<rect fill="#9467bd" height="24.507813" shape-rendering="crispEdges" width="53.684208" x="0" y="250.169"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="262.4229">
+1.0
+</text>
+<rect fill="#8c564b" height="12.318695" shape-rendering="crispEdges" width="53.684208" x="0" y="237.85031"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="244.00966">
+0.5
+</text>
+<rect fill="#e377c2" height="26.706757" shape-rendering="crispEdges" width="53.684208" x="0" y="211.14355"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="224.49693">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.9137268" shape-rendering="crispEdges" width="53.684208" x="0" y="210.22983"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="210.68669">
+0.0
+</text>
+<rect fill="#bcbd22" height="1.7819519" shape-rendering="crispEdges" width="53.684208" x="0" y="208.44788"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="209.33885">
+0.1
+</text>
+</g>
+<g class="bar" transform="translate(781.40344,0)">
+<rect fill="#1f77b4" height="185.79047" shape-rendering="crispEdges" width="53.684208" x="0" y="314.20953"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="407.10477">
+7.4
+</text>
+<rect fill="#ff7f0e" height="24.806" shape-rendering="crispEdges" width="53.684208" x="0" y="289.40353"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="301.80652">
+1.0
+</text>
+<rect fill="#2ca02c" height="12.368927" shape-rendering="crispEdges" width="53.684208" x="0" y="277.0346"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="283.21906">
+0.5
+</text>
+<rect fill="#d62728" height="2.2214966" shape-rendering="crispEdges" width="53.684208" x="0" y="274.8131"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="275.92386">
+0.1
+</text>
+<rect fill="#9467bd" height="24.87146" shape-rendering="crispEdges" width="53.684208" x="0" y="249.94165"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="262.37738">
+1.0
+</text>
+<rect fill="#8c564b" height="12.1727295" shape-rendering="crispEdges" width="53.684208" x="0" y="237.76892"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="243.85529">
+0.5
+</text>
+<rect fill="#e377c2" height="26.46634" shape-rendering="crispEdges" width="53.684208" x="0" y="211.30258"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="224.53575">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.9055481" shape-rendering="crispEdges" width="53.684208" x="0" y="210.39703"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="210.84981">
+0.0
+</text>
+<rect fill="#bcbd22" height="0.96047974" shape-rendering="crispEdges" width="53.684208" x="0" y="209.43655"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="209.9168">
+0.0
+</text>
+</g>
+<g class="bar" transform="translate(960.3508,0)">
+<rect fill="#1f77b4" height="185.98828" shape-rendering="crispEdges" width="53.684208" x="0" y="314.01172"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="407.00586">
+7.4
+</text>
+<rect fill="#ff7f0e" height="24.395996" shape-rendering="crispEdges" width="53.684208" x="0" y="289.61572"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="301.81372">
+1.0
+</text>
+<rect fill="#2ca02c" height="12.272034" shape-rendering="crispEdges" width="53.684208" x="0" y="277.3437"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="283.4797">
+0.5
+</text>
+<rect fill="#d62728" height="1.4204712" shape-rendering="crispEdges" width="53.684208" x="0" y="275.92322"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="276.63345">
+0.1
+</text>
+<rect fill="#9467bd" height="24.703308" shape-rendering="crispEdges" width="53.684208" x="0" y="251.21991"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="263.57156">
+1.0
+</text>
+<rect fill="#8c564b" height="12.258392" shape-rendering="crispEdges" width="53.684208" x="0" y="238.96152"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="245.09071">
+0.5
+</text>
+<rect fill="#e377c2" height="26.639465" shape-rendering="crispEdges" width="53.684208" x="0" y="212.32205"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="225.64178">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.9114075" shape-rendering="crispEdges" width="53.684208" x="0" y="211.41064"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="211.86635">
+0.0
+</text>
+<rect fill="#bcbd22" height="1.9341431" shape-rendering="crispEdges" width="53.684208" x="0" y="209.4765"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="210.44357">
+0.1
+</text>
+</g>
+<g class="bar" transform="translate(900.7018,0)">
+<rect fill="#1f77b4" height="185.36859" shape-rendering="crispEdges" width="53.684208" x="0" y="314.6314"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="407.3157">
+7.4
+</text>
+<rect fill="#ff7f0e" height="24.251373" shape-rendering="crispEdges" width="53.684208" x="0" y="290.38004"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="302.50574">
+1.0
+</text>
+<rect fill="#2ca02c" height="12.185059" shape-rendering="crispEdges" width="53.684208" x="0" y="278.19498"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="284.2875">
+0.5
+</text>
+<rect fill="#d62728" height="1.2226868" shape-rendering="crispEdges" width="53.684208" x="0" y="276.9723"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="277.58362">
+0.0
+</text>
+<rect fill="#9467bd" height="24.234558" shape-rendering="crispEdges" width="53.684208" x="0" y="252.73773"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="264.855">
+1.0
+</text>
+<rect fill="#8c564b" height="12.148376" shape-rendering="crispEdges" width="53.684208" x="0" y="240.58936"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="246.66354">
+0.5
+</text>
+<rect fill="#e377c2" height="26.463379" shape-rendering="crispEdges" width="53.684208" x="0" y="214.12598"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="227.35767">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.9049072" shape-rendering="crispEdges" width="53.684208" x="0" y="213.22107"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="213.67352">
+0.0
+</text>
+<rect fill="#bcbd22" height="1.9971619" shape-rendering="crispEdges" width="53.684208" x="0" y="211.2239"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="212.22249">
+0.1
+</text>
+</g>
+<g class="bar" transform="translate(662.1052,0)">
+<rect fill="#1f77b4" height="185.9273" shape-rendering="crispEdges" width="53.684208" x="0" y="314.0727"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="407.03635">
+7.4
+</text>
+<rect fill="#ff7f0e" height="25.889587" shape-rendering="crispEdges" width="53.684208" x="0" y="288.1831"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="301.1279">
+1.0
+</text>
+<rect fill="#2ca02c" height="12.391846" shape-rendering="crispEdges" width="53.684208" x="0" y="275.79126"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="281.98718">
+0.5
+</text>
+<rect fill="#d62728" height="0.76330566" shape-rendering="crispEdges" width="53.684208" x="0" y="275.02795"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="275.4096">
+0.0
+</text>
+<rect fill="#9467bd" height="24.874008" shape-rendering="crispEdges" width="53.684208" x="0" y="250.15395"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="262.59094">
+1.0
+</text>
+<rect fill="#8c564b" height="12.30159" shape-rendering="crispEdges" width="53.684208" x="0" y="237.85236"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="244.00314">
+0.5
+</text>
+<rect fill="#e377c2" height="26.832672" shape-rendering="crispEdges" width="53.684208" x="0" y="211.01968"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="224.43602">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.91134644" shape-rendering="crispEdges" width="53.684208" x="0" y="210.10834"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="210.56401">
+0.0
+</text>
+<rect fill="#bcbd22" height="2.7139282" shape-rendering="crispEdges" width="53.684208" x="0" y="207.39441"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="208.75137">
+0.1
+</text>
+</g>
+<g class="bar" transform="translate(423.5088,0)">
+<rect fill="#1f77b4" height="185.08246" shape-rendering="crispEdges" width="53.684208" x="0" y="314.91754"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="407.45877">
+7.4
+</text>
+<rect fill="#ff7f0e" height="26.146118" shape-rendering="crispEdges" width="53.684208" x="0" y="288.77142"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="301.84448">
+1.0
+</text>
+<rect fill="#2ca02c" height="12.326599" shape-rendering="crispEdges" width="53.684208" x="0" y="276.44482"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="282.60812">
+0.5
+</text>
+<rect fill="#d62728" height="1.1523438" shape-rendering="crispEdges" width="53.684208" x="0" y="275.29248"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="275.86865">
+0.0
+</text>
+<rect fill="#9467bd" height="25.283447" shape-rendering="crispEdges" width="53.684208" x="0" y="250.00903"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="262.65076">
+1.0
+</text>
+<rect fill="#8c564b" height="12.277863" shape-rendering="crispEdges" width="53.684208" x="0" y="237.73117"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="243.8701">
+0.5
+</text>
+<rect fill="#e377c2" height="26.762695" shape-rendering="crispEdges" width="53.684208" x="0" y="210.96848"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="224.34982">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.9138489" shape-rendering="crispEdges" width="53.684208" x="0" y="210.05463"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="210.51155">
+0.0
+</text>
+<rect fill="#bcbd22" height="2.072174" shape-rendering="crispEdges" width="53.684208" x="0" y="207.98245"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="209.01854">
+0.1
+</text>
+</g>
+<g class="bar" transform="translate(5.9649353,0)">
+<rect fill="#1f77b4" height="185.70313" shape-rendering="crispEdges" width="53.684208" x="0" y="314.29688"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="407.14844">
+7.4
+</text>
+<rect fill="#ff7f0e" height="26.341736" shape-rendering="crispEdges" width="53.684208" x="0" y="287.95514"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="301.126">
+1.1
+</text>
+<rect fill="#2ca02c" height="12.317444" shape-rendering="crispEdges" width="53.684208" x="0" y="275.6377"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="281.79642">
+0.5
+</text>
+<rect fill="#d62728" height="1.5687866" shape-rendering="crispEdges" width="53.684208" x="0" y="274.0689"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="274.8533">
+0.1
+</text>
+<rect fill="#9467bd" height="25.182648" shape-rendering="crispEdges" width="53.684208" x="0" y="248.88626"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="261.4776">
+1.0
+</text>
+<rect fill="#8c564b" height="12.32312" shape-rendering="crispEdges" width="53.684208" x="0" y="236.56314"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="242.7247">
+0.5
+</text>
+<rect fill="#e377c2" height="26.695007" shape-rendering="crispEdges" width="53.684208" x="0" y="209.86813"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="223.21564">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.90930176" shape-rendering="crispEdges" width="53.684208" x="0" y="208.95883"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="209.41348">
+0.0
+</text>
+<rect fill="#bcbd22" height="1.6014404" shape-rendering="crispEdges" width="53.684208" x="0" y="207.35739"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="208.15811">
+0.1
+</text>
+</g>
+<g class="bar" transform="translate(841.0526,0)">
+<rect fill="#1f77b4" height="185.30865" shape-rendering="crispEdges" width="53.684208" x="0" y="314.69135"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="407.34567">
+7.4
+</text>
+<rect fill="#ff7f0e" height="24.129944" shape-rendering="crispEdges" width="53.684208" x="0" y="290.5614"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="302.62637">
+1.0
+</text>
+<rect fill="#2ca02c" height="12.181885" shape-rendering="crispEdges" width="53.684208" x="0" y="278.37952"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="284.47046">
+0.5
+</text>
+<rect fill="#d62728" height="0.9222107" shape-rendering="crispEdges" width="53.684208" x="0" y="277.4573"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="277.9184">
+0.0
+</text>
+<rect fill="#9467bd" height="24.039291" shape-rendering="crispEdges" width="53.684208" x="0" y="253.41801"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="265.43765">
+1.0
+</text>
+<rect fill="#8c564b" height="12.192825" shape-rendering="crispEdges" width="53.684208" x="0" y="241.22519"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="247.3216">
+0.5
+</text>
+<rect fill="#e377c2" height="26.33014" shape-rendering="crispEdges" width="53.684208" x="0" y="214.89505"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="228.06012">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.90130615" shape-rendering="crispEdges" width="53.684208" x="0" y="213.99374"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="214.4444">
+0.0
+</text>
+<rect fill="#bcbd22" height="2.257721" shape-rendering="crispEdges" width="53.684208" x="0" y="211.73602"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="212.86488">
+0.1
+</text>
+</g>
+<g class="bar" transform="translate(125.263176,0)">
+<rect fill="#1f77b4" height="185.64163" shape-rendering="crispEdges" width="53.684208" x="0" y="314.35837"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="407.1792">
+7.4
+</text>
+<rect fill="#ff7f0e" height="26.266693" shape-rendering="crispEdges" width="53.684208" x="0" y="288.09167"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="301.22504">
+1.1
+</text>
+<rect fill="#2ca02c" height="12.270111" shape-rendering="crispEdges" width="53.684208" x="0" y="275.82156"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="281.9566">
+0.5
+</text>
+<rect fill="#d62728" height="1.0224609" shape-rendering="crispEdges" width="53.684208" x="0" y="274.7991"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="275.31033">
+0.0
+</text>
+<rect fill="#9467bd" height="24.854034" shape-rendering="crispEdges" width="53.684208" x="0" y="249.94507"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="262.37207">
+1.0
+</text>
+<rect fill="#8c564b" height="12.2499695" shape-rendering="crispEdges" width="53.684208" x="0" y="237.6951"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="243.82008">
+0.5
+</text>
+<rect fill="#e377c2" height="26.658722" shape-rendering="crispEdges" width="53.684208" x="0" y="211.03638"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="224.36574">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.913208" shape-rendering="crispEdges" width="53.684208" x="0" y="210.12317"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="210.57977">
+0.0
+</text>
+<rect fill="#bcbd22" height="2.1160583" shape-rendering="crispEdges" width="53.684208" x="0" y="208.00711"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="209.06514">
+0.1
+</text>
+</g>
+<g class="bar" transform="translate(304.21054,0)">
+<rect fill="#1f77b4" height="184.79883" shape-rendering="crispEdges" width="53.684208" x="0" y="315.20117"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="407.6006">
+7.4
+</text>
+<rect fill="#ff7f0e" height="26.151611" shape-rendering="crispEdges" width="53.684208" x="0" y="289.04956"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="302.12537">
+1.0
+</text>
+<rect fill="#2ca02c" height="12.296143" shape-rendering="crispEdges" width="53.684208" x="0" y="276.75342"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="282.9015">
+0.5
+</text>
+<rect fill="#d62728" height="2.8067017" shape-rendering="crispEdges" width="53.684208" x="0" y="273.94672"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="275.35007">
+0.1
+</text>
+<rect fill="#9467bd" height="25.621399" shape-rendering="crispEdges" width="53.684208" x="0" y="248.32532"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="261.13602">
+1.0
+</text>
+<rect fill="#8c564b" height="12.205933" shape-rendering="crispEdges" width="53.684208" x="0" y="236.11938"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="242.22235">
+0.5
+</text>
+<rect fill="#e377c2" height="26.59668" shape-rendering="crispEdges" width="53.684208" x="0" y="209.5227"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="222.82104">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.9085388" shape-rendering="crispEdges" width="53.684208" x="0" y="208.61417"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="209.06844">
+0.0
+</text>
+<rect fill="#bcbd22" height="0.54119873" shape-rendering="crispEdges" width="53.684208" x="0" y="208.07297"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="208.34357">
+0.0
+</text>
+</g>
+<g class="bar" transform="translate(65.61406,0)">
+<rect fill="#1f77b4" height="184.91815" shape-rendering="crispEdges" width="53.684208" x="0" y="315.08185"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="407.54092">
+7.4
+</text>
+<rect fill="#ff7f0e" height="25.917572" shape-rendering="crispEdges" width="53.684208" x="0" y="289.16428"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="302.12305">
+1.0
+</text>
+<rect fill="#2ca02c" height="12.254425" shape-rendering="crispEdges" width="53.684208" x="0" y="276.90985"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="283.03705">
+0.5
+</text>
+<rect fill="#d62728" height="2.128357" shape-rendering="crispEdges" width="53.684208" x="0" y="274.7815"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="275.84567">
+0.1
+</text>
+<rect fill="#9467bd" height="24.885147" shape-rendering="crispEdges" width="53.684208" x="0" y="249.89635"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="262.33893">
+1.0
+</text>
+<rect fill="#8c564b" height="12.402084" shape-rendering="crispEdges" width="53.684208" x="0" y="237.49426"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="243.69531">
+0.5
+</text>
+<rect fill="#e377c2" height="26.66858" shape-rendering="crispEdges" width="53.684208" x="0" y="210.82568"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="224.15997">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.9114075" shape-rendering="crispEdges" width="53.684208" x="0" y="209.91428"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="210.36998">
+0.0
+</text>
+<rect fill="#bcbd22" height="0.98999023" shape-rendering="crispEdges" width="53.684208" x="0" y="208.92429"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="209.41928">
+0.0
+</text>
+</g>
+<g class="bar" transform="translate(184.9123,0)">
+<rect fill="#1f77b4" height="184.38333" shape-rendering="crispEdges" width="53.684208" x="0" y="315.61667"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="407.80835">
+7.4
+</text>
+<rect fill="#ff7f0e" height="25.710602" shape-rendering="crispEdges" width="53.684208" x="0" y="289.90607"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="302.76135">
+1.0
+</text>
+<rect fill="#2ca02c" height="12.146271" shape-rendering="crispEdges" width="53.684208" x="0" y="277.7598"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="283.83295">
+0.5
+</text>
+<rect fill="#d62728" height="1.5641174" shape-rendering="crispEdges" width="53.684208" x="0" y="276.19568"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="276.97772">
+0.1
+</text>
+<rect fill="#9467bd" height="23.882278" shape-rendering="crispEdges" width="53.684208" x="0" y="252.3134"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="264.25455">
+1.0
+</text>
+<rect fill="#8c564b" height="12.215469" shape-rendering="crispEdges" width="53.684208" x="0" y="240.09793"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="246.20566">
+0.5
+</text>
+<rect fill="#e377c2" height="26.64627" shape-rendering="crispEdges" width="53.684208" x="0" y="213.45166"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="226.7748">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.89959717" shape-rendering="crispEdges" width="53.684208" x="0" y="212.55206"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="213.00186">
+0.0
+</text>
+<rect fill="#bcbd22" height="1.6565552" shape-rendering="crispEdges" width="53.684208" x="0" y="210.89551"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="211.72379">
+0.1
+</text>
+</g>
+<g class="bar" transform="translate(542.807,0)">
+<rect fill="#1f77b4" height="185.42645" shape-rendering="crispEdges" width="53.684208" x="0" y="314.57355"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="407.28677">
+7.4
+</text>
+<rect fill="#ff7f0e" height="26.186707" shape-rendering="crispEdges" width="53.684208" x="0" y="288.38684"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="301.4802">
+1.0
+</text>
+<rect fill="#2ca02c" height="12.310913" shape-rendering="crispEdges" width="53.684208" x="0" y="276.07593"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="282.23138">
+0.5
+</text>
+<rect fill="#d62728" height="2.4489746" shape-rendering="crispEdges" width="53.684208" x="0" y="273.62695"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="274.85144">
+0.1
+</text>
+<rect fill="#9467bd" height="24.793" shape-rendering="crispEdges" width="53.684208" x="0" y="248.83395"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="261.23047">
+1.0
+</text>
+<rect fill="#8c564b" height="12.203339" shape-rendering="crispEdges" width="53.684208" x="0" y="236.63062"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="242.73228">
+0.5
+</text>
+<rect fill="#e377c2" height="26.546265" shape-rendering="crispEdges" width="53.684208" x="0" y="210.08435"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="223.35748">
+1.1
+</text>
+<rect fill="#7f7f7f" height="0.9144287" shape-rendering="crispEdges" width="53.684208" x="0" y="209.16992"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="209.62714">
+0.0
+</text>
+<rect fill="#bcbd22" height="0.79833984" shape-rendering="crispEdges" width="53.684208" x="0" y="208.37158"/>
+<text dy=".35em" fill="#333" font-family="Bitstream Vera Sans Mono, monospace" font-size="14px" text-anchor="middle" x="26.842104" y="208.77075">
+0.0
+</text>
+</g>
+</g>
+</g>
+<g class="g-legend" transform="translate(1100,90)">
+<g class="legend-entry" transform="translate(0,0)">
+<rect fill="#1f77b4" height="14" stroke="none" width="14" x="0" y="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" x="20" y="7">
+entityUpdate
+</text>
+</g>
+<g class="legend-entry" transform="translate(0,20)">
+<rect fill="#ff7f0e" height="14" stroke="none" width="14" x="0" y="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" x="20" y="7">
+circuitNetworkUpdate
+</text>
+</g>
+<g class="legend-entry" transform="translate(0,40)">
+<rect fill="#2ca02c" height="14" stroke="none" width="14" x="0" y="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" x="20" y="7">
+transportLinesUpdate
+</text>
+</g>
+<g class="legend-entry" transform="translate(0,60)">
+<rect fill="#d62728" height="14" stroke="none" width="14" x="0" y="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" x="20" y="7">
+fluidsUpdate
+</text>
+</g>
+<g class="legend-entry" transform="translate(0,80)">
+<rect fill="#9467bd" height="14" stroke="none" width="14" x="0" y="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" x="20" y="7">
+electricNetworkUpdate
+</text>
+</g>
+<g class="legend-entry" transform="translate(0,100)">
+<rect fill="#8c564b" height="14" stroke="none" width="14" x="0" y="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" x="20" y="7">
+logisticManagerUpdate
+</text>
+</g>
+<g class="legend-entry" transform="translate(0,120)">
+<rect fill="#e377c2" height="14" stroke="none" width="14" x="0" y="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" x="20" y="7">
+trains
+</text>
+</g>
+<g class="legend-entry" transform="translate(0,140)">
+<rect fill="#7f7f7f" height="14" stroke="none" width="14" x="0" y="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" x="20" y="7">
+trainPathFinder
+</text>
+</g>
+<g class="legend-entry" transform="translate(0,160)">
+<rect fill="#bcbd22" height="14" stroke="none" width="14" x="0" y="0"/>
+<text dy=".35em" fill="#777" font-family="Bitstream Vera Sans Mono, monospace" font-size="12px" x="20" y="7">
+other
+</text>
+</g>
+</g>
+</g>
+</svg>

@@ -79,6 +79,20 @@ code {
     -ms-user-select: all;      /* IE 10+ */
     user-select: all;          /* Likely future */
 }
+
+.slides {
+    width: 67%;
+}
+
+.slide {
+    width: 100%;
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+}
+
 sup a {
     color: blue;
     font-style: oblique;

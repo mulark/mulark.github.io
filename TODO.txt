@@ -33,7 +33,7 @@ in progress:
     Test if rezipping a map so it actually gets compressed affects UPS of a benchmark of that map.
     Test if it's better to split circuit networks or have 1 huge one
     WIP green circuit builds (test-8)
-    WIP electric networks (test-13)
+    DONE -- WIP electric networks (test-13)
     Design something around pipes that empty periodically.
     Does a train having a rider increase UPS cost?
     Do bots contribute to additional collision checks when they're hovered over a moving car example.

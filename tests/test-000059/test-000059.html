@@ -1,0 +1,134 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000059 : 1.1 Revist - Is it better to over beacon entities so they spend more time idle?</h2>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    No, adding additional beacons as a "hurry up and wait" do not help performance. Neither does it appear to hurt performance.
+    If you can save other entities or improve other aspects of the design with additional beacons they likely should be added.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Often in builds you will beacon assemblers beyond the useful work capacity of the recipe chain. For a simple <a href="https://kirkmcdonald.github.io/calc.html#zip=dYw7DsMwDENv46kaknSpAR1GlZVWiD+C7aDXr9PJS0GCAx/IQJ1wgaGHY8PVJc24ufDEdiXjenfaJTWks5dEXUuGxiqZBYz48LtfXCrhjNKQi5lUsEhdvG3DN61jMBf/fn50Hr2EKnzeInFmXw==">example</a>, 1 red-science assembler with 12 beacons of coverage requires 0.32 copper-plate furnaces of the same beacon coverage. In a DI chain (direct insertion) where one furnace DI's to one assembler, the one furnace would idle roughly 68% of its time. If we instead were to have only 3 beacons on that furnace, it would run at roughly 97% capacity.
+</p>
+<p>
+    When we look at what is gained by reducing beacon count, we can identify a couple potential factors that could change performance. For one, the crafting machine probably spends more calculations for the same output. On the flip side, fewer beacons means fewer entities to calculate power consumption for (and if your solar still includes roboport or radars, those will have a performance impact too). There likely is some overhead to getting put to sleep or waking up. In most cases the number of inserter swings on inputs/outputs will not change, but on some very fast recipes the number of items available to swing could be improved with more beacons, which would reduce overall inserter swing count.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    This test will be comparing 4 close to identical designs, with the main variable being the beacon count on the furnaces. This is a red science design that includes DI chains of all the constituent raw materials. Each of the designs was built on the same coordinates and then number of beacon adjusted based on test case. Designs were cloned the same number of times to a large number of copies, yielding over 800k red science packs produced per minute. A 2k x 2k area was pregenerated in all maps to prevent any new chunks from generating during the benchmark.
+</p>
+<p>
+    A benchmark of 9200 ticks was performed 5 times per map, and the best tick per run was taken.
+</p>
+<br>
+<select class="selections" onchange="setSlide()">
+    <option>Reduced beacons</option>
+    <option>Partially reduced, shared beacons</option>
+    <option>Partially reduced, nonshared beacons</option>
+    <option>Full beacons</option>
+</select>
+<div class = "slides">
+    <div class = "slide">
+        <img src="images/reduced_beacon.png"></img>
+        <ul>
+            <li>Reduced beacons
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/shared_beacon.png"></img>
+        <ul>
+            <li>Partially reduced, shared beacons
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/nonshared_beacon.png"></img>
+        <ul>
+            <li>Partially reduced, nonshared beacons
+        </ul>
+    </div>
+    <div class = "slide">
+        <img src="images/full_beacon.png"></img>
+        <ul>
+            <li>Full beacons
+        </ul>
+    </div>
+</div>
+
+<script>
+    setSlide();
+    function setSlide() {
+        var slides = document.querySelectorAll('.slides .slide');
+        for (i = 0;  i < slides.length; ++i) {
+            if (slides[i] != null) {
+                slides[i].style.display = "none";
+            }
+        }
+        var cur_slide_idx = document.getElementsByClassName("selections")[0].selectedIndex;
+        if (slides[cur_slide_idx] != null) {
+            slides[cur_slide_idx].style.display = "block";
+        }
+    }
+</script>
+
+<h3 id="The-Data"> The Data </h3>
+<img src="images/nonsorted.svg"></img>
+<p>
+    At first glance, it looks like we have no clear differentiator between the various testcases.
+</p>
+<img src="images/sorted.svg"></img>
+<p>
+    After sorting the timings per tick, some sort of difference might be there, but it's hard to tell.
+</p>
+<img src="images/moving_average.svg"></img>
+<p>
+    When taking the 500 tick rolling average, we can see long term fluctuations in the performance of the testcases. While the full reduced case was technically faster than the rest, it was only by 1.5%. The longer term fluctuations are an order of magnitude more significant, so if we happened to measure a lucky 9200 tick "window" we could easily observe a 1.5% difference that didn't actually exist.
+</p>
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    There doesn't appear to be a large difference between any of the tested cases. I would prioritize other factors than reducing or increasing beacon count.
+</p>
+<p>
+    It could be interesting to further investigate boosting very fast recipes or other long period cycles, and if any such scenarios exist.
+</p>
+<p>
+    As a theoretical example, a machine buffers up to 12 output items, and every once in a while 24 items are demanded in short succession. If we can craft 12 items in the time it takes for an inserter to swing, we would cause 2 swings, but if we were slower than that, it would incur 3 swings. If such a scenario existed, it could be a case for additional beacons.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on October 19, 2021 </div>
+</footer>

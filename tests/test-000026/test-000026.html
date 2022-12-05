@@ -89,7 +89,7 @@
     Performing this procedure, we find that it takes 5872 ticks to reach the station in the diagonal case, and 8182 ticks to reach the end in the straight L case. This is our defined benchmark durations for each case. One might be tempted to test both maps at the 8182 tick duration, but that is not recommended. We don't wish to test the idle behavior of trains, in this test, but if such a factor was at or very close to 0, it wouldn't matter either way. We are not interested in the updates per second rate, rather the total sum of time. These measured tick values are very close to our expected sqrt(2) factor.
 </p>
 <p>
-    We should consder the work completed by each case. To move 101 trains from A to B, we consider the real time duration it would take to move those trains. Said another way, we care about how much update time it took to move those trains from A to B, instead of the number of updates. We can multiply the straight case by sqrt(2) at the end if we wish to factor based on rate of work in game ticks.
+    We should consider the work completed by each case. To move 101 trains from A to B, we consider the real time duration it would take to move those trains. Said another way, we care about how much update time it took to move those trains from A to B, instead of the number of updates. We can multiply the straight case by sqrt(2) at the end if we wish to factor based on rate of work in game ticks.
 </p>
 <p>
     The final factor we can test is direction of travel. For the diagonal case it should not matter if we're travelling northeast or southwest, but for the L case, north facing trains would be cheaper. By reversing the direction of a train after they've travelled the first time, we can test both directions.

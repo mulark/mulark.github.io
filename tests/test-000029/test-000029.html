@@ -1,0 +1,120 @@
+<!-- begin menu block -->
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000029 : What is the performance cost of a moving ore belt in front of miners?</h2>
+<h5>Factorio Version 1.0.90</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+Sideload miners if they are outputting onto a belt alongside other miners
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+When mining directly to a belt, is there a performance cost to have multiple idle
+miners unable to output to the same belt? Could such a performance penalty if it
+exists be mitigated by using splitters? Belts are multi-threaded, so in theory,
+avoiding additional checks on the miners would result in a net positive effect
+on performance.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+This test consists of 4 otherwise equivalent designs, each of which produce a full
+blue belt of iron ore. Mining productivity is high enough that only a single 
+miner is needed to saturate a half belt, only 2 miners per belt are active.
+All belts eventually terminate with a single loader into an infinity chest set
+to void items.
+</p>
+<p>
+<img style="width:20%" src="images/simple.png"/>
+<p>
+The first design just runs a belt past each miner. This is the simple option
+<p>
+The next designs have each pair of two miners mine to a dedicated belt, and then
+these belts are merged together prior to the infinity chest.
+<p>
+<img style="width:20%" src="images/splitters_best.png"/>
+<p>
+The two variants of this are the theorized best and worst case scenarios.
+In the first variant, the splitter closest to the infinity chest prioritizes the
+input side that has no other splitters on the belt prior to itself. This pattern
+repeats for every splitter, each prioritizing the side with a direct pair of miners
+attached.
+<p>
+<img style="width:20%" src="images/splitters_worst.png"/>
+<p>
+The second variant is the theorized worst case scenario. This prioritizes the
+splitters such that moving flow of items must pass through every splitter.
+<p>
+<img style="width:20%" src="images/sideload.png"/>
+<p>
+In the Technical Factorio discord, it was suggested to try side loading as well,
+so this fourth design is a simple line of belts where each miner mines to a small
+belt stub that side loads onto the main belt line.
+<p>
+All 4 of these designs were copied individually to a scale that would rival the
+largest megabases (roughly the ore requirement of a 50K SPM megabase).
+Each design was saved in a map and then each of the three maps was benchmarked
+using the inbuilt Factorio benchmark for 3 times at 1000 ticks.
+Care was taken to put each design in the same starting position before cloning
+to minimize the chance of performance effects due to chunk positioning
+
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    <img src="images/results.svg"></img>
+    <ul>
+    <li>Testing results shows that the sideloading and splitter best case configuration
+		performed about the same.
+	<li> The splitter worst case lost around 7% performance compared to the others
+	<li> The simple case was by far the worst, having several times worse performance.
+		It's clear it's not a good option for the largest of megabases.
+    </ul>
+</p>
+
+<p>
+    All maps will be uploaded <a href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf"> here.</a>
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+If striving to keep belts full for longer by having more than one miner per belt,
+care should be taken to keep the miners from checking for available space in front
+of them. Sideloading appears to be the best of the options tested here for that purpose.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on September 9, 2023 </div>
+</footer>

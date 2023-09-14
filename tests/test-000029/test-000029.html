@@ -31,16 +31,13 @@
 <body class="test-index">
 
 <h2>test-000029 : What is the performance cost of a moving ore belt in front of miners?</h2>
-<h5>Factorio Version 1.1.90</h5>
+<h5>Factorio Version 1.1.90 + 1.1.91</h5>
 
 
 <h3 id="The-TLDR"> The TLDR </h3>
 <p>
-<s>Sideload miners if they are outputting onto a belt alongside other miners</s>
-Warning: the results here were tested immediately after cloning the designs.
-The transport lines require running for a bit to merge and stabilize, so the results
-here are not to be trusted.
-This article will be updated with new data.
+All options to isolate miners from having moving belts in front of them appear to be beneficial.
+It's not clear there's an ultimate winner, but both side loading and splitters can be competitive.
 </p>
 
 <h3 id="The-Question"> The Question </h3>
@@ -94,19 +91,140 @@ using the inbuilt Factorio benchmark for 3 times at 1000 ticks.
 Care was taken to put each design in the same starting position before cloning
 to minimize the chance of performance effects due to chunk positioning
 
+<h3>Corrections and Updates</h3>
+<p>
+The prior sections were as the test was originally written. During further
+investigations, a couple of errors and additional scenarios were suggested
+to attempt.
+<p>
+The issues with the previous results were that the maps were cloned from a steady
+state design, but even still, transport lines require some warmup period before
+they settle into their final configuration. This update runs each map after cloning
+to let the transport lines stabilize.
+<p>
+In addition to that correction, a few new designs were put forward
+<p>
+<img style="width: 20%" src="images/splitters_coalesce.png"/>
+<p>
+The first of these designs features a coalescing arrangement of splitters. This
+design allows any combination of inputs that yeild one full belt of material to
+output one full belt of material.
+<p>
+<img style="width: 20%" src="images/sideload_compact.png"/>
+<p>
+The next design was to compact the sideloading configuration. I initially did
+this because I thought that there were transport line splits being introduced
+due to the uneven spacing of the side loads, but that ended up being not the case.
+Thus, there should be neligible difference between this and the prior sideloading
+option tested here.
+<p>
+<img style="width: 20%" src="images/sideload_combined.png"/>
+<p>
+Another concept to test was to halve the number of sideloading points by combining
+the output of two miners into one belt that sideloads onto the "main" belt.
+This wouldn't be fully optimal once those side belts start being used (as one
+of the two miners would then have a moving belt in front of it), but this
+lets us test if the concept is worth exploring further.
+<p>
+<img style="width: 20%" src="images/splitters_worst_add_isolation.png"/>
+<p>
+One observation made for the splitter_worst configuration was that on the final
+splitter in the chain, the input side without priority continuously flickered
+blue in show-transport-lines debug. (This was true for every design that used
+splitters, but only splitter_worst had this flickering travel all the way back up
+to the miners. The other designs only had 1 tile of length of flickering before
+the next splitter). To test this, I added a temporary red wire to a belt before
+the splitter, and removed the default circuit conditions from it. Then I removed the red wire.
+Because the belt piece didn't have the default condition anymore, it inserted an
+additional split in the transport line.
+<p>
+<img style="width: 20%" src="images/splitters_worst_flicker.png"/>
+<p>
 
 <h3 id="The-Data"> The Data </h3>
 <p>
     <img src="images/results.svg"></img>
     <ul>
-    <li>Testing results shows that the sideloading and splitter best case configuration
-		performed about the same.
-	<li> The splitter worst case lost around 7% performance compared to the others
-	<li> The simple case was by far the worst, having several times worse performance.
-		It's clear it's not a good option for the largest of megabases.
+    <li>Testing results showed that the splitter_best won.
+	<li>It's a bit surprising that splitter_best and splitter_coalesce are so far apart,
+		since both have only a single active splitter. coalesce does have two additional
+		sideload "candidates", which might explain the difference.
+	<li>The three sideload cases show marginal difference between them. There does seem
+		to be a benefit to reducing the number of sideload points, but it seems unlikely
+		that going from 6 -> 2 sideloads (theoretical best on the active line) will have
+		a larger improvement than 12 -> 6 did. Thus it would still fall behind
+		the best case splitter option.
+	<li>Compact may be slightly faster than the default sideload option due to 
+		the fact it's having to interact with fewer ore resource entities, so may
+		be slightly better cached.
+		The differece is incredibly marginal though. And if the intent is to fully
+		mine a patch, the overlapping mining areas will lead to more miners needed, and thus
+		likely be worse overall.
+	<li>The simple case was by far the worst, having several times worse performance than any other option.
+	<li>It's surprising that adding isolation to the line that was flickering active
+		had a negative if anything performance effect.
+	<li>The advantage the coalescing case has (that it can produce a full belt whenever
+		the input meets a full belt) might be worth the hit at lower mining productivities.
     </ul>
 </p>
+<h3>Further Explorations</h3>
+<p>
+In looking at the above data, I got interested to see how the performance changes
+over time as miners deplete. This will be explored under the assumption that a
+miner always produces a full lane until the moment it is depleted.
+<p>
+As to reduce the number of permutations, I will remove a few maps from further
+consideration. The simple option performs very badly initially, so no reason
+to continue using it. The splitter_worst options aren't that interesting, since
+splitter_best is better initially, and we will still be able to see if it degrades
+to the level of splitter_worst.
+The number of sideload options will just be reduced to the single, base, sideload option.
+<p>
+To test depletion, I modified the ore amounts to 1 under each pairing of miners
+based on when the first miner pairing would deplete. The command
+<p>
+<code>
+/c top=-66 bot=(top + 5) for i, ent in pairs(game.player.surface.find_entities_filtered{type="resource"}) do if ent.position.y > top and ent.position.y < bot then ent.amount=1 end end
+</code>
+<p>
+was tailored for each map to deplete the first, second, etc. pairs of miners
+<p>
 
+<h3>The Data...2</h3>
+<p>
+<img style="width:100%" src="images/deplete.svg">
+
+<ul>
+	<li>Scaling shows that sideloading gets better as the mine depletes,
+		but the splitter based solutions get worse as depletion occurs.
+	<li>Depending on the density of ore under the miners that go first or last,
+		splitters or sideloading could win. Each miner pair runs for 1/7th (Nth)
+		the time if ore is evenly distributed, which doesn't happen with real
+		ore generation.
+</ul>
+
+<p>
+To take this line of reasoning to its logicial conclusion, I created two more maps
+at the "nano" scale. They consist of 4 miners, and joining is handled by a single
+splitter or by sideloading the ore.
+<p>
+<img style="width:100%" src="images/nano.svg">
+<p>
+At this point, the differences if there are any have entirely evaporated. Either option
+is just as good as another.
+<p>
+If there was a design based on sideloading where each active belt is only aware
+of 1 sideload per lane per depleted miner, it's possible that could maintain excellent
+performance.
+<p>
+<img style="width:20%" src="images/chained_sideload_idea.png">
+<p>
+The picture shows the idea best. As long as the rightmost miner has ore, it's
+only aware of one sideload. Once that depletes, only two and so on. I couldn't
+come up with a way to fit this tiled 7 miners deep like was done for the other
+tests. And at some point I need finish one test before it becomes a run on sentence.
+I'll continue to investigate and possibly create another test if I find something
+good.
 <p>
     All maps will be uploaded <a href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf"> here.</a>
 </p>
@@ -116,9 +234,12 @@ to minimize the chance of performance effects due to chunk positioning
 <p>
 If striving to keep belts full for longer by having more than one miner per belt,
 care should be taken to keep the miners from checking for available space in front
-of them. Sideloading appears to be the best of the options tested here for that purpose.
+of them. Most or all options appear to be good options, as long as the only miner
+with ore moving in front of it is the one doing the mining.
+Sideloading might have the slight edge, but it's definitely not clear cut better
+one way or another.
 </p>
 
 <footer>
-    <div style="font-size:.9em"> Written by mulark on September 9, 2023 </div>
+    <div style="font-size:.9em"> Written by mulark on September 13, 2023 </div>
 </footer>

@@ -1,0 +1,165 @@
+<!-- begin menu block -->
+
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+
+<body class="test-index">
+
+    <h2>test-000031 : Is it better to have two miners each mine a half lane,
+        or have one miner mine into a splitter for a full belt?</h2>
+    <h5>Factorio Version 1.1.91</h5>
+
+
+    <h3 id="The-TLDR"> The TLDR </h3>
+    <p>
+
+    </p>
+
+    <h3 id="The-Question"> The Question </h3>
+    <p>
+        It is possible to mine directly into a splitter and then sideload the two
+        ore streams into one full belt. It is not known if that performs better, worse,
+        or the same as just using 2 miners to fill the belt.
+    </p>
+
+    <h3 id="The-Test"> The Test </h3>
+    <p>
+        The test consists of otherwise identical designs cloned to a large amount
+        of production (roughly the amount of ore needed for 50k SPM).
+        A few variations of each design are posed to further refine the hypothesis.
+    </p>
+    <p>
+        Mining productivity was set high enough that a single miner could sustain
+        a full blue belt worth of output, but not excessively higher than that level.
+    </p>
+
+    <p>
+        <img src="images/2miners.png">
+    </p>
+    <p>
+        The first of these designs is a simple 2 miner setup
+    </p>
+    <p>
+        <img src="images/2miners_ug.png">
+    </p>
+    <p>
+        Two miners, but directly into an underground belt
+    </p>
+    <p>
+        <img src="images/2miners_ug_spaced.png">
+    </p>
+    <p>
+        Two miners, with one normal belt before the underground belt
+    </p>
+    <p>
+        The expectation of adding underground belts is to force the belt insertion
+        transport line lookup closer to the point of insertion. One of these puts
+        underground belts right at the miner, and one adds an additional space before
+        the underground. It was observed that by having the underground right at
+        the miner, the wakeup list debug visualization would flicker as the miner
+        operated.
+    </p>
+    <p>
+        <img src="images/splitter.png">
+    </p>
+    <p>
+        Basic splitter based setup
+    </p>
+    <p>
+        <img src="images/splitter_with_ug.png">
+    </p>
+    <p>
+        Adding undergrounds after the splitter and sideload
+    </p>
+    <p><img src="images/splitter_with_ug_spaced.png"></p>
+    <p>
+        Adding undergrounds after the splitter with an additional buffer tile
+    </p>
+    <p><img src="images/splitter_input_priority.png"></p>
+    <p>
+        Adding input priority
+    </p>
+    <p><img src="images/splitter_output_priority.png"></p>
+    <p>
+        Adding output priority
+    </p>
+    </p>
+    <p>
+        The competing designs and variants are mining straight into a splitter. One
+        variant is to add an underground belt to force the transport line lookup
+        point sooner. This comes with two options, since it looks like the closest
+        possible underground position results in the wakeup list debug visualization
+        flickering. Another variant adds input priority to the near side
+        of the miner, and the final variant adds output priority to the splitter.
+    </p>
+    <p>
+        Each design was saved in a map and then each of the maps was benchmarked
+        using the inbuilt Factorio benchmark 3 times at 1000 ticks each.
+        Care was taken to put each design in the same starting position before cloning
+        to minimize the chance of performance effects due to chunk positioning.
+    </p>
+
+    <h3 id="The-Data"> The Data </h3>
+    <p>
+        <img src="images/results.svg"></img>
+    <ul>
+        <li>Variants that result in the miner wakeup list visualization flickering
+            should be avoided, since they are strictly worse than their spaced counterparts
+        <li>Mining into a splitter is better than using 2 miners to achieve the
+            same thing.
+        <li>Output priority on the splitter should be avoided. Input priority is down to
+            measurement tolerance, so shouldn't matter either way.
+        <li>Using underground belts showed a benefit for the 2 miners configuration,
+            but a penalty for the splitter based configuration. That would suggest
+            that the item insertion point lookup doesn't exist for sideloaded belts,
+            which does in fact make sense.
+    </ul>
+    </p>
+    <p>
+        All maps will be uploaded <a href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf">
+            here.</a>
+    </p>
+
+    <h3 id="Closing"> Closing </h3>
+    <p>
+        When producing/consuming a full blue belt, use a single miner mining into
+        a splitter to achieve the best performance.
+    </p>
+    <p>
+        There are additional factors not accounted for which might affect these results.
+        One: what happens at much higher mining productivity levels (ie. far more than
+        necessary to saturate a blue belt). Two: does this performance profile
+        hold true when a belt is not fully utilized? There are possibly more factors
+        not being thought of as well.
+    </p>
+
+    <footer>
+        <div style="font-size:.9em"> Written by mulark on September 14, 2023 </div>
+    </footer>

@@ -1,0 +1,106 @@
+<!-- begin menu block -->
+
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+
+<body class="test-index">
+
+    <h2>test-000060 : Does priming inserters matter when the inserter is part of a DI chain?</h2>
+    <h5>Factorio Version 1.1.107</h5>
+
+
+    <h3 id="The-TLDR"> The TLDR </h3>
+    <p>
+        Priming is worth it even in the DI with a chest handoff case.
+    </p>
+
+    <h3> The Question </h3>
+    <p>
+        Does priming inserters matter when the inserter is part of a DI chain? Specifically, the case where the DI chain
+        has backpressure.
+    </p>
+    <p>
+        When the inserter pulling from the source assembler crafts, if it is not primed then the inserter appears to
+        wake for a tick. It could be that this contributes a significant effect to performance.
+    </p>
+
+    <h3 id="The-Test"> The Test </h3>
+    <p>
+        Test consists of two maps, both of which contain designs to produce rocket fuel. The solid fuel is created, then
+        inserted into a chest, then inserted into the rocket fuel assembler.
+    </p>
+    <p>
+        Both designs are cloned using the region cloner mod to a large amount of production.
+    </p>
+    <p>
+        Each map gets benchmarked using the inbuilt Factorio benchmark. 3 runs are done, after which the lowest timing
+        tick is taken.
+    </p>
+    <figure>
+        <figcaption>No priming example</figcaption>
+        <img src="images/no_prime.png" />
+    </figure>
+    <figure>
+        <figcaption>Priming inserter example</figcaption>
+        <img src="images/prime.png" />
+    </figure>
+    <h3 id="The-Data"> The Data </h3>
+    <p>
+    <figure>
+        <figcaption>Time per tick (best)</figcaption>
+        <img src="images/time_per_tick.svg"></img>
+    </figure>
+    <figure>
+        <figcaption>Time per tick (best) sorted to make differences visible</figcaption>
+        <img src="images/sorted_time_per_tick.svg"></img>
+    </figure>
+    <ul>
+        <li>Priming inserters is clearly better, although the effect is small</li>
+        <li>Most ticks appear to have greater performance, around 10% much more so.</li>
+        <li>The dips (aka times when performance is higher) have not been closely examined, though it's likely due to
+            all clones being in the same state of
+            their production. In real maps this is unlikely to be the case.</li>
+    </ul>
+    </p>
+    <p>
+        All maps will be uploaded <a href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf">
+            here.</a>
+    </p>
+
+
+    <h3 id="Closing"> Closing </h3>
+    <p>
+        Although tedious, making sure inserters are primed appears to be worthwhile if playing for maximum UPS
+        efficiency.
+    </p>
+
+    <footer>
+        <div style="font-size:.9em"> Written by mulark on April 17, 2024 </div>
+    </footer>

@@ -1,0 +1,100 @@
+<!-- begin menu block -->
+
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+        <li>
+            <a class="cheat-sheet" href="/cheat-sheet.html">Cheat Sheet</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+
+<body class="test-index">
+
+    <h2>test-000061 : Is there a performance improvement to turning off inserters chasing items?</h2>
+    <h5>Factorio Version 1.1.107</h5>
+
+
+    <h3 id="The-TLDR"> The TLDR </h3>
+    <p>
+        Situationally there can be performance improvement to using the prototype inserter_chases_belt_items = false,
+        but design can eliminate the difference.
+    </p>
+
+    <h3 id="The-Question"> The Question </h3>
+    <p>
+        The Factorio modding API includes an option to turn off inserter chas belt items. <a
+            href="https://lua-api.factorio.com/latest/classes/LuaEntityPrototype.html#inserter_chases_belt_items">Ref</a>
+    </p>
+    <p>
+        Does this option improve performance and in what scenarios?
+    </p>
+
+    <h3 id="The-Test"> The Test </h3>
+    <p>
+        Two map variants, two half belts versus one full belt feeding a total of 10 furnances. Each of the two designs
+        cloned to a large amount of production.
+    </p>
+    <p>
+        These two map variants are benchmarked without mods, and then benchmarked with this mod:
+        https://mods.factorio.com/mod/zzzzStopChasingBeltItems
+    </p>
+    <p>
+        All 4 maps benchmarked for 3 runs, 1000 ticks per run. The best performing tick for each tick number taken.
+    </p>
+    <img src="images/scenarios.png" />
+
+    <h3 id="The-Data"> The Data </h3>
+    <p>
+        Data sorted by update time for readability
+    </p>
+    <img src="images/results.svg"></img>
+    <ul>
+        <li>A difference can clearly be observed in the performance of the naive single belt case.</li>
+        <li>Said difference can be eliminated by:
+            <ul>
+                <li>Setting inserter_chases_belt_items to false</li>
+                <li>Feeding ore with two half belts</li>
+            </ul>
+        </li>
+    </ul>
+    </p>
+    <p>
+        All maps will be uploaded <a href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf">
+            here.</a>
+    </p>
+
+
+    <h3 id="Closing"> Closing </h3>
+    <p>
+        While it's unfortunately not the default and requires a mod to enable, the performance loss to chasing items can
+        still be eliminated by using two half belts instead.
+    </p>
+
+    <footer>
+        <div style="font-size:.9em"> Written by mulark on April 20, 2024 </div>
+    </footer>

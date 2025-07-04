@@ -1,0 +1,156 @@
+<!-- begin menu block -->
+
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+        <li>
+            <a class="cheat-sheet" href="/cheat-sheet.html">Cheat Sheet</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<title>test-000062 : Do elevated rails perform any differently than normal rails?</title>
+<h2>test-000062 : Do elevated rails perform any differently than normal rails?</h2>
+<h5>Factorio Version 2.0.58</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Ramps are better, elevated straight rails had no significant difference
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    Test consists of a bunch of trains cloned many times. On each of the railways, we use the following:
+<ul>
+    <li>Straight normal track</li>
+    <li>Elevated rails</li>
+    <li>Just ramps</li>
+</ul>
+<p>
+    Benchmark was ran with 5 runs, for a total of 1750 ticks a piece (longer than it takes to reach the end of the track)
+</p>
+
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    <img src="images/result_1_chart.svg"></img>
+</p>
+<p>
+<table>
+    <thead>
+    <tr>
+        <th>Metric</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><strong>Mean UPS</strong></td>
+        <td>Updates per second - higher is better</td>
+    </tr>
+    <tr>
+        <td><strong>Mean Avg (ms)</strong></td>
+        <td>Average frame time - lower is better</td>
+    </tr>
+    <tr>
+        <td><strong>Mean Min (ms)</strong></td>
+        <td>Minimum frame time - lower is better</td>
+    </tr>
+    <tr>
+        <td><strong>Mean Max (ms)</strong></td>
+        <td>Maximum frame time - lower is better</td>
+    </tr>
+    </tbody>
+</table>
+<p>
+<table>
+    <thead>
+    <tr>
+        <th>Save</th>
+        <th>Avg (ms)</th>
+        <th>Min (ms)</th>
+        <th>Max (ms)</th>
+        <th>UPS</th>
+        <th>Execution Time (ms)</th>
+        <th>% Difference from base</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>test-000062.elevated_rail</td>
+        <td>0.892</td>
+        <td>0.138</td>
+        <td>11.572</td>
+        <td>1121</td>
+        <td>7805</td>
+        <td>0.00%</td>
+    </tr>
+    <tr>
+        <td>test-000062.standard_rail_sparsed</td>
+        <td>0.882</td>
+        <td>0.170</td>
+        <td>10.172</td>
+        <td>1134</td>
+        <td>7714</td>
+        <td>1.19%</td>
+    </tr>
+    <tr>
+        <td>test-000062.standard_rail</td>
+        <td>0.865</td>
+        <td>0.174</td>
+        <td>10.687</td>
+        <td>1155</td>
+        <td>7569</td>
+        <td>3.11%</td>
+    </tr>
+    <tr>
+        <td>test-000062.just_ramps</td>
+        <td>0.814</td>
+        <td>0.180</td>
+        <td>5.241</td>
+        <td><strong>1229</strong></td>
+        <td>7120</td>
+        <td>9.68%</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    Surprisingly, just using ramps was better than the other options. The suspected reason for this is that there are fewer entities.
+    Each ramp covers the distance of 8 normal pieces of rail. This should in theory lead to fewer entities to process as the train makes its collision checks.
+</p>
+<p>
+    There was not any significant difference between elevated rails and normal straight rails.
+</p>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on July 4, 2025 </div>
+</footer>

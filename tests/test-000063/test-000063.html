@@ -1,0 +1,137 @@
+<!-- begin menu block -->
+
+<head>
+    <title>test-000063 : Is there a performance difference between underground pipes and normal pipes?</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+        <li>
+            <a class="cheat-sheet" href="/cheat-sheet.html">Cheat Sheet</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000063 : Is there a performance difference between underground pipes and normal pipes?</h2>
+<h5>Platform: linux-x86_64</h5>
+<h5>Factorio Version: 2.0.58</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    No, there is no significant difference in performance
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    The test consists of giant blocks of pipes, just under the maximum 320x320 size allowed by the fluid system in Factorio 2.0.
+    In the underground case, a vertical line of underground pipes covering the full xy area was used.
+    A single offshore pump was connected at one end, and an infinity pip connected at the other end.
+</p>
+<p>
+    This was then cloned a lot of times for both scenarios.
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+<p>
+    <img src="images/result_1_chart.svg">
+</p>
+<p>
+<table>
+    <thead>
+    <tr>
+        <th>Metric</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><strong>Mean UPS</strong></td>
+        <td>Updates per second - higher is better</td>
+    </tr>
+    <tr>
+        <td><strong>Mean Avg (ms)</strong></td>
+        <td>Average frame time - lower is better</td>
+    </tr>
+    <tr>
+        <td><strong>Mean Min (ms)</strong></td>
+        <td>Minimum frame time - lower is better</td>
+    </tr>
+    <tr>
+        <td><strong>Mean Max (ms)</strong></td>
+        <td>Maximum frame time - lower is better</td>
+    </tr>
+    </tbody>
+</table>
+<p>
+<table>
+    <thead>
+    <tr>
+        <th>Save</th>
+        <th>Avg (ms)</th>
+        <th>Min (ms)</th>
+        <th>Max (ms)</th>
+        <th>UPS</th>
+        <th>Execution Time (ms)</th>
+        <th>% Difference from base</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>test-000063.pipes</td>
+            <td>0.286</td>
+            <td>0.156</td>
+            <td>2.191</td>
+            <td>3503</td>
+            <td>8565</td>
+            <td>0.00%</td>
+        </tr>
+        <tr>
+            <td>test-000063.undergrounds</td>
+            <td>0.284</td>
+            <td>0.152</td>
+            <td>1.570</td>
+            <td><strong>3522</strong></td>
+            <td>8518</td>
+            <td>0.55%</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    All maps will be uploaded <a href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf"> here.</a>
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    No reason to care about using or not using underground pipes.
+</p>
+
+</body>
+
+<footer>
+    <div style="font-size:.9em"> Written by mulark on July 4, 2025</div>
+</footer>

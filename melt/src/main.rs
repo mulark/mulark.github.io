@@ -92,7 +92,7 @@ async fn main() -> Result<()> {
     handlebars.register_template_file("test", &new_template).unwrap();
     tracing::info!("Rendering template (first pass)");
     let rendered_template = handlebars.render("test", &pre_data)?;
-    std::fs::write(&new_template, rendered_template)?;
+    tokio::fs::write(&new_template, rendered_template).await?;
 
     let mut out_path = PathBuf::from(&new_template);
     out_path.pop();

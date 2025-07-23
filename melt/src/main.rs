@@ -11,7 +11,6 @@ use factorio_belt::benchmark::discovery::find_save_files;
 use handlebars::Handlebars;
 use serde_json::json;
 use tokio::fs::create_dir_all;
-use tokio::task::JoinSet;
 
 #[derive(Parser)]
 #[command(name = "melt")]

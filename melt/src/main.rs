@@ -5,12 +5,13 @@
 use factorio_belt::core::Result;
 use clap::{Parser};
 use std::path::PathBuf;
+use dircpy::{copy_dir, copy_dir_advanced};
 use factorio_belt::{BenchmarkConfig, GlobalConfig};
 use factorio_belt::benchmark::{run, RunOrder};
 use factorio_belt::benchmark::discovery::find_save_files;
 use handlebars::Handlebars;
 use serde_json::json;
-use tokio::fs::create_dir_all;
+use tokio::fs::{create_dir_all, remove_file};
 
 #[derive(Parser)]
 #[command(name = "melt")]
@@ -126,6 +127,7 @@ async fn main() -> Result<()> {
         tracing::info!("Setting pattern to {}", benchmark_config.pattern.as_ref().unwrap());
     }
     let saves = find_save_files(benchmark_config.saves_dir.as_ref(), benchmark_config.pattern.as_ref().map(|s| s.as_str()))?;
+    tracing::info!("Copying saves to {dest_save_dir:?}");
     for save_path in saves.iter() {
         tokio::fs::copy(save_path, dest_save_dir.join(save_path.file_name().unwrap())).await?;
     }
@@ -141,6 +143,27 @@ async fn main() -> Result<()> {
         }
 
         std::process::exit(1);
+    }
+
+    tokio::fs::remove_file(new_template).await?;
+    copy_dir_advanced(&dest_dir, PathBuf::from(&dest_dir).join("images"),
+                      true,
+                      true,
+                      true,
+                      vec![],
+                      vec![".svg".to_string()])?;
+    copy_dir_advanced(&dest_dir, PathBuf::from(&dest_dir).join("raw-data"),
+                      true,
+                      true,
+                      true,
+                      vec![],
+                      vec![".csv".to_string()])?;
+
+    let mut entries = tokio::fs::read_dir(&dest_dir).await?;
+    while let Some(entry) = entries.next_entry().await? {
+        if entry.path().extension() == Some("svg".as_ref()) || entry.path().extension() == Some("csv".as_ref()) {
+            remove_file(entry.path()).await?;
+        }
     }
 
     Ok(())

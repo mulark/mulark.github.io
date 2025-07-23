@@ -28,7 +28,7 @@ struct Cli {
     #[arg(long)]
     pattern: Option<String>,
 
-    #[arg(long, default_value = ".")]
+    #[arg(long)]
     mods_dir: Option<PathBuf>,
 
     #[arg(long, default_value = "grouped")]
@@ -92,7 +92,7 @@ async fn main() -> Result<()> {
     tracing::info!("Rendering template (first pass)");
     let rendered_template = handlebars.render("test", &pre_data)?;
     std::fs::write(&new_template, rendered_template)?;
-    
+
     let mut out_path = PathBuf::from(&new_template);
     out_path.pop();
     let mut benchmark_config = BenchmarkConfig {
@@ -102,7 +102,7 @@ async fn main() -> Result<()> {
         pattern: Some(format!("test-{test_id:06}.*")),
         output: Some(out_path),
         template_path: Some(PathBuf::from(&new_template)),
-        mods_dir: cli.mods_dir,
+        mods_dir: cli.mods_dir.or(Some(std::env::temp_dir())),
         run_order: cli.run_order,
         verbose_metrics: cli.verbose_metrics,
         strip_prefix: Some(format!("test-{test_id:06}.")),

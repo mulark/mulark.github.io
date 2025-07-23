@@ -92,13 +92,15 @@ async fn main() -> Result<()> {
     tracing::info!("Rendering template (first pass)");
     let rendered_template = handlebars.render("test", &pre_data)?;
     std::fs::write(&new_template, rendered_template)?;
-
-    let benchmark_config = BenchmarkConfig {
+    
+    let mut out_path = PathBuf::from(&new_template);
+    out_path.pop();
+    let mut benchmark_config = BenchmarkConfig {
         saves_dir: PathBuf::from(std::env::home_dir().unwrap_or_default().join(".factorio/saves")),
         ticks: cli.ticks,
         runs: cli.runs,
         pattern: Some(format!("test-{test_id:06}.*")),
-        output: Some(PathBuf::from(&new_template).file_stem().unwrap().into()),
+        output: Some(out_path),
         template_path: Some(PathBuf::from(&new_template)),
         mods_dir: cli.mods_dir,
         run_order: cli.run_order,
@@ -107,9 +109,22 @@ async fn main() -> Result<()> {
         smooth_window: 0
     };
 
+    if let Ok(saves) = find_save_files(benchmark_config.saves_dir.as_ref(), benchmark_config.pattern.as_ref().map(|s| s.as_str())) {
+        saves.iter().any(|save| save.file_name().unwrap().to_str().unwrap().contains("cloned"));
+    }
+
+    if find_save_files(benchmark_config.saves_dir.as_ref(), benchmark_config.pattern.as_ref().map(|s| s.as_str())).is_err() {
+        benchmark_config.saves_dir = benchmark_config.saves_dir.join(format!("test-{test_id:06}"));
+    }
 
     let dest_save_dir = PathBuf::from(format!("/mnt/mulark.github.io maps/test-{test_id:06}/"));
     create_dir_all(&dest_save_dir).await?;
+    let saves = find_save_files(benchmark_config.saves_dir.as_ref(), benchmark_config.pattern.as_ref().map(|s| s.as_str()))?;
+    if saves.iter().any(|save| save.file_name().unwrap().to_str().unwrap().contains("cloned")) {
+        // Handle naming of test-123456.foobar.cloned.zip
+        benchmark_config.pattern = Some(format!("test-{test_id:06}*cloned*"));
+        tracing::info!("Setting pattern to {}", benchmark_config.pattern.as_ref().unwrap());
+    }
     let saves = find_save_files(benchmark_config.saves_dir.as_ref(), benchmark_config.pattern.as_ref().map(|s| s.as_str()))?;
     for save_path in saves.iter() {
         tokio::fs::copy(save_path, dest_save_dir.join(save_path.file_name().unwrap())).await?;

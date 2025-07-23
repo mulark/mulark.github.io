@@ -1,0 +1,299 @@
+<!-- begin menu block -->
+
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <title>test-000066 : Item voiding techniques part 1</title>
+</head>
+
+<title>
+    The Factorio Benchmark Website
+</title>
+
+<h1>
+    The Factorio Benchmark Website
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="home" href=/index.html>Home</a>
+        </li>
+        <li>
+            <a class="test-index" href=/test-index.html>Test Index</a>
+        </li>
+        <li>
+            <a class="general-information" href=/general-information.html>General Information</a>
+        </li>
+        <li>
+            <a class="my-mods" href=/my_mods.html>My Mods</a>
+        </li>
+        <li>
+            <a class="cheat-sheet" href="/cheat-sheet.html">Cheat Sheet</a>
+        </li>
+    </ul>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000066 : Item voiding techniques part 1</h2>
+<h5>Platform: linux-x86_64</h5>
+<h5>Factorio Version: 2.0.60</h5>
+
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Voiding items is necessary at various times. For example, Fulgora, producing quality ore, or removing byproducts.
+</p>
+<p>
+    Specifically, this test looks at establishing basic guidelines to allow further exploration of this problem space.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>The test consists of multiple different "building block" ways to void items. Each of these was scaled up to approximately the same voiding rate</p>
+<p>Test was ran 1k ticks each, 3 times per map</p>
+<table>
+    <thead>
+        <tr>
+            <th>Scenario</th>
+            <th>Save</th>
+            <th>Items voided/minute (each copy)</th>
+            <th>Items voided/minute (save total)</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="box">
+                <p>Infinity chest (control)</p>
+            </td>
+            <td>infinity.cloned</td>
+            <td>7200</td>
+            <td>46,080,000</td>
+            <td><img width="100%" src="images/infinity-chest.png"/></td>
+        </tr>
+        <tr>
+            <td class="box">
+                <p>Recycler shuffle</p>
+                <p>The classic, insert into two recyclers facing each other</p>
+            </td>
+            <td>recycler.shuffle.cloned</td>
+            <td>7200</td>
+            <td>46,080,000</td>
+            <td><img width="100%" src="images/recycler-shuffle.png"/></td>
+        </tr>
+        <tr>
+            <td class="box">
+                <p>Recycler with bulk inserter handoff.</p>
+                <p>Instead of directly inserting, batching the item transfer between the recyclers</p>
+                <p>The uncommon quality is needed to keep up</p>
+            </td>
+            <td>recycler.unc.bulk.handoff.cloned</td>
+            <td>7200</td>
+            <td>46,080,000</td>
+            <td><img width="100%" src="images/recycler-bulk-unc-handoff.png"/></td>
+        </tr>
+        <tr>
+            <td class="box">
+                <p>Recycler with legendary stack inserter handoff.
+                <p>Another variant on the previous, is it better to wait for 16 ready items?</p>
+            </td>
+            <td>recycler.leg.stack.handoff.cloned</td>
+            <td>7200</td>
+            <td>46,080,000</td>
+            <td><img width="100%" src="images/recycler-stack-leg-handoff.png"/></td>
+        </tr>
+        <tr>
+            <td class="box">
+                <p>Dumping items into lava</p>
+                <p>Items take a while to drop into lava, so this is the first (and only) case where 7200/m is not achieved by a single unit</p>
+                <p>Dumping into lava creates smoke</p>
+                <p>This has two sub-variants, one that clones in such a way the paste mining drills can see the ore belonging to other rows, and one where they are better spaced and cannot.</p>
+            </td>
+            <td>lava.cloned.nomineroverlap</td>
+            <td>~2504</td>
+            <td>~46,669,552</td>
+            <td><img width="100%" src="images/lava.png"/></td>
+        </tr>
+        <tr>
+            <td class="box">
+                <p>Landfill recycler shuffle</p>
+                <p>Instead of going straight to recyclers, go to make landfill first</p>
+            </td>
+            <td>landfill.recycler.shuffle.cloned</td>
+            <td>7200</td>
+            <td>46,080,000</td>
+            <td><img width="100%" src="images/landfill-recycler-shuffle.png"/></td>
+        </tr>
+        <tr>
+            <td class="box">
+                <p>Landfill recycler handoff</p>
+                <p>Does handoff become better/worse at lower craft rates?</p>
+            </td>
+            <td>landfill.recycler.bulk.handoff.cloned</td>
+            <td>7200</td>
+            <td>46,080,000</td>
+            <td><img width="100%" src="images/landfill-recycler-bulk-handoff.png"/></td>
+        </tr>
+        <tr>
+            <td class="box">
+                <p>Landfill lava</p>
+                <p>Keeps up</p>
+            </td>
+            <td>landfill.recycler.shuffle.cloned</td>
+            <td>7200</td>
+            <td>46,080,000</td>
+            <td><img width="100%" src="images/landfill-lava.png"/></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="The-Data"> The Data </h3>
+
+<p>
+    <img src="images/result_0_chart.svg"/>
+    <img src="images/result_1_chart.svg"/>
+    <img src="images/result_2_chart.svg"/>
+</p>
+<p>
+<table>
+    <thead>
+    <tr>
+        <th>Metric</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><strong>Mean UPS</strong></td>
+        <td>Updates per second - higher is better</td>
+    </tr>
+    <tr>
+        <td><strong>Mean Avg (ms)</strong></td>
+        <td>Average frame time - lower is better</td>
+    </tr>
+    <tr>
+        <td><strong>Mean Min (ms)</strong></td>
+        <td>Minimum frame time - lower is better</td>
+    </tr>
+    <tr>
+        <td><strong>Mean Max (ms)</strong></td>
+        <td>Maximum frame time - lower is better</td>
+    </tr>
+    </tbody>
+</table>
+<p>
+<table>
+    <thead>
+    <tr>
+        <th>Save</th>
+        <th>Avg (ms)</th>
+        <th>Min (ms)</th>
+        <th>Max (ms)</th>
+        <th>UPS</th>
+        <th>Execution Time (ms)</th>
+        <th>% Difference from base</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>lava.cloned</td>
+            <td>10.263</td>
+            <td>4.423</td>
+            <td>25.923</td>
+            <td>97</td>
+            <td>30789</td>
+            <td>0.00%</td>
+        </tr>
+        <tr>
+            <td>recycler.unc.bulk.handoff.cloned</td>
+            <td>8.900</td>
+            <td>3.891</td>
+            <td>16.254</td>
+            <td>112</td>
+            <td>26701</td>
+            <td>15.32%</td>
+        </tr>
+        <tr>
+            <td>lava.cloned.nomineroverlap</td>
+            <td>8.575</td>
+            <td>3.321</td>
+            <td>24.272</td>
+            <td>116</td>
+            <td>25724</td>
+            <td>19.69%</td>
+        </tr>
+        <tr>
+            <td>recycler.leg.stack.handoff.cloned</td>
+            <td>8.298</td>
+            <td>2.951</td>
+            <td>14.688</td>
+            <td>120</td>
+            <td>24892</td>
+            <td>23.67%</td>
+        </tr>
+        <tr>
+            <td>recycler.shuffle.cloned</td>
+            <td>5.703</td>
+            <td>1.640</td>
+            <td>12.645</td>
+            <td>175</td>
+            <td>17109</td>
+            <td>79.93%</td>
+        </tr>
+        <tr>
+            <td>landfill.recycler.bulk.handoff.cloned</td>
+            <td>3.743</td>
+            <td>0.695</td>
+            <td>11.205</td>
+            <td>267</td>
+            <td>11229</td>
+            <td>174.17%</td>
+        </tr>
+        <tr>
+            <td>landfill.lava.cloned</td>
+            <td>3.167</td>
+            <td>0.388</td>
+            <td>10.389</td>
+            <td>315</td>
+            <td>9500</td>
+            <td>224.03%</td>
+        </tr>
+        <tr>
+            <td>landfill.recycler.shuffle.cloned</td>
+            <td>3.101</td>
+            <td>0.432</td>
+            <td>11.792</td>
+            <td>322</td>
+            <td>9303</td>
+            <td>231.19%</td>
+        </tr>
+        <tr>
+            <td>infinity.cloned</td>
+            <td>2.507</td>
+            <td>0.372</td>
+            <td>8.462</td>
+            <td><strong>398</strong></td>
+            <td>7521</td>
+            <td>309.31%</td>
+        </tr>
+
+    </tbody>
+</table>
+<p>
+    All maps will be uploaded <a href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf"> here.</a>
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    Crafting landfill first was clearly better in all cases. Additionally, adding a handoff is clearly worse than just cross feeding the recyclers.
+</p>
+<p>
+    Having more ore than necessary under an affected miner is harmful for performance. This is mainly a consideration when preparing saves for benchmarking.
+    Avoid cloning a single ore under a miner, but also avoid having different number of ores available for mining by the different designs.
+    Region cloner version 3.1.0+ adds intelligence for /autoclone command to improve the default behavior here (manually selected areas can still result in bad behavior).
+</p>
+</body>
+<footer>
+    <div style="font-size:.9em"> Written by mulark on 2025-07-22</div>
+</footer>

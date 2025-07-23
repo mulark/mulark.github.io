@@ -110,3 +110,10 @@ figure {
 footer {
     padding: 10px;
 }
+
+.box {
+    border-radius: 5px;
+    padding: 10px;
+    inline-size: min-content;
+    min-width: 200px;
+}

@@ -129,6 +129,7 @@ async fn main() -> Result<()> {
     let saves = find_save_files(benchmark_config.saves_dir.as_ref(), benchmark_config.pattern.as_ref().map(|s| s.as_str()))?;
     tracing::info!("Copying saves to {dest_save_dir:?}");
     for save_path in saves.iter() {
+        tracing::info!("{:?}", save_path);
         tokio::fs::copy(save_path, dest_save_dir.join(save_path.file_name().unwrap())).await?;
     }
 

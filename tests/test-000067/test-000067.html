@@ -1,0 +1,354 @@
+<!-- begin menu block -->
+
+<head>
+  <link rel="stylesheet" href="/style.css" />
+  <title>The Factorio Benchmark Website</title>
+</head>
+
+<title>The Factorio Benchmark Website</title>
+
+<h1>The Factorio Benchmark Website</h1>
+
+<nav>
+  <div class="nav_bucket">
+    <div class="nav_item">
+      <a class="home nav_link" href="/index.html">Home</a>
+    </div>
+    <div class="nav_item">
+      <a class="test-index nav_link" href="/test-index.html">Test Index</a>
+    </div>
+    <div class="nav_item">
+      <a class="general-information nav_link" href="/general-information.html">General Information</a>
+    </div>
+    <div class="nav_item">
+      <a class="my-mods nav_link" href="/my_mods.html">My Mods</a>
+    </div>
+    <div class="nav_item">
+      <a class="cheat-sheet nav_link" href="/cheat-sheet.html">Cheat Sheet</a>
+    </div>
+  </div>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+  <h2>test-000067 : Item voiding part 2: all burnable items</h2>
+  <h5>Platform: linux-x86_64</h5>
+  <h5>Factorio Version 2.0.62</h5>
+
+  <h3 id="The-TLDR">The TLDR</h3>
+  <p>
+    Spoilage is the only worthwhile item to put in heating towers. Jelly was a
+    tie. And everything with a greater fuel value is better in a recycler.
+  </p>
+
+  <h3 id="The-Question">The Question</h3>
+  <p>
+    For fuel based items, what is the best way to void it? Note that this test
+    isn't necessarily going to test the best overall way of voiding these items,
+    rather, it tests the exclusive ability to burn these items.
+  </p>
+  <p>
+    The focus of this test is exclusively to throw away excess or unwanted
+    items, so upcycling is not a consideration.
+  </p>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Fuel value</th>
+          <th>Could be relevant to void for megabase?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tree seed</td>
+          <td>100 kJ</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Spoilage</td>
+          <td>250 kJ</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Yumako mash</td>
+          <td>1 MJ</td>
+          <td>Yes (uncommon+)</td>
+        </tr>
+        <tr>
+          <td>Jelly</td>
+          <td>1 MJ</td>
+          <td>Yes (uncommon+)</td>
+        </tr>
+        <tr>
+          <td>Wood</td>
+          <td>2 MJ</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Carbon</td>
+          <td>2 MJ</td>
+          <td>Maybe?</td>
+        </tr>
+        <tr>
+          <td>Yumako</td>
+          <td>2 MJ</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Coal</td>
+          <td>4 MJ</td>
+          <td>Yes (uncommon+)</td>
+        </tr>
+        <tr>
+          <td>Yumako seed</td>
+          <td>4 MJ</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Jellynut seed</td>
+          <td>4 MJ</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Pentapod egg</td>
+          <td>5 MJ</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Biter egg</td>
+          <td>6 MJ</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Jellynut</td>
+          <td>10 MJ</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Solid fuel</td>
+          <td>12 MJ</td>
+          <td>Yes (Fulgora, potential oil processing byproducts)</td>
+        </tr>
+        <tr>
+          <td>Rocket fuel</td>
+          <td>100 MJ</td>
+          <td>No</td>
+        </tr>
+        <tr></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3 id="The-Test">The Test</h3>
+  <p>
+    Test was performed by benchmarking the saves using the inbuilt Factorio
+    benchmark. Each save was tested 3 times for 1000 ticks a piece
+  </p>
+  <p>
+    Important information about the test. What attributes does the test have?
+    How is the test being conducted?
+  </p>
+
+  <h3 id="The-Data">The Data</h3>
+
+  <p>
+    <img src="images/result_0_chart.svg" />
+    <img src="images/result_1_chart.svg" />
+    <img src="images/result_2_chart.svg" />
+  </p>
+  <p></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Mean UPS</strong></td>
+        <td>Updates per second - higher is better</td>
+      </tr>
+      <tr>
+        <td><strong>Mean Avg (ms)</strong></td>
+        <td>Average frame time - lower is better</td>
+      </tr>
+      <tr>
+        <td><strong>Mean Min (ms)</strong></td>
+        <td>Minimum frame time - lower is better</td>
+      </tr>
+      <tr>
+        <td><strong>Mean Max (ms)</strong></td>
+        <td>Maximum frame time - lower is better</td>
+      </tr>
+    </tbody>
+  </table>
+  <p></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Save</th>
+        <th>Avg (ms)</th>
+        <th>Min (ms)</th>
+        <th>Max (ms)</th>
+        <th>UPS</th>
+        <th>Execution Time (ms)</th>
+        <th>% Difference from base</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>coal.belt.heating_tower.cloned</td>
+        <td>37.372</td>
+        <td>29.113</td>
+        <td>159.567</td>
+        <td>26</td>
+        <td>112116</td>
+        <td>0.00%</td>
+      </tr>
+      <tr>
+        <td>spoilage.belt.boiler.cloned</td>
+        <td>27.599</td>
+        <td>19.396</td>
+        <td>47.784</td>
+        <td>36</td>
+        <td>82796</td>
+        <td>35.41%</td>
+      </tr>
+      <tr>
+        <td>spoilage.belt.boiler.v2.cloned</td>
+        <td>26.785</td>
+        <td>18.043</td>
+        <td>45.423</td>
+        <td>37</td>
+        <td>80355</td>
+        <td>39.53%</td>
+      </tr>
+      <tr>
+        <td>coal.belt.clocked.heating_tower.cloned</td>
+        <td>20.845</td>
+        <td>12.795</td>
+        <td>152.238</td>
+        <td>47</td>
+        <td>62534</td>
+        <td>79.30%</td>
+      </tr>
+      <tr>
+        <td>jelly.belt.heating_tower.cloned</td>
+        <td>16.406</td>
+        <td>9.310</td>
+        <td>50.624</td>
+        <td>60</td>
+        <td>49218</td>
+        <td>127.80%</td>
+      </tr>
+      <tr>
+        <td>carbon.belt.clocked.heating_tower.cloned</td>
+        <td>14.656</td>
+        <td>7.100</td>
+        <td>80.862</td>
+        <td>68</td>
+        <td>43966</td>
+        <td>155.00%</td>
+      </tr>
+      <tr>
+        <td>jelly.belt.recycler.cloned</td>
+        <td>14.090</td>
+        <td>3.183</td>
+        <td>34.296</td>
+        <td>70</td>
+        <td>42268</td>
+        <td>165.25%</td>
+      </tr>
+      <tr>
+        <td>jelly.belt.clocked.heating_tower.cloned</td>
+        <td>14.075</td>
+        <td>5.042</td>
+        <td>55.293</td>
+        <td>71</td>
+        <td>42223</td>
+        <td>165.54%</td>
+      </tr>
+      <tr>
+        <td>carbon.belt.recycler.cloned</td>
+        <td>12.438</td>
+        <td>7.702</td>
+        <td>28.537</td>
+        <td>80</td>
+        <td>37313</td>
+        <td>200.48%</td>
+      </tr>
+      <tr>
+        <td>solid.belt.recycler.cloned</td>
+        <td>12.174</td>
+        <td>4.068</td>
+        <td>31.388</td>
+        <td>82</td>
+        <td>36523</td>
+        <td>207.00%</td>
+      </tr>
+      <tr>
+        <td>spoilage.belt.recycler.cloned</td>
+        <td>12.086</td>
+        <td>4.158</td>
+        <td>31.833</td>
+        <td>82</td>
+        <td>36258</td>
+        <td>209.23%</td>
+      </tr>
+      <tr>
+        <td>coal.belt.recycler.cloned</td>
+        <td>12.072</td>
+        <td>3.995</td>
+        <td>29.355</td>
+        <td>82</td>
+        <td>36215</td>
+        <td>209.59%</td>
+      </tr>
+      <tr>
+        <td>spoilage.belt.heating_tower.cloned</td>
+        <td>9.111</td>
+        <td>3.914</td>
+        <td>31.440</td>
+        <td>109</td>
+        <td>27334</td>
+        <td>310.23%</td>
+      </tr>
+      <tr>
+        <td>spoilage.di.recycler.cloned</td>
+        <td>7.145</td>
+        <td>0.428</td>
+        <td>24.290</td>
+        <td>139</td>
+        <td>21433</td>
+        <td>423.12%</td>
+      </tr>
+      <tr>
+        <td>spoilage.di.heating_tower.cloned</td>
+        <td>4.526</td>
+        <td>0.665</td>
+        <td>21.868</td>
+        <td><strong>220</strong></td>
+        <td>13577</td>
+        <td>725.80%</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    All maps will be uploaded
+    <a
+      href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf"
+    >
+      here.</a
+    >
+  </p>
+
+  <h3 id="Closing">Closing</h3>
+  <p>
+    Closing notes about this test and other tests which may test a similar
+    attribute or property
+  </p>
+</body>
+<footer>
+  <div style="font-size: 0.9em">Written by mulark on 2025-07-31</div>
+</footer>

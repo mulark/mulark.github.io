@@ -4,14 +4,14 @@
 nav {
     font-size: 1.8em;
 }
-nav ul {
+.nav_bucket {
     background-color: rgb(32, 46, 68, .8);
     padding: 8px;
 }
-nav ul li {
+.nav_item {
     display: inline;
 }
-nav li a {
+.nav_link {
     padding: 8px;
     color: white;
     text-decoration: none;

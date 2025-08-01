@@ -2,13 +2,13 @@
 //!
 //! Parses CLI arguments, to call into belt
 
-use factorio_belt::core::Result;
+use belt::core::Result;
 use clap::{Parser};
 use std::path::PathBuf;
 use dircpy::copy_dir_advanced;
-use factorio_belt::{BenchmarkConfig, GlobalConfig};
-use factorio_belt::benchmark::{run, RunOrder};
-use factorio_belt::benchmark::discovery::find_save_files;
+use belt::{BenchmarkConfig, GlobalConfig};
+use belt::benchmark::{run, RunOrder};
+use belt::benchmark::discovery::find_save_files;
 use handlebars::Handlebars;
 use serde_json::json;
 use tokio::fs::{create_dir_all, remove_file};

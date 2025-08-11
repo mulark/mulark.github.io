@@ -30,7 +30,7 @@
 </nav>
 <!-- end menu block -->
 <body class="test-index">
-  <h2>test-000067 : Item voiding part 2: all burnable items</h2>
+  <h2>test-000067 : Item voiding part 2: burnable items</h2>
   <h5>Platform: linux-x86_64</h5>
   <h5>Factorio Version 2.0.62</h5>
 
@@ -44,11 +44,18 @@
   <p>
     For fuel based items, what is the best way to void it? Note that this test
     isn't necessarily going to test the best overall way of voiding these items,
-    rather, it tests the exclusive ability to burn these items.
+    rather, it tests the exclusive ways to void burnable items (in a burner).
   </p>
   <p>
     The focus of this test is exclusively to throw away excess or unwanted
     items, so upcycling is not a consideration.
+  </p>
+  <p>
+    The test does not consider byproducts of burning eg: power generation or heat on Aquilo.
+    Focus is simply on getting rid of the items.
+  </p>
+  <p>
+    Looking at fuel values in the table below, only items which could possibly make sense to void in a megabase context will be tested.
   </p>
   <div>
     <table>
@@ -144,19 +151,14 @@
     Test was performed by benchmarking the saves using the inbuilt Factorio
     benchmark. Each save was tested 3 times for 1000 ticks a piece
   </p>
-  <p>
-    Important information about the test. What attributes does the test have?
-    How is the test being conducted?
-  </p>
 
   <h3 id="The-Data">The Data</h3>
 
   <p>
     <img src="images/result_0_chart.svg" />
-    <img src="images/result_1_chart.svg" />
-    <img src="images/result_2_chart.svg" />
   </p>
   <p></p>
+  </br>
   <table>
     <thead>
       <tr>
@@ -193,7 +195,6 @@
         <th>Max (ms)</th>
         <th>UPS</th>
         <th>Execution Time (ms)</th>
-        <th>% Difference from base</th>
       </tr>
     </thead>
     <tbody>
@@ -204,7 +205,6 @@
         <td>159.567</td>
         <td>26</td>
         <td>112116</td>
-        <td>0.00%</td>
       </tr>
       <tr>
         <td>spoilage.belt.boiler.cloned</td>
@@ -213,7 +213,6 @@
         <td>47.784</td>
         <td>36</td>
         <td>82796</td>
-        <td>35.41%</td>
       </tr>
       <tr>
         <td>spoilage.belt.boiler.v2.cloned</td>
@@ -222,7 +221,6 @@
         <td>45.423</td>
         <td>37</td>
         <td>80355</td>
-        <td>39.53%</td>
       </tr>
       <tr>
         <td>coal.belt.clocked.heating_tower.cloned</td>
@@ -231,7 +229,6 @@
         <td>152.238</td>
         <td>47</td>
         <td>62534</td>
-        <td>79.30%</td>
       </tr>
       <tr>
         <td>jelly.belt.heating_tower.cloned</td>
@@ -240,7 +237,6 @@
         <td>50.624</td>
         <td>60</td>
         <td>49218</td>
-        <td>127.80%</td>
       </tr>
       <tr>
         <td>carbon.belt.clocked.heating_tower.cloned</td>
@@ -249,7 +245,6 @@
         <td>80.862</td>
         <td>68</td>
         <td>43966</td>
-        <td>155.00%</td>
       </tr>
       <tr>
         <td>jelly.belt.recycler.cloned</td>
@@ -258,7 +253,6 @@
         <td>34.296</td>
         <td>70</td>
         <td>42268</td>
-        <td>165.25%</td>
       </tr>
       <tr>
         <td>jelly.belt.clocked.heating_tower.cloned</td>
@@ -267,7 +261,6 @@
         <td>55.293</td>
         <td>71</td>
         <td>42223</td>
-        <td>165.54%</td>
       </tr>
       <tr>
         <td>carbon.belt.recycler.cloned</td>
@@ -276,7 +269,6 @@
         <td>28.537</td>
         <td>80</td>
         <td>37313</td>
-        <td>200.48%</td>
       </tr>
       <tr>
         <td>solid.belt.recycler.cloned</td>
@@ -285,7 +277,6 @@
         <td>31.388</td>
         <td>82</td>
         <td>36523</td>
-        <td>207.00%</td>
       </tr>
       <tr>
         <td>spoilage.belt.recycler.cloned</td>
@@ -294,7 +285,6 @@
         <td>31.833</td>
         <td>82</td>
         <td>36258</td>
-        <td>209.23%</td>
       </tr>
       <tr>
         <td>coal.belt.recycler.cloned</td>
@@ -303,17 +293,31 @@
         <td>29.355</td>
         <td>82</td>
         <td>36215</td>
-        <td>209.59%</td>
       </tr>
       <tr>
         <td>spoilage.belt.heating_tower.cloned</td>
         <td>9.111</td>
         <td>3.914</td>
         <td>31.440</td>
-        <td>109</td>
+        <td><strong>109</strong></td>
         <td>27334</td>
-        <td>310.23%</td>
       </tr>
+    </tbody>
+  </table>
+  <br/>
+  <p/>
+  <table>
+    <thead>
+    <tr>
+      <th>Save</th>
+      <th>Avg (ms)</th>
+      <th>Min (ms)</th>
+      <th>Max (ms)</th>
+      <th>UPS</th>
+      <th>Execution Time (ms)</th>
+    </tr>
+    </thead>
+    <tbody>
       <tr>
         <td>spoilage.di.recycler.cloned</td>
         <td>7.145</td>
@@ -321,7 +325,6 @@
         <td>24.290</td>
         <td>139</td>
         <td>21433</td>
-        <td>423.12%</td>
       </tr>
       <tr>
         <td>spoilage.di.heating_tower.cloned</td>
@@ -330,10 +333,16 @@
         <td>21.868</td>
         <td><strong>220</strong></td>
         <td>13577</td>
-        <td>725.80%</td>
       </tr>
     </tbody>
   </table>
+  <br/>
+  <p>
+    For spoilage, the winner was heating towers (di/belt cases both). Jelly was a tie. For all other fuels, recycler shuffle was the best option.
+  </p>
+  <p>
+    Considering how bad the performance got with heating tower coal, solid fuel was omitted.
+  </p>
   <p>
     All maps will be uploaded
     <a
@@ -345,8 +354,7 @@
 
   <h3 id="Closing">Closing</h3>
   <p>
-    Closing notes about this test and other tests which may test a similar
-    attribute or property
+    When considering just eliminating waste products, heating towers were better for spoilage and recyclers were better for all other tested items.
   </p>
 </body>
 <footer>

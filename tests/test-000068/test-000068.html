@@ -1,0 +1,160 @@
+<!-- begin menu block -->
+
+<head>
+    <link rel="stylesheet" href="/style.css" />
+    <title>test-000068 : Item voiding part 2.1: wood</title>
+</head>
+
+<h1>The Factorio Benchmark Website</h1>
+
+<nav>
+    <div class="nav_bucket">
+        <div class="nav_item">
+            <a class="home nav_link" href="/index.html">Home</a>
+        </div>
+        <div class="nav_item">
+            <a class="test-index nav_link" href="/test-index.html">Test Index</a>
+        </div>
+        <div class="nav_item">
+            <a class="general-information nav_link" href="/general-information.html">General Information</a>
+        </div>
+        <div class="nav_item">
+            <a class="my-mods nav_link" href="/my_mods.html">My Mods</a>
+        </div>
+        <div class="nav_item">
+            <a class="cheat-sheet nav_link" href="/cheat-sheet.html">Cheat Sheet</a>
+        </div>
+    </div>
+</nav>
+<!-- end menu block -->
+<body class="test-index">
+
+<h2>test-000068 : Item voiding part 2.1: wood</h2>
+<h5>Platform: linux-x86_64</h5>
+<h5>Factorio Version 2.0.65</h5>
+
+
+<h3 id="The-TLDR"> The TLDR </h3>
+<p>
+    Surprisingly, crafting chests before sending to recyclers was not better. Recycler shuffle remained best option of those tested.
+</p>
+
+<h3 id="The-Question"> The Question </h3>
+<p>
+    Wood. Voiding it. Compared to carbon, it has the same fuel value. It has a recipe (wooden chest) that could be crafted into first.
+    Also, it recycles quicker than carbon (0.03 seconds vs 0.06).
+</p>
+<p>
+    All those factors trip it over into interesting enough territory.
+</p>
+
+<h3 id="The-Test"> The Test </h3>
+<p>
+    Test was performed by benchmarking the saves using the inbuilt Factorio benchmark. Each save was tested 5 times for 1000 ticks a piece
+</p>
+
+<h3 id="The-Data"> The Data </h3>
+
+<p>
+    <img src="images/result_0_chart.svg"/>
+</p>
+<p>
+<table>
+    <thead>
+    <tr>
+        <th>Metric</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><strong>Mean UPS</strong></td>
+        <td>Updates per second - higher is better</td>
+    </tr>
+    <tr>
+        <td><strong>Mean Avg (ms)</strong></td>
+        <td>Average frame time - lower is better</td>
+    </tr>
+    <tr>
+        <td><strong>Mean Min (ms)</strong></td>
+        <td>Minimum frame time - lower is better</td>
+    </tr>
+    <tr>
+        <td><strong>Mean Max (ms)</strong></td>
+        <td>Maximum frame time - lower is better</td>
+    </tr>
+    </tbody>
+</table>
+<p>
+<table>
+    <thead>
+    <tr>
+        <th>Save</th>
+        <th>Avg (ms)</th>
+        <th>Min (ms)</th>
+        <th>Max (ms)</th>
+        <th>UPS</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>wood.belt.clocked.heating_tower.cloned</td>
+            <td>14.765</td>
+            <td>6.876</td>
+            <td>82.988</td>
+            <td>67</td>
+        </tr>
+        <tr>
+            <td>wood.belt.craft_chest.recycler.cloned</td>
+            <td>12.886</td>
+            <td>8.364</td>
+            <td>28.471</td>
+            <td>77</td>
+        </tr>
+        <tr>
+            <td>wood.belt.recycler.cloned</td>
+            <td>11.672</td>
+            <td>2.710</td>
+            <td>30.673</td>
+            <td><strong>85</strong></td>
+        </tr>
+        <tr style="background-color: salmon">
+            <td>carbon.belt.clocked.heating_tower.cloned</td>
+            <td>14.656</td>
+            <td>7.100</td>
+            <td>80.862</td>
+            <td>68</td>
+            <td>Reference from test-000067, not re-ran for this test</td>
+        </tr>
+        <tr style="background-color: salmon">
+            <td>carbon.belt.recycler.cloned</td>
+            <td>12.438</td>
+            <td>7.702</td>
+            <td>28.537</td>
+            <td>80</td>
+            <td>Reference from test-000067, not re-ran for this test</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    Simple recycler shuffle was best, beating out crafting chests first.
+</p>
+<p>
+    The shorter craft cycle time on wood appeared to have a benefit over the carbon performance found in test-000067.
+</p>
+<p>
+    Wood performed ~identically to carbon when used in a heating tower - expected because they have the same fuel value.
+</p>
+<p>
+    All maps will be uploaded <a href="https://drive.google.com/open?id=1rZo0oa4lQGdYYXyEbUnS0Cd8MD8DPpxf"> here.</a>
+</p>
+
+
+<h3 id="Closing"> Closing </h3>
+<p>
+    See test-000067 for more burnable item voiding.
+</p>
+</body>
+<footer>
+    <div style="font-size:.9em"> Written by mulark on 2025-08-26</div>
+</footer>

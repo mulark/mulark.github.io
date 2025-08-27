@@ -41,7 +41,8 @@ struct Cli {
     #[arg(
         long,
         value_delimiter = ',',
-        help = "Generate per-tick charts for specified Factorio benchmark metrics (e.g., 'wholeUpdate,gameUpdate'). 'all' to chart all metrics."
+        help = "Generate per-tick charts for specified Factorio benchmark metrics (e.g., 'wholeUpdate,gameUpdate'). 'all' to chart all metrics.",
+        default_value = "wholeUpdate"
     )]
     verbose_metrics: Vec<String>,
 

@@ -158,9 +158,9 @@ dependencies = [
 
 [[package]]
 name = "belt"
-version = "1.12.1"
+version = "2.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "234339f7ce6b75716e335add6b2420979834a4c803d147532e9a6e65118b8cf1"
+checksum = "ddd4210cd4b8bb4308cfe2f62183f901bd1feac8c294a3aebe0268458a9d9a41"
 dependencies = [
  "assert_cmd",
  "charming",
